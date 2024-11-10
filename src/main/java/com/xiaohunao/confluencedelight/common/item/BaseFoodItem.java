@@ -14,7 +14,9 @@ import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class BaseFoodItem extends Item {
     public BaseFoodItem(Properties properties) {
@@ -57,4 +59,6 @@ public class BaseFoodItem extends Item {
         }
 
     }
+
+    BiFunction<Holder<MobEffect>,Integer,FoodBuilder> EFFECTIVE_FOOD = (effect, time) -> new FoodBuilder().addEffect(effect, time);
 }

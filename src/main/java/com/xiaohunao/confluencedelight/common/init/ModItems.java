@@ -4,7 +4,6 @@ import com.xiaohunao.confluencedelight.ConfluenceDelight;
 import com.xiaohunao.confluencedelight.common.item.BaseFoodItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -13,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.*;
 
 import static com.xiaohunao.confluencedelight.ConfluenceDelight.chineseProviders;
-import static com.xiaohunao.confluencedelight.common.init.ModFoodValues.*;
+import static com.xiaohunao.confluencedelight.common.init.ModFoodUtils.*;
 
 
 public class ModItems {
@@ -38,20 +37,30 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> BANANA_SPLIT = register("banana_split", "香蕉船");
     public static final DeferredHolder<Item, Item> MILKSHAKE = register("milkshake", "奶昔");
 
-
     public static final DeferredHolder<Item, Item> TEST_FOOD = register("test_food", "测试食物1", food -> food
             .addEffect(MobEffects.GLOWING, LONG_DURATION)
             .addEffect(MobEffects.HEALTH_BOOST, SHORT_DURATION)
-            .setKeeper(Items.BOW)
+            .setKeeper(Items.WHEAT)
     );
 
+    public static final DeferredHolder<Item, Item> TEST_FOOD2 = register("test_food2", "测试食物2",
+            EFFECTIVE_FOOD.apply(MobEffects.GLOWING, LONG_DURATION));
 
+
+
+    /**使用预制体*/
+    public static DeferredHolder<Item, Item> register(final String en, final String zh, Supplier<BaseFoodItem.FoodBuilder> foodSupplier) {
+        DeferredHolder<Item, Item> item = ITEMS.register(en, () -> new BaseFoodItem(foodSupplier.get()));
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
+    /**使用建造者*/
     public static DeferredHolder<Item, Item> register(final String en, final String zh, Function<BaseFoodItem.FoodBuilder, BaseFoodItem.FoodBuilder> foodBuilder) {
         DeferredHolder<Item, Item> item = ITEMS.register(en, () -> new BaseFoodItem(foodBuilder.apply(new BaseFoodItem.FoodBuilder())));
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;
     }
-
+    /**无效果*/
     public static DeferredHolder<Item, Item> register(final String en, final String zh) {
         return register(en, zh, food -> food);
     }
