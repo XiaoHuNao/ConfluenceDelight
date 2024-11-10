@@ -41,7 +41,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> BANANA_SPLIT = register("banana_split", "香蕉船");
     public static final DeferredHolder<Item, Item> MILKSHAKE = register("milkshake", "奶昔");
 
-
+    public static final DeferredHolder<Item, Item> SUN_PLATE_BOWL = registerItem("sun_plate_bowl", "日盘碗");
 
 
     /**使用建造者*/
@@ -62,7 +62,17 @@ public class ModItems {
     );
 
 
+    public static DeferredHolder<Item, Item> registerItem(final String en, final String zh) {
+        DeferredHolder<Item, Item> item = ITEMS.register(en, () -> new Item(new Item.Properties()));
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
 
+    public static DeferredHolder<Item, Item> registerItem(final String en, final String zh, Supplier<? extends Item> it) {
+        DeferredHolder<Item, Item> item = ITEMS.register(en, it);
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
 
     /**使用预制体*/
     public static DeferredHolder<Item, Item> register(final String en, final String zh, Supplier<BaseFoodItem.FoodBuilder> foodSupplier) {
