@@ -43,7 +43,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "泰拉乐事");
+        addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
 
         chineseProviders.forEach(a->a.accept(this));
 
