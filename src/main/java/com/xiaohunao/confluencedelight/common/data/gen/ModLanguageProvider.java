@@ -10,19 +10,30 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+
+import static com.xiaohunao.confluencedelight.ConfluenceDelight.chineseProviders;
 
 public class ModLanguageProvider extends LanguageProvider {
     private final Map<String, String> enData = new TreeMap<>();
     private final Map<String, String> cnData = new TreeMap<>();
     private final PackOutput output;
     private final String locale;
+
+    private static String toTitleCase(String raw) {
+        return Arrays.stream(raw.split("_"))
+                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+                .collect(Collectors.joining(" "));
+    }
 
     public ModLanguageProvider(PackOutput output, String locale) {
         super(output, ConfluenceDelight.MODID, locale);
@@ -34,6 +45,9 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "泰拉乐事");
 
+        chineseProviders.forEach(a->a.accept(this));
+
+/*
         addItem(ModItems.BANANA_SPLIT, "Banana Split", "香蕉船");
         addItem(ModItems.BBQ_RIBS, "BBQ Ribs", "烧烤肋排");
         addItem(ModItems.FRIES, "Fries", "薯条");
@@ -52,6 +66,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MONSTER_LASAGNA, "Monster Lasagna", "怪物千层面");
         addItem(ModItems.MARSHMALLOW, "Marshmallow", "棉花糖");
         addItem(ModItems.COOKED_MARSHMALLOW, "Cooked Marshmallow", "烤棉花糖");
+        */
     }
 
     @Override
@@ -76,7 +91,8 @@ public class ModLanguageProvider extends LanguageProvider {
         return DataProvider.saveStable(cache, json, target);
     }
 
-    private void addItem(Supplier<? extends Item> key, String en, String cn) {
+    public void addItem(DeferredHolder<Item,Item> key,  String cn) {
+        String en =toTitleCase(key.get().getDescriptionId());
         this.add(key.get().getDescriptionId(), en, cn);
     }
     private void addCreativeTab(Supplier<CreativeModeTab> tab, String en, String cn) {

@@ -1,6 +1,7 @@
 package com.xiaohunao.confluencedelight;
 
 import com.mojang.logging.LogUtils;
+import com.xiaohunao.confluencedelight.common.data.gen.ModLanguageProvider;
 import com.xiaohunao.confluencedelight.common.init.ModBlocks;
 import com.xiaohunao.confluencedelight.common.init.ModCreativeTabs;
 import com.xiaohunao.confluencedelight.common.init.ModItems;
@@ -14,10 +15,18 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
 @Mod(ConfluenceDelight.MODID)
 public class ConfluenceDelight {
     public static final String MODID = "confluence_delight";
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    public static List<Consumer<ModLanguageProvider>> chineseProviders = new ArrayList<>();
+
+
     public ConfluenceDelight(IEventBus modEventBus, ModContainer modContainer) {
 //        NeoForge.EVENT_BUS.register(this);
 

@@ -18,6 +18,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        ModItems.ITEMS.getEntries().forEach(entry -> simpleItem(entry.get()));
+        /*
         this.simpleItem(ModItems.BANANA_SPLIT.get());
         this.simpleItem(ModItems.BBQ_RIBS.get());
         this.simpleItem(ModItems.FRIES.get());
@@ -36,11 +38,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.simpleItem(ModItems.MARSHMALLOW.get());
         this.simpleItem(ModItems.COOKED_MARSHMALLOW.get());
         this.simpleItem(ModItems.FROGGLE_BUNWICH.get());
+        */
     }
 
     private void simpleItem(Item item) {
         String path = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
+        try{
         this.withExistingParent(path, ResourceLocation.withDefaultNamespace("item/generated"))
                 .texture("layer0", ConfluenceDelight.asResource("item/" + path));
+        }catch(Exception e){
+            withExistingParent("item/"+path,ConfluenceDelight.asResource("item/missing"));
+        }
     }
 }

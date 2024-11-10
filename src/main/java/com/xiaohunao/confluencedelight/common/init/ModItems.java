@@ -1,39 +1,60 @@
 package com.xiaohunao.confluencedelight.common.init;
 
 import com.xiaohunao.confluencedelight.ConfluenceDelight;
+import com.xiaohunao.confluencedelight.common.item.BaseFoodItem;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.*;
+
+import static com.xiaohunao.confluencedelight.ConfluenceDelight.chineseProviders;
+import static com.xiaohunao.confluencedelight.common.init.ModFoodValues.*;
 
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = net.neoforged.neoforge.registries.DeferredRegister.create(BuiltInRegistries.ITEM, ConfluenceDelight.MODID);
 
-    public static final DeferredHolder<Item,Item> MARSHMALLOW = registerSimpleFoodItems("marshmallow", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> COOKED_MARSHMALLOW = registerSimpleFoodItems("cooked_marshmallow", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> FROGGLE_BUNWICH = registerSimpleFoodItems("froggle_bunwich", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> MONSTER_LASAGNA = registerSimpleFoodItems("monster_lasagna", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> SAUTEED_FROG_LEGS = registerSimpleFoodItems("sauteed_frog_legs", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> SEAFOOD_DINNER = registerSimpleFoodItems("seafood_dinner", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> SMOOTHIE_OF_DARKNESS = registerSimpleFoodItems("smoothie_of_darkness", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> SASHIMI = registerSimpleFoodItems("sashimi", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> BBQ_RIBS = registerSimpleFoodItems("bbq_ribs", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> FRIES = registerSimpleFoodItems("fries", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> POTATO_CHIPS = registerSimpleFoodItems("potato_chips", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> CHRISTMAS_PUDDING = registerSimpleFoodItems("christmas_pudding", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> SUGAR_COOKIE = registerSimpleFoodItems("sugar_cookie", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> PAD_THAI = registerSimpleFoodItems("pad_thai", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> PHO = registerSimpleFoodItems("pho", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> ICE_CREAM = registerSimpleFoodItems("ice_cream", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> BANANA_SPLIT = registerSimpleFoodItems("banana_split", ModFoodValues.EMPTY);
-    public static final DeferredHolder<Item,Item> MILKSHAKE = registerSimpleFoodItems("milkshake", ModFoodValues.EMPTY);
+    public static final DeferredHolder<Item, Item> MARSHMALLOW = register("marshmallow", "棉花糖");
+    public static final DeferredHolder<Item, Item> COOKED_MARSHMALLOW = register("cooked_marshmallow", "烤棉花糖");
+    public static final DeferredHolder<Item, Item> FROGGLE_BUNWICH = register("froggle_bunwich", "青蛙三明治");
+    public static final DeferredHolder<Item, Item> MONSTER_LASAGNA = register("monster_lasagna", "怪物千层面");
+    public static final DeferredHolder<Item, Item> SAUTEED_FROG_LEGS = register("sauteed_frog_legs", "炒蛙腿");
+    public static final DeferredHolder<Item, Item> SEAFOOD_DINNER = register("seafood_dinner", "海鲜大餐");
+    public static final DeferredHolder<Item, Item> SMOOTHIE_OF_DARKNESS = register("smoothie_of_darkness", "黑暗奶昔");
+    public static final DeferredHolder<Item, Item> SASHIMI = register("sashimi", "生鱼片");
+    public static final DeferredHolder<Item, Item> BBQ_RIBS = register("bbq_ribs", "烧烤肋排");
+    public static final DeferredHolder<Item, Item> FRIES = register("fries", "薯条");
+    public static final DeferredHolder<Item, Item> POTATO_CHIPS = register("potato_chips", "薯片");
+    public static final DeferredHolder<Item, Item> CHRISTMAS_PUDDING = register("christmas_pudding", "圣诞布丁");
+    public static final DeferredHolder<Item, Item> SUGAR_COOKIE = register("sugar_cookie", "蜜糖饼干");
+    public static final DeferredHolder<Item, Item> PAD_THAI = register("pad_thai", "泰式炒面");
+    public static final DeferredHolder<Item, Item> PHO = register("pho", "越南河粉");
+    public static final DeferredHolder<Item, Item> ICE_CREAM = register("ice_cream", "冰淇淋");
+    public static final DeferredHolder<Item, Item> BANANA_SPLIT = register("banana_split", "香蕉船");
+    public static final DeferredHolder<Item, Item> MILKSHAKE = register("milkshake", "奶昔");
 
-    public static DeferredHolder<Item,Item> registerSimpleFoodItems(final String name, final FoodProperties food) {
-        return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));
+
+    public static final DeferredHolder<Item, Item> TEST_FOOD = register("test_food", "测试食物1", food -> food
+            .addEffect(MobEffects.GLOWING, LONG_DURATION)
+            .addEffect(MobEffects.HEALTH_BOOST, SHORT_DURATION)
+            .setKeeper(Items.BOW)
+    );
+
+
+    public static DeferredHolder<Item, Item> register(final String en, final String zh, Function<BaseFoodItem.FoodBuilder, BaseFoodItem.FoodBuilder> foodBuilder) {
+        DeferredHolder<Item, Item> item = ITEMS.register(en, () -> new BaseFoodItem(foodBuilder.apply(new BaseFoodItem.FoodBuilder())));
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
     }
-    public static DeferredHolder<Item,Item> registerSimpleFoodItems(final String name, final FoodProperties food, final Item craftingRemaining) {
-        return ITEMS.register(name, () -> new Item(new Item.Properties().food(food).craftRemainder(craftingRemaining)));
+
+    public static DeferredHolder<Item, Item> register(final String en, final String zh) {
+        return register(en, zh, food -> food);
     }
+
+
 }
