@@ -3,6 +3,10 @@ package com.xiaohunao.confluencedelight.common.init;
 import com.xiaohunao.confluencedelight.ConfluenceDelight;
 import com.xiaohunao.confluencedelight.common.item.BaseFoodItem;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
+import net.minecraft.world.damagesource.DamageType;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -37,14 +41,26 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> BANANA_SPLIT = register("banana_split", "香蕉船");
     public static final DeferredHolder<Item, Item> MILKSHAKE = register("milkshake", "奶昔");
 
+
+
+
+    /**使用建造者*/
     public static final DeferredHolder<Item, Item> TEST_FOOD = register("test_food", "测试食物1", food -> food
             .addEffect(MobEffects.GLOWING, LONG_DURATION)
             .addEffect(MobEffects.HEALTH_BOOST, SHORT_DURATION)
             .setKeeper(Items.WHEAT)
+            .addSpecialEffect((stack,liv)->liv.hurt(liv.damageSources().magic(),1))
+    );
+    /**使用预制体*/
+    public static final DeferredHolder<Item, Item> TEST_FOOD2 = register("test_food2", "测试食物2",
+            EFFECTIVE_FOOD.apply(MobEffects.GLOWING, LONG_DURATION)
+    );
+    /**在预制体上修改参数*/
+    public static final DeferredHolder<Item, Item> TEST_FOOD3 = register("test_food3", "测试食物3",
+            ()->EFFECTIVE_FOOD.apply(MobEffects.GLOWING, LONG_DURATION).get()
+                    .addSpecialEffect((stack,liv)->liv.hurt(liv.damageSources().magic(),1))
     );
 
-    public static final DeferredHolder<Item, Item> TEST_FOOD2 = register("test_food2", "测试食物2",
-            EFFECTIVE_FOOD.apply(MobEffects.GLOWING, LONG_DURATION));
 
 
 
