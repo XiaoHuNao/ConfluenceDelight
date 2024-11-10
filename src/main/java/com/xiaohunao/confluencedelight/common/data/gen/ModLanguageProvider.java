@@ -9,8 +9,10 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
@@ -89,6 +91,11 @@ public class ModLanguageProvider extends LanguageProvider {
         JsonObject json = new JsonObject();
         data.forEach(json::addProperty);
         return DataProvider.saveStable(cache, json, target);
+    }
+
+    public void addBlock(DeferredHolder<Block,? extends Block> key, String cn) {
+        String en = toTitleCase(key.get().getDescriptionId());
+        this.add(key.get().getDescriptionId(), en, cn);
     }
 
     public void addItem(DeferredHolder<Item,Item> key,  String cn) {

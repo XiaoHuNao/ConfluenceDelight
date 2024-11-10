@@ -27,7 +27,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        registerSimpleFeastBlock(ModBlocks.SIMPLE_FEAST_BLOCK.get());
+        registerSimpleFeastBlock((SimpleFeastBlock) ModBlocks.SIMPLE_FEAST_BLOCK.get());
     }
 
     private void registerSimpleFeastBlock(SimpleFeastBlock simpleFeastBlock) {
