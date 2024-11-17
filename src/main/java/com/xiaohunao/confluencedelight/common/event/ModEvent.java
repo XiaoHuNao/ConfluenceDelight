@@ -16,7 +16,7 @@ public class ModEvent {
         ModItems.consumptionProbabilityMap = new HashMap<>();
         //100 -> 1.0F
         ModItems.consumptionProbabilityMap.put(Items.ICE, 5.0D);
-        ModItems.consumptionProbabilityMap.put(Items.PACKED_ICE, 3.8D);
-        ModItems.consumptionProbabilityMap.put(Items.BLUE_ICE, 1.2D);
+        ModItems.consumptionProbabilityMap.put(Items.PACKED_ICE, 7.8D);
+        ModItems.consumptionProbabilityMap.put(Items.BLUE_ICE, 10.2D);
     }
 }
