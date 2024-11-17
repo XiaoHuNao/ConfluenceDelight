@@ -13,6 +13,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Map;
 import java.util.function.*;
 
 import static com.xiaohunao.confluencedelight.ConfluenceDelight.chineseProviders;
@@ -91,5 +92,5 @@ public class ModItems {
         return register(en, zh, food -> food);
     }
 
-
+    public static Map<Item, Double> consumptionProbabilityMap;
 }

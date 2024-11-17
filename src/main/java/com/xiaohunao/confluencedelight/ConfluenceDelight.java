@@ -1,6 +1,7 @@
 package com.xiaohunao.confluencedelight;
 
 import com.mojang.logging.LogUtils;
+import com.xiaohunao.confluencedelight.client.ModClient;
 import com.xiaohunao.confluencedelight.common.data.gen.ModLanguageProvider;
 import com.xiaohunao.confluencedelight.common.init.ModBlocks;
 import com.xiaohunao.confluencedelight.common.init.ModCreativeTabs;
@@ -32,6 +33,8 @@ public class ConfluenceDelight {
 
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModBlocks.ENTITIES.register(modEventBus);
+        ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
     }
 
@@ -43,7 +46,6 @@ public class ConfluenceDelight {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
         }
     }
 }
