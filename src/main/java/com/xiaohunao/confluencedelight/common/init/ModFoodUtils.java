@@ -3,6 +3,7 @@ package com.xiaohunao.confluencedelight.common.init;
 import com.xiaohunao.confluencedelight.common.item.BaseFoodItem;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 
 import java.util.function.BiFunction;
@@ -19,7 +20,6 @@ public class ModFoodUtils {
 
     /**单一效果的食物*/
     public static final BiFunction<Holder<MobEffect>,Integer,Supplier<BaseFoodItem.FoodBuilder>> EFFECTIVE_FOOD = (effect, time) ->
-            ()->new BaseFoodItem.FoodBuilder().addEffect(effect, time);
-
+            ()->new BaseFoodItem.FoodBuilder().modify(pro->pro.effect(()->new MobEffectInstance(effect,time,0), 1.0f ));
 
 }

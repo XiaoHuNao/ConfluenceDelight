@@ -17,8 +17,9 @@ public class ModCreativeTabs {
                     .title(Component.translatable("itemGroup.terra_delight"))
                     .icon(() -> new ItemStack(ModBlocks.STOVE.get()))
                     .displayItems((parameters, output) -> {
-                        ModItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         com.xiaohunao.confluencedelight.common.init.ModBlocks.BLOCKS.getEntries().forEach((block) -> output.accept(block.get()));
+                        ModItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        ModMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                     })
                     .build());
 }

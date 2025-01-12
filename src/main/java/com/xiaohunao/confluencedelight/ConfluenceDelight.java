@@ -6,6 +6,7 @@ import com.xiaohunao.confluencedelight.common.data.gen.ModLanguageProvider;
 import com.xiaohunao.confluencedelight.common.init.ModBlocks;
 import com.xiaohunao.confluencedelight.common.init.ModCreativeTabs;
 import com.xiaohunao.confluencedelight.common.init.ModItems;
+import com.xiaohunao.confluencedelight.common.init.ModMaterialItems;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -31,6 +32,7 @@ public class ConfluenceDelight {
     public ConfluenceDelight(IEventBus modEventBus, ModContainer modContainer) {
 //        NeoForge.EVENT_BUS.register(this);
 
+        ModMaterialItems.ITEMS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.ENTITIES.register(modEventBus);

@@ -37,14 +37,14 @@ public class ModBlocks {
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));
-        com.xiaohunao.confluencedelight.common.init.ModItems.registerItem(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
+        ModMaterialItems.register(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
         chineseProviders.add(l -> l.addBlock(block, zh));
         return block;
     }
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh, Supplier<? extends Block> bl) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, bl);
-        com.xiaohunao.confluencedelight.common.init.ModItems.registerItem(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
+        ModMaterialItems.register(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
         chineseProviders.add(l -> l.addBlock(block, zh));
         return block;
     }
