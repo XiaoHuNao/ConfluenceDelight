@@ -3,10 +3,7 @@ package com.xiaohunao.confluencedelight;
 import com.mojang.logging.LogUtils;
 import com.xiaohunao.confluencedelight.client.ModClient;
 import com.xiaohunao.confluencedelight.common.data.gen.ModLanguageProvider;
-import com.xiaohunao.confluencedelight.common.init.ModBlocks;
-import com.xiaohunao.confluencedelight.common.init.ModCreativeTabs;
-import com.xiaohunao.confluencedelight.common.init.ModItems;
-import com.xiaohunao.confluencedelight.common.init.ModMaterialItems;
+import com.xiaohunao.confluencedelight.common.init.*;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -38,6 +35,7 @@ public class ConfluenceDelight {
         ModBlocks.ENTITIES.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
+        ModRecipes.register(modEventBus);
     }
 
     public static ResourceLocation asResource(String path) {

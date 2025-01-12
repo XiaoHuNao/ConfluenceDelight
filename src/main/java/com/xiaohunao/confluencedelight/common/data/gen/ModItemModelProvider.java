@@ -27,7 +27,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void simpleItem(Item item) {
         String path = Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).getPath();
         try{
-        this.withExistingParent(path, ResourceLocation.withDefaultNamespace("item/generated"))
+            this.withExistingParent(path, ResourceLocation.withDefaultNamespace("item/generated"))
                 .texture("layer0", ConfluenceDelight.asResource("item/" + path));
         }catch(Exception e){
             withExistingParent("item/"+path,ConfluenceDelight.asResource("item/missing"));
