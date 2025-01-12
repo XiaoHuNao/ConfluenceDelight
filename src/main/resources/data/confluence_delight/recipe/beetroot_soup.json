@@ -17,6 +17,8 @@
     }
   ],
   "recipe_book_tab": "meals",
+  "consume_fuel" : 10,
+  "cookingtime": 50,
   "result": {
     "count": 1,
     "id": "minecraft:beetroot_soup"

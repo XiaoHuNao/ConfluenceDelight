@@ -8,7 +8,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 
 import java.util.function.Supplier;
 
@@ -18,7 +17,7 @@ public class ModRecipes {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, ConfluenceDelight.MODID);
 
 
-    public static final Supplier<RecipeType<CookingPotRecipe>> FRIDGE_RECIPE_TYPE = registerRecipeType("fridge");
+    public static final Supplier<RecipeType<FridgeRecipe>> FRIDGE_RECIPE_TYPE = registerRecipeType("fridge");
     public static final Supplier<RecipeSerializer<?>> FRIDGE_RECIPE_SERIALIZER = RECIPE_SERIALIZERS.register("fridge", FridgeRecipe.Serializer::new);
 
 

@@ -111,5 +111,5 @@ public class ModItems {
         return register(en, zh,1);
     }
 
-    public static Map<Item, Double> consumptionProbabilityMap;
+    public static Map<Item, Integer> consumptionProbabilityMap;
 }

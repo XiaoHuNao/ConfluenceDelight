@@ -16,18 +16,22 @@ import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 
-import java.util.Iterator;
 import java.util.Optional;
 
 
 public class FridgeRecipe extends CookingPotRecipe {
+    public int consumeFuel;
 
-    public FridgeRecipe(String group, @Nullable CookingPotRecipeBookTab tab, NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container, float experience, int cookTime) {
+    public FridgeRecipe(String group, @Nullable CookingPotRecipeBookTab tab, NonNullList<Ingredient> inputItems, ItemStack output, ItemStack container, float experience, int cookTime, int consumeFuel) {
         super(group, tab, inputItems, output, container, experience, cookTime);
+        this.consumeFuel = consumeFuel;
     }
 
     public RecipeSerializer<?> getSerializer() {
         return ModRecipes.FRIDGE_RECIPE_SERIALIZER.get();
+    }
+    public int getConsumeFuel() {
+        return consumeFuel;
     }
 
     public RecipeType<?> getType() {
@@ -52,7 +56,9 @@ public class FridgeRecipe extends CookingPotRecipe {
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(CookingPotRecipe::getOutputContainer),
                 ItemStack.STRICT_CODEC.optionalFieldOf("container", ItemStack.EMPTY).forGetter(FridgeRecipe::getContainerOverride),
                 Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(FridgeRecipe::getExperience),
-                Codec.INT.optionalFieldOf("cookingtime", 200).forGetter(FridgeRecipe::getCookTime)).apply(inst, FridgeRecipe::new));
+                Codec.INT.optionalFieldOf("cookingtime", 200).forGetter(FridgeRecipe::getCookTime),
+                Codec.INT.optionalFieldOf("consume_fuel", 0).forGetter(FridgeRecipe::getConsumeFuel)
+                ).apply(inst, FridgeRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, FridgeRecipe> STREAM_CODEC = StreamCodec.of(FridgeRecipe.Serializer::toNetwork, FridgeRecipe.Serializer::fromNetwork);
 
@@ -77,7 +83,8 @@ public class FridgeRecipe extends CookingPotRecipe {
             ItemStack container = ItemStack.OPTIONAL_STREAM_CODEC.decode(buffer);
             float experienceIn = buffer.readFloat();
             int cookTimeIn = buffer.readVarInt();
-            return new FridgeRecipe(groupIn, tabIn, inputItemsIn, outputIn, container, experienceIn, cookTimeIn);
+            int consumeFuelIn = buffer.readVarInt();
+            return new FridgeRecipe(groupIn, tabIn, inputItemsIn, outputIn, container, experienceIn, cookTimeIn, consumeFuelIn);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, FridgeRecipe recipe) {
@@ -93,6 +100,7 @@ public class FridgeRecipe extends CookingPotRecipe {
             ItemStack.OPTIONAL_STREAM_CODEC.encode(buffer, recipe.getOutputContainer());
             buffer.writeFloat(recipe.getExperience());
             buffer.writeVarInt(recipe.getCookTime());
+            buffer.writeVarInt(recipe.getConsumeFuel());
         }
 
 

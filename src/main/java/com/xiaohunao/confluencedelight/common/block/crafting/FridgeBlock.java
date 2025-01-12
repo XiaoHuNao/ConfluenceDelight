@@ -4,7 +4,9 @@ import com.mojang.serialization.MapCodec;
 import com.xiaohunao.confluencedelight.client.container.menu.FridgeMenu;
 import com.xiaohunao.confluencedelight.common.init.ModBlocks;
 import com.xiaohunao.confluencedelight.common.init.ModItems;
-import com.xiaohunao.confluencedelight.common.item.IRefrigerantItem;
+import com.xiaohunao.confluencedelight.common.init.ModRecipes;
+import com.xiaohunao.confluencedelight.common.recipe.FridgeRecipe;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -12,7 +14,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -22,10 +23,10 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -37,11 +38,11 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 
-import java.util.Iterator;
-import java.util.Random;
+import java.util.Optional;
 
 public class FridgeBlock extends BaseEntityBlock {
     private static final VoxelShape SHAPE = Shapes.box(0.05, 0, 0.05,
@@ -160,6 +161,12 @@ public class FridgeBlock extends BaseEntityBlock {
         private int iceTemperature;
         private int maxIceTemperature = 500;
         private MutableComponent customName;
+        private int loadedTicks;
+        private final RecipeWrapper input;
+        private RecipeHolder<FridgeRecipe> chooseRecipe;
+        private RecipeHolder<FridgeRecipe> curRecipe;
+        private int cookTime;
+        private int cookTimeTotal;
 
         public Entity(BlockPos pos, BlockState state) {
             super(ModBlocks.FRIDGE_ENTITY.get(), pos, state);
@@ -169,6 +176,8 @@ public class FridgeBlock extends BaseEntityBlock {
                     return switch (i) {
                         case 0 -> iceTemperature;
                         case 1 -> maxIceTemperature;
+                        case 2 -> cookTime;
+                        case 3 -> cookTimeTotal;
                         default -> 0;
                     };
                 }
@@ -178,12 +187,26 @@ public class FridgeBlock extends BaseEntityBlock {
                     switch (i) {
                         case 0 -> iceTemperature = i1;
                         case 1 -> maxIceTemperature = i1;
+                        case 2 -> cookTime = i1;
+                        case 3 -> cookTimeTotal = i1;
                     }
                 }
 
                 @Override
                 public int getCount() {
-                    return 2;
+                    return 4;
+                }
+            };
+
+            input = new RecipeWrapper(inventory) {
+                @Override
+                public ItemStack getItem(int i) {
+                    return inventory.getStackInSlot(i);
+                }
+
+                @Override
+                public int size() {
+                    return 6;
                 }
             };
         }
@@ -232,38 +255,82 @@ public class FridgeBlock extends BaseEntityBlock {
             if (tag.contains("CustomName", 8)) {
                 this.customName = Component.Serializer.fromJson(tag.getString("CustomName"), registries);
             }
+            this.cookTime = tag.getInt("CookTime");
+            this.cookTimeTotal = tag.getInt("CookTimeTotal");
+
+            this.inventoryChanged();
         }
 
         @Override
         public void saveAdditional(CompoundTag compound, HolderLookup.Provider registries) {
             super.saveAdditional(compound, registries);
             compound.putInt("iceTemp", this.iceTemperature);
+            this.inventory.serializeNBT(registries);
             if (this.customName != null) {
                 compound.putString("CustomName", Component.Serializer.toJson(this.customName, registries));
             }
 
             compound.put("Inventory", this.inventory.serializeNBT(registries));
+            compound.putInt("CookTime", this.cookTime);
+            compound.putInt("CookTimeTotal", this.cookTimeTotal);
         }
 
-        public static void tick(Level level, BlockPos blockPos, BlockState blockState, Entity entity) {
+        @Override
+        protected void inventoryChanged() {
+            super.inventoryChanged();
+            if(!level.isClientSide){
+                Optional<RecipeHolder<FridgeRecipe>> optRecipe = Minecraft.getInstance().level.getRecipeManager().getRecipeFor(ModRecipes.FRIDGE_RECIPE_TYPE.get(),input,Minecraft.getInstance().level);
+                curRecipe = optRecipe.orElse(null);
+            }
+        }
+
+        private static void tick(Level level, BlockPos blockPos, BlockState blockState, Entity entity) {
             if (!level.isClientSide){
-                if (entity.inventory.getStackInSlot(9).getCount() > 0){
-                    if (entity.iceTemperature < 500){
-                        ItemStack fuel = entity.inventory.getStackInSlot(9);
-                        int randomInt = new Random().nextInt(0, 100);
-                        if (fuel.getItem() instanceof IRefrigerantItem iri) {
-                            if (randomInt <= iri.getConsumptionProbability()) {
-                                fuel.shrink(1);
-                            } else {
-                                entity.iceTemperature++;
+
+                // 添加冰燃料
+                if (entity.iceTemperature < entity.maxIceTemperature){
+                    ItemStack fuel = entity.inventory.getStackInSlot(9);
+                    if(entity.loadedTicks > 0 ){
+                        entity.loadedTicks--;
+                        entity.iceTemperature++;
+                    } else if (ModItems.consumptionProbabilityMap.containsKey(fuel.getItem())) {
+                        entity.loadedTicks = ModItems.consumptionProbabilityMap.get(fuel.getItem());
+                        fuel.shrink(1);
+                    }
+                }
+
+                // 消耗冰燃料
+
+                if(entity.chooseRecipe != entity.curRecipe){
+                    // 刷新配方
+                    entity.chooseRecipe = entity.curRecipe;
+                    if(entity.chooseRecipe!= null){
+                        entity.cookTimeTotal = entity.chooseRecipe.value().getCookTime();
+                    }else{
+                        entity.cookTimeTotal = 0;
+                    }
+
+                }else{
+                    if(entity.chooseRecipe == null || entity.iceTemperature < entity.chooseRecipe.value().getConsumeFuel()) return;
+                    entity.cookTime++;
+                    if(entity.cookTime >= entity.cookTimeTotal) {
+                        entity.cookTime = 0;
+                        FridgeRecipe recipe = entity.chooseRecipe.value();
+                        entity.iceTemperature -= recipe.getConsumeFuel();
+                        entity.cookTimeTotal = recipe.getCookTime();
+                        if(entity.inventory.getStackInSlot(6).isEmpty()) entity.inventory.setStackInSlot(6, recipe.getResultItem(level.registryAccess()).copy());
+                        else entity.inventory.getStackInSlot(6).grow(recipe.getResultItem(level.registryAccess()).getCount());
+                        recipe.getIngredients().forEach(ing->{
+                            for(int i=0;i<6;i++){
+                                if(ing.test(entity.inventory.getStackInSlot(i))){
+                                    entity.inventory.getStackInSlot(i).shrink(1);
+                                    break;
+                                }
                             }
-                        } else if (ModItems.consumptionProbabilityMap.containsKey(fuel.getItem())) {
-                            if (randomInt <= ModItems.consumptionProbabilityMap.get(fuel.getItem())) {
-                                fuel.shrink(1);
-                            } else {
-                                entity.iceTemperature++;
-                            }
-                        }
+                        });
+                        entity.chooseRecipe = null;
+                        entity.inventoryChanged();
+
                     }
                 }
             }

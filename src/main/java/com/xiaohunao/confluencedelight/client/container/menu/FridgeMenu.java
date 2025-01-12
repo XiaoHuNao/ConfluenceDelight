@@ -5,9 +5,11 @@ import com.xiaohunao.confluencedelight.ConfluenceDelight;
 import com.xiaohunao.confluencedelight.client.ModClient;
 import com.xiaohunao.confluencedelight.common.block.crafting.FridgeBlock;
 import com.xiaohunao.confluencedelight.common.init.ModBlocks;
+import com.xiaohunao.confluencedelight.common.init.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -15,11 +17,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.block.entity.container.CookingPotMealSlot;
 import vectorwing.farmersdelight.common.block.entity.container.CookingPotMenu;
-import vectorwing.farmersdelight.common.block.entity.container.CookingPotResultSlot;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Objects;
 
@@ -29,9 +29,7 @@ public class FridgeMenu extends AbstractContainerMenu {
     private ContainerData data;
     private final ContainerLevelAccess access;
     public static final ResourceLocation EMPTY_CONTAINER_SLOT_ICE =
-            ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID,
-                    "item/empty_container_slot_ice");
-
+            ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "item/empty_container_slot_ice");
 
     public FridgeMenu(int windowId, Inventory playerInventory, FriendlyByteBuf data) {
         this(windowId, playerInventory, getTileEntity(playerInventory, data), new SimpleContainerData(4), ContainerLevelAccess.NULL);
@@ -57,6 +55,32 @@ public class FridgeMenu extends AbstractContainerMenu {
             }
         }
 
+        this.addSlot(new SlotItemHandler(this.inventory, 6, 124 + OFFSET, 25));
+        this.addSlot(new SlotItemHandler(this.inventory, 7, 92 + OFFSET, 55) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.is(ModTags.Items.CONTAINER);
+            }
+
+            @Override
+            public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
+                return Pair.of(InventoryMenu.BLOCK_ATLAS, CookingPotMenu.EMPTY_CONTAINER_SLOT_BOWL);
+            }
+        });
+        this.addSlot(new SlotItemHandler(this.inventory, 8, 124 + OFFSET, 55));
+        this.addSlot(new SlotItemHandler(this.inventory, 9, 22, 55){
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.is(ModTags.Items.ICE);
+            }
+
+            @Override
+            public @Nullable Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
+                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_CONTAINER_SLOT_ICE);
+            }
+        });
+
+
         int l;
         int i1;
 
@@ -70,23 +94,20 @@ public class FridgeMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(inventory, l, 8 + l * 18, 142));
         }
 
-        this.addSlot(new SlotItemHandler(this.inventory, 6, 124 + OFFSET, 25));
-        this.addSlot(new SlotItemHandler(this.inventory, 7, 92 + OFFSET, 55) {
-            public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, CookingPotMenu.EMPTY_CONTAINER_SLOT_BOWL);
-            }
-        });
-        this.addSlot(new SlotItemHandler(this.inventory, 8, 124 + OFFSET, 55));
-        this.addSlot(new SlotItemHandler(this.inventory, 9, 22, 55){
-            @Override
-            public @Nullable Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_CONTAINER_SLOT_ICE);
-            }
-        });
-
         addDataSlots(data);
     }
 
+    public void slotsChanged(Container container) {
+        super.slotsChanged(container);
+
+    }
+    @Override
+    public boolean clickMenuButton(@NotNull Player pPlayer, int pId) {
+        if(!pPlayer.level().isClientSide){
+            broadcastChanges();
+        }
+        return true;
+    }
     private static FridgeBlock.Entity getTileEntity(Inventory playerInventory, FriendlyByteBuf data) {
         Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
         Objects.requireNonNull(data, "data cannot be null");

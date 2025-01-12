@@ -2,6 +2,8 @@ package com.xiaohunao.confluencedelight.common.data.gen;
 
 import com.xiaohunao.confluencedelight.ConfluenceDelight;
 import com.xiaohunao.confluencedelight.common.data.gen.recipe.ModRecipe;
+import com.xiaohunao.confluencedelight.common.data.gen.tag.ModBlockTagsProvider;
+import com.xiaohunao.confluencedelight.common.data.gen.tag.ModItemTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -20,17 +22,20 @@ public class ModDataGenerator {
     public static void onGatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         PackOutput output = generator.getPackOutput();
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-
+        ExistingFileHelper helper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
-        generator.addProvider(event.includeServer(),new ModRecipe(output,lookup));
+        ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookup, helper);
 
-        generator.addProvider(event.includeClient(), new ModItemModelProvider(output, existingFileHelper));
+        boolean server = event.includeServer();
+        generator.addProvider(server, blockTagsProvider);
+        generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
+        generator.addProvider(server,new ModRecipe(output,lookup));
+
+        boolean client = event.includeClient();
+        generator.addProvider(client, new ModItemModelProvider(output, helper));
 //        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
-
-        generator.addProvider(event.includeServer(), new ModLanguageProvider(output, "en_us"));
-        generator.addProvider(event.includeServer(), new ModLanguageProvider(output, "zh_cn"));
-
+        generator.addProvider(client, new ModLanguageProvider(output, "en_us"));
+        generator.addProvider(client, new ModLanguageProvider(output, "zh_cn"));
 
 
     }

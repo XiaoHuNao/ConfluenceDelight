@@ -9,6 +9,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.Slot;
 
 import java.awt.*;
 
@@ -55,8 +57,27 @@ public class FridgeScreen extends AbstractContainerScreen<FridgeMenu> {
         guiGraphics.drawString(minecraft.font, "Mouse Y: " + mouseY, 0, 10, Color.WHITE.getRGB());
         guiGraphics.drawString(minecraft.font, "Temp: " + this.menu.getIceTemplate(), 0, 20, Color.CYAN.getRGB());
         guiGraphics.drawString(minecraft.font, "TempProgress: " + this.menu.getIceTemplateProgress(), 0, 30, Color.CYAN.getRGB());
+        guiGraphics.drawString(minecraft.font, "cooking: " + this.menu.getData().get(2), 0, 40, Color.CYAN.getRGB());
+        guiGraphics.drawString(minecraft.font, "totalCookTime: " + this.menu.getData().get(3), 0, 50, Color.CYAN.getRGB());
+
+
         this.renderBackground(guiGraphics, mouseX, mouseY, partialTick);
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         this.renderTooltip(guiGraphics, mouseX, mouseY);
+
+
+
+
+
+    }
+
+    @Override
+    protected void slotClicked(Slot slot, int slotId, int mouseButton, ClickType type) {
+        super.slotClicked(slot, slotId, mouseButton, type);
+        if(slotId < 6){
+            menu.clickMenuButton(minecraft.player, slotId);
+            minecraft.gameMode.handleInventoryButtonClick((this.menu).containerId, slotId);
+
+        }
     }
 }
