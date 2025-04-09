@@ -94,11 +94,12 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenLocal()
-
-    maven {
-        url "https://cursemaven.com"
+    maven { // Registrate
+        url "https://maven.ithundxr.dev/snapshots"
     }
-
+    maven {
+        url = "https://www.cursemaven.com"
+    }
     maven {
         // location of the maven that hosts JEI files since January 2023
         name = "Jared's maven"
@@ -109,11 +110,74 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroup("software.bernie.geckolib")
+        }
+    }
+    maven {
+        // Shedaniel's maven (Architectury API)
+        url = "https://maven.architectury.dev"
+        content {
+            includeGroup "dev.architectury"
+        }
+    }
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/minecraft"
+        content {
+            includeGroup "dev.latvian.mods"
+        }
+    }
+    maven {
+        url = "https://maven.bawnorton.com/releases"
+    }
+    maven {
+        // For Terra Blender
+        name = 'Forge'
+        url = "https://maven.minecraftforge.net"
+    }
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
+    maven {
+        url = 'https://jitpack.io'
+        content {
+            includeGroup "com.github.rtyley"
+        }
+    }
+    maven {
+        name = "Curios"
+        url = uri("https://maven.theillusivec4.top/")
+    }
+    maven { url = "https://maven.createmod.net" } // Create
+    maven {
+        name = "Fuzs Mod Resources"
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 }
+
+var dev = true
 
 dependencies {
     implementation "curse.maven:farmers-delight-398521:5878217"
-
+    implementation(project(":ConfluenceOtherworld"))
+    if (dev) {
+        implementation(project(":Confluence-Magic-Lib"))
+    } else {
+        implementation(jarJar(project(":Confluence-Magic-Lib")))
+    }
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
