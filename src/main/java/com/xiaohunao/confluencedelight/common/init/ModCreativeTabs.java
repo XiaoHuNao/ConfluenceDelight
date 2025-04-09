@@ -3,6 +3,8 @@ package com.xiaohunao.confluencedelight.common.init;
 import com.xiaohunao.confluencedelight.ConfluenceDelight;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -21,5 +23,7 @@ public class ModCreativeTabs {
                         ModItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         ModMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                     })
+                    .withTabsAfter(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "tools")))
+                    .withTabsBefore(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "food_and_potions")))
                     .build());
 }
