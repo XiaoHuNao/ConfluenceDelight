@@ -29,7 +29,7 @@ public class ModDataGenerator {
         boolean server = event.includeServer();
         generator.addProvider(server, blockTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
-        generator.addProvider(server,new ModRecipe(output,lookup));
+        generator.addProvider(server, new ModRecipe(output, lookup));
 
         boolean client = event.includeClient();
         generator.addProvider(client, new ModItemModelProvider(output, helper));

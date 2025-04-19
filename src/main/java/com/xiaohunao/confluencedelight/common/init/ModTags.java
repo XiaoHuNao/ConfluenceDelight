@@ -17,9 +17,6 @@ public final class ModTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> ICE = tag("ice");
-        public static final TagKey<Item> CONTAINER = tag("container");
-
         private static TagKey<Item> tag(String id) {
             return ItemTags.create(ConfluenceDelight.asResource(id));
         }

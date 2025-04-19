@@ -29,8 +29,7 @@ public class ConfluenceDelight {
     public ConfluenceDelight(IEventBus modEventBus, ModContainer modContainer) {
 //        NeoForge.EVENT_BUS.register(this);
 
-        ModMaterialItems.ITEMS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
+        ModItems.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.ENTITIES.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
