@@ -171,20 +171,10 @@ repositories {
 var dev = true
 
 dependencies {
+    implementation files('libs/confluence_magic_lib')
     implementation "curse.maven:farmers-delight-398521:5878217"
-    //implementation(project(":ConfluenceOtherworld")) 此处不要取消注释，会导致循环
-    if (dev) {
-        implementation(project(":Confluence-Magic-Lib"))
-    } else {
-        implementation(jarJar(project(":Confluence-Magic-Lib")))
-        implementation(project(":ConfluenceOtherworld"))
-    }
-
-    // Example mod dependency with JEI
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
-    // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
+    implementation "curse.maven:confluence-1209464:6493908"
+    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"

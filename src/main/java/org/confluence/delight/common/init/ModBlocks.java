@@ -1,26 +1,35 @@
 package org.confluence.delight.common.init;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.block.food.*;
 
 import java.util.function.Supplier;
 
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
 public class ModBlocks {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, ConfluenceDelight.MODID);
-    public static final DeferredRegister<BlockEntityType<?>> ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ConfluenceDelight.MODID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
+
+    public static final DeferredHolder<Block, Block> CHICKEN_STEW_BLOCK = registerWithoutItem("chicken_stew_block", "鸡公煲", ChickenStewBlock::new);
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));
+        chineseProviders.add(l -> l.addBlock(block, zh));
+        return block;
+    }
+
+    public static <B extends Block> DeferredBlock<B> registerWithoutItem(String en, String zh, Supplier<B> bl) {
+        DeferredBlock<B> block = BLOCKS.register(en, bl);
         chineseProviders.add(l -> l.addBlock(block, zh));
         return block;
     }

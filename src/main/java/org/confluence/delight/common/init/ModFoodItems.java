@@ -1,11 +1,64 @@
 package org.confluence.delight.common.init;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.mod.common.init.item.FoodItems;
+import org.confluence.mod.common.item.food.BaseFoodItem;
+import org.confluence.mod.common.item.food.ModFoodProperties;
+
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
 
 public class ModFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
+    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_STEW = FoodItems.registerBlockItemFood("chicken_stew", builder -> builder.food(ModFoodProperties.PlentySatisfiedProperties(6000, 5, 5.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), ModBlocks.CHICKEN_STEW_BLOCK);
 
+    public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
+        DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().initialize();
+            consumer.accept(builder);
+            return builder.build();
+        });
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
+
+    public static DeferredItem<BaseFoodItem> registerToolTipFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer, int line, ChatFormatting chatFormatting) {
+        DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().initialize().tooltip(en, line, chatFormatting);
+            consumer.accept(builder);
+            return builder.build();
+        });
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
+
+    public static DeferredItem<BaseFoodItem> registerNormalFood(String en, String zh, FoodProperties foodProperties) {
+        DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().initialize().food(foodProperties).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT);
+            return builder.build();
+        });
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
+
+    public static DeferredItem<BaseFoodItem> registerDrinkingFood(String en, String zh, FoodProperties foodProperties, int duration, UseAnim useAnim, SoundEvent drinkingSoundType, SoundEvent eatingSoundType) {
+        DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().initialize().food(foodProperties).duration(d -> duration).useAnim(u -> useAnim).drinkingSound(s -> drinkingSoundType).eatingSound(e -> eatingSoundType);
+            return builder.build();
+        });
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
 }
