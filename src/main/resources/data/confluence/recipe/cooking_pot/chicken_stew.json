@@ -1,0 +1,32 @@
+{
+    "type": "confluence:cooking_pot",
+    "ingredients": [
+        {
+            "type": "confluence_magic_lib:amount_ingredient",
+            "ingredient": {
+                "item": "confluence:spicy_pepper"
+            },
+            "count": 16
+        },
+        {
+            "type": "confluence_magic_lib:amount_ingredient",
+            "ingredient": {
+                "item": "farmersdelight:chicken_cuts"
+            },
+            "count": 4
+        },
+        {
+            "item": "minecraft:potato"
+        }
+    ],
+    "result": {
+        "id": "confluence_delight:chicken_stew"
+    },
+    "container": {
+        "item": "minecraft:bowl"
+    },
+    "heat_source": {
+        "tag": "create:passive_boiler_heaters"
+    },
+    "cookingtime": 500
+}

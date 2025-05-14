@@ -22,7 +22,7 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 public class ModFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
-    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_STEW = FoodItems.registerBlockItemFood("chicken_stew", builder -> builder.food(ModFoodProperties.PlentySatisfiedProperties(6000, 5, 5.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), ModBlocks.CHICKEN_STEW_BLOCK);
+    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_STEW = registerBlockItemFood("chicken_stew", builder -> builder.food(ModFoodProperties.PlentySatisfiedProperties(6000, 5, 5.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), ModBlocks.CHICKEN_STEW_BLOCK);
 
     public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
         DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
@@ -32,6 +32,14 @@ public class ModFoodItems {
         });
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;
+    }
+
+    public static DeferredItem<BaseFoodItem.BlockItem> registerBlockItemFood(String name, Consumer<BaseFoodItem.Builder> consumer, Supplier<? extends Block> block) {
+        return ITEMS.register(name, () -> {
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().initialize();
+            consumer.accept(builder);
+            return new BaseFoodItem.BlockItem(block.get(), builder.getProperties());
+        });
     }
 
     public static DeferredItem<BaseFoodItem> registerToolTipFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer, int line, ChatFormatting chatFormatting) {
