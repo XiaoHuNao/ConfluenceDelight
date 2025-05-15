@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 import org.confluence.mod.common.item.food.ModFoodProperties;
 
@@ -22,6 +21,10 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 public class ModFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
+    //食材
+
+
+    //成品
     public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_STEW = registerBlockItemFood("chicken_stew", builder -> builder.food(ModFoodProperties.PlentySatisfiedProperties(6000, 5, 5.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), ModBlocks.CHICKEN_STEW_BLOCK);
 
     public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
