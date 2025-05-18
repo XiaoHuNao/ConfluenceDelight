@@ -75,7 +75,7 @@ public class ModLanguageProvider extends LanguageProvider {
         this.add(key.get().getDescriptionId(), en, cn);
     }
 
-    public void addItem(DeferredHolder<Item, Item> key, String cn) {
+    public void addItem(DeferredHolder<Item, ? extends Item> key, String cn) {
         String en = toTitleCase(key.get().getDescriptionId());
         this.add(key.get().getDescriptionId(), en, cn);
     }

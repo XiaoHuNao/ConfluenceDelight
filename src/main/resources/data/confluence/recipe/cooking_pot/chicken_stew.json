@@ -16,11 +16,15 @@
             "count": 4
         },
         {
-            "item": "minecraft:potato"
+            "type": "confluence_magic_lib:amount_ingredient",
+            "ingredient": {
+                "item": "confluence_delight:potato_piece"
+            },
+            "count": 3
         }
     ],
     "result": {
-        "id": "confluence_delight:chicken_stew"
+        "id": "confluence_delight:chicken_hot_pot"
     },
     "container": {
         "item": "minecraft:bowl"

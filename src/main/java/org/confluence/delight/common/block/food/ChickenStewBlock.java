@@ -33,7 +33,7 @@ public class ChickenStewBlock extends Block {
 
     protected static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
         if (!player.canEat(false)) return InteractionResult.PASS;
-        player.getFoodData().eat(5, 0.5f);
+        player.getFoodData().eat(20, 10.0f);
         player.addEffect(new MobEffectInstance(ModEffects.EXQUISITELY_STUFFED, 6000));
         player.addEffect(new MobEffectInstance(ModEffects.HUNGER_DELAYED, 1000));
         player.playSound(SoundEvents.GENERIC_EAT);
