@@ -20,7 +20,7 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ConfluenceDelight.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
 
-    public static final DeferredHolder<Block, Block> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenStewBlock::new);
+    public static final DeferredHolder<Block, Block> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));

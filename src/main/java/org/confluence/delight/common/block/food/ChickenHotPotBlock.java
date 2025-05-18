@@ -16,8 +16,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import org.confluence.mod.common.init.ModEffects;
 
-public class ChickenStewBlock extends Block {
-    public ChickenStewBlock() {
+public class ChickenHotPotBlock extends Block {
+    public ChickenHotPotBlock() {
         super(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(1.0f));
     }
 
