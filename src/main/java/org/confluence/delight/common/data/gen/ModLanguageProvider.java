@@ -44,6 +44,9 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
+        add("tooltip.item.confluence.atlantis_tsunami.0",
+                "It feels like drinking iced fresh lemonade while your heel is pinned to the back of your head.",
+                "据说喝它的感觉就像把脚后跟别在后脑勺上喝冰鲜柠檬水");
 
         chineseProviders.forEach(a -> a.accept(this));
     }

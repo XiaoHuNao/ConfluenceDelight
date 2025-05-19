@@ -4,10 +4,13 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.ModFoodItems;
 
-public class LivingEntityEvent {
+@EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
+public final class LivingEntityEvent {
 
     @SubscribeEvent
     public static void livingEntityUseItemFinish(LivingEntityUseItemEvent.Finish event) {
