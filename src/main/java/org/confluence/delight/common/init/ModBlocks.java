@@ -1,15 +1,21 @@
 package org.confluence.delight.common.init;
 
+import com.mojang.datafixers.DSL;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.block.crafting.PickleJarsBlock;
+import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
 import org.confluence.delight.common.block.food.*;
 
 import java.util.function.Supplier;
@@ -21,6 +27,8 @@ public class ModBlocks {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
 
     public static final DeferredHolder<Block, Block> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
+    public static final DeferredBlock<PickleJarsBlock> PICKLE_JARS_BLOCK = registerBlockItem("pickle_jars_block", "泡菜罐", () -> new PickleJarsBlock(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY)));
+    public static final Supplier<BlockEntityType<PickleJarsBlockEntity>>  PICKLE_JARS_BLOCK_ENTITY = BLOCK_ENTITIES.register("pickle_jars_block", () -> BlockEntityType.Builder.of(PickleJarsBlockEntity::new, PICKLE_JARS_BLOCK.get()).build(null));
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));
@@ -32,8 +40,8 @@ public class ModBlocks {
         return BLOCKS.register(en, bl);
     }
 
-    public static DeferredHolder<Block, Block> registerBlockItem(final String en, final String zh, Supplier<? extends Block> bl) {
-        DeferredHolder<Block, Block> block = BLOCKS.register(en, bl);
+    public static <B extends Block> DeferredBlock<B> registerBlockItem(final String en, final String zh, Supplier<B> bl) {
+        DeferredBlock<B> block = BLOCKS.register(en, bl);
         ModMaterialItems.register(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
         chineseProviders.add(l -> l.addBlock(block, zh));
         return block;

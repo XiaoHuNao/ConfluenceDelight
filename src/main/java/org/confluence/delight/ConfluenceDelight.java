@@ -9,12 +9,17 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.confluence.delight.client.ModClient;
+import org.confluence.delight.common.CommonConfigs;
 import org.confluence.delight.common.data.gen.ModLanguageProvider;
 import org.confluence.delight.common.init.ModBlocks;
 import org.confluence.delight.common.init.ModCreativeTabs;
 import org.confluence.delight.common.init.ModItems;
 import org.confluence.delight.common.init.ModRecipes;
+import org.confluence.mod.client.ClientConfigs;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -31,6 +36,12 @@ public class ConfluenceDelight {
 
     public ConfluenceDelight(IEventBus modEventBus, ModContainer modContainer) {
 //        NeoForge.EVENT_BUS.register(this);
+        StartupConfigs.register(modContainer);
+        CommonConfigs.register(modContainer);
+        if (FMLEnvironment.dist.isClient()) {
+            ClientConfigs.register(modContainer);
+            modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
 
         ModItems.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);

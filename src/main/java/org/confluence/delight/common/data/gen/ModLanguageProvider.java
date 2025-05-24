@@ -44,6 +44,17 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
+
+        add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
+
+        add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
+        add("info.confluence_delight.fluid_amount", "%s %dB", "%s %dB");
+        add("info.confluence_delight.fluid_empty", "Empty %dB", "空 %dB");
+
+        //config
+        add("confluence_delight.configuration.machines", "Machines", "机器");
+        add("confluence_delight.configuration.fluid_capacity", "PickleJars Fluid Capacity", "泡菜罐液体容量");
+
         add("tooltip.item.confluence.atlantis_tsunami.0",
                 "It feels like drinking iced fresh lemonade while your heel is pinned to the back of your head.",
                 "据说喝它的感觉就像把脚后跟别在后脑勺上喝冰鲜柠檬水");

@@ -175,12 +175,14 @@ dependencies {
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     compileOnly "curse.maven:create-328085:6323264"
+    runtimeOnly "curse.maven:create-328085:6323264"
     compileOnly "curse.maven:terra-curio-1027625:6545988"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
+    compileOnly "curse.maven:jade-324717:6011258"
     runtimeOnly "curse.maven:jade-324717:6011258"
     runtimeOnly "curse.maven:appleskin-248787:5586600"
 }
