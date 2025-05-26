@@ -16,6 +16,6 @@ public class StartupConfigs {
             FLUID_CAPACITY = BUILDER.defineInRange("fluid_capacity", 16000, 1, 64000);
             BUILDER.pop();
         }
-        container.registerConfig(ModConfig.Type.COMMON, BUILDER.build());
+        container.registerConfig(ModConfig.Type.STARTUP, BUILDER.build());
     }
 }

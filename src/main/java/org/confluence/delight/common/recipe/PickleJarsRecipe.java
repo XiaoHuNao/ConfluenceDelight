@@ -22,11 +22,17 @@ import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
     private final FluidStack requiredFluid;
     private final int craftTime;
+    private final boolean cover;
 
-    public PickleJarsRecipe(ItemStack result, NonNullList<Ingredient> ingredients, FluidStack requiredFluid, int craftTime) {
+    public PickleJarsRecipe(ItemStack result, NonNullList<Ingredient> ingredients, FluidStack requiredFluid, int craftTime, boolean cover) {
         super(result, ingredients);
         this.requiredFluid = requiredFluid;
         this.craftTime = craftTime;
+        this.cover = cover;
+    }
+
+    public boolean getCover() {
+        return cover;
     }
 
     @Override
@@ -84,7 +90,8 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
                 INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
                 FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.requiredFluid),
-                Codec.INT.fieldOf("crafttime").forGetter(recipe -> recipe.craftTime)
+                Codec.INT.fieldOf("crafttime").forGetter(recipe -> recipe.craftTime),
+                Codec.BOOL.fieldOf("cover").forGetter(recipe -> recipe.cover)
         ).apply(instance, PickleJarsRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, PickleJarsRecipe> STREAM_CODEC = StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
@@ -108,7 +115,8 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
             ItemStack result = ItemStack.STREAM_CODEC.decode(buffer);
             FluidStack requiredFluid = FluidStack.STREAM_CODEC.decode(buffer);
             int craftTime = buffer.readVarInt();
-            return new PickleJarsRecipe(result, ingredients, requiredFluid, craftTime);
+            boolean cover = buffer.readBoolean();
+            return new PickleJarsRecipe(result, ingredients, requiredFluid, craftTime, cover);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, PickleJarsRecipe recipe) {
@@ -119,6 +127,7 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
             ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
             FluidStack.STREAM_CODEC.encode(buffer, recipe.requiredFluid);
             buffer.writeVarInt(recipe.craftTime);
+            buffer.writeBoolean(recipe.cover);
         }
     }
 
@@ -142,5 +151,6 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
         }
     }
 }
+
 
 

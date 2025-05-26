@@ -67,35 +67,34 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity {
             }
         }
         boolean hasFluidInput = !blockEntity.fluidTank.getFluid().isEmpty();
+        boolean blockCover = state.getValue(PickleJarsBlock.COVER);
         if (hasItem && hasFluidInput) {
             PickleJarsRecipe.Input input = new PickleJarsRecipe.Input(inputStacks, blockEntity.fluidTank.getFluid());
             Optional<RecipeHolder<PickleJarsRecipe>> optionalRecipe = blockEntity.cachedCheck.getRecipeFor(input, level);
             if (optionalRecipe.isPresent()) {
                 PickleJarsRecipe recipe = optionalRecipe.get().value();
-                if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), recipe.getResultItem(null))) {
-                    level.setBlockAndUpdate(pos, state.setValue(PickleJarsBlock.COVER, true));
-                    blockEntity.craftTotalTime = recipe.getCraftTime();
-                    if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
-                        recipe.consumeFluids(blockEntity.fluidTank);
-                        ItemStack newResult = recipe.assembleAndExtract(input, level.registryAccess());
-                        ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(OUTPUT_SLOT);
-                        if (currentResult.isEmpty()) {
-                            blockEntity.itemHandler.setStackInSlot(OUTPUT_SLOT, newResult.copy());
-                        } else if (ItemStack.isSameItemSameComponents(currentResult, newResult)) {
-                            currentResult.grow(newResult.getCount());
+                if (recipe.getCover() == blockCover) {
+                    ItemStack resultItem = recipe.getResultItem(null);
+                    if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), resultItem)) {
+                        blockEntity.craftTotalTime = recipe.getCraftTime();
+                        if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
+                            recipe.consumeFluids(blockEntity.fluidTank);
+                            ItemStack newResult = recipe.assembleAndExtract(input, level.registryAccess());
+                            ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(OUTPUT_SLOT);
+                            if (currentResult.isEmpty()) {
+                                blockEntity.itemHandler.setStackInSlot(OUTPUT_SLOT, newResult.copy());
+                            } else if (ItemStack.isSameItemSameComponents(currentResult, newResult)) {
+                                currentResult.grow(newResult.getCount());
+                            }
+                            blockEntity.craftProgress = 0;
+                            blockEntity.setChanged();
                         }
-                        if (state.getValue(PickleJarsBlock.COVER)) {
-                            level.setBlockAndUpdate(pos, state.setValue(PickleJarsBlock.COVER, false));
-                        }
-                    } else {
                         return;
                     }
                 }
             }
         }
         blockEntity.craftProgress = 0;
-        if (state.getValue(PickleJarsBlock.COVER))
-            level.setBlockAndUpdate(pos, state.setValue(PickleJarsBlock.COVER, false));
     }
 
     private static boolean canResultInsert(NonNullList<ItemStack> inventory, int maxStackSize, ItemStack newResult) {

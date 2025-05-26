@@ -60,7 +60,7 @@ public class ModRecipe extends RecipeProvider {
         cookingPot(recipeOutput, ModFoodItems.ATLANTIS_TSUNAMI.toStack(), Ingredient.of(PotionItems.MUG), blueIceHeatSource, 300, Ingredient.of(MaterialItems.HEIM), Ingredient.of(Items.SUGAR), Ingredient.of(FoodItems.LEMON), Ingredient.of(PotionItems.ALE));
 
         //泡菜罐
-        pickleJarsRecipe(recipeOutput, ModFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, AmountIngredient.of(1, FoodItems.SPICY_PEPPER));
+        pickleJarsRecipe(recipeOutput, true, ModFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, AmountIngredient.of(1, FoodItems.SPICY_PEPPER));
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -75,10 +75,10 @@ public class ModRecipe extends RecipeProvider {
         recipeOutput.accept(id, new CookingPotRecipe(result, zingredients, container, heatSource, cookingTime), null);
     }
 
-    protected void pickleJarsRecipe(RecipeOutput recipeOutput, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {
+    protected void pickleJarsRecipe(RecipeOutput recipeOutput, boolean cover, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {
         ResourceLocation id = ConfluenceDelight.asResource("pickle_jars/" + getItemName(result.getItem()));
         NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
-        PickleJarsRecipe recipe = new PickleJarsRecipe(result, recipeIngredients, fluidInput, craftTime);
+        PickleJarsRecipe recipe = new PickleJarsRecipe(result, recipeIngredients, fluidInput, craftTime, cover);
         recipeOutput.accept(id, recipe, null);
     }
 

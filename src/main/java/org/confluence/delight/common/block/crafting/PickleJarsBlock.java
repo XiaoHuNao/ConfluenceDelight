@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
@@ -49,7 +50,15 @@ public class PickleJarsBlock extends BaseEntityBlock {
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
 
-
+//    @Override
+//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+//        if (!level.isClientSide && player.isShiftKeyDown() && state.hasProperty(COVER)) {
+//            boolean currentCover = state.getValue(COVER);
+//            level.setBlockAndUpdate(pos, state.setValue(COVER, !currentCover));
+//            return InteractionResult.SUCCESS;
+//        }
+//        return InteractionResult.PASS;
+//    }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
@@ -57,6 +66,20 @@ public class PickleJarsBlock extends BaseEntityBlock {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
         ItemStack handItem = player.getItemInHand(hand);
+        if (handItem.isEmpty()) {
+            if (player.isShiftKeyDown()) {
+                if (state.hasProperty(COVER)) {
+                    if (!level.isClientSide) {
+                        boolean currentCover = state.getValue(COVER);
+                        level.setBlockAndUpdate(pos, state.setValue(COVER, !currentCover));
+                    }
+                    return success(level);
+                }
+                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            } else {
+                return handleItemInteraction(entity, player, hand, handItem);
+            }
+        }
         if (!(handItem.getItem() instanceof BucketItem)) {
             return handleItemInteraction(entity, player, hand, handItem);
         }
@@ -65,18 +88,18 @@ public class PickleJarsBlock extends BaseEntityBlock {
 
     private ItemInteractionResult handleItemInteraction(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack handItem) {
         Level level = player.level();
-        if (player.isCrouching()) {
-            ItemStack taken = entity.takeItem(-1);
-            if (!taken.isEmpty()) {
+        ItemStack taken = entity.takeItem(-1);
+        if (!taken.isEmpty()) {
+            if (!level.isClientSide) {
                 player.addItem(taken);
-                return success(level);
             }
-            return ItemInteractionResult.FAIL;
+            return success(level);
         }
-
         ItemStack remaining = entity.addItem(handItem);
         if (remaining.getCount() != handItem.getCount()) {
-            player.setItemInHand(hand, remaining);
+            if (!level.isClientSide) {
+                player.setItemInHand(hand, remaining);
+            }
             return success(level);
         }
         return ItemInteractionResult.FAIL;
