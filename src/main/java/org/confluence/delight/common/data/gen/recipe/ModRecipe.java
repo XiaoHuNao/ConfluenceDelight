@@ -51,6 +51,7 @@ public class ModRecipe extends RecipeProvider {
     protected void buildRecipes(RecipeOutput recipeOutput) {
         //汇流烹饪锅
         Ingredient bottleContainer = Ingredient.of(PotionItems.BOTTLE);
+        Ingredient mugContainer = Ingredient.of(PotionItems.MUG);
         Ingredient bowlContainer = Ingredient.of(Items.BOWL);
         CookingPotRecipe.HeatSourcePredicate campfireHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(BlockTags.CAMPFIRES).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.LIT, true)).build();
         CookingPotRecipe.HeatSourcePredicate stoveHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(ModBlocks.STOVE.get()).build();
@@ -58,6 +59,10 @@ public class ModRecipe extends RecipeProvider {
         cookingPot(recipeOutput, ModFoodItems.CHICKEN_HOT_POT.toStack(), bowlContainer, stoveHeatSource, 500, AmountIngredient.of(16, FoodItems.SPICY_PEPPER), AmountIngredient.of(4, ModItems.CHICKEN_CUTS.get()), AmountIngredient.of(3, ModFoodItems.POTATO_PIECE));
         cookingPot(recipeOutput, ModFoodItems.ROYAL_GUMMY.toStack(), Ingredient.EMPTY, CookingPotRecipe.HeatSourcePredicate.EMPTY, 200, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(TCItems.ROYAL_GEL.get()), Ingredient.of(MaterialItems.AMBER));
         cookingPot(recipeOutput, ModFoodItems.ATLANTIS_TSUNAMI.toStack(), Ingredient.of(PotionItems.MUG), blueIceHeatSource, 300, Ingredient.of(MaterialItems.HEIM), Ingredient.of(Items.SUGAR), Ingredient.of(FoodItems.LEMON), Ingredient.of(PotionItems.ALE));
+        cookingPot(recipeOutput, ModFoodItems.DONKEY_MEAT_FIRE.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(ModFoodItems.DONKEY_MEAT), Ingredient.of(Items.BREAD));
+        cookingPot(recipeOutput, ModFoodItems.HORSE_MEAT_SASHIMI.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(ModFoodItems.HORSE_MEAT));
+        cookingPot(recipeOutput, ModFoodItems.BLACK_LUCK.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BLACKCURRANT));
+        cookingPot(recipeOutput, ModFoodItems.WHITE_DAWN.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BANANA));
 
         //泡菜罐
         pickleJarsRecipe(recipeOutput, true, ModFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, AmountIngredient.of(1, FoodItems.SPICY_PEPPER));

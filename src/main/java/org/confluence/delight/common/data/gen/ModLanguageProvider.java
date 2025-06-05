@@ -55,9 +55,16 @@ public class ModLanguageProvider extends LanguageProvider {
         add("confluence_delight.configuration.machines", "Machines", "机器");
         add("confluence_delight.configuration.fluid_capacity", "PickleJars Fluid Capacity", "泡菜罐液体容量");
 
+        //tooltip
         add("tooltip.item.confluence.atlantis_tsunami.0",
                 "It feels like drinking iced fresh lemonade while your heel is pinned to the back of your head.",
                 "据说喝它的感觉就像把脚后跟别在后脑勺上喝冰鲜柠檬水");
+        add("tooltip.item.confluence.black_luck.0",
+                "Black cat shaped ice cream, Who says black cats are a symbol of bad luck?",
+                "黑色猫猫形状的冰淇淋，谁说黑猫是厄运象征的？");
+        add("tooltip.item.confluence.white_dawn.0",
+                "The white cat shaped ice cream will bring you the magic dawn.",
+                "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
 
         chineseProviders.forEach(a -> a.accept(this));
     }
