@@ -1,14 +1,11 @@
 package org.confluence.delight.common.init;
 
-import com.mojang.datafixers.DSL;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -16,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.crafting.PickleJarsBlock;
 import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
-import org.confluence.delight.common.block.food.*;
+import org.confluence.delight.common.block.food.ChickenHotPotBlock;
 
 import java.util.function.Supplier;
 

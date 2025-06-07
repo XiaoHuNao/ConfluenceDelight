@@ -1,12 +1,14 @@
 package org.confluence.delight.common.block.crafting;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,10 +24,11 @@ import org.confluence.delight.common.init.ModBlocks;
 import org.confluence.delight.common.init.ModRecipes;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.recipe.ItemStackHandlerRecipeInput;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class PickleJarsBlockEntity extends BaseContainerBlockEntity {
+public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public static final int INPUT_SIZE = 3;
     public static final int OUTPUT_SIZE = 1;
     public static final int CONTAINER_SIZE = INPUT_SIZE + OUTPUT_SIZE;
@@ -178,6 +181,22 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity {
         nbt.put("FluidTank", fluidTag);
         ContainerHelper.saveAllItems(nbt, itemHandler.getItems(), registries);
     }
+
+    @Override
+    public int[] getSlotsForFace(Direction side) {
+        return new int[] { OUTPUT_SLOT, 0, 1, 2 };
+    }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+        return index < OUTPUT_SLOT;
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+        return index == OUTPUT_SLOT;
+    }
+
 
     @Override
     protected Component getDefaultName() {

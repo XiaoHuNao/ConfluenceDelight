@@ -65,7 +65,7 @@ public class ModRecipe extends RecipeProvider {
         cookingPot(recipeOutput, ModFoodItems.WHITE_DAWN.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BANANA));
 
         //泡菜罐
-        pickleJarsRecipe(recipeOutput, true, ModFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, AmountIngredient.of(1, FoodItems.SPICY_PEPPER));
+        pickleJarsRecipe(recipeOutput, true, ModFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, Ingredient.of(FoodItems.SPICY_PEPPER), Ingredient.of(FoodItems.SPICY_PEPPER), Ingredient.of(FoodItems.SPICY_PEPPER));
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);

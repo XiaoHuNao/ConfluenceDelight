@@ -45,6 +45,10 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
 
+        //jei
+        add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
+        add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
+
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
 
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
