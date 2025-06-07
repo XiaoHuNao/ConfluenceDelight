@@ -30,7 +30,8 @@ public class ModLanguageProvider extends LanguageProvider {
     private final String locale;
 
     private static String toTitleCase(String raw) {
-        return Arrays.stream(raw.split("_"))
+        String name = raw.substring(raw.lastIndexOf('.') + 1);
+        return Arrays.stream(name.split("_"))
                 .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
                 .collect(Collectors.joining(" "));
     }

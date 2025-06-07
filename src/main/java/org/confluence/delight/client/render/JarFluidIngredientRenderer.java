@@ -13,6 +13,7 @@ import org.confluence.delight.ConfluenceDelight;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class JarFluidIngredientRenderer implements IIngredientRenderer<FluidStack> {
     private static final ResourceLocation JAR_MASK_TEXTURE = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jar_mask.png");
 
