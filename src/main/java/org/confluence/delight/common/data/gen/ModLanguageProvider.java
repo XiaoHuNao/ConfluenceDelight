@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.init.ModBlocks;
 import org.confluence.delight.common.init.ModCreativeTabs;
 import org.jetbrains.annotations.NotNull;
 
@@ -50,8 +51,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
         add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
 
+        //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
-
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
         add("info.confluence_delight.fluid_amount", "%s %dB", "%s %dB");
         add("info.confluence_delight.fluid_empty", "Empty %dB", "空 %dB");
@@ -70,6 +71,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.white_dawn.0",
                 "The white cat shaped ice cream will bring you the magic dawn.",
                 "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
+
+        add("fluid_type.confluence_delight.wine", "Wine","酒");
 
         chineseProviders.forEach(a -> a.accept(this));
     }

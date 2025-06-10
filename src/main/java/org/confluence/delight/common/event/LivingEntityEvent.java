@@ -19,6 +19,8 @@ public final class LivingEntityEvent {
         RandomSource random = player.getRandom();
         if (itemStack.is(ModFoodItems.CRUSHED_CHILLI.get()) && random.nextInt(2) == 0) {
             player.igniteForTicks(40);
+        } else if (itemStack.is(ModFoodItems.SPICY_PICKLED_FISH.get())) {
+            player.igniteForSeconds(60.0f);
         }
     }
 }

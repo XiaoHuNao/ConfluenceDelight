@@ -15,10 +15,7 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.confluence.delight.client.ModClient;
 import org.confluence.delight.common.CommonConfigs;
 import org.confluence.delight.common.data.gen.ModLanguageProvider;
-import org.confluence.delight.common.init.ModBlocks;
-import org.confluence.delight.common.init.ModCreativeTabs;
-import org.confluence.delight.common.init.ModItems;
-import org.confluence.delight.common.init.ModRecipes;
+import org.confluence.delight.common.init.*;
 import org.confluence.mod.client.ClientConfigs;
 import org.slf4j.Logger;
 
@@ -46,6 +43,7 @@ public class ConfluenceDelight {
         ModItems.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.BLOCK_ENTITIES.register(modEventBus);
+        ModFluids.initialize();
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
         ModRecipes.register(modEventBus);
