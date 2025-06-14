@@ -76,6 +76,9 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), ModFoodItems.BUTTER.toStack(), 0.2f, 50);
+
+        furnace(output, "", "", Ingredient.of(ModFoodItems.RAW_DONKEY_MEAT.get()), ModFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(ModFoodItems.RAW_HORSE_MEAT.get()), ModFoodItems.COOKED_HORSE_MEAT.toStack(), 0.2f, 100);
     }
 
     protected void shaped(RecipeOutput output, String prefix, String suffix, ShapedRecipePattern pattern, ItemStack result) {

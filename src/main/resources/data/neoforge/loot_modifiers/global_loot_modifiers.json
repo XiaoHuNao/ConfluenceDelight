@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "entries": [
+        "confluence_delight:entities/horse",
+        "confluence_delight:entities/donkey"
+    ]
+}

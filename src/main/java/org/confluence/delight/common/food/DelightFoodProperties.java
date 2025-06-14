@@ -9,12 +9,25 @@ import java.util.Arrays;
 
 public class DelightFoodProperties {
 
-    public static FoodProperties noEffectProperties(int nutrition, float saturation) {
-        return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).fast().alwaysEdible().build();
+    public static float calcSaturationModifier(int nutrition, float rawSaturation) {
+        return rawSaturation / nutrition / 2;
     }
 
-    public static FoodProperties hasEffectProperties(int nutrition, float saturation, EffectData... effects) {
-        FoodProperties.Builder builder = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).fast().alwaysEdible();
+    public static FoodProperties noEffectProperties(int nutrition, float rawSaturation) {
+        return new FoodProperties.Builder()
+                .nutrition(nutrition)
+                .saturationModifier(calcSaturationModifier(nutrition, rawSaturation))
+                .fast()
+                .alwaysEdible()
+                .build();
+    }
+
+    public static FoodProperties hasEffectProperties(int nutrition, float rawSaturation, EffectData... effects) {
+        FoodProperties.Builder builder = new FoodProperties.Builder()
+                .nutrition(nutrition)
+                .saturationModifier(calcSaturationModifier(nutrition, rawSaturation))
+                .fast()
+                .alwaysEdible();
         Arrays.stream(effects).forEach(e -> builder.effect(() -> new MobEffectInstance(e.effect, e.duration, e.level), e.probability));
         return builder.build();
     }
