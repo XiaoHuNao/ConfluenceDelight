@@ -5,14 +5,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -22,6 +23,9 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidActionResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
@@ -35,6 +39,26 @@ import java.util.Optional;
 public class PickleJarsBlock extends BaseEntityBlock {
     private static final MapCodec<PickleJarsBlock> CODEC = simpleCodec(PickleJarsBlock::new);
     public static final BooleanProperty COVER = BooleanProperty.create("cover");
+    private static final VoxelShape COVER_TRUE = Shapes.or(
+            box(3, 0, 3, 13, 12, 13),
+            box(2, 2, 2, 14, 11, 14),
+            box(2, 12, 2, 14, 13, 14),
+            box(2, 13, 3, 3, 15, 13),
+            box(13, 13, 3, 14, 15, 13),
+            box(2, 13, 2, 14, 15, 3),
+            box(2, 13, 13, 14, 15, 14),
+            box(4, 12, 4, 12, 17, 12)
+    );
+    private static final VoxelShape COVER_FALSE = Shapes.or(
+            box(3, 0, 3, 13, 12, 13),
+            box(2, 2, 2, 14, 11, 14),
+            box(2, 12, 2, 14, 13, 14),
+            box(2, 13, 3, 3, 15, 13),
+            box(13, 13, 3, 14, 15, 13),
+            box(2, 13, 2, 14, 15, 3),
+            box(2, 13, 13, 14, 15, 14),
+            box(5, 13, 5, 11, 15, 11)
+    );
 
     public PickleJarsBlock(Properties properties) {
         super(properties);
@@ -49,16 +73,6 @@ public class PickleJarsBlock extends BaseEntityBlock {
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
-
-//    @Override
-//    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-//        if (!level.isClientSide && player.isShiftKeyDown() && state.hasProperty(COVER)) {
-//            boolean currentCover = state.getValue(COVER);
-//            level.setBlockAndUpdate(pos, state.setValue(COVER, !currentCover));
-//            return InteractionResult.SUCCESS;
-//        }
-//        return InteractionResult.PASS;
-//    }
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
@@ -182,6 +196,16 @@ public class PickleJarsBlock extends BaseEntityBlock {
 
     private ItemInteractionResult success(Level level) {
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(COVER) ? COVER_TRUE : COVER_FALSE;
     }
 
     @Override

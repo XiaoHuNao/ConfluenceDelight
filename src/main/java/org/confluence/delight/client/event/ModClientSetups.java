@@ -2,8 +2,8 @@ package org.confluence.delight.client.event;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Camera;
-import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -11,9 +11,15 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.init.ModBlocks;
 import org.confluence.delight.common.init.ModFluids;
 import org.joml.Vector3f;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings("deprecation")
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ModClientSetups {
     static final IClientFluidTypeExtensions WINE_CLIENT_EXTENSIONS = new IClientFluidTypeExtensions() {
         private static final ResourceLocation STILL = ConfluenceDelight.asResource("block/fluid/wine_still");
@@ -46,5 +52,7 @@ public class ModClientSetups {
         RenderType translucent = RenderType.translucent();
         ItemBlockRenderTypes.setRenderLayer(ModFluids.WINE.fluid().get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(ModFluids.WINE.flowing().get(), translucent);
+        RenderType cutoutMipped = RenderType.cutoutMipped();
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PICKLE_JARS_BLOCK.get(), cutoutMipped);
     }
 }

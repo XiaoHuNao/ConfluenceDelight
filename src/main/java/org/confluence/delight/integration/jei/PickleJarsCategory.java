@@ -24,7 +24,7 @@ import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 
-@SuppressWarnings("deprecation")
+
 public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJarsRecipe>> {
     public static final RecipeType<RecipeHolder<PickleJarsRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("pickle_jars"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
@@ -48,6 +48,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         return TITLE;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public IDrawable getBackground() {
         return background;

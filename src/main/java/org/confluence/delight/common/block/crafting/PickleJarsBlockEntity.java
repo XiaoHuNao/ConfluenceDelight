@@ -184,7 +184,7 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return new int[] { OUTPUT_SLOT, 0, 1, 2 };
+        return new int[]{OUTPUT_SLOT, 0, 1, 2};
     }
 
     @Override

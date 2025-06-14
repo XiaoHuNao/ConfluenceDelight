@@ -5,13 +5,18 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.data.gen.recipe.ModRecipe;
+import org.confluence.delight.common.data.gen.recipe.VanillaCraftRecipe;
 import org.confluence.delight.common.data.gen.tag.ModBlockTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModItemTagsProvider;
+import org.confluence.lib.common.data.gen.CollectRecipeProvider;
+import org.confluence.mod.Confluence;
 
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -29,7 +34,9 @@ public class ModDataGenerator {
         boolean server = event.includeServer();
         generator.addProvider(server, blockTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
-        generator.addProvider(server, new ModRecipe(output, lookup));
+        generator.addProvider(server, new CollectRecipeProvider(output, lookup,
+                ModRecipe::new,
+                VanillaCraftRecipe::new));
 
         boolean client = event.includeClient();
         generator.addProvider(client, new ModItemModelProvider(output, helper));

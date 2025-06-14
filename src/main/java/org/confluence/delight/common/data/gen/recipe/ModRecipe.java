@@ -6,22 +6,21 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.ModFluids;
 import org.confluence.delight.common.init.ModFoodItems;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
+import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.lib.common.recipe.AmountIngredient;
 import org.confluence.mod.Confluence;
 import org.confluence.mod.common.init.item.FoodItems;
@@ -36,12 +35,10 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 
-public class ModRecipe extends RecipeProvider {
+public class ModRecipe extends AbstractRecipeProvider {
 
     public ModRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
@@ -80,30 +77,7 @@ public class ModRecipe extends RecipeProvider {
 
         //厨锅
         CookingPotRecipeBuilder.cookingPotRecipe(ModFoodItems.BUTTER.get(), 1, 50, 0.2f).addIngredient(ModItems.MILK_BOTTLE.get()).setRecipeBookTab(CookingPotRecipeBookTab.MISC).build(recipeOutput);
-        CookingPotRecipeBuilder.cookingPotRecipe(ModFoodItems.BLACKCURRANT_JAM.get(), 1, 25, 0.2f).addIngredient(FoodItems.BLACKCURRANT.get()).addIngredient(Items.SUGAR).setRecipeBookTab(CookingPotRecipeBookTab.MISC).build(recipeOutput);
-
-        //工作台
-        shaped(recipeOutput, "", "", ShapedRecipePattern.of(Map.of(
-                'S', Ingredient.of(ModItems.MIXED_SALAD.get()),
-                'C', Ingredient.of(ModFoodItems.CLOUD_BREAD_SLICE)
-        ), List.of(
-                "C  ",
-                "S  ",
-                "C  "
-        )), ModFoodItems.CLOUD_VEGETABLES_SANDWICH.toStack());
-        shaped(recipeOutput, "", "", ShapedRecipePattern.of(Map.of(
-                'C', Ingredient.of(ModFoodItems.CLOUD_BREAD_SLICE),
-                'G', Ingredient.of(MaterialItems.GEL),
-                'L', Ingredient.of(MaterialItems.LIFE_MUSHROOM)
-        ), List.of(
-                "C  ",
-                "GL ",
-                "C  "
-        )), ModFoodItems.CLOUD_GEL_SANDWICH.toStack());
-        shapeless(recipeOutput, "", "", ModFoodItems.CLOUD_BACON_SANDWICH.toStack(), Ingredient.of(ModFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES), Ingredient.of(ModItems.COOKED_BACON.get()), Ingredient.of(ModItems.TOMATO.get()), Ingredient.of(Tags.Items.FOODS_FRUIT));
-
-        //熔炉
-        furnace(recipeOutput, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), ModFoodItems.BUTTER.toStack(), 0.2f, 50);
+        CookingPotRecipeBuilder.cookingPotRecipe(ModFoodItems.BLACKCURRANT_JAM.get(), 1, 25, 0.2f, Items.GLASS_BOTTLE).addIngredient(FoodItems.BLACKCURRANT.get()).addIngredient(Items.SUGAR).setRecipeBookTab(CookingPotRecipeBookTab.MISC).build(recipeOutput);
     }
 
     protected void cookingPot(RecipeOutput recipeOutput, ItemStack result, Ingredient container, CookingPotRecipe.HeatSourcePredicate heatSource, int cookingTime, Ingredient... ingredients) {
@@ -119,19 +93,5 @@ public class ModRecipe extends RecipeProvider {
         recipeOutput.accept(id, recipe, null);
     }
 
-    protected void shaped(RecipeOutput recipeOutput, String prefix, String suffix, ShapedRecipePattern pattern, ItemStack result) {
-        ResourceLocation id = ConfluenceDelight.asResource("shaped/" + prefix + getItemName(result.getItem()) + suffix);
-        recipeOutput.accept(id, new ShapedRecipe("", CraftingBookCategory.MISC, pattern, result, true), null);
-    }
 
-    protected void shapeless(RecipeOutput recipeOutput, String prefix, String suffix, ItemStack result, Ingredient... ingredients) {
-        ResourceLocation id = ConfluenceDelight.asResource("shapeless/" + prefix + getItemName(result.getItem()) + suffix);
-        NonNullList<Ingredient> zingredients = NonNullList.of(Ingredient.EMPTY, ingredients);
-        recipeOutput.accept(id, new ShapelessRecipe("", CraftingBookCategory.MISC, result, zingredients), null);
-    }
-
-    protected void furnace(RecipeOutput recipeOutput, String prefix, String suffix, Ingredient ingredient, ItemStack result, float experience, int cookingTime) {
-        ResourceLocation id = ConfluenceDelight.asResource("furnace/" + prefix + getItemName(result.getItem()) + suffix);
-        recipeOutput.accept(id, new SmeltingRecipe("", CookingBookCategory.FOOD, ingredient, result, experience, cookingTime), null);
-    }
 }
