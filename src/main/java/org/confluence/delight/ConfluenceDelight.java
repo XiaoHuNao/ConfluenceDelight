@@ -44,6 +44,7 @@ public class ConfluenceDelight {
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.BLOCK_ENTITIES.register(modEventBus);
         ModFluids.initialize();
+        ModEffects.EFFECTS.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
         ModRecipes.register(modEventBus);

@@ -12,6 +12,7 @@ import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.ModFoodItems;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
+import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -52,31 +53,90 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 "GE ",
                 "CC "
         )), ModFoodItems.CLOUD_FRIED_EGG_GEL_SANDWICH.toStack());
+        shaped(output, "", "", ShapedRecipePattern.of(Map.of(
+                'C', Ingredient.of(ModFoodItems.LUCK_CHOCOLATE_COPPER_COIN),
+                'S', Ingredient.of(ModFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
+                'G', Ingredient.of(ModFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
+                'P', Ingredient.of(ModFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN)
+        ), List.of(
+                "CSS",
+                "SGP",
+                "PPP"
+        )), ModFoodItems.CHOCOLATE_LUCK_COIN_BOX.toStack());
+
 
         shapeless(output, "", "", ModFoodItems.CLOUD_BACON_SANDWICH.toStack(),
                 Ingredient.of(ModFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),
                 Ingredient.of(ModItems.COOKED_BACON.get()),
                 Ingredient.of(ModItems.TOMATO.get()),
                 Ingredient.of(Tags.Items.FOODS_FRUIT));
-
         shapeless(output, "", "", ModFoodItems.HONEY_GLAZED_HAM.toStack(),
                 Ingredient.of(Items.HONEY_BOTTLE),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(MaterialItems.GEL),
                 Ingredient.of(ModItems.HAM.get()));
-
         shapeless(output, "", "", ModFoodItems.WHITE_CHOCOLATE.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.COCOA_BEANS));
-
         shapeless(output, "", "", ModFoodItems.BLACK_CHOCOLATE.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.COCOA_BEANS));
+        shapeless(output, "", "", ModFoodItems.FLAVORED_WHITE_CHOCOLATE.toStack(),
+                Ingredient.of(MaterialItems.GEL),
+                Ingredient.of(ModFoodItems.WHITE_CHOCOLATE));
+        shapeless(output, "", "", ModFoodItems.BLACKCURRANT_DARK_CHOCOLATE_PIE.toStack(),
+                Ingredient.of(MaterialItems.GEL),
+                Ingredient.of(FoodItems.BLACKCURRANT),
+                Ingredient.of(ModFoodItems.BLACK_CHOCOLATE));
+        shapeless(output, "", "", ModFoodItems.MANGO_PUDDING.toStack(),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(MaterialItems.GEL),
+                Ingredient.of(FoodItems.MANGO));
+        shapeless(output, "", "", ModFoodItems.BANANA_PUDDING.toStack(),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(MaterialItems.GEL),
+                Ingredient.of(FoodItems.BANANA));
+        shapeless(output, "", "", ModFoodItems.BLACKCURRANT_JAM_BREAD.toStack(),
+                Ingredient.of(ModFoodItems.BLACKCURRANT_JAM),
+                Ingredient.of(Items.BREAD));
+        shapeless(output, "", "", ModFoodItems.BLACKCURRANT_JAM_MANGO_PUDDING.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(FoodItems.MANGO),
+                Ingredient.of(ModFoodItems.BLACKCURRANT_JAM),
+                Ingredient.of(MaterialItems.GEL));
+        shapeless(output, "", "", ModFoodItems.LUCK_CHOCOLATE_COPPER_COIN.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.COCOA_BEANS),
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.COPPER_COIN));
+        shapeless(output, "", "", ModFoodItems.LUCK_CHOCOLATE_SILVER_COIN.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.COCOA_BEANS),
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.SILVER_COIN));
+        shapeless(output, "", "", ModFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.COCOA_BEANS),
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.GOLDEN_COIN));
+        shapeless(output, "", "", ModFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.COCOA_BEANS),
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.PLATINUM_COIN));
+        shapeless(output, "", "", ModFoodItems.LUCK_CHOCOLATE_EMERALD_COIN.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.MILK_BUCKET),
+                Ingredient.of(Items.COCOA_BEANS),
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
+
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), ModFoodItems.BUTTER.toStack(), 0.2f, 50);
-
         furnace(output, "", "", Ingredient.of(ModFoodItems.RAW_DONKEY_MEAT.get()), ModFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.2f, 100);
         furnace(output, "", "", Ingredient.of(ModFoodItems.RAW_HORSE_MEAT.get()), ModFoodItems.COOKED_HORSE_MEAT.toStack(), 0.2f, 100);
     }

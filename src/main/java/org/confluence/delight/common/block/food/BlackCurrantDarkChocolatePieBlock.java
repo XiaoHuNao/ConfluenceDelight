@@ -1,0 +1,47 @@
+package org.confluence.delight.common.block.food;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
+import org.confluence.mod.common.init.ModEffects;
+
+public class BlackCurrantDarkChocolatePieBlock extends Block {
+    public BlackCurrantDarkChocolatePieBlock() {
+        super(BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY).strength(1.0f));
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (level.isClientSide) {
+            InteractionResult result = eat(level, pos, state, player);
+            if (result.consumesAction()) return InteractionResult.SUCCESS;
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) return InteractionResult.CONSUME;
+        }
+        return eat(level, pos, state, player);
+    }
+
+    protected static InteractionResult eat(LevelAccessor level, BlockPos pos, BlockState state, Player player) {
+        if (!player.canEat(false)) return InteractionResult.PASS;
+        player.getFoodData().eat(12, 0.5f);
+        player.addEffect(new MobEffectInstance(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600));
+        player.addEffect(new MobEffectInstance(MobEffects.LUCK, 600));
+        player.addEffect(new MobEffectInstance(ModEffects.MAGIC_POWER, 600));
+        player.playSound(SoundEvents.GENERIC_EAT);
+        level.gameEvent(player, GameEvent.EAT, pos);
+        level.removeBlock(pos, false);
+        level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
+        return InteractionResult.SUCCESS;
+    }
+}

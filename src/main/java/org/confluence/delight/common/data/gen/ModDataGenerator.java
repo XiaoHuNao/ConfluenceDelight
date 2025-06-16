@@ -5,7 +5,6 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.confluence.delight.ConfluenceDelight;
@@ -14,9 +13,7 @@ import org.confluence.delight.common.data.gen.recipe.VanillaCraftRecipe;
 import org.confluence.delight.common.data.gen.tag.ModBlockTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModItemTagsProvider;
 import org.confluence.lib.common.data.gen.CollectRecipeProvider;
-import org.confluence.mod.Confluence;
 
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 

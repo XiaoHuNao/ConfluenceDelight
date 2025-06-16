@@ -1,26 +1,41 @@
-package org.confluence.delight.common.event;
+package org.confluence.delight.common.event.game;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
 import org.confluence.delight.common.init.ModFoodItems;
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
 public final class LivingEntityEvent {
 
     @SubscribeEvent
+    public static void mobEffect$Remove(MobEffectEvent.Remove event) {
+        MobEffectInstance effectInstance = event.getEffectInstance();
+        if (effectInstance == null) return;
+        LuckCoinEffect.onRemove(event.getEntity(), effectInstance.getEffect(), effectInstance.getAmplifier());
+    }
+
+    @SubscribeEvent
     public static void livingEntityUseItemFinish(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
+        if (!(player.level() instanceof ServerLevel serverLevel)) return;
         ItemStack itemStack = event.getItem();
         RandomSource random = player.getRandom();
         if (itemStack.is(ModFoodItems.CRUSHED_CHILLI.get()) && random.nextInt(2) == 0) {
             player.igniteForTicks(40);
         } else if (itemStack.is(ModFoodItems.SPICY_PICKLED_FISH.get())) {
             player.igniteForSeconds(60.0f);
+        } else if (itemStack.is(ModFoodItems.SPICY_BOMB_FISH.get())) {
+            serverLevel.explode(null, player.getX(), player.getY(), player.getZ(), 2.5F, false, Level.ExplosionInteraction.MOB);
         }
     }
 }

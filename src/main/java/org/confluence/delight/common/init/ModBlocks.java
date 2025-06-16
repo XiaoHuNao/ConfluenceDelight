@@ -4,6 +4,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -16,7 +17,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.crafting.PickleJarsBlock;
 import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
+import org.confluence.delight.common.block.food.BlackCurrantDarkChocolatePieBlock;
 import org.confluence.delight.common.block.food.ChickenHotPotBlock;
+import org.confluence.delight.common.block.natural.BaseFruitTreeLeaveBlock;
+import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.function.Supplier;
 
@@ -26,12 +30,18 @@ public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ConfluenceDelight.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
 
+    //食物
     public static final DeferredBlock<ChickenHotPotBlock> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
+    public static final DeferredBlock<BlackCurrantDarkChocolatePieBlock> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerWithoutItem("blackcurrant_dark_chocolate_pie", BlackCurrantDarkChocolatePieBlock::new);
+
     public static final DeferredBlock<PickleJarsBlock> PICKLE_JARS_BLOCK = registerBlockItem("pickle_jars_block", "泡菜罐", () -> new PickleJarsBlock(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<BlockEntityType<PickleJarsBlockEntity>> PICKLE_JARS_BLOCK_ENTITY = BLOCK_ENTITIES.register("pickle_jars_block", () -> BlockEntityType.Builder.of(PickleJarsBlockEntity::new, PICKLE_JARS_BLOCK.get()).build(null));
 
     //流体
     public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(ModFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.byId(0xFFFFFF))));
+
+    //自然
+    public static final DeferredBlock<BaseFruitTreeLeaveBlock> APPLE_TREE_LEAVES_BLOCK = registerBlockItem("apple_tree_leaves", "苹果树叶", () -> new BaseFruitTreeLeaveBlock(Items.APPLE));
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));

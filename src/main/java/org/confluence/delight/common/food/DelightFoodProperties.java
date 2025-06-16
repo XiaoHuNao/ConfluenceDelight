@@ -38,6 +38,10 @@ public class DelightFoodProperties {
             return new EffectData(effect, duration, 0, 1.0f);
         }
 
+        public static EffectData of(Holder<MobEffect> effect, int duration, int level) {
+            return new EffectData(effect, duration, level, 1.0f);
+        }
+
         public static EffectData of(Holder<MobEffect> effect, int duration, float probability) {
             return new EffectData(effect, duration, 0, probability);
         }

@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -105,6 +106,11 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     public void addItem(DeferredHolder<Item, ? extends Item> key, String cn) {
+        String en = toTitleCase(key.get().getDescriptionId());
+        this.add(key.get().getDescriptionId(), en, cn);
+    }
+
+    public void addEffect(DeferredHolder<MobEffect, ? extends MobEffect> key, String cn) {
         String en = toTitleCase(key.get().getDescriptionId());
         this.add(key.get().getDescriptionId(), en, cn);
     }
