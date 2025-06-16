@@ -58,7 +58,7 @@ public class BaseFruitTreeLeaveBlock extends LeavesBlock implements Bonemealable
         if (shouldDecay(state)) {
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
-        }else if (canGrow(state) && level.getRawBrightness(pos.above(), 0) >= 9  && canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
+        } else if (canGrow(state) && level.getRawBrightness(pos.above(), 0) >= 9 && canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
             level.setBlockAndUpdate(pos, state.setValue(AGE, state.getValue(AGE) + 1));
         }
     }

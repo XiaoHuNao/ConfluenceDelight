@@ -17,7 +17,8 @@ import java.util.List;
 public class JarFluidIngredientRenderer implements IIngredientRenderer<FluidStack> {
     private static final ResourceLocation JAR_MASK_TEXTURE = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jar_mask.png");
 
-    public JarFluidIngredientRenderer() {}
+    public JarFluidIngredientRenderer() {
+    }
 
     @Override
     public void render(GuiGraphics guiGraphics, FluidStack fluidStack) {

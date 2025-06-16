@@ -13,6 +13,7 @@ import org.confluence.delight.ConfluenceDelight;
 
 public class LuckCoinEffect extends MobEffect {
     public static final ResourceLocation ID = ConfluenceDelight.asResource("luck_coin");
+
     public LuckCoinEffect() {
         super(MobEffectCategory.BENEFICIAL, 0xFFD700);
         Int2DoubleFunction baseLuckBonus = amplifier -> switch (amplifier) {

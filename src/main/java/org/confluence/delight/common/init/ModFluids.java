@@ -8,7 +8,8 @@ import org.confluence.lib.common.fluid.FluidTriple;
 
 public class ModFluids {
 
-    public static void initialize() {}
+    public static void initialize() {
+    }
 
     public static final FluidTriple WINE = FluidTriple.builder(ConfluenceDelight.asResource("wine"))
             .typeProperties(properties -> properties

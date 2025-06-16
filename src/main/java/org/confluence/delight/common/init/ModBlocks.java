@@ -20,7 +20,6 @@ import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
 import org.confluence.delight.common.block.food.BlackCurrantDarkChocolatePieBlock;
 import org.confluence.delight.common.block.food.ChickenHotPotBlock;
 import org.confluence.delight.common.block.natural.BaseFruitTreeLeaveBlock;
-import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.function.Supplier;
 

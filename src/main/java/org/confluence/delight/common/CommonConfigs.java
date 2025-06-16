@@ -7,7 +7,8 @@ import net.neoforged.neoforge.common.ModConfigSpec.Builder;
 
 public class CommonConfigs {
 
-    public static void onLoad() {}
+    public static void onLoad() {
+    }
 
     public static void register(ModContainer container) {
         Builder BUILDER = new ModConfigSpec.Builder();

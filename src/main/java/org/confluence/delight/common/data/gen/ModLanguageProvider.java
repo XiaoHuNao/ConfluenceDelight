@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModBlocks;
 import org.confluence.delight.common.init.ModCreativeTabs;
 import org.jetbrains.annotations.NotNull;
 
@@ -73,7 +72,7 @@ public class ModLanguageProvider extends LanguageProvider {
                 "The white cat shaped ice cream will bring you the magic dawn.",
                 "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
 
-        add("fluid_type.confluence_delight.wine", "Wine","酒");
+        add("fluid_type.confluence_delight.wine", "Wine", "酒");
 
         chineseProviders.forEach(a -> a.accept(this));
     }

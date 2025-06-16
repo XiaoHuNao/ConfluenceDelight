@@ -7,7 +7,6 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.ModFluids;
-import org.confluence.delight.client.event.ModClientSetups;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = ConfluenceDelight.MODID)
 public class ModClientEvents {

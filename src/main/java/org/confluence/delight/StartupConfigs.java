@@ -7,7 +7,8 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class StartupConfigs {
     public static ModConfigSpec.IntValue FLUID_CAPACITY;
 
-    public static void onLoad() {}
+    public static void onLoad() {
+    }
 
     public static void register(ModContainer container) {
         ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
