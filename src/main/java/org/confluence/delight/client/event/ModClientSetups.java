@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModBlocks;
-import org.confluence.delight.common.init.ModFluids;
+import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDFluids;
 import org.joml.Vector3f;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -50,9 +50,9 @@ public class ModClientSetups {
 
     static void setRenderLayers() {
         RenderType translucent = RenderType.translucent();
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.WINE.fluid().get(), translucent);
-        ItemBlockRenderTypes.setRenderLayer(ModFluids.WINE.flowing().get(), translucent);
+        ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.fluid().get(), translucent);
+        ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.flowing().get(), translucent);
         RenderType cutoutMipped = RenderType.cutoutMipped();
-        ItemBlockRenderTypes.setRenderLayer(ModBlocks.PICKLE_JARS_BLOCK.get(), cutoutMipped);
+        ItemBlockRenderTypes.setRenderLayer(CDBlocks.PICKLE_JARS_BLOCK.get(), cutoutMipped);
     }
 }

@@ -40,14 +40,14 @@ public class ConfluenceDelight {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         }
 
-        ModItems.register(modEventBus);
-        ModBlocks.BLOCKS.register(modEventBus);
-        ModBlocks.BLOCK_ENTITIES.register(modEventBus);
-        ModFluids.initialize();
-        ModEffects.EFFECTS.register(modEventBus);
+        CDBlocks.BLOCKS.register(modEventBus);
+        CDBlocks.BLOCK_ENTITIES.register(modEventBus);
+        CDItems.register(modEventBus);
+        CDRecipes.register(modEventBus);
+        CDFluids.initialize();
+        CDEffects.EFFECTS.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
-        ModCreativeTabs.CREATIVE_TABS.register(modEventBus);
-        ModRecipes.register(modEventBus);
+        CDCreativeTabs.CREATIVE_TABS.register(modEventBus);
     }
 
     public static ResourceLocation asResource(String path) {

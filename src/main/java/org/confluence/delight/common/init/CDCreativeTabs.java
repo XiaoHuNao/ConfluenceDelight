@@ -15,7 +15,7 @@ import org.confluence.mod.common.init.block.FunctionalBlocks;
 
 import java.util.Set;
 
-public class ModCreativeTabs {
+public class CDCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ConfluenceDelight.MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB_FARMERS_DELIGHT = CREATIVE_TABS.register(ConfluenceDelight.MODID,
@@ -24,18 +24,18 @@ public class ModCreativeTabs {
                     .icon(() -> new ItemStack(FunctionalBlocks.COOKING_POT.get()))
                     .displayItems((parameters, output) -> {
                         Set<Block> excludedBlocks = Set.of(
-                                ModBlocks.WINE.get()
+                                CDBlocks.WINE.get()
                         );
-                        org.confluence.delight.common.init.ModBlocks.BLOCKS.getEntries().forEach(block -> {
+                        CDBlocks.BLOCKS.getEntries().forEach(block -> {
                             Block b = block.get();
                             if (!excludedBlocks.contains(b)) {
                                 Item item = b.asItem();
                                 output.accept(item);
                             }
                         });
-                        ModItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
-                        ModMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
-                        ModFoodItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDFoodItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                     })
                     .withTabsAfter(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "tools")))
                     .withTabsBefore(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "food_and_potions")))

@@ -6,7 +6,7 @@ import net.neoforged.neoforge.common.SoundActions;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.lib.common.fluid.FluidTriple;
 
-public class ModFluids {
+public class CDFluids {
 
     public static void initialize() {
     }
@@ -25,7 +25,7 @@ public class ModFluids {
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
             ).baseProperties(properties -> properties
-                    .block(ModBlocks.WINE)
-                    .bucket(ModItems.WINE_BUCKET)
+                    .block(CDBlocks.WINE)
+                    .bucket(CDItems.WINE_BUCKET)
             ).build();
 }

@@ -8,7 +8,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModEffects;
+import org.confluence.delight.common.init.CDEffects;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class PlayerEvents {
     public static void onPlayerInteractEntity(PlayerInteractEvent.EntityInteractSpecific event) {
         if (!(event.getTarget() instanceof Villager villager)) return;
         Player player = event.getEntity();
-        if (!player.hasEffect(ModEffects.MASTER_TRADER)) return;
+        if (!player.hasEffect(CDEffects.MASTER_TRADER)) return;
         List<MerchantOffer> offers = villager.getOffers();
         for (MerchantOffer offer : offers) {
             ItemStack price = offer.getCostA();

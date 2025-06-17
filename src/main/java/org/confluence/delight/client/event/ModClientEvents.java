@@ -6,14 +6,14 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModFluids;
+import org.confluence.delight.common.init.CDFluids;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = ConfluenceDelight.MODID)
 public class ModClientEvents {
 
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
-        event.registerFluidType(ModClientSetups.WINE_CLIENT_EXTENSIONS, ModFluids.WINE.type());
+        event.registerFluidType(ModClientSetups.WINE_CLIENT_EXTENSIONS, CDFluids.WINE.type());
     }
 
     @SubscribeEvent

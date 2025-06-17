@@ -19,7 +19,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.client.render.JarFluidIngredientRenderer;
-import org.confluence.delight.common.init.ModBlocks;
+import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
@@ -35,7 +35,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     public PickleJarsCategory(IJeiHelpers jeiHelpers) {
         ResourceLocation backGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars_background.png");
         this.background = jeiHelpers.getGuiHelper().createDrawable(backGround, 0, 0, 158, 84);
-        this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(ModBlocks.PICKLE_JARS_BLOCK.toStack());
+        this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.PICKLE_JARS_BLOCK.toStack());
     }
 
     @Override

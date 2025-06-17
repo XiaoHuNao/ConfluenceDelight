@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
-public class ModEffects {
+public class CDEffects {
     public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, ConfluenceDelight.MODID);
 
     public static final DeferredHolder<MobEffect, MobEffect> LUCK_COIN = register("luck_coin", "幸运币", LuckCoinEffect::new);

@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
-import org.confluence.delight.common.init.ModFoodItems;
+import org.confluence.delight.common.init.CDFoodItems;
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
 public final class LivingEntityEvent {
@@ -30,11 +30,11 @@ public final class LivingEntityEvent {
         if (!(player.level() instanceof ServerLevel serverLevel)) return;
         ItemStack itemStack = event.getItem();
         RandomSource random = player.getRandom();
-        if (itemStack.is(ModFoodItems.CRUSHED_CHILLI.get()) && random.nextInt(2) == 0) {
+        if (itemStack.is(CDFoodItems.CRUSHED_CHILLI.get()) && random.nextInt(2) == 0) {
             player.igniteForTicks(40);
-        } else if (itemStack.is(ModFoodItems.SPICY_PICKLED_FISH.get())) {
+        } else if (itemStack.is(CDFoodItems.SPICY_PICKLED_FISH.get())) {
             player.igniteForSeconds(60.0f);
-        } else if (itemStack.is(ModFoodItems.SPICY_BOMB_FISH.get())) {
+        } else if (itemStack.is(CDFoodItems.SPICY_BOMB_FISH.get())) {
             serverLevel.explode(null, player.getX(), player.getY(), player.getZ(), 2.5F, false, Level.ExplosionInteraction.MOB);
         }
     }

@@ -20,8 +20,8 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.StartupConfigs;
-import org.confluence.delight.common.init.ModBlocks;
-import org.confluence.delight.common.init.ModRecipes;
+import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.recipe.ItemStackHandlerRecipeInput;
 import org.jetbrains.annotations.Nullable;
@@ -41,9 +41,9 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
     private final RecipeManager.CachedCheck<PickleJarsRecipe.Input, PickleJarsRecipe> cachedCheck;
 
     public PickleJarsBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlocks.PICKLE_JARS_BLOCK_ENTITY.get(), pos, blockState);
+        super(CDBlocks.PICKLE_JARS_BLOCK_ENTITY.get(), pos, blockState);
         this.itemHandler = new ItemStackHandlerRecipeInput(this, CONTAINER_SIZE);
-        this.cachedCheck = RecipeManager.createCheck(ModRecipes.PICKLE_JARS_TYPE.get());
+        this.cachedCheck = RecipeManager.createCheck(CDRecipes.PICKLE_JARS_TYPE.get());
         this.fluidTank = new FluidTank(FLUID_CAPACITY) {
             @Override
             protected void onContentsChanged() {

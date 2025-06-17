@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModCreativeTabs;
+import org.confluence.delight.common.init.CDCreativeTabs;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
@@ -45,7 +45,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        addCreativeTab(ModCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
+        addCreativeTab(CDCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
 
         //jei
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");

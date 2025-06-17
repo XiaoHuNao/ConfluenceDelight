@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
 
-public class ModFoodItems {
+public class CDFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
     //食材
@@ -58,7 +58,7 @@ public class ModFoodItems {
                     EffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 200)));
 
     //成品
-    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_HOT_POT = registerBlockItemFood("chicken_hot_pot", "鸡公煲", builder -> builder.stackTo(1).food(ModFoodProperties.PlentySatisfiedProperties(6000, 20, 40.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), ModBlocks.CHICKEN_HOT_POT);
+    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_HOT_POT = registerBlockItemFood("chicken_hot_pot", "鸡公煲", builder -> builder.stackTo(1).food(ModFoodProperties.PlentySatisfiedProperties(6000, 20, 40.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), CDBlocks.CHICKEN_HOT_POT);
     public static final DeferredItem<BaseFoodItem> CRISPY_RICE_WITH_POTATOES = registerNormalFood("crispy_rice_with_potatoes", "锅巴土豆", DelightFoodProperties.noEffectProperties(3, 1.8f));
     public static final DeferredItem<BaseFoodItem> ROYAL_GUMMY = registerNormalFood("royal_gummy", "皇家软糖",
             DelightFoodProperties.hasEffectProperties(1, 2.0f,
@@ -106,7 +106,7 @@ public class ModFoodItems {
                     EffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 600),
                     EffectData.of(MobEffects.REGENERATION, 600),
                     EffectData.of(ModEffects.EXQUISITELY_STUFFED, 300, 1)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", ModBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE,
+    public static final DeferredItem<BaseFoodItem.BlockItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", CDBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE,
             DelightFoodProperties.hasEffectProperties(12, 12.0f,
                     EffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600),
                     EffectData.of(MobEffects.LUCK, 600),
@@ -141,26 +141,26 @@ public class ModFoodItems {
     public static final DeferredItem<BaseFoodItem> SPICY_BOMB_FISH = registerNormalFood("spicy_bomb_fish", "香辣炸弹鱼", DelightFoodProperties.noEffectProperties(10, 12.0f));
     public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_COPPER_COIN = registerNormalFood("luck_chocolate_copper_coin", "幸运巧克力铜币",
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 600)));
+                    EffectData.of(CDEffects.LUCK_COIN, 600)));
     public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_SILVER_COIN = registerNormalFood("luck_chocolate_silver_coin", "幸运巧克力银币",
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 900, 1)));
+                    EffectData.of(CDEffects.LUCK_COIN, 900, 1)));
     public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_GOLDEN_COIN = registerNormalFood("luck_chocolate_golden_coin", "幸运巧克力金币",
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 1200, 2)));
+                    EffectData.of(CDEffects.LUCK_COIN, 1200, 2)));
     public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_PLATINUM_COIN = registerNormalFood("luck_chocolate_platinum_coin", "幸运巧克力铂金币",
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 1800, 3)));
+                    EffectData.of(CDEffects.LUCK_COIN, 1800, 3)));
     public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_EMERALD_COIN = registerNormalFood("luck_chocolate_emerald_coin", "幸运巧克力绿宝石币",
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 600),
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.MASTER_TRADER, 1800)));//TODO 富可敌国效果
+                    EffectData.of(CDEffects.LUCK_COIN, 600),
+                    EffectData.of(CDEffects.MASTER_TRADER, 1800)));//TODO 富可敌国效果
     public static final DeferredItem<BaseFoodItem> CHOCOLATE_LUCK_COIN_BOX = registerNormalFood("chocolate_luck_coin_box", "巧克力幸运币礼盒",
             DelightFoodProperties.hasEffectProperties(20, 20.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 2400, 4)));
+                    EffectData.of(CDEffects.LUCK_COIN, 2400, 4)));
     public static final DeferredItem<BaseFoodItem> GILDED_LUXURY_CHOCOLATE_LUCK_COIN_BOX = registerNormalFood("gilded_luxury_chocolate_luck_coin_box", "镀金奢华巧克力幸运币礼盒",
             DelightFoodProperties.hasEffectProperties(20, 20.0f,
-                    EffectData.of(org.confluence.delight.common.init.ModEffects.LUCK_COIN, 10800, 4),
+                    EffectData.of(CDEffects.LUCK_COIN, 10800, 4),
                     EffectData.of(MobEffects.DAMAGE_RESISTANCE, 10800, 2),
                     EffectData.of(MobEffects.HEALTH_BOOST, 10800, 2),
                     EffectData.of(MobEffects.ABSORPTION, 10800, 2),

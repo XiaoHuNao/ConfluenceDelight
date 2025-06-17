@@ -15,8 +15,8 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
-import org.confluence.delight.common.init.ModBlocks;
-import org.confluence.delight.common.init.ModRecipes;
+import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 
 public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
@@ -72,17 +72,17 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
 
     @Override
     public ItemStack getToastSymbol() {
-        return ModBlocks.PICKLE_JARS_BLOCK.toStack();
+        return CDBlocks.PICKLE_JARS_BLOCK.toStack();
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipes.PICKLE_JARS_SERIALIZER.get();
+        return CDRecipes.PICKLE_JARS_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return ModRecipes.PICKLE_JARS_TYPE.get();
+        return CDRecipes.PICKLE_JARS_TYPE.get();
     }
 
     public static class Serializer implements RecipeSerializer<PickleJarsRecipe> {

@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
-public class ModMaterialItems {
+public class CDMaterialItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
     public static DeferredHolder<Item, Item> register(final String en, final String zh, Supplier<? extends Item> it) {

@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.confluence.delight.common.init.ModFoodItems;
+import org.confluence.delight.common.init.CDFoodItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,7 +26,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         IntrinsicTagAppender<Item> foods = tag(Tags.Items.FOODS);
-        for (DeferredHolder<Item, ? extends Item> food : ModFoodItems.ITEMS.getEntries()) {
+        for (DeferredHolder<Item, ? extends Item> food : CDFoodItems.ITEMS.getEntries()) {
             foods.add(food.get());
         }
     }

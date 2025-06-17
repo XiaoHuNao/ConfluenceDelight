@@ -11,8 +11,8 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.ModFoodItems;
-import org.confluence.delight.common.init.ModItems;
+import org.confluence.delight.common.init.CDFoodItems;
+import org.confluence.delight.common.init.CDItems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,13 +32,13 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         List<Map<DeferredRegister.Items, List<String>>> customModels = new ArrayList<>();
-        customModels.add(createDir(ModFoodItems.ITEMS, "food/"));
+        customModels.add(createDir(CDFoodItems.ITEMS, "food/"));
 
         genModels(customModels, "item/generated", true);
 
         // 方块物品
         List<DeferredRegister.Items> blocks = List.of(
-                ModItems.BLOCK_ITEMS
+                CDItems.BLOCK_ITEMS
         );
         blocks.forEach(reg -> {
             reg.getEntries().forEach(item -> {

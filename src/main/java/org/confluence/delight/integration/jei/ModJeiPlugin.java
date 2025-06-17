@@ -10,8 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeManager;
-import org.confluence.delight.common.init.ModBlocks;
-import org.confluence.delight.common.init.ModRecipes;
+import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.mod.Confluence;
 
 @JeiPlugin
@@ -34,11 +34,11 @@ public class ModJeiPlugin implements IModPlugin {
         ClientLevel level = Minecraft.getInstance().level;
         if (level == null) return;
         RecipeManager recipeManager = level.getRecipeManager();
-        registration.addRecipes(PickleJarsCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(ModRecipes.PICKLE_JARS_TYPE.get()));
+        registration.addRecipes(PickleJarsCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.PICKLE_JARS_TYPE.get()));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(ModBlocks.PICKLE_JARS_BLOCK.toStack(), PickleJarsCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(CDBlocks.PICKLE_JARS_BLOCK.toStack(), PickleJarsCategory.RECIPE_TYPE);
     }
 }

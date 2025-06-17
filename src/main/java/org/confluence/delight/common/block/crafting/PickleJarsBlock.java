@@ -30,7 +30,7 @@ import net.neoforged.neoforge.fluids.FluidActionResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
-import org.confluence.delight.common.init.ModBlocks;
+import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.lib.util.LibUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -225,6 +225,6 @@ public class PickleJarsBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? null : LibUtils.getTicker(blockEntityType, ModBlocks.PICKLE_JARS_BLOCK_ENTITY.get(), PickleJarsBlockEntity::serverTick);
+        return level.isClientSide ? null : LibUtils.getTicker(blockEntityType, CDBlocks.PICKLE_JARS_BLOCK_ENTITY.get(), PickleJarsBlockEntity::serverTick);
     }
 }

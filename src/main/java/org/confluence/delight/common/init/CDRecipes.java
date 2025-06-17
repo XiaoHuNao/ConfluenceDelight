@@ -11,7 +11,7 @@ import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import java.util.function.Supplier;
 
-public class ModRecipes {
+public class CDRecipes {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, ConfluenceDelight.MODID);
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, ConfluenceDelight.MODID);
 
