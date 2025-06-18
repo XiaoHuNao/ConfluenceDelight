@@ -2,9 +2,11 @@ package org.confluence.delight.common.init;
 
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 
@@ -16,7 +18,10 @@ public class CDItems {
 
     public static final DeferredHolder<Item, Item> WINE_BUCKET = register("wine_bucket", "酒桶", () -> new BucketItem(CDFluids.WINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
-    private static DeferredHolder<Item, Item> register(final String en, final String zh, Supplier<? extends Item> item) {
+    public static final DeferredItem<Item> PINEAPPLE_SEEDS = register("pineapple_seeds", "菠萝种子", () -> new ItemNameBlockItem(CDNaturalBlocks.PINEAPPLE_CROP.get(), new Item.Properties()));
+    public static final DeferredItem<Item> SPICY_PEPPER_SEEDS = register("spicy_pepper_seeds", "辣椒种子", () -> new ItemNameBlockItem(CDNaturalBlocks.SPICY_PEPPER_CROP.get(), new Item.Properties()));
+
+    private static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> item) {
         return CDMaterialItems.register(en, zh, item);
     }
 

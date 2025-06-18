@@ -63,6 +63,7 @@ public class CDBlocks {
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+        BLOCK_ENTITIES.register(eventBus);
         CDNaturalBlocks.BLOCKS.register(eventBus);
     }
 }

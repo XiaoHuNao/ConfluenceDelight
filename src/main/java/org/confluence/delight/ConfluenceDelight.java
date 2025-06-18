@@ -40,8 +40,7 @@ public class ConfluenceDelight {
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         }
 
-        CDBlocks.BLOCKS.register(modEventBus);
-        CDBlocks.BLOCK_ENTITIES.register(modEventBus);
+        CDBlocks.register(modEventBus);
         CDItems.register(modEventBus);
         CDRecipes.register(modEventBus);
         CDFluids.initialize();

@@ -139,35 +139,40 @@ public class CDFoodItems {
                     EffectData.of(ModEffects.DANGER_SENSE, 800),
                     EffectData.of(ModEffects.SPELUNKER, 800)));
     public static final DeferredItem<BaseFoodItem> SPICY_BOMB_FISH = registerNormalFood("spicy_bomb_fish", "香辣炸弹鱼", DelightFoodProperties.noEffectProperties(10, 12.0f));
-    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_COPPER_COIN = registerNormalFood("luck_chocolate_copper_coin", "幸运巧克力铜币",
+    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_COPPER_COIN = registerToolTipFood("luck_chocolate_copper_coin", "幸运巧克力铜币", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(CDEffects.LUCK_COIN, 600)));
-    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_SILVER_COIN = registerNormalFood("luck_chocolate_silver_coin", "幸运巧克力银币",
+                    EffectData.of(CDEffects.LUCK_COIN, 600)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_SILVER_COIN = registerToolTipFood("luck_chocolate_silver_coin", "幸运巧克力银币", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(CDEffects.LUCK_COIN, 900, 1)));
-    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_GOLDEN_COIN = registerNormalFood("luck_chocolate_golden_coin", "幸运巧克力金币",
+                    EffectData.of(CDEffects.LUCK_COIN, 900, 1)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_GOLDEN_COIN = registerToolTipFood("luck_chocolate_golden_coin", "幸运巧克力金币", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(CDEffects.LUCK_COIN, 1200, 2)));
-    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_PLATINUM_COIN = registerNormalFood("luck_chocolate_platinum_coin", "幸运巧克力铂金币",
+                    EffectData.of(CDEffects.LUCK_COIN, 1200, 2)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_PLATINUM_COIN = registerToolTipFood("luck_chocolate_platinum_coin", "幸运巧克力铂金币", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
-                    EffectData.of(CDEffects.LUCK_COIN, 1800, 3)));
-    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_EMERALD_COIN = registerNormalFood("luck_chocolate_emerald_coin", "幸运巧克力绿宝石币",
+                    EffectData.of(CDEffects.LUCK_COIN, 1800, 3)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> LUCK_CHOCOLATE_EMERALD_COIN = registerToolTipFood("luck_chocolate_emerald_coin", "幸运巧克力绿宝石币", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(4, 6.0f,
                     EffectData.of(CDEffects.LUCK_COIN, 600),
-                    EffectData.of(CDEffects.MASTER_TRADER, 1800)));//TODO 富可敌国效果
-    public static final DeferredItem<BaseFoodItem> CHOCOLATE_LUCK_COIN_BOX = registerNormalFood("chocolate_luck_coin_box", "巧克力幸运币礼盒",
+                    EffectData.of(CDEffects.MASTER_TRADER, 1800)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);//TODO 富可敌国效果
+    public static final DeferredItem<BaseFoodItem> CHOCOLATE_LUCK_COIN_BOX = registerToolTipFood("chocolate_luck_coin_box", "巧克力幸运币礼盒", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(20, 20.0f,
-                    EffectData.of(CDEffects.LUCK_COIN, 2400, 4)));
-    public static final DeferredItem<BaseFoodItem> GILDED_LUXURY_CHOCOLATE_LUCK_COIN_BOX = registerNormalFood("gilded_luxury_chocolate_luck_coin_box", "镀金奢华巧克力幸运币礼盒",
+                    EffectData.of(CDEffects.LUCK_COIN, 2400, 4)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GOLD);
+    public static final DeferredItem<BaseFoodItem> GILDED_LUXURY_CHOCOLATE_LUCK_COIN_BOX = registerToolTipFood("gilded_luxury_chocolate_luck_coin_box", "镀金奢华巧克力幸运币礼盒", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(20, 20.0f,
                     EffectData.of(CDEffects.LUCK_COIN, 10800, 4),
                     EffectData.of(MobEffects.DAMAGE_RESISTANCE, 10800, 2),
                     EffectData.of(MobEffects.HEALTH_BOOST, 10800, 2),
                     EffectData.of(MobEffects.ABSORPTION, 10800, 2),
                     EffectData.of(MobEffects.DAMAGE_BOOST, 10800, 2),
-                    EffectData.of(MobEffects.REGENERATION, 10800, 1)
-            )
-    );
+                    EffectData.of(MobEffects.REGENERATION, 10800, 1)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GOLD);
 
     public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
         DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {

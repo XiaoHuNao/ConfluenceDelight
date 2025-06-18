@@ -1,10 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.xiaohunao.confluence_delight.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "package": "org.confluence.delight.mixin",
+  "compatibilityLevel": "JAVA_21",
   "refmap": "ConfluenceDelight.refmap.json",
   "mixins": [
+    "entity.UpdateSpecialPricesMixin"
   ],
   "client": [
   ],

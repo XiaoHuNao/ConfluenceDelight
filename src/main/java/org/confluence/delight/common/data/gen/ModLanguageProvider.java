@@ -71,6 +71,27 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.white_dawn.0",
                 "The white cat shaped ice cream will bring you the magic dawn.",
                 "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
+        add("tooltip.item.confluence.luck_chocolate_copper_coin.0",
+                "If I eat this, will it really drop the item I want?",
+                "吃了这个，真的能爆出我想要的东西吗？");
+        add("tooltip.item.confluence.luck_chocolate_silver_coin.0",
+                "It seems... to have some use.",
+                "似乎……有些用处。");
+        add("tooltip.item.confluence.luck_chocolate_golden_coin.0",
+                "A noticeable increase in luck has brought many benefits.",
+                "明显提升的运气，带来了不少好处");
+        add("tooltip.item.confluence.luck_chocolate_platinum_coin.0",
+                "You feel the happiness that good luck brings!",
+                "你体验到好运带来的快乐！");
+        add("tooltip.item.confluence.luck_chocolate_emerald_coin.0",
+                "Huge profits!!! This is pure profit!!! I—I'm richer than a kingdom! Hahahahaha!",
+                "暴利！！！这简直是暴利！！！我——富可敌国！哈哈哈哈哈哈！");
+        add("tooltip.item.confluence.chocolate_luck_coin_box.0",
+                "So this is the blessing of luck. Now I can get any drop I want. The goddess of luck is always on my side!",
+                "原来这就是幸运的加持，现在我可以爆出任何东西，幸运女神永远在我这边！");
+        add("tooltip.item.confluence.gilded_luxury_chocolate_luck_coin_box.0",
+                "A luxurious piece of art—should I consume it or keep it as a collectible?",
+                "奢华的艺术品，是吃掉，亦或是收藏");
 
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
 
