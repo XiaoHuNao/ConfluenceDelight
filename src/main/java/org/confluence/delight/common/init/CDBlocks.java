@@ -28,15 +28,15 @@ public class CDBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ConfluenceDelight.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, ConfluenceDelight.MODID);
 
-    //食物
-    public static final DeferredBlock<ChickenHotPotBlock> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
-    public static final DeferredBlock<BlackCurrantDarkChocolatePieBlock> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerWithoutItem("blackcurrant_dark_chocolate_pie", BlackCurrantDarkChocolatePieBlock::new);
-
     public static final DeferredBlock<PickleJarsBlock> PICKLE_JARS_BLOCK = registerBlockItem("pickle_jars_block", "泡菜罐", () -> new PickleJarsBlock(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<BlockEntityType<PickleJarsBlockEntity>> PICKLE_JARS_BLOCK_ENTITY = BLOCK_ENTITIES.register("pickle_jars_block", () -> BlockEntityType.Builder.of(PickleJarsBlockEntity::new, PICKLE_JARS_BLOCK.get()).build(null));
 
     //流体
-    public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.byId(0xFFFFFF))));
+    public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.WHITE)));
+
+    //食物
+    public static final DeferredBlock<ChickenHotPotBlock> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
+    public static final DeferredBlock<BlackCurrantDarkChocolatePieBlock> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerWithoutItem("blackcurrant_dark_chocolate_pie", BlackCurrantDarkChocolatePieBlock::new);
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));

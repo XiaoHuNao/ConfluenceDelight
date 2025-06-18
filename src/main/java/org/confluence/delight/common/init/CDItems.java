@@ -16,11 +16,11 @@ public class CDItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
-    public static final DeferredHolder<Item, Item> WINE_BUCKET = register("wine_bucket", "酒桶", () -> new BucketItem(CDFluids.WINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-
     public static final DeferredItem<Item> PINEAPPLE_SEEDS = register("pineapple_seeds", "菠萝种子", () -> new ItemNameBlockItem(CDNaturalBlocks.PINEAPPLE_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> DRAGON_FRUIT_SEEDS = register("dragon_fruit_seeds", "火龙果种子", () -> new ItemNameBlockItem(CDNaturalBlocks.DRAGON_FRUIT_CACTUS.get(), new Item.Properties()));
     public static final DeferredItem<Item> SPICY_PEPPER_SEEDS = register("spicy_pepper_seeds", "辣椒种子", () -> new ItemNameBlockItem(CDNaturalBlocks.SPICY_PEPPER_CROP.get(), new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> WINE_BUCKET = register("wine_bucket", "酒桶", () -> new BucketItem(CDFluids.WINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     private static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> item) {
         return CDMaterialItems.register(en, zh, item);

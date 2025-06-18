@@ -41,10 +41,11 @@ public class ConfluenceDelight {
         }
 
         CDItems.register(modEventBus);
-        CDFluids.initialize();
         CDBlocks.register(modEventBus);
+        CDFluids.initialize();
         CDRecipes.register(modEventBus);
         CDEffects.EFFECTS.register(modEventBus);
+        CDFeature.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         CDCreativeTabs.CREATIVE_TABS.register(modEventBus);
     }
