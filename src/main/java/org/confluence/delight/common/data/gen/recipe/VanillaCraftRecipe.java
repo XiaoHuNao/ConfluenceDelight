@@ -12,6 +12,7 @@ import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDItems;
+import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
@@ -94,7 +95,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(FoodItems.MANGO));
+                Ingredient.of(CDTags.Items.FRUIT_MANGO));
         shapeless(output, "", "", CDFoodItems.BANANA_PUDDING.toStack(),
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.SUGAR),
@@ -106,7 +107,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_JAM_MANGO_PUDDING.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(FoodItems.MANGO),
+                Ingredient.of(CDTags.Items.FRUIT_MANGO),
                 Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
                 Ingredient.of(MaterialItems.GEL));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN.toStack(),
@@ -135,7 +136,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.COCOA_BEANS),
                 Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
         shapeless(output, "", "", CDItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
-        shapeless(output, "", "", CDItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(FoodItems.PINEAPPLE));
+        shapeless(output, "", "", CDItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.FRUIT_PINEAPPLE));
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);

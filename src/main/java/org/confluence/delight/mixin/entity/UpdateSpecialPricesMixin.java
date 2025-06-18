@@ -16,7 +16,7 @@ public class UpdateSpecialPricesMixin {
     private void updateSpecialPrices(Player player, CallbackInfo ci) {
         if (player.hasEffect(CDEffects.MASTER_TRADER)) {
             MobEffectInstance effect = player.getEffect(CDEffects.MASTER_TRADER);
-            for (MerchantOffer merchantoffer : ((Villager)(Object)this).getOffers()) {
+            for (MerchantOffer merchantoffer : ((Villager) (Object) this).getOffers()) {
                 double discountRatio = 0.5;
                 int baseCount = merchantoffer.getBaseCostA().getCount();
                 int discountAmount = (int) Math.floor(discountRatio * baseCount);

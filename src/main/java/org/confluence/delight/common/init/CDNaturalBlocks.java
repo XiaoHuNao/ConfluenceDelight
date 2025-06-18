@@ -4,6 +4,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
@@ -35,17 +37,24 @@ public class CDNaturalBlocks {
 
     //灌木
     public static final DeferredBlock<BaseFruitShrubBlock> BLACKCURRANT_SHRUB_BLOCK = registerBlockItem("blackcurrant_shrub", "黑醋栗灌木", () -> new BaseFruitShrubBlock(FoodItems.BLACKCURRANT));
-    public static final DeferredBlock<BaseFruitShrubBlock> ELDERBERRY_SHRUB_BLOCK = registerBlockItem("elderberry_shrub","接骨木灌木",() -> new BaseFruitShrubBlock(FoodItems.ELDERBERRY));
+    public static final DeferredBlock<BaseFruitShrubBlock> ELDERBERRY_SHRUB_BLOCK = registerBlockItem("elderberry_shrub", "接骨木灌木", () -> new BaseFruitShrubBlock(FoodItems.ELDERBERRY));
 
     //作物
     public static final DeferredBlock<PineappleCropBlock> PINEAPPLE_CROP = registerWithoutItem("pineapple_crop", PineappleCropBlock::new);
     public static final DeferredBlock<SpicyPepperBlock> SPICY_PEPPER_CROP = registerWithoutItem("spicy_pepper_crop", SpicyPepperBlock::new);
-    public static final DeferredBlock<DragonFruitCactusBlock> DRAGON_FRUIT_CACTUS = registerBlockItem("dragon_fruit_cactus", "火龙果仙人掌", DragonFruitCactusBlock::new);
-
+    public static final DeferredBlock<DragonFruitCactusBlock> DRAGON_FRUIT_CACTUS = registerWithoutItem("dragon_fruit_cactus", "火龙果仙人掌", DragonFruitCactusBlock::new);
+    public static final DeferredBlock<DragonFruitBlock> DRAGON_FRUIT_BLOCK = registerWithoutItem("dragon_fruit", "火龙果", DragonFruitBlock::new);
 
     public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, Supplier<B> bl) {
         return BLOCKS.register(en, bl);
     }
+
+    public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, final String zh, Supplier<B> bl) {
+        DeferredBlock<B> block = BLOCKS.register(en, bl);
+        chineseProviders.add(l -> l.addBlock(block, zh));
+        return block;
+    }
+
 
     public static <B extends Block> DeferredBlock<B> registerBlockItem(final String en, final String zh, Supplier<B> bl) {
         DeferredBlock<B> block = BLOCKS.register(en, bl);

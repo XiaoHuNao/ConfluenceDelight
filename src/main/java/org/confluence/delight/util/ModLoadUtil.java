@@ -8,4 +8,8 @@ public class ModLoadUtil {
         return ModList.get().isLoaded("create");
     }
 
+    public static boolean isFruitDelightLoaded() {
+        return ModList.get().isLoaded("fruitsdelight");
+    }
+
 }

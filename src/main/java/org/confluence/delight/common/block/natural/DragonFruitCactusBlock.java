@@ -4,12 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -17,12 +12,9 @@ import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.phys.BlockHitResult;
-import org.confluence.mod.common.init.item.FoodItems;
-
+import org.confluence.delight.common.init.CDNaturalBlocks;
 
 public class DragonFruitCactusBlock extends CactusBlock {
-
     public DragonFruitCactusBlock() {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.CACTUS));
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
@@ -30,12 +22,6 @@ public class DragonFruitCactusBlock extends CactusBlock {
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockState blockstate = level.getBlockState(pos.relative(direction));
-            if (blockstate.isSolid() || level.getFluidState(pos.relative(direction)).is(FluidTags.LAVA)) {
-                return false;
-            }
-        }
         BlockState blockstate1 = level.getBlockState(pos.below());
         net.neoforged.neoforge.common.util.TriState soilDecision = blockstate1.canSustainPlant(level, pos.below(), Direction.UP, state);
         if (!soilDecision.isDefault()) return soilDecision.isTrue();
@@ -44,44 +30,37 @@ public class DragonFruitCactusBlock extends CactusBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockPos abovePos = pos.above();
-        int age = state.getValue(AGE);
-
-        if (age < MAX_AGE) {
-            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, true)) {
-                level.setBlock(pos, state.setValue(AGE, age + 1), 3);
-                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
+        BlockPos blockpos = pos.above();
+        if (level.isEmptyBlock(blockpos)) {
+            int i = 1;
+            while (level.getBlockState(pos.below(i)).is(this)) {
+                i++;
             }
-        } else if (age == MAX_AGE) {
-            if (level.isEmptyBlock(abovePos)) {
-                int height = 1;
-                while (level.getBlockState(pos.below(height)).is(this)) {
-                    height++;
-                }
-                if (height < 5) {
-                    if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, true)) {
-                        level.setBlockAndUpdate(abovePos, this.defaultBlockState().setValue(AGE, 0));
-                        net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
+            if (i < 5) {
+                int j = state.getValue(AGE);
+                if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, blockpos, state, true)) {
+                    if (j == 15) {
+                        level.setBlockAndUpdate(blockpos, this.defaultBlockState());
+                        BlockState blockstate = state.setValue(AGE, 0);
+                        level.setBlockAndUpdate(pos, blockstate);
+                        level.neighborChanged(blockstate, blockpos, this, pos, false);
+                    } else {
+                        level.setBlockAndUpdate(pos, state.setValue(AGE, j + 1));
                     }
+                    net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
                 }
             }
         }
-    }
-
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        int currentAge = state.getValue(AGE);
-        if (currentAge >= 13) {
-            if (!level.isClientSide()) {
-                ItemStack fruitStack = new ItemStack(FoodItems.DRAGON_FRUIT.get(), 1);
-                player.getInventory().add(fruitStack);
-                int newAge = Math.max(12, currentAge - 1);
-                level.setBlockAndUpdate(pos, state.setValue(AGE, newAge));
+        if (state.getValue(AGE) == 15) {
+            Direction[] directions = Direction.Plane.HORIZONTAL.stream().toList().toArray(new Direction[0]);
+            Direction selectedDirection = directions[random.nextInt(directions.length)];
+            BlockPos neighborPos = pos.relative(selectedDirection);
+            if (level.isEmptyBlock(neighborPos)) {
+                level.setBlockAndUpdate(neighborPos, CDNaturalBlocks.DRAGON_FRUIT_BLOCK.get().defaultBlockState()
+                        .setValue(DragonFruitBlock.FACING, selectedDirection.getOpposite())
+                        .setValue(DragonFruitBlock.AGE, 0));
             }
-            return InteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
     }
 
     @Override

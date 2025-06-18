@@ -174,9 +174,11 @@ dependencies {
     implementation "curse.maven:confluence-1209464:6608114"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
+    compileOnly "curse.maven:terra-curio-1027625:6545988"
     compileOnly "curse.maven:create-328085:6323264"
     runtimeOnly "curse.maven:create-328085:6323264"
-    compileOnly "curse.maven:terra-curio-1027625:6545988"
+    compileOnly "curse.maven:fruits-delight-943774:6500952"
+    runtimeOnly "curse.maven:fruits-delight-943774:6500952"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"

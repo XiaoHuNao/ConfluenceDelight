@@ -8,16 +8,19 @@ import net.minecraft.world.level.block.Block;
 import org.confluence.delight.ConfluenceDelight;
 
 
-public final class ModTags {
+public final class CDTags {
     public static class Blocks {
-
-        private static TagKey<Block> tag(String id) {
+        private static TagKey<Block> register(String id) {
             return BlockTags.create(ConfluenceDelight.asResource(id));
         }
     }
 
     public static class Items {
-        private static TagKey<Item> tag(String id) {
+        public static final TagKey<Item> FRUIT_MANGO = register("mango");
+        public static final TagKey<Item> FRUIT_PINEAPPLE = register("pineapple");
+        public static final TagKey<Item> FRUIT_LEMON = register("lemon");
+
+        private static TagKey<Item> register(String id) {
             return ItemTags.create(ConfluenceDelight.asResource(id));
         }
     }
