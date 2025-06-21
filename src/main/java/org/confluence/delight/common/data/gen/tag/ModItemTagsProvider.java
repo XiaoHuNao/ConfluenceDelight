@@ -4,6 +4,7 @@ import dev.xkmc.fruitsdelight.init.food.FruitType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -11,8 +12,9 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.common.init.CDFoodItems;
+import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDTags;
-import org.confluence.delight.util.ModLoadUtil;
+import org.confluence.delight.integration.ModLoadUtil;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +43,16 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             addFruitToTag(CDTags.Items.FRUIT_PINEAPPLE, FruitType.PINEAPPLE.getFruit());
             addFruitToTag(CDTags.Items.FRUIT_LEMON, FruitType.LEMON.getFruit());
         }
+        tag(ItemTags.PARROT_FOOD).add(
+                CDItems.PINEAPPLE_SEEDS.get(),
+                CDItems.DRAGON_FRUIT_SEEDS.get(),
+                CDItems.SPICY_PEPPER_SEEDS.get()
+        );
+        tag(ItemTags.CHICKEN_FOOD).add(
+                CDItems.PINEAPPLE_SEEDS.get(),
+                CDItems.DRAGON_FRUIT_SEEDS.get(),
+                CDItems.SPICY_PEPPER_SEEDS.get()
+        );
     }
 
     @Override

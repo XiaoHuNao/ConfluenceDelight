@@ -11,6 +11,7 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.data.gen.recipe.ModRecipe;
 import org.confluence.delight.common.data.gen.recipe.VanillaCraftRecipe;
 import org.confluence.delight.common.data.gen.tag.ModBlockTagsProvider;
+import org.confluence.delight.common.data.gen.tag.ModFluidTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModItemTagsProvider;
 import org.confluence.lib.common.data.gen.CollectRecipeProvider;
 
@@ -27,9 +28,11 @@ public class ModDataGenerator {
         ExistingFileHelper helper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookup, helper);
+        ModFluidTagsProvider fluidTagsProvider = new ModFluidTagsProvider(output, lookup, helper);
 
         boolean server = event.includeServer();
         generator.addProvider(server, blockTagsProvider);
+        generator.addProvider(server, fluidTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
         generator.addProvider(server, new CollectRecipeProvider(output, lookup,
                 ModRecipe::new,
@@ -40,7 +43,5 @@ public class ModDataGenerator {
 //        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
         generator.addProvider(client, new ModLanguageProvider(output, "en_us"));
         generator.addProvider(client, new ModLanguageProvider(output, "zh_cn"));
-
-
     }
 }

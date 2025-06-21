@@ -1,4 +1,4 @@
-package org.confluence.delight.util;
+package org.confluence.delight.integration;
 
 import net.neoforged.fml.ModList;
 

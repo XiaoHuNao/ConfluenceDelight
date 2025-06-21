@@ -179,6 +179,8 @@ dependencies {
     runtimeOnly "curse.maven:create-328085:6323264"
     compileOnly "curse.maven:fruits-delight-943774:6500952"
     runtimeOnly "curse.maven:fruits-delight-943774:6500952"
+    compileOnly "curse.maven:cuisine-delight-893541:6292237"
+    runtimeOnly "curse.maven:cuisine-delight-893541:6292237"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
