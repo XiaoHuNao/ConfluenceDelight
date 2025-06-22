@@ -13,6 +13,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDItems;
+import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.delight.integration.ModLoadUtil;
 import org.confluence.mod.common.init.item.FoodItems;
@@ -52,6 +53,54 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 CDItems.PINEAPPLE_SEEDS.get(),
                 CDItems.DRAGON_FRUIT_SEEDS.get(),
                 CDItems.SPICY_PEPPER_SEEDS.get()
+        );
+        tag(ItemTags.SAPLINGS).add(
+                CDNaturalBlocks.APPLE_SAPLING.asItem(),
+                CDNaturalBlocks.APRICOT_SAPLING.asItem(),
+                CDNaturalBlocks.GRAPEFRUIT_SAPLING.asItem(),
+                CDNaturalBlocks.LEMON_SAPLING.asItem(),
+                CDNaturalBlocks.PEACH_SAPLING.asItem(),
+                CDNaturalBlocks.CHERRY_SAPLING.asItem(),
+                CDNaturalBlocks.PLUM_SAPLING.asItem(),
+                CDNaturalBlocks.BLOOD_ORANGE_SAPLING.asItem(),
+                CDNaturalBlocks.RAMBUTAN_SAPLING.asItem(),
+                CDNaturalBlocks.MANGO_SAPLING.asItem(),
+                CDNaturalBlocks.BANANA_SAPLING.asItem(),
+                CDNaturalBlocks.COCONUT_SAPLING.asItem(),
+                CDNaturalBlocks.STAR_FRUIT_SAPLING.asItem(),
+                CDNaturalBlocks.POMEGRANATE_SAPLING.asItem()
+        );
+        tag(ItemTags.LEAVES).add(
+                CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
+        );
+        tag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL).add(
+                CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
+                CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
         );
     }
 

@@ -102,12 +102,28 @@ public class PickleJarsBlock extends BaseEntityBlock {
 
     private ItemInteractionResult handleItemInteraction(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack handItem) {
         Level level = player.level();
-        ItemStack taken = entity.takeItem(-1);
+        ItemStack taken = entity.takeItem(PickleJarsBlockEntity.OUTPUT_SLOT);
         if (!taken.isEmpty()) {
             if (!level.isClientSide) {
                 player.addItem(taken);
             }
             return success(level);
+        }
+        taken = entity.takeItem(PickleJarsBlockEntity.FERMENTED_ITEM_SLOT);
+        if (!taken.isEmpty()) {
+            if (!level.isClientSide) {
+                player.addItem(taken);
+            }
+            return success(level);
+        }
+        for (int i = 0; i < PickleJarsBlockEntity.INPUT_SIZE; i++) {
+            taken = entity.takeItem(i);
+            if (!taken.isEmpty()) {
+                if (!level.isClientSide) {
+                    player.addItem(taken);
+                }
+                return success(level);
+            }
         }
         ItemStack remaining = entity.addItem(handItem);
         if (remaining.getCount() != handItem.getCount()) {
@@ -116,8 +132,10 @@ public class PickleJarsBlock extends BaseEntityBlock {
             }
             return success(level);
         }
+
         return ItemInteractionResult.FAIL;
     }
+
 
     private ItemInteractionResult handleBucketInteraction(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack bucket, Level level) {
         Optional<FluidStack> fluidOptional = FluidUtil.getFluidContained(bucket);

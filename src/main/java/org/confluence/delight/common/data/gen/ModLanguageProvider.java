@@ -50,7 +50,7 @@ public class ModLanguageProvider extends LanguageProvider {
         //jei
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
         add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
-
+        add("jei.confluence_delight.info.pickle_jars.fermented_item", "This formula can be accelerated by using fungal yeast", "该配方可以使用菌曲加速");
         //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");

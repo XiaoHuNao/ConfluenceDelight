@@ -13,6 +13,7 @@ import org.confluence.delight.common.data.gen.recipe.VanillaCraftRecipe;
 import org.confluence.delight.common.data.gen.tag.ModBlockTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModFluidTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModItemTagsProvider;
+import org.confluence.delight.common.data.gen.worldgen.FruitTreeFeatureConfigProvider;
 import org.confluence.lib.common.data.gen.CollectRecipeProvider;
 
 import java.util.concurrent.CompletableFuture;
@@ -37,6 +38,8 @@ public class ModDataGenerator {
         generator.addProvider(server, new CollectRecipeProvider(output, lookup,
                 ModRecipe::new,
                 VanillaCraftRecipe::new));
+        generator.addProvider(server, new FruitTreeFeatureConfigProvider(output, lookup));
+
 
         boolean client = event.includeClient();
         generator.addProvider(client, new ModItemModelProvider(output, helper));

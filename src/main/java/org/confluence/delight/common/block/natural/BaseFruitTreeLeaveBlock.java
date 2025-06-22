@@ -28,8 +28,8 @@ import static net.neoforged.neoforge.common.CommonHooks.canCropGrow;
 
 public class BaseFruitTreeLeaveBlock extends LeavesBlock implements BonemealableBlock, SimpleWaterloggedBlock, IShearable {
     private final ItemLike fruit;
-    private static final IntegerProperty AGE = BlockStateProperties.AGE_15;
-    private static final BooleanProperty CAN_GROW = BooleanProperty.create("can_grow");
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
+    public static final BooleanProperty CAN_GROW = BooleanProperty.create("can_grow");
 
     public BaseFruitTreeLeaveBlock(ItemLike fruit) {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
@@ -71,13 +71,8 @@ public class BaseFruitTreeLeaveBlock extends LeavesBlock implements Bonemealable
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockState updatedState = updateDistance(state, level, pos);
-        if (!updatedState.getValue(PERSISTENT) && !updatedState.getValue(CAN_GROW)) {
-            updatedState = updatedState.setValue(CAN_GROW, true);
-        }
-        level.setBlock(pos, updatedState, 3);
+        level.setBlock(pos, updateDistance(state, level, pos), 3);
     }
-
 
     private static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = 7;
@@ -109,17 +104,17 @@ public class BaseFruitTreeLeaveBlock extends LeavesBlock implements Bonemealable
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         int currentAge = state.getValue(AGE);
-        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) < 7 && currentAge >= 13) {
+        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) < 7 && currentAge > 12) {
             if (!level.isClientSide()) {
-                ItemStack fruitStack = new ItemStack(fruit, 1);
+                ItemStack fruitStack = new ItemStack(fruit, currentAge - 12);
                 player.getInventory().add(fruitStack);
-                int newAge = Math.max(12, currentAge - 1);
-                level.setBlockAndUpdate(pos, state.setValue(AGE, newAge));
+                level.setBlockAndUpdate(pos, state.setValue(AGE, 11));
             }
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

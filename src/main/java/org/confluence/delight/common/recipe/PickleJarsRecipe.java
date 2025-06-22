@@ -16,28 +16,64 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 
-public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
+public class  PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
     private final FluidStack requiredFluid;
+    private final ItemStack fermentedItems = CDItems.FUNGAL_YEAST.toStack();
     private final int craftTime;
     private final boolean cover;
+    private final boolean fermentation;
 
     public PickleJarsRecipe(ItemStack result, NonNullList<Ingredient> ingredients, FluidStack requiredFluid, int craftTime, boolean cover) {
         super(result, ingredients);
         this.requiredFluid = requiredFluid;
         this.craftTime = craftTime;
         this.cover = cover;
+        this.fermentation = false;
+    }
+
+    public PickleJarsRecipe(boolean fermentation, ItemStack result, NonNullList<Ingredient> ingredients, FluidStack requiredFluid, int craftTime, boolean cover) {
+        super(result, ingredients);
+        this.requiredFluid = requiredFluid;
+        this.craftTime = craftTime;
+        this.cover = cover;
+        this.fermentation = fermentation;
     }
 
     public boolean getCover() {
         return cover;
     }
 
+    public boolean isFermentation() {
+        return fermentation;
+    }
+
+
+    public ItemStack getFermentedItems() {
+        return fermentedItems;
+    }
+
+
     @Override
     public boolean matches(Input input, Level level) {
-        return matchesFluid(input.fluid) && super.matches(input, level);
+        if (this.fermentation) {
+            if (input.isFermentation()) {
+                if (!ItemStack.isSameItem(input.getFermentedItems(), this.fermentedItems)) {
+                    return false;
+                }
+            }
+        } else {
+            if (input.isFermentation()) {
+                return false;
+            }
+        }
+        if (!matchesFluid(input.fluid)) {
+            return false;
+        }
+        return super.matches(input, level);
     }
 
     private boolean matchesFluid(FluidStack inputFluid) {
@@ -60,9 +96,15 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
         }
     }
 
+    public void consumeFermentedItem(ItemStack fermentedItemStack) {
+        if (this.fermentation && !fermentedItemStack.isEmpty() && ItemStack.isSameItem(fermentedItemStack, this.fermentedItems)) {
+            fermentedItemStack.shrink(1);
+        }
+    }
+
     @Override
     protected int maxIngredientSize() {
-        return 4;
+        return 3;
     }
 
     @Override
@@ -91,8 +133,10 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
                 INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
                 FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.requiredFluid),
                 Codec.INT.fieldOf("crafttime").forGetter(recipe -> recipe.craftTime),
-                Codec.BOOL.fieldOf("cover").forGetter(recipe -> recipe.cover)
-        ).apply(instance, PickleJarsRecipe::new));
+                Codec.BOOL.fieldOf("cover").forGetter(recipe -> recipe.cover),
+                Codec.BOOL.fieldOf("fermentation").forGetter(recipe -> recipe.fermentation)
+        ).apply(instance, (result, ingredients, fluid, craftTime, cover, fermentation)
+                -> new PickleJarsRecipe(fermentation, result, ingredients, fluid, craftTime, cover)));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, PickleJarsRecipe> STREAM_CODEC = StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
 
@@ -116,7 +160,8 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
             FluidStack requiredFluid = FluidStack.STREAM_CODEC.decode(buffer);
             int craftTime = buffer.readVarInt();
             boolean cover = buffer.readBoolean();
-            return new PickleJarsRecipe(result, ingredients, requiredFluid, craftTime, cover);
+            boolean fermentation = buffer.readBoolean();
+            return new PickleJarsRecipe(fermentation, result, ingredients, requiredFluid, craftTime, cover);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, PickleJarsRecipe recipe) {
@@ -128,17 +173,23 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
             FluidStack.STREAM_CODEC.encode(buffer, recipe.requiredFluid);
             buffer.writeVarInt(recipe.craftTime);
             buffer.writeBoolean(recipe.cover);
+            buffer.writeBoolean(recipe.fermentation);
         }
     }
+
 
     public static class Input implements RecipeInput {
         private final ItemStack[] items;
         final FluidStack fluid;
+        private final boolean fermentation;
+        private final ItemStack fermentedItems = CDItems.FUNGAL_YEAST.toStack();
 
-        public Input(ItemStack[] items, FluidStack fluid) {
+        public Input(ItemStack[] items, FluidStack fluid, boolean fermentation) {
             this.items = items;
             this.fluid = fluid;
+            this.fermentation = fermentation;
         }
+
 
         @Override
         public ItemStack getItem(int index) {
@@ -148,6 +199,14 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
         @Override
         public int size() {
             return items.length;
+        }
+
+        public boolean isFermentation() {
+            return fermentation;
+        }
+
+        public ItemStack getFermentedItems() {
+            return fermentedItems;
         }
     }
 }

@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.recipe.ItemStackHandlerRecipeInput;
@@ -30,19 +31,32 @@ import java.util.Optional;
 
 public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public static final int INPUT_SIZE = 3;
+    public static final int FERMENTED_ITEM_SLOT = INPUT_SIZE;
+    public static final int TOTAL_INPUT_SIZE = INPUT_SIZE + 1;
     public static final int OUTPUT_SIZE = 1;
-    public static final int CONTAINER_SIZE = INPUT_SIZE + OUTPUT_SIZE;
+    public static final int CONTAINER_SIZE = TOTAL_INPUT_SIZE + OUTPUT_SIZE;
     public static final int OUTPUT_SLOT = CONTAINER_SIZE - 1;
     public static final int FLUID_CAPACITY = StartupConfigs.FLUID_CAPACITY.getAsInt();
+
     protected NonNullList<ItemStack> items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
+
     int craftProgress, craftTotalTime;
+
     public final ItemStackHandlerRecipeInput itemHandler;
     public final FluidTank fluidTank;
     private final RecipeManager.CachedCheck<PickleJarsRecipe.Input, PickleJarsRecipe> cachedCheck;
 
     public PickleJarsBlockEntity(BlockPos pos, BlockState blockState) {
         super(CDBlocks.PICKLE_JARS_BLOCK_ENTITY.get(), pos, blockState);
-        this.itemHandler = new ItemStackHandlerRecipeInput(this, CONTAINER_SIZE);
+        this.itemHandler = new ItemStackHandlerRecipeInput(this, CONTAINER_SIZE) {
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                if (slot == FERMENTED_ITEM_SLOT) {
+                    return stack.getItem() == CDItems.FUNGAL_YEAST.get();
+                }
+                return super.isItemValid(slot, stack);
+            }
+        };
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.PICKLE_JARS_TYPE.get());
         this.fluidTank = new FluidTank(FLUID_CAPACITY) {
             @Override
@@ -60,28 +74,32 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
         return inputStacks;
     }
 
+    private ItemStack getFermentedItem() {
+        return this.itemHandler.getStackInSlot(FERMENTED_ITEM_SLOT);
+    }
+
     public static void serverTick(Level level, BlockPos pos, BlockState state, PickleJarsBlockEntity blockEntity) {
         ItemStack[] inputStacks = blockEntity.getInputStacks();
-        boolean hasItem = false;
-        for (ItemStack stack : inputStacks) {
-            if (!stack.isEmpty()) {
-                hasItem = true;
-                break;
-            }
-        }
-        boolean hasFluidInput = !blockEntity.fluidTank.getFluid().isEmpty();
-        boolean blockCover = state.getValue(PickleJarsBlock.COVER);
-        if (hasItem && hasFluidInput) {
-            PickleJarsRecipe.Input input = new PickleJarsRecipe.Input(inputStacks, blockEntity.fluidTank.getFluid());
+        if (hasInputItems(inputStacks) && hasFluid(blockEntity)) {
+            boolean blockCover = state.getValue(PickleJarsBlock.COVER);
+            ItemStack fermentedItem = blockEntity.getFermentedItem();
+            boolean hasFermentedItem = !fermentedItem.isEmpty();
+            PickleJarsRecipe.Input input = new PickleJarsRecipe.Input(inputStacks, blockEntity.fluidTank.getFluid(), hasFermentedItem);
             Optional<RecipeHolder<PickleJarsRecipe>> optionalRecipe = blockEntity.cachedCheck.getRecipeFor(input, level);
             if (optionalRecipe.isPresent()) {
                 PickleJarsRecipe recipe = optionalRecipe.get().value();
                 if (recipe.getCover() == blockCover) {
                     ItemStack resultItem = recipe.getResultItem(null);
                     if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), resultItem)) {
-                        blockEntity.craftTotalTime = recipe.getCraftTime();
+                        int craftTime = recipe.getCraftTime();
+                        boolean canAccelerate = recipe.isFermentation() && hasFermentedItem && ItemStack.isSameItem(fermentedItem, recipe.getFermentedItems());
+                        if (canAccelerate) {
+                            craftTime = Math.max(1, craftTime / 2);
+                        }
+                        blockEntity.craftTotalTime = craftTime;
                         if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
                             recipe.consumeFluids(blockEntity.fluidTank);
+                            recipe.consumeFermentedItem(fermentedItem);
                             ItemStack newResult = recipe.assembleAndExtract(input, level.registryAccess());
                             ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(OUTPUT_SLOT);
                             if (currentResult.isEmpty()) {
@@ -100,6 +118,20 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
         blockEntity.craftProgress = 0;
     }
 
+    private static boolean hasInputItems(ItemStack[] stacks) {
+        for (ItemStack stack : stacks) {
+            if (!stack.isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasFluid(PickleJarsBlockEntity blockEntity) {
+        return !blockEntity.fluidTank.getFluid().isEmpty();
+    }
+
+
     private static boolean canResultInsert(NonNullList<ItemStack> inventory, int maxStackSize, ItemStack newResult) {
         if (newResult.isEmpty()) {
             return false;
@@ -110,12 +142,33 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
             } else if (!ItemStack.isSameItemSameComponents(oldResult, newResult)) {
                 return false;
             } else {
-                return oldResult.getCount() + newResult.getCount() <= maxStackSize && oldResult.getCount() + newResult.getCount() <= oldResult.getMaxStackSize() || oldResult.getCount() + newResult.getCount() <= newResult.getMaxStackSize();
+                int combinedCount = oldResult.getCount() + newResult.getCount();
+                return combinedCount <= maxStackSize
+                        && (combinedCount <= oldResult.getMaxStackSize() || combinedCount <= newResult.getMaxStackSize());
             }
         }
     }
 
     public ItemStack addItem(ItemStack toAdd) {
+        if (toAdd.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        if (toAdd.getItem() == CDItems.FUNGAL_YEAST.get()) {
+            ItemStack fermentedStack = itemHandler.getStackInSlot(FERMENTED_ITEM_SLOT);
+            if (ItemStack.isSameItemSameComponents(fermentedStack, toAdd)) {
+                ItemStack result = itemHandler.insertItem(FERMENTED_ITEM_SLOT, toAdd, false);
+                setChanged();
+                return result;
+            } else if (fermentedStack.isEmpty()) {
+                itemHandler.setStackInSlot(FERMENTED_ITEM_SLOT, toAdd);
+                setChanged();
+                return ItemStack.EMPTY;
+            } else {
+                return toAdd;
+            }
+        }
+
         int firstEmptySlot = -1;
         for (int i = 0; i < INPUT_SIZE; i++) {
             ItemStack stack = itemHandler.getStackInSlot(i);
@@ -141,6 +194,12 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
             ItemStack outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT);
             if (!outputStack.isEmpty()) {
                 ItemStack extracted = itemHandler.extractItem(OUTPUT_SLOT, outputStack.getCount(), false);
+                setChanged();
+                return extracted;
+            }
+            ItemStack fermentedStack = itemHandler.getStackInSlot(FERMENTED_ITEM_SLOT);
+            if (!fermentedStack.isEmpty()) {
+                ItemStack extracted = itemHandler.extractItem(FERMENTED_ITEM_SLOT, fermentedStack.getCount(), false);
                 setChanged();
                 return extracted;
             }
@@ -184,11 +243,14 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return new int[]{OUTPUT_SLOT, 0, 1, 2};
+        return new int[]{OUTPUT_SLOT, FERMENTED_ITEM_SLOT, 0, 1, 2};
     }
 
     @Override
     public boolean canPlaceItemThroughFace(int index, ItemStack itemStack, @Nullable Direction direction) {
+        if (index == FERMENTED_ITEM_SLOT) {
+            return itemStack.getItem() == CDItems.FUNGAL_YEAST.get();
+        }
         return index < OUTPUT_SLOT;
     }
 
@@ -196,7 +258,6 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
     public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
         return index == OUTPUT_SLOT;
     }
-
 
     @Override
     protected Component getDefaultName() {
@@ -233,4 +294,6 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
         return itemHandler.size();
     }
 }
+
+
 

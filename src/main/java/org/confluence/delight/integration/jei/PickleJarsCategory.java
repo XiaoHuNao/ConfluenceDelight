@@ -30,11 +30,14 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
     private final JarFluidIngredientRenderer fluidRenderer = new JarFluidIngredientRenderer();
     private final IDrawable icon;
-    private final IDrawable background;
+    private final IDrawable OpenCoverGround;
+    private final IDrawable CloseCoverGround;
 
     public PickleJarsCategory(IJeiHelpers jeiHelpers) {
-        ResourceLocation backGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars_background.png");
-        this.background = jeiHelpers.getGuiHelper().createDrawable(backGround, 0, 0, 158, 84);
+        ResourceLocation OpenCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_0.png");
+        ResourceLocation CloseCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_1.png");
+        this.OpenCoverGround = jeiHelpers.getGuiHelper().createDrawable(OpenCoverGround, 0, 0, 158, 84);
+        this.CloseCoverGround = jeiHelpers.getGuiHelper().createDrawable(CloseCoverGround, 0, 0, 158, 84);
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.PICKLE_JARS_BLOCK.toStack());
     }
 
@@ -51,7 +54,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     @SuppressWarnings("deprecation")
     @Override
     public IDrawable getBackground() {
-        return background;
+        return OpenCoverGround;
     }
 
     @Override
@@ -76,6 +79,14 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
             addInput(builder, 40, 45, ingredients.get(1));
             addInput(builder, 54, 45, ingredients.get(2));
         }
+        //FermentedItemInput
+        if (recipe.value().isFermentation()) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)
+                    .addItemStack(recipe.value().getFermentedItems())
+                    .addRichTooltipCallback((recipeSlotView, tooltip) -> {
+                      tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item"));
+                    });
+        }
         //FluidInput
         builder.addSlot(RecipeIngredientRole.INPUT, 0, 0)
                 .setFluidRenderer(fluidAmount, false, 16, 16)
@@ -87,8 +98,16 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
 
     @Override
     public void draw(RecipeHolder<PickleJarsRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        if (recipe.value().getCover()) {
+            CloseCoverGround.draw(guiGraphics, 0, 0);
+        } else {
+            OpenCoverGround.draw(guiGraphics, 0, 0);
+        }
         fluidRenderer.render(guiGraphics, recipe.value().getRequiredFluid(), 0, 0);
         int craftTimeTicks = recipe.value().getCraftTime();
+        if (recipe.value().isFermentation()) {
+            craftTimeTicks = (craftTimeTicks + 1) / 2;
+        }
         Component timeText = Component.translatable("jei.confluence_delight.info.pickle_jars.crafttime", craftTimeTicks);
         guiGraphics.pose().pushPose();
         float scale = 0.7f;

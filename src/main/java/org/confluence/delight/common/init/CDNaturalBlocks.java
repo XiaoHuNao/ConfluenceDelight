@@ -1,15 +1,15 @@
 package org.confluence.delight.common.init;
 
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.natural.*;
+import org.confluence.mod.common.block.natural.sapling.BaseSaplingBlock;
 import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.function.Supplier;
@@ -18,6 +18,23 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
 public class CDNaturalBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(ConfluenceDelight.MODID);
+
+    //树苗
+    public static final DeferredBlock<BaseSaplingBlock> APPLE_SAPLING = registerBlockItem("apple_sapling", "苹果树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.APPLE_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> APRICOT_SAPLING = registerBlockItem("apricot_sapling", "杏树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.APRICOT_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> GRAPEFRUIT_SAPLING = registerBlockItem("grapefruit_sapling", "葡萄柚树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.GRAPEFRUIT_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> LEMON_SAPLING = registerBlockItem("lemon_sapling", "柠檬树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.LEMON_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> PEACH_SAPLING = registerBlockItem("peach_sapling", "桃树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.PEACH_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> CHERRY_SAPLING = registerBlockItem("cherry_sapling", "樱桃树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.CHERRY_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> PLUM_SAPLING = registerBlockItem("plum_sapling", "李子树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.PLUM_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> BLOOD_ORANGE_SAPLING = registerBlockItem("blood_orange_sapling", "血橙树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.BLOOD_ORANGE_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> RAMBUTAN_SAPLING = registerBlockItem("rambutan_sapling", "红毛丹树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.RAMBUTAN_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> MANGO_SAPLING = registerBlockItem("mango_sapling", "芒果树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.MANGO_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> BANANA_SAPLING = registerBlockItem("banana_sapling", "香蕉树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.BANANA_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> COCONUT_SAPLING = registerBlockItem("coconut_sapling", "椰子树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.COCONUT_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> STAR_FRUIT_SAPLING = registerBlockItem("star_fruit_sapling", "杨桃树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.STAR_FRUIT_GROWER, BlockTags.DIRT));
+    public static final DeferredBlock<BaseSaplingBlock> POMEGRANATE_SAPLING = registerBlockItem("pomegranate_sapling", "石榴树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.POMEGRANATE_GROWER, BlockTags.DIRT));
+
 
     //树叶
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> APPLE_TREE_LEAVES_BLOCK = registerBlockItem("apple_tree_leaves", "苹果树叶", () -> new BaseFruitTreeLeaveBlock(Items.APPLE));

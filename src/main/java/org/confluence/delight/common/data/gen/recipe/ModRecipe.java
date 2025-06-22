@@ -148,4 +148,12 @@ public class ModRecipe extends AbstractRecipeProvider {
         PickleJarsRecipe recipe = new PickleJarsRecipe(result, recipeIngredients, fluidInput, craftTime, cover);
         recipeOutput.accept(id, recipe, null);
     }
+
+    protected void pickleJarsRecipe(RecipeOutput recipeOutput, boolean fermentation, boolean cover, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {
+        ResourceLocation id = ConfluenceDelight.asResource("pickle_jars/" + getItemName(result.getItem()));
+        NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
+        PickleJarsRecipe recipe = new PickleJarsRecipe(fermentation, result, recipeIngredients, fluidInput, craftTime, cover);
+        recipeOutput.accept(id, recipe, null);
+    }
+
 }

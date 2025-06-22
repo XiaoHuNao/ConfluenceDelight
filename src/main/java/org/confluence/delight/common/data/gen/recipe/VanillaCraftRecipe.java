@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDTags;
@@ -65,7 +66,14 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 "SGP",
                 "PPP"
         )), CDFoodItems.CHOCOLATE_LUCK_COIN_BOX.toStack());
-
+        shaped(output, "", "", ShapedRecipePattern.of(Map.of(
+                'f', Ingredient.of(Items.FLOWER_POT),
+                'd', Ingredient.of(Items.DECORATED_POT)
+        ), List.of(
+                "f  ",
+                "d  ",
+                "   "
+        )), CDBlocks.PICKLE_JARS_BLOCK.toStack());
 
         shapeless(output, "", "", CDFoodItems.CLOUD_BACON_SANDWICH.toStack(),
                 Ingredient.of(CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),
