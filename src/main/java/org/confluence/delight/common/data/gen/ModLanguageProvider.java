@@ -95,6 +95,9 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
 
+        //seeds
+        add("item.confluence_delight.apple_tree_seeds", "Apple Tree Seeds", "苹果树种子");
+
         chineseProviders.forEach(a -> a.accept(this));
     }
 

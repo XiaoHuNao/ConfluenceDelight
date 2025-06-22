@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "confluence_delight:block/apple_sapling"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "confluence_delight:item/apple_tree_seeds" }
+  ]
+}
