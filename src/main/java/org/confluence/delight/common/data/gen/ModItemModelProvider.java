@@ -33,6 +33,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         List<Map<DeferredRegister.Items, List<String>>> customModels = new ArrayList<>();
         customModels.add(createDir(CDFoodItems.ITEMS, "food/"));
+        customModels.add(createDir(CDItems.ITEMS, "misc/"));
 
         genModels(customModels, "item/generated", true);
 
