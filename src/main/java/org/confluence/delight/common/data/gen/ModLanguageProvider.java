@@ -135,6 +135,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence_delight.pomegranate_sapling",
                 "It is obtained by right-clicking the birch sapling with a pomegranate",
                 "使用石榴右击白桦树苗获得");
+        add("tooltip.item.confluence_delight.blackcurrant_shrub",
+                "It can be obtained by right-clicking blackcurrant on azalea or flowering azalea",
+                "使用黑醋栗右击杜鹃花丛或盛开的杜鹃花丛获得");
+        add("tooltip.item.confluence_delight.elderberry_shrub",
+                "It can be obtained by right-clicking elderberry on on azalea or flowering azalea",
+                "使用接骨木右击杜鹃花丛或盛开的杜鹃花丛获得");
 
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
 

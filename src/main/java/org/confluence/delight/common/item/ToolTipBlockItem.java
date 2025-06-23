@@ -9,10 +9,10 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 
-public class SaplingBlockItem extends BlockItem {
+public class ToolTipBlockItem extends BlockItem {
     private final Component tooltipText;
 
-    public SaplingBlockItem(Block block, Component tooltipText) {
+    public ToolTipBlockItem(Block block, Component tooltipText) {
         super(block, new Item.Properties());
         this.tooltipText = tooltipText;
     }

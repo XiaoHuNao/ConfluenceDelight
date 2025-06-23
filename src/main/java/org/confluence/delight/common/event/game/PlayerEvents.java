@@ -1,6 +1,5 @@
 package org.confluence.delight.common.event.game;
 
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -54,8 +53,7 @@ public class PlayerEvents {
         BlockPos pos = event.getPos();
         BlockState clickedState = level.getBlockState(pos);
         Block clickedBlock = clickedState.getBlock();
-        Item item = heldItem.getItem();
-        Pair<Block, Supplier<? extends Block>> pair = ITEM_TO_BLOCK_MAP.get(item);
+        Pair<Block, Supplier<? extends Block>> pair = ITEM_TO_BLOCK_MAP.get(heldItem.getItem());
         if (pair != null && clickedBlock.equals(pair.getLeft())) {
             Block newBlock = pair.getRight().get();
             level.setBlockAndUpdate(pos, newBlock.defaultBlockState());
@@ -64,6 +62,11 @@ public class PlayerEvents {
             }
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.SUCCESS);
+        }
+        if (heldItem.is(FoodItems.BLACKCURRANT) && clickedState.is(Blocks.AZALEA) || clickedState.is(Blocks.FLOWERING_AZALEA)) {
+            level.setBlockAndUpdate(pos, CDNaturalBlocks.BLACKCURRANT_SHRUB_BLOCK.get().defaultBlockState());
+        } else if (heldItem.is(FoodItems.ELDERBERRY) && clickedState.is(Blocks.AZALEA) || clickedState.is(Blocks.FLOWERING_AZALEA)) {
+            level.setBlockAndUpdate(pos, CDNaturalBlocks.ELDERBERRY_SHRUB_BLOCK.get().defaultBlockState());
         }
     }
 }
