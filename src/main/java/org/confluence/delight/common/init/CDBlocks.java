@@ -17,8 +17,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.crafting.PickleJarsBlock;
 import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
-import org.confluence.delight.common.block.food.BlackCurrantDarkChocolatePieBlock;
-import org.confluence.delight.common.block.food.ChickenHotPotBlock;
 
 import java.util.function.Supplier;
 
@@ -34,9 +32,6 @@ public class CDBlocks {
     //流体
     public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.WHITE)));
 
-    //食物
-    public static final DeferredBlock<ChickenHotPotBlock> CHICKEN_HOT_POT = registerWithoutItem("chicken_hot_pot", ChickenHotPotBlock::new);
-    public static final DeferredBlock<BlackCurrantDarkChocolatePieBlock> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerWithoutItem("blackcurrant_dark_chocolate_pie", BlackCurrantDarkChocolatePieBlock::new);
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));
@@ -65,5 +60,7 @@ public class CDBlocks {
         BLOCKS.register(eventBus);
         BLOCK_ENTITIES.register(eventBus);
         CDNaturalBlocks.BLOCKS.register(eventBus);
+        CDNaturalBlocks.BLOCK_ITEMS.register(eventBus);
+        CDFoodBlocks.BLOCKS.register(eventBus);
     }
 }

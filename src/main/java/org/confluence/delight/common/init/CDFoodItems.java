@@ -59,7 +59,7 @@ public class CDFoodItems {
 
     //成品
     public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_HOT_POT = registerBlockItemFood("chicken_hot_pot", "鸡公煲", builder -> builder.stackTo(1).food(
-            ModFoodProperties.PlentySatisfiedProperties(6000, 20, 40.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), CDBlocks.CHICKEN_HOT_POT);
+            ModFoodProperties.PlentySatisfiedProperties(6000, 20, 40.0f)).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), CDFoodBlocks.CHICKEN_HOT_POT);
     public static final DeferredItem<BaseFoodItem> CRISPY_RICE_WITH_POTATOES = registerNormalFood("crispy_rice_with_potatoes", "锅巴土豆", DelightFoodProperties.noEffectProperties(3, 1.8f));
     public static final DeferredItem<BaseFoodItem> ROYAL_GUMMY = registerNormalFood("royal_gummy", "皇家软糖",
             DelightFoodProperties.hasEffectProperties(1, 2.0f,
@@ -107,7 +107,7 @@ public class CDFoodItems {
                     EffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 600),
                     EffectData.of(MobEffects.REGENERATION, 600),
                     EffectData.of(ModEffects.EXQUISITELY_STUFFED, 300, 1)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", CDBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE,
+    public static final DeferredItem<BaseFoodItem.BlockItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", CDFoodBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE,
             DelightFoodProperties.hasEffectProperties(12, 12.0f,
                     EffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600),
                     EffectData.of(MobEffects.LUCK, 600),

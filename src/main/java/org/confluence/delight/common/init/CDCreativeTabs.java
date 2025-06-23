@@ -5,15 +5,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.mod.common.init.block.FunctionalBlocks;
-
-import java.util.Set;
 
 public class CDCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ConfluenceDelight.MODID);
@@ -23,19 +19,13 @@ public class CDCreativeTabs {
                     .title(Component.translatable("itemGroup.terra_delight"))
                     .icon(() -> new ItemStack(FunctionalBlocks.COOKING_POT.get()))
                     .displayItems((parameters, output) -> {
-                        Set<Block> excludedBlocks = Set.of(
-                                CDBlocks.WINE.get()
-                        );
-                        CDBlocks.BLOCKS.getEntries().forEach(block -> {
-                            Block b = block.get();
-                            if (!excludedBlocks.contains(b)) {
-                                Item item = b.asItem();
-                                output.accept(item);
-                            }
-                        });
+                        output.accept(CDBlocks.PICKLE_JARS_BLOCK.get());
+                        CDNaturalBlocks.BLOCK_ITEMS.getEntries().forEach((block) -> output.accept(block.get().asItem()));
                         CDItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDNaturalItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDFoodItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDFoodBlocks.BLOCKS.getEntries().forEach((block) -> output.accept(block.get().asItem()));
                     })
                     .withTabsAfter(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "tools")))
                     .withTabsBefore(ResourceKey.create(Registries.CREATIVE_MODE_TAB, ResourceLocation.fromNamespaceAndPath("confluence", "food_and_potions")))

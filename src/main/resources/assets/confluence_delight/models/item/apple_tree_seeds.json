@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "confluence_delight:item/seeds/apple_tree_seeds"
-  }
-}

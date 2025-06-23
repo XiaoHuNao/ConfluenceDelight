@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.confluence.delight.common.init.CDItems;
+import org.confluence.delight.common.init.CDNaturalItems;
 import org.confluence.mod.common.init.item.FoodItems;
 
 public class PineappleCropBlock extends CropBlock {
@@ -38,7 +38,7 @@ public class PineappleCropBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return CDItems.PINEAPPLE_SEEDS.get();
+        return CDNaturalItems.PINEAPPLE_SEEDS.get();
     }
 
     @Override

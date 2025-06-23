@@ -13,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDItems;
+import org.confluence.delight.common.init.CDNaturalItems;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,6 +35,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         List<Map<DeferredRegister.Items, List<String>>> customModels = new ArrayList<>();
         customModels.add(createDir(CDFoodItems.ITEMS, "food/"));
         customModels.add(createDir(CDItems.ITEMS, "misc/"));
+        customModels.add(createDir(CDNaturalItems.ITEMS, "natural/"));
 
         genModels(customModels, "item/generated", true);
 

@@ -3,7 +3,6 @@ package org.confluence.delight.common.block.natural;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,7 +22,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.mod.common.init.item.FoodItems;
 
-public class DragonFruitBlock extends CocoaBlock{
+public class DragonFruitBlock extends CocoaBlock {
     public DragonFruitBlock() {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.COCOA));
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AGE, 0));

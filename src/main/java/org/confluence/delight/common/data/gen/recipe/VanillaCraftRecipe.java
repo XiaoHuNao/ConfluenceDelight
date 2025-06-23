@@ -10,10 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.CDBlocks;
-import org.confluence.delight.common.init.CDFoodItems;
-import org.confluence.delight.common.init.CDItems;
-import org.confluence.delight.common.init.CDTags;
+import org.confluence.delight.common.init.*;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
@@ -143,9 +140,9 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.COCOA_BEANS),
                 Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
-        shapeless(output, "", "", CDItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
-        shapeless(output, "", "", CDItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.FRUIT_PINEAPPLE));
-        shapeless(output, "", "", CDItems.DRAGON_FRUIT_SEEDS.toStack(2), Ingredient.of(FoodItems.DRAGON_FRUIT));
+        shapeless(output, "", "", CDNaturalItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
+        shapeless(output, "", "", CDNaturalItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.FRUIT_PINEAPPLE));
+        shapeless(output, "", "", CDNaturalItems.DRAGON_FRUIT_SEEDS.toStack(2), Ingredient.of(FoodItems.DRAGON_FRUIT));
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);

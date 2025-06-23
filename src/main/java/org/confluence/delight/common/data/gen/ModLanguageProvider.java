@@ -93,10 +93,50 @@ public class ModLanguageProvider extends LanguageProvider {
                 "A luxurious piece of art—should I consume it or keep it as a collectible?",
                 "奢华的艺术品，是吃掉，亦或是收藏");
 
-        add("fluid_type.confluence_delight.wine", "Wine", "酒");
+        add("tooltip.item.confluence_delight.apple_sapling",
+                "It is obtained by right-clicking the oak sapling with an apple",
+                "使用苹果右击橡树树苗获得");
+        add("tooltip.item.confluence_delight.apricot_sapling",
+                "It is obtained by right-clicking the birch sapling with an apricot",
+                "使用杏子右击白桦树苗获得");
+        add("tooltip.item.confluence_delight.grapefruit_sapling",
+                "It is obtained by right-clicking the jungle sapling with a grapefruit",
+                "使用葡萄柚右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.lemon_sapling",
+                "It is obtained by right-clicking the spruce sapling with a lemon",
+                "使用柠檬右击云杉树苗获得");
+        add("tooltip.item.confluence_delight.peach_sapling",
+                "It is obtained by right-clicking the oak sapling with a peach",
+                "使用桃子右击橡树树苗获得");
+        add("tooltip.item.confluence_delight.cherry_sapling",
+                "It is obtained by right-clicking the spruce sapling with a cherry",
+                "使用樱桃右击云杉树苗获得");
+        add("tooltip.item.confluence_delight.plum_sapling",
+                "It is obtained by right-clicking the birch sapling with a plum",
+                "使用李子右击白桦树苗获得");
+        add("tooltip.item.confluence_delight.blood_orange_sapling",
+                "It is obtained by right-clicking the jungle sapling with a blood orange",
+                "使用血橙右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.rambutan_sapling",
+                "It is obtained by right-clicking the jungle sapling with a rambutan",
+                "使用红毛丹右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.mango_sapling",
+                "It is obtained by right-clicking the jungle sapling with a mango",
+                "使用芒果右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.banana_sapling",
+                "It is obtained by right-clicking the jungle sapling with a banana",
+                "使用香蕉右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.coconut_sapling",
+                "It is obtained by right-clicking the jungle sapling with a coconut",
+                "使用椰子右击丛林树苗获得");
+        add("tooltip.item.confluence_delight.star_fruit_sapling",
+                "It is obtained by right-clicking the oak sapling with a star fruit",
+                "使用杨桃右击橡树树苗获得");
+        add("tooltip.item.confluence_delight.pomegranate_sapling",
+                "It is obtained by right-clicking the birch sapling with a pomegranate",
+                "使用石榴右击白桦树苗获得");
 
-        //seeds
-        add("item.confluence_delight.apple_tree_seeds", "Apple Tree Seeds", "苹果树种子");
+        add("fluid_type.confluence_delight.wine", "Wine", "酒");
 
         chineseProviders.forEach(a -> a.accept(this));
     }
