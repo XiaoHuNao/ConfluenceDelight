@@ -11,6 +11,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -105,7 +106,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         }
         fluidRenderer.render(guiGraphics, recipe.value().getRequiredFluid(), 0, 0);
         int craftTimeTicks = recipe.value().getCraftTime();
-        if (recipe.value().isFermentation()) {
+        if (recipe.value().isFermentation() && Screen.hasShiftDown()) {
             craftTimeTicks = (craftTimeTicks + 1) / 2;
         }
         Component timeText = Component.translatable("jei.confluence_delight.info.pickle_jars.crafttime", craftTimeTicks);
@@ -116,5 +117,17 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         int y = (int) (55 / scale);
         guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFFFF, true);
         guiGraphics.pose().popPose();
+        if (recipe.value().isFermentation()) {
+            int textWidth = Minecraft.getInstance().font.width(timeText);
+            int textHeight = Minecraft.getInstance().font.lineHeight;
+            double scaledMouseX = mouseX / scale;
+            double scaledMouseY = mouseY / scale;
+            if (scaledMouseX >= x && scaledMouseX <= x + textWidth && scaledMouseY >= y && scaledMouseY <= y + textHeight) {
+                Component tooltip = Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item");
+                guiGraphics.renderTooltip(Minecraft.getInstance().font, tooltip, (int) mouseX, (int) mouseY);
+            }
+        }
     }
+
+
 }

@@ -20,6 +20,7 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDFoodItems;
+import org.confluence.delight.common.init.CDMaterialItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
@@ -127,6 +128,26 @@ public class ModRecipe extends AbstractRecipeProvider {
         CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.CRISPY_RICE_WITH_POTATOES.get(), 1, 100, 1.0f, Items.BOWL)
                 .addIngredient(CDFoodItems.POTATO_PIECE)
                 .addIngredient(CDFoodItems.CRUSHED_CHILLI)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.CUMIN_FLAVORED_HORSE_MEAT_OVER_RICE.get(), 1, 200, 1.0f, Items.BOWL)
+                .addIngredient(CDMaterialItems.CUMIN_POWDER)
+                .addIngredient(CDFoodItems.RAW_HORSE_MEAT)
+                .addIngredient(ModItems.RICE.get())
+                .addIngredient(ModItems.ONION.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.CUMIN_FLAVORED_DONKEY_MEAT_OVER_RICE.get(), 1, 200, 1.0f, Items.BOWL)
+                .addIngredient(CDMaterialItems.CUMIN_POWDER)
+                .addIngredient(CDFoodItems.RAW_DONKEY_MEAT)
+                .addIngredient(ModItems.RICE.get())
+                .addIngredient(ModItems.ONION.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.BRAISED_CHICKEN.get(), 1, 400, 1.0f)
+                .addIngredient(Items.CHICKEN)
+                .addIngredient(Items.SUGAR)
+                .addIngredient(CDMaterialItems.SALT)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(recipeOutput);
     }

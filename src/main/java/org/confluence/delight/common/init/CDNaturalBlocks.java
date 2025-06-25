@@ -39,6 +39,10 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<BaseSaplingBlock> STAR_FRUIT_SAPLING = registerBlockItem("star_fruit_sapling", "杨桃树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.STAR_FRUIT_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.star_fruit_sapling")));
     public static final DeferredBlock<BaseSaplingBlock> POMEGRANATE_SAPLING = registerBlockItem("pomegranate_sapling", "石榴树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.POMEGRANATE_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.pomegranate_sapling")));
 
+    //灌木
+    public static final DeferredBlock<BaseFruitShrubBlock> BLACKCURRANT_SHRUB_BLOCK = registerBlockItem("blackcurrant_shrub", "黑醋栗灌木", () -> new BaseFruitShrubBlock(FoodItems.BLACKCURRANT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.blackcurrant_shrub")));
+    public static final DeferredBlock<BaseFruitShrubBlock> ELDERBERRY_SHRUB_BLOCK = registerBlockItem("elderberry_shrub", "接骨木灌木", () -> new BaseFruitShrubBlock(FoodItems.ELDERBERRY), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.elderberry_shrub")));
+
     //树叶
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> APPLE_TREE_LEAVES_BLOCK = registerBlockItem("apple_tree_leaves", "苹果树叶", () -> new BaseFruitTreeLeaveBlock(Items.APPLE));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> APRICOT_TREE_LEAVES_BLOCK = registerBlockItem("apricot_tree_leaves", "杏树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.APRICOT));
@@ -54,10 +58,6 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> COCONUT_TREE_LEAVES_BLOCK = registerBlockItem("coconut_tree_leaves", "椰子树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.COCONUT));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> STAR_FRUIT_TREE_LEAVES_BLOCK = registerBlockItem("star_fruit_tree_leaves", "杨桃树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.STAR_FRUIT));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> POMEGRANATE_TREE_LEAVES_BLOCK = registerBlockItem("pomegranate_tree_leaves", "石榴树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.POMEGRANATE));
-
-    //灌木
-    public static final DeferredBlock<BaseFruitShrubBlock> BLACKCURRANT_SHRUB_BLOCK = registerBlockItem("blackcurrant_shrub", "黑醋栗灌木", () -> new BaseFruitShrubBlock(FoodItems.BLACKCURRANT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.blackcurrant_shrub")));
-    public static final DeferredBlock<BaseFruitShrubBlock> ELDERBERRY_SHRUB_BLOCK = registerBlockItem("elderberry_shrub", "接骨木灌木", () -> new BaseFruitShrubBlock(FoodItems.ELDERBERRY), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.elderberry_shrub")));
 
     //作物
     public static final DeferredBlock<PineappleCropBlock> PINEAPPLE_CROP = registerWithoutItem("pineapple_crop", "菠萝", PineappleCropBlock::new);
@@ -78,7 +78,7 @@ public class CDNaturalBlocks {
 
     public static <B extends Block> DeferredBlock<B> registerBlockItem(final String en, final String zh, Supplier<B> bl) {
         DeferredBlock<B> block = BLOCKS.register(en, bl);
-        CDMaterialItems.register(en, zh, () -> new BlockItem(block.get(), new Item.Properties()));
+        BLOCK_ITEMS.register(en, () -> new BlockItem(block.get(), new Item.Properties()));
         chineseProviders.add(l -> l.addBlock(block, zh));
         return block;
     }
@@ -89,5 +89,4 @@ public class CDNaturalBlocks {
         chineseProviders.add(l -> l.addBlock(deferredBlock, zh));
         return deferredBlock;
     }
-
 }

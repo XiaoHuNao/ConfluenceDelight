@@ -104,8 +104,8 @@ public class FruitTreeFeatureConfigProvider implements DataProvider {
         fruitTree(ConfluenceDelight.asResource("cherry_tree"), Blocks.SPRUCE_LOG, CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         fruitTree(ConfluenceDelight.asResource("plum_tree"), Blocks.BIRCH_LOG, CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         fruitTree(ConfluenceDelight.asResource("blood_orange_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
-        fruitTree(ConfluenceDelight.asResource("rambutan_tree"), Blocks.JUNGLE_LOG, Blocks.JUNGLE_LEAVES, CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
-        fruitTree(ConfluenceDelight.asResource("mango_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
+        fruitTree(ConfluenceDelight.asResource("rambutan_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
+        fruitTree(ConfluenceDelight.asResource("mango_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         fruitTree(ConfluenceDelight.asResource("banana_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         fruitTree(ConfluenceDelight.asResource("coconut_tree"), Blocks.JUNGLE_LOG, CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         fruitTree(ConfluenceDelight.asResource("star_fruit_tree"), Blocks.OAK_LOG, CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);

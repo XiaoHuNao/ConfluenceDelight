@@ -36,6 +36,9 @@ public final class LivingEntityEvent {
             player.igniteForSeconds(60.0f);
         } else if (itemStack.is(CDFoodItems.SPICY_BOMB_FISH.get())) {
             serverLevel.explode(null, player.getX(), player.getY(), player.getZ(), 2.5F, false, Level.ExplosionInteraction.MOB);
+        } else if (itemStack.is(CDFoodItems.BIG_CHICKEN_CUTLET.get())) {
+            player.teleportTo(player.getX(), player.getY() + 100, player.getZ());
         }
+
     }
 }

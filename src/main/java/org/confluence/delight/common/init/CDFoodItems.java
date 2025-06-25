@@ -174,6 +174,22 @@ public class CDFoodItems {
                             EffectData.of(MobEffects.DAMAGE_BOOST, 10800, 2),
                             EffectData.of(MobEffects.REGENERATION, 10800, 1)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GOLD);
+    public static final DeferredItem<BaseFoodItem> CUMIN_FLAVORED_HORSE_MEAT_OVER_RICE = registerNormalFood("cumin_flavored_horse_meat_over_rice", "孜然马肉盖浇饭",
+            DelightFoodProperties.hasEffectProperties(14, 18.0f,
+                    EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4000)));
+    public static final DeferredItem<BaseFoodItem> CUMIN_FLAVORED_DONKEY_MEAT_OVER_RICE = registerNormalFood("cumin_flavored_donkey_meat_over_rice", "孜然驴肉盖浇饭",
+            DelightFoodProperties.hasEffectProperties(14, 18.0f,
+                    EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4000)));
+    public static final DeferredItem<BaseFoodItem> BRAISED_CHICKEN = registerToolTipFood("braised_chicken", "扒鸡", builder -> builder.food(
+            DelightFoodProperties.hasEffectProperties(16, 20.0f,
+                    EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4600, 1),
+                    EffectData.of(ModEffects.CHOKING, 4000)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> BIG_CHICKEN_CUTLET = registerToolTipFood("big_chicken_cutlet", "大鸡排", builder -> builder.food(
+                    DelightFoodProperties.hasEffectProperties(12, 16.0f,
+                            EffectData.of(ModEffects.CHOKING, 2000)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+
 
     public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
         DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {

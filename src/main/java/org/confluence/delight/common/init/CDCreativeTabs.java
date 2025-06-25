@@ -20,10 +20,10 @@ public class CDCreativeTabs {
                     .icon(() -> new ItemStack(FunctionalBlocks.COOKING_POT.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(CDBlocks.PICKLE_JARS_BLOCK.get());
-                        CDNaturalBlocks.BLOCK_ITEMS.getEntries().forEach((block) -> output.accept(block.get().asItem()));
                         CDItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
-                        CDNaturalItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDNaturalItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
+                        CDNaturalBlocks.BLOCK_ITEMS.getEntries().forEach((block) -> output.accept(block.get().asItem()));
                         CDFoodItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDFoodBlocks.BLOCKS.getEntries().forEach((block) -> output.accept(block.get().asItem()));
                     })

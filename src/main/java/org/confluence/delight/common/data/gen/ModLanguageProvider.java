@@ -51,6 +51,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
         add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
         add("jei.confluence_delight.info.pickle_jars.fermented_item", "This formula can be accelerated by using fungal yeast", "该配方可以使用菌曲加速");
+        add("jei.confluence_delight.info.pickle_jars.fermented_item", "Hold down shift to display the time after acceleration", "按住shift显示加速后时间");
         //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
@@ -92,6 +93,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.gilded_luxury_chocolate_luck_coin_box.0",
                 "A luxurious piece of art—should I consume it or keep it as a collectible?",
                 "奢华的艺术品，是吃掉，亦或是收藏");
+        add("tooltip.item.confluence.braised_chicken.0",
+                "Chicken from the Orient, but it's a little overcooked and a bit mushy.",
+                "这德克萨斯州的鸡武德充沛吗？");
+        add("tooltip.item.confluence.big_chicken_cutlet.0",
+                "LLLLLava CCCChicken",
+                "特辣大鸡排");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

@@ -143,6 +143,11 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         shapeless(output, "", "", CDNaturalItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
         shapeless(output, "", "", CDNaturalItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.FRUIT_PINEAPPLE));
         shapeless(output, "", "", CDNaturalItems.DRAGON_FRUIT_SEEDS.toStack(2), Ingredient.of(FoodItems.DRAGON_FRUIT));
+        shapeless(output, "", "", CDFoodItems.BIG_CHICKEN_CUTLET.toStack(),
+                Ingredient.of(Items.CHICKEN),
+                Ingredient.of(FoodItems.SPICY_PEPPER),
+                Ingredient.of(Items.LAVA_BUCKET),
+                Ingredient.of(CDMaterialItems.SALT));
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
