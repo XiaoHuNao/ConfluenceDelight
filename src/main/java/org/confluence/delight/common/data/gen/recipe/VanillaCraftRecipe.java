@@ -5,6 +5,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
@@ -71,6 +72,15 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 "d  ",
                 "   "
         )), CDBlocks.PICKLE_JARS_BLOCK.toStack());
+        shaped(output, "", "", ShapedRecipePattern.of(Map.of(
+                'S', Ingredient.of(ItemTags.WOODEN_SLABS),
+                'I', Ingredient.of(Items.IRON_NUGGET),
+                'B', Ingredient.of(Items.BARREL)
+        ), List.of(
+                "SSS",
+                " I ",
+                " B "
+        )), CDBlocks.SAP_COLLECTORS_BLOCK.toStack());
 
         shapeless(output, "", "", CDFoodItems.CLOUD_BACON_SANDWICH.toStack(),
                 Ingredient.of(CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),
