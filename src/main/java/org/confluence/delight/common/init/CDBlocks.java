@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.crafting.PickleJarsBlock;
 import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
+import org.confluence.delight.common.block.crafting.SapCollectorsBlock;
 
 import java.util.function.Supplier;
 
@@ -28,6 +29,8 @@ public class CDBlocks {
 
     public static final DeferredBlock<PickleJarsBlock> PICKLE_JARS_BLOCK = registerBlockItem("pickle_jars_block", "泡菜罐", () -> new PickleJarsBlock(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY)));
     public static final Supplier<BlockEntityType<PickleJarsBlockEntity>> PICKLE_JARS_BLOCK_ENTITY = BLOCK_ENTITIES.register("pickle_jars_block", () -> BlockEntityType.Builder.of(PickleJarsBlockEntity::new, PICKLE_JARS_BLOCK.get()).build(null));
+    public static final DeferredBlock<SapCollectorsBlock> SAP_COLLECTORS_BLOCK = registerBlockItem("sap_collectors_block", "树液采集器", () -> new SapCollectorsBlock(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY)));
+    public static final Supplier<BlockEntityType<SapCollectorsBlock.Entity>> SAP_COLLECTORS_BLOCK_ENTITY = BLOCK_ENTITIES.register("sap_collectors_block", () -> BlockEntityType.Builder.of(SapCollectorsBlock.Entity::new, SAP_COLLECTORS_BLOCK.get()).build(null));
 
     //流体
     public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.WHITE)));

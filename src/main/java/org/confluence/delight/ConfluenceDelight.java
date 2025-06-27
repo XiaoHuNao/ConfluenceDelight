@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 @Mod(ConfluenceDelight.MODID)
 public class ConfluenceDelight {
     public static final String MODID = "confluence_delight";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static List<Consumer<ModLanguageProvider>> chineseProviders = new ArrayList<>();
 

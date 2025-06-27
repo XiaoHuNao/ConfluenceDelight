@@ -20,6 +20,7 @@ public class CDCreativeTabs {
                     .icon(() -> new ItemStack(FunctionalBlocks.COOKING_POT.get()))
                     .displayItems((parameters, output) -> {
                         output.accept(CDBlocks.PICKLE_JARS_BLOCK.get());
+                        output.accept(CDBlocks.SAP_COLLECTORS_BLOCK.get());
                         CDItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDNaturalItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));

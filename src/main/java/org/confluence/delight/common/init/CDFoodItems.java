@@ -181,9 +181,9 @@ public class CDFoodItems {
             DelightFoodProperties.hasEffectProperties(14, 18.0f,
                     EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4000)));
     public static final DeferredItem<BaseFoodItem> BRAISED_CHICKEN = registerToolTipFood("braised_chicken", "扒鸡", builder -> builder.food(
-            DelightFoodProperties.hasEffectProperties(16, 20.0f,
-                    EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4600, 1),
-                    EffectData.of(ModEffects.CHOKING, 4000)))
+                    DelightFoodProperties.hasEffectProperties(16, 20.0f,
+                            EffectData.of(ModEffects.EXQUISITELY_STUFFED, 4600, 1),
+                            EffectData.of(ModEffects.CHOKING, 4000)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
     public static final DeferredItem<BaseFoodItem> BIG_CHICKEN_CUTLET = registerToolTipFood("big_chicken_cutlet", "大鸡排", builder -> builder.food(
                     DelightFoodProperties.hasEffectProperties(12, 16.0f,

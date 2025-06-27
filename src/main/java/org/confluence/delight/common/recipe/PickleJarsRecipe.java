@@ -20,7 +20,7 @@ import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 
-public class  PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
+public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Input> {
     private final FluidStack requiredFluid;
     private final ItemStack fermentedItems = CDItems.FUNGAL_YEAST.toStack();
     private final int craftTime;
@@ -177,7 +177,6 @@ public class  PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inp
         }
     }
 
-
     public static class Input implements RecipeInput {
         private final ItemStack[] items;
         final FluidStack fluid;
@@ -189,7 +188,6 @@ public class  PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inp
             this.fluid = fluid;
             this.fermentation = fermentation;
         }
-
 
         @Override
         public ItemStack getItem(int index) {

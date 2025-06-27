@@ -25,7 +25,7 @@ import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 
-
+@SuppressWarnings("all")
 public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJarsRecipe>> {
     public static final RecipeType<RecipeHolder<PickleJarsRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("pickle_jars"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
@@ -52,7 +52,6 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         return TITLE;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public IDrawable getBackground() {
         return OpenCoverGround;
@@ -85,7 +84,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
             builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)
                     .addItemStack(recipe.value().getFermentedItems())
                     .addRichTooltipCallback((recipeSlotView, tooltip) -> {
-                      tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item"));
+                        tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item"));
                     });
         }
         //FluidInput

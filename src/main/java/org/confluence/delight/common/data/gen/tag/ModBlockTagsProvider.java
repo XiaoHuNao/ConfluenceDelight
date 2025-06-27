@@ -13,7 +13,6 @@ import org.confluence.mod.common.init.ModTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static org.confluence.delight.ConfluenceDelight.MODID;
@@ -30,7 +29,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 CDBlocks.PICKLE_JARS_BLOCK.get()
         );
         tag(ModTags.Blocks.MINEABLE_WITH_PICKAXE_AXE).add(
-                CDBlocks.PICKLE_JARS_BLOCK.get()
+                CDBlocks.PICKLE_JARS_BLOCK.get(),
+                CDBlocks.SAP_COLLECTORS_BLOCK.get()
+        );
+        tag(BlockTags.MINEABLE_WITH_AXE).add(
+                CDBlocks.SAP_COLLECTORS_BLOCK.get()
         );
         tag(BlockTags.SAPLINGS).add(sapling);
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);
