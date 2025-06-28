@@ -1,4 +1,4 @@
-package org.confluence.delight.common.block.crafting;
+package org.confluence.delight.common.block.function.crafting;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

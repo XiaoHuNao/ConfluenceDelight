@@ -25,20 +25,15 @@ import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 
-@SuppressWarnings("all")
 public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJarsRecipe>> {
     public static final RecipeType<RecipeHolder<PickleJarsRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("pickle_jars"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
     private final JarFluidIngredientRenderer fluidRenderer = new JarFluidIngredientRenderer();
     private final IDrawable icon;
-    private final IDrawable OpenCoverGround;
-    private final IDrawable CloseCoverGround;
+    ResourceLocation OpenCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_0.png");
+    ResourceLocation CloseCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_1.png");
 
     public PickleJarsCategory(IJeiHelpers jeiHelpers) {
-        ResourceLocation OpenCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_0.png");
-        ResourceLocation CloseCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_1.png");
-        this.OpenCoverGround = jeiHelpers.getGuiHelper().createDrawable(OpenCoverGround, 0, 0, 158, 84);
-        this.CloseCoverGround = jeiHelpers.getGuiHelper().createDrawable(CloseCoverGround, 0, 0, 158, 84);
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.PICKLE_JARS_BLOCK.toStack());
     }
 
@@ -48,13 +43,19 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     }
 
     @Override
-    public Component getTitle() {
-        return TITLE;
+    public int getWidth() {
+        return 158;
     }
 
     @Override
-    public IDrawable getBackground() {
-        return OpenCoverGround;
+    public int getHeight() {
+        return 84;
+    }
+
+
+    @Override
+    public Component getTitle() {
+        return TITLE;
     }
 
     @Override
@@ -99,9 +100,9 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     @Override
     public void draw(RecipeHolder<PickleJarsRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         if (recipe.value().getCover()) {
-            CloseCoverGround.draw(guiGraphics, 0, 0);
+            guiGraphics.blit(CloseCoverGround, 0, 0, 0, 0, 158, 84);
         } else {
-            OpenCoverGround.draw(guiGraphics, 0, 0);
+            guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, 158, 84);
         }
         fluidRenderer.render(guiGraphics, recipe.value().getRequiredFluid(), 0, 0);
         int craftTimeTicks = recipe.value().getCraftTime();
@@ -114,7 +115,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         guiGraphics.pose().scale(scale, scale, 1.0f);
         int x = (int) (90 / scale);
         int y = (int) (55 / scale);
-        guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFFFF, true);
+        guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFF, true);
         guiGraphics.pose().popPose();
         if (recipe.value().isFermentation()) {
             int textWidth = Minecraft.getInstance().font.width(timeText);
@@ -127,6 +128,4 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
             }
         }
     }
-
-
 }

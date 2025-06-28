@@ -52,6 +52,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
         add("jei.confluence_delight.info.pickle_jars.fermented_item", "This formula can be accelerated by using fungal yeast", "该配方可以使用菌曲加速");
         add("jei.confluence_delight.info.pickle_jars.fermented_item", "Hold down shift to display the time after acceleration", "按住shift显示加速后时间");
+
+        add("title.confluence_delight.millstone", "Millstone", "磨盘");
+        add("jei.confluence_delight.info.millstone.work_circles", "%d circles", "%d 圈");
         //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");

@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
+import org.confluence.delight.common.block.function.crafting.PickleJarsBlockEntity;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.IServerDataProvider;
@@ -17,7 +17,7 @@ import snownee.jade.api.config.IPluginConfig;
 
 public class PickleJarsInfoProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
     public static final PickleJarsInfoProvider INSTANCE = new PickleJarsInfoProvider();
-    public static final ResourceLocation UID = ConfluenceDelight.asResource("jade_picklejars_info");
+    public static final ResourceLocation UID = ConfluenceDelight.asResource("picklejars_info");
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {

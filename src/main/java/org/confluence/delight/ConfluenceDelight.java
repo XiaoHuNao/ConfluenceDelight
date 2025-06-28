@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 @Mod(ConfluenceDelight.MODID)
 public class ConfluenceDelight {
     public static final String MODID = "confluence_delight";
-    public static final Logger LOGGER = LogUtils.getLogger();
+    private static final Logger LOGGER = LogUtils.getLogger();
 
     public static List<Consumer<ModLanguageProvider>> chineseProviders = new ArrayList<>();
 
@@ -45,6 +45,7 @@ public class ConfluenceDelight {
         CDFluids.initialize();
         CDRecipes.register(modEventBus);
         CDEffects.EFFECTS.register(modEventBus);
+        CDSoundEvents.EVENTS.register(modEventBus);
         CDFeature.register(modEventBus);
         ModClient.ModMenuTypes.MENU_TYPES.register(modEventBus);
         CDCreativeTabs.CREATIVE_TABS.register(modEventBus);

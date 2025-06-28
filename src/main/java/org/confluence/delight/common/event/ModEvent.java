@@ -8,7 +8,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.CommonConfigs;
-import org.confluence.delight.common.block.crafting.SapCollectorsBlock;
+import org.confluence.delight.common.block.function.crafting.SapCollectorsBlock;
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEvent {

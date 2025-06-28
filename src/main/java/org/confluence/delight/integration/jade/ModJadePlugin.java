@@ -1,7 +1,7 @@
 package org.confluence.delight.integration.jade;
 
-import org.confluence.delight.common.block.crafting.PickleJarsBlock;
-import org.confluence.delight.common.block.crafting.PickleJarsBlockEntity;
+import org.confluence.delight.common.block.function.crafting.PickleJarsBlock;
+import org.confluence.delight.common.block.function.crafting.PickleJarsBlockEntity;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;

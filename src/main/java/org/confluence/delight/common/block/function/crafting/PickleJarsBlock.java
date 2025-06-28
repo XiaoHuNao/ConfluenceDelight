@@ -1,4 +1,4 @@
-package org.confluence.delight.common.block.crafting;
+package org.confluence.delight.common.block.function.crafting;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

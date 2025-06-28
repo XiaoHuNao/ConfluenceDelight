@@ -22,6 +22,7 @@ import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDMaterialItems;
 import org.confluence.delight.common.init.CDTags;
+import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.lib.common.recipe.AmountIngredient;
@@ -89,6 +90,9 @@ public class ModRecipe extends AbstractRecipeProvider {
         //泡菜罐
         pickleJarsRecipe(recipeOutput, true, CDFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, Ingredient.of(FoodItems.SPICY_PEPPER));
         pickleJarsRecipe(recipeOutput, true, CDFoodItems.SPICY_PICKLED_FISH.toStack(), new FluidStack(CDFluids.WINE.fluid(), 2000), 1200, Ingredient.of(ItemTags.CAT_FOOD), AmountIngredient.of(10, FoodItems.SPICY_PEPPER), AmountIngredient.of(2, Items.SUGAR));
+
+        //磨盘
+        millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), Ingredient.of(FoodItems.SPICY_PEPPER), 5);
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -177,4 +181,13 @@ public class ModRecipe extends AbstractRecipeProvider {
         recipeOutput.accept(id, recipe, null);
     }
 
+    protected void millStoneRecipe(RecipeOutput recipeOutput, ItemStack result, Ingredient ingredient, int workCircles) {
+        ResourceLocation id = ConfluenceDelight.asResource("millstone/" + getItemName(result.getItem()));
+        recipeOutput.accept(id, new MillStoneRecipe(result, ingredient, workCircles), null);
+    }
+
+    protected void millStoneRecipe(RecipeOutput recipeOutput, ItemStack result, Ingredient ingredient1, Ingredient ingredient2, int workCircles) {
+        ResourceLocation id = ConfluenceDelight.asResource("millstone/" + getItemName(result.getItem()));
+        recipeOutput.accept(id, new MillStoneRecipe(result, ingredient1, ingredient2, workCircles), null);
+    }
 }

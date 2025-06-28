@@ -7,6 +7,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
 import java.util.function.Supplier;
@@ -17,6 +18,9 @@ public class CDRecipes {
 
     public static final Supplier<RecipeSerializer<?>> PICKLE_JARS_SERIALIZER = RECIPE_SERIALIZERS.register("pickle_jars", PickleJarsRecipe.Serializer::new);
     public static final Supplier<RecipeType<PickleJarsRecipe>> PICKLE_JARS_TYPE = registerRecipeType("pickle_jars");
+    public static final Supplier<RecipeSerializer<?>> MILLSTONE_SERIALIZER = RECIPE_SERIALIZERS.register("millstone", MillStoneRecipe.Serializer::new);
+    public static final Supplier<RecipeType<MillStoneRecipe>> MILLSTONE_TYPE = registerRecipeType("millstone");
+
 
     public static <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(final String identifier) {
         return RECIPE_TYPES.register(identifier, () -> new RecipeType<T>() {

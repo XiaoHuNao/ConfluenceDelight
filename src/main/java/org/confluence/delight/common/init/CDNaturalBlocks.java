@@ -2,10 +2,13 @@ package org.confluence.delight.common.init;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
@@ -13,6 +16,7 @@ import org.confluence.delight.common.block.natural.*;
 import org.confluence.delight.common.item.ToolTipBlockItem;
 import org.confluence.mod.common.block.natural.sapling.BaseSaplingBlock;
 import org.confluence.mod.common.init.item.FoodItems;
+import vectorwing.farmersdelight.common.block.WildCropBlock;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -64,6 +68,8 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<SpicyPepperBlock> SPICY_PEPPER_CROP = registerWithoutItem("spicy_pepper_crop", "辣椒", SpicyPepperBlock::new);
     public static final DeferredBlock<DragonFruitCactusBlock> DRAGON_FRUIT_CACTUS = registerWithoutItem("dragon_fruit_cactus", "火龙果仙人掌", DragonFruitCactusBlock::new);
     public static final DeferredBlock<DragonFruitBlock> DRAGON_FRUIT_BLOCK = registerWithoutItem("dragon_fruit", "火龙果", DragonFruitBlock::new);
+    public static final DeferredBlock<CuminCropBlock> CUMIN_CROP = registerWithoutItem("cumin_crop", "孜然", CuminCropBlock::new);
+    public static final DeferredBlock<WildCropBlock> WILD_CUMIN_CROP = registerWithoutItem("wild_cumin_crop", "野生孜然", () -> new WildCropBlock(MobEffects.SATURATION, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS)));
 
     public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, Supplier<B> bl) {
         return BLOCKS.register(en, bl);
