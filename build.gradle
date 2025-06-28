@@ -170,7 +170,7 @@ repositories {
 
 dependencies {
     implementation (files("libs/confluence_magic_lib-0.0.1.jar"))
-    implementation "curse.maven:farmers-delight-398521:5878217"
+    implementation "curse.maven:farmers-delight-398521:6597295"
     implementation "curse.maven:confluence-1209464:6608114"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
