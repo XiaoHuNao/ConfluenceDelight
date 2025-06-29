@@ -81,6 +81,15 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 " I ",
                 " B "
         )), CDBlocks.SAP_COLLECTORS_BLOCK.toStack());
+        shaped(output, "", "", ShapedRecipePattern.of(Map.of(
+                'F', Ingredient.of(ItemTags.FENCES),
+                'S', Ingredient.of(Items.SMOOTH_STONE),
+                'T', Ingredient.of(Items.STONE)
+        ),List.of(
+                "  F",
+                "SSS",
+                "TTT"
+        )), CDBlocks.MILLSTONE_BLOCK.toStack());
 
         shapeless(output, "", "", CDFoodItems.CLOUD_BACON_SANDWICH.toStack(),
                 Ingredient.of(CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),

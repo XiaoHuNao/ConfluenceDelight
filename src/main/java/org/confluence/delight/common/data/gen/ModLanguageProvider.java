@@ -102,6 +102,12 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.big_chicken_cutlet.0",
                 "LLLLLava CCCChicken",
                 "特辣大鸡排");
+        add("tooltip.item.confluence_delight.hot_star_chicken",
+                "Hot Star Chicken, Everyone loves it",
+                "豪大大鸡排，又香又嫩人人夸");
+        add("jukebox.confluence_delight.hot_star_chicken",
+                "The circus on the top floor - Hot Star Chicken",
+                "顶楼的马戏团 - 豪大大鸡排");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

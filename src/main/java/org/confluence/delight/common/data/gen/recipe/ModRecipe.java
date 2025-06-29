@@ -154,6 +154,12 @@ public class ModRecipe extends AbstractRecipeProvider {
                 .addIngredient(CDMaterialItems.SALT)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.HOT_STAR_CHICKEN.get(), 1, 400, 1.0f)
+                .addIngredient(Items.CHICKEN)
+                .addIngredient(CDMaterialItems.CHILI_POWDER)
+                .addIngredient(CDMaterialItems.SALT)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
     }
 
     protected void cookingPot(RecipeOutput recipeOutput, ItemStack result, Ingredient container, CookingPotRecipe.HeatSourcePredicate heatSource, int cookingTime, Ingredient... ingredients) {

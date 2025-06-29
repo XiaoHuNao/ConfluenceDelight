@@ -3,5 +3,10 @@
         "sounds": [
             "confluence_delight:millstone_work"
         ]
+    },
+    "hot_star_chicken": {
+        "sounds": [
+            "confluence_delight:hot_star_chicken"
+        ]
     }
 }

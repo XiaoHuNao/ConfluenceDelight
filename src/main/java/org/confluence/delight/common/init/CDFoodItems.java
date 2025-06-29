@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -12,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.food.DelightFoodProperties;
 import org.confluence.delight.common.food.DelightFoodProperties.EffectData;
+import org.confluence.delight.common.item.HotStarChickenItem;
 import org.confluence.mod.common.init.ModEffects;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 import org.confluence.mod.common.item.food.ModFoodProperties;
@@ -68,7 +70,8 @@ public class CDFoodItems {
     public static final DeferredItem<BaseFoodItem> ATLANTIS_TSUNAMI = registerToolTipFood("atlantis_tsunami", "大西洋冲击波", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(1, 1.5f,
                     EffectData.of(MobEffects.MOVEMENT_SPEED, 1200, 1),
-                    EffectData.of(MobEffects.CONFUSION, 400))), 1, ChatFormatting.GRAY);
+                    EffectData.of(MobEffects.CONFUSION, 400)))
+            .duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
     public static final DeferredItem<BaseFoodItem> DONKEY_MEAT_FIRE = registerNormalFood("donkey_meat_fire", "驴肉火烧",
             DelightFoodProperties.hasEffectProperties(10, 12f,
                     EffectData.of(ModEffects.HUNGER_DELAYED, 3600)));
@@ -189,7 +192,13 @@ public class CDFoodItems {
                     DelightFoodProperties.hasEffectProperties(12, 16.0f,
                             EffectData.of(ModEffects.CHOKING, 2000)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<Item> HOT_STAR_CHICKEN = normalItemRegister("hot_star_chicken", "豪大大鸡排", HotStarChickenItem::new);
 
+    public static <I extends Item> DeferredItem<I> normalItemRegister(final String en, final String zh, Supplier<I> it) {
+        DeferredItem<I> item = ITEMS.register(en, it);
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
 
     public static DeferredItem<BaseFoodItem> registerFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer) {
         DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {

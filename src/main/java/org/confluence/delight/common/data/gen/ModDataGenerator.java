@@ -39,6 +39,7 @@ public class ModDataGenerator {
                 ModRecipe::new,
                 VanillaCraftRecipe::new));
         generator.addProvider(server, new FruitTreeFeatureConfigProvider(output, lookup));
+        generator.addProvider(server, new CDMusicProvider(output, lookup));
 
 
         boolean client = event.includeClient();
