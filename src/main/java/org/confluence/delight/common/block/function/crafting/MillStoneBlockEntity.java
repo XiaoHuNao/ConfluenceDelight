@@ -40,7 +40,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
 
     private int craftProgress = 0;
     private int craftTotalTime = 0;
-    public int useCooldown = 30;
+    public int useCooldown;
 
     public final ItemStackHandlerRecipeInput itemHandler;
     private final RecipeManager.CachedCheck<MillStoneRecipe.Input, MillStoneRecipe> cachedCheck;
@@ -94,7 +94,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
                 MillStoneRecipe recipe = optionalRecipe.get().value();
                 blockEntity.craftTotalTime = recipe.getWorkCircles();
                 ItemStack resultItem = recipe.getResultItem(null);
-                level.playSound(null, pos, CDSoundEvents.MILLSTONE_WORK.get(), SoundSource.BLOCKS, 0.5f, 0.5f);
+                level.playSound(null, pos, CDSoundEvents.MILLSTONE_WORK.get(), SoundSource.BLOCKS, 0.75f, 0.5f);
                 blockEntity.spawnInputItemParticles(level, pos);
                 if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), resultItem)) {
                     if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {

@@ -105,7 +105,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence_delight.hot_star_chicken",
                 "Hot Star Chicken, Everyone loves it",
                 "豪大大鸡排，又香又嫩人人夸");
-        add("jukebox.confluence_delight.hot_star_chicken",
+        add("jukebox_song.confluence_delight.hot_star_chicken",
                 "The circus on the top floor - Hot Star Chicken",
                 "顶楼的马戏团 - 豪大大鸡排");
 

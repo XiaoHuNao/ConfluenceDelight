@@ -87,7 +87,7 @@ public class MillStoneBlock extends BaseEntityBlock {
                 MillStoneBlockEntity.onEntityWork(level, pos, state, millStone);
                 player.swing(player.getUsedItemHand(), true);
                 millStone.setChanged();
-                millStone.useCooldown = 20;
+                millStone.useCooldown = 42;
                 return InteractionResult.sidedSuccess(false);
             }
         }
