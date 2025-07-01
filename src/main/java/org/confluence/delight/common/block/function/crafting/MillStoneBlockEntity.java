@@ -128,10 +128,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
         ItemStack[] inputStacks = getInputStacks();
         for (ItemStack stack : inputStacks) {
             if (!stack.isEmpty()) {
-                double x = pos.getX() + 0.75;
-                double y = pos.getY() + 0.5;
-                double z = pos.getZ() + 0.75;
-                serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), x, y, z, 20, 0.75, 0, 0.5, 0.05);
+                serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), pos.getX() + 0.5F, pos.getY() + 0.75F, pos.getZ() + 0.5F, 20, 0F, 0.0625F, 0F, 0.15F);
                 break;
             }
         }
