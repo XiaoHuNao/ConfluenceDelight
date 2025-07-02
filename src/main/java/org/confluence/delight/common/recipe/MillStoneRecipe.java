@@ -17,68 +17,30 @@ import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 
 public class MillStoneRecipe extends AbstractAmountRecipe<MillStoneRecipe.Input> {
-    private final Ingredient ingredient1;
-    private final Ingredient ingredient2;
     private final int workCircles;
 
 
-    public MillStoneRecipe(ItemStack result, Ingredient ingredient, int workCircles) {
-        super(result, NonNullList.of(Ingredient.EMPTY, ingredient));
-        this.ingredient1 = ingredient;
-        this.ingredient2 = Ingredient.EMPTY;
-        this.workCircles = workCircles;
-    }
-
-    public MillStoneRecipe(ItemStack result, Ingredient ingredient1, Ingredient ingredient2, int workCircles) {
-        super(result, NonNullList.of(Ingredient.EMPTY, ingredient1, ingredient2));
-        this.ingredient1 = ingredient1;
-        this.ingredient2 = ingredient2;
+    public MillStoneRecipe(ItemStack result, NonNullList<Ingredient> ingredients, int workCircles) {
+        super(result, ingredients);
         this.workCircles = workCircles;
     }
 
     @Override
     public boolean matches(Input input, Level level) {
         ItemStack[] items = input.items;
-        if (ingredient2 == Ingredient.EMPTY) {
-            for (ItemStack item : items) {
-                if (ingredient1.test(item)) {
+        for (ItemStack item : items) {
+            for (Ingredient ingredient : ingredients) {
+                if (ingredient.test(item)) {
                     return true;
                 }
             }
-            return false;
         }
-        if (items.length != 2) {
-            return false;
-        }
-        ItemStack input0 = items[0];
-        ItemStack input1 = items[1];
-        return (ingredient1.test(input0) && ingredient2.test(input1)) || (ingredient1.test(input1) && ingredient2.test(input0));
+        return false;
     }
-
-    public boolean isValidInput(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
-        if (ingredient2 == Ingredient.EMPTY) {
-            return ingredient1.test(stack);
-        } else {
-            return ingredient1.test(stack) || ingredient2.test(stack);
-        }
-    }
-
 
     public int getWorkCircles() {
         return workCircles;
     }
-
-    public Ingredient getIngredient1() {
-        return ingredient1;
-    }
-
-    public Ingredient getIngredient2() {
-        return ingredient2;
-    }
-
 
     @Override
     protected int maxIngredientSize() {
@@ -108,8 +70,7 @@ public class MillStoneRecipe extends AbstractAmountRecipe<MillStoneRecipe.Input>
     public static class Serializer implements RecipeSerializer<MillStoneRecipe> {
         public static final MapCodec<MillStoneRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                Ingredient.CODEC.fieldOf("ingredient1").forGetter(recipe -> recipe.ingredient1),
-                Ingredient.CODEC.fieldOf("ingredient2").forGetter(recipe -> recipe.ingredient2),
+                INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
                 Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.workCircles)
         ).apply(instance, MillStoneRecipe::new));
 
@@ -126,16 +87,21 @@ public class MillStoneRecipe extends AbstractAmountRecipe<MillStoneRecipe.Input>
         }
 
         private static MillStoneRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-            Ingredient ingredient1 = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-            Ingredient ingredient2 = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
+            int size = buffer.readVarInt();
+            NonNullList<Ingredient> ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
+            for (int i = 0; i < size; i++) {
+                ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
+            }
             ItemStack result = ItemStack.STREAM_CODEC.decode(buffer);
             int workCircles = buffer.readVarInt();
-            return new MillStoneRecipe(result, ingredient1, ingredient2, workCircles);
+            return new MillStoneRecipe(result, ingredients, workCircles);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, MillStoneRecipe recipe) {
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.ingredient1);
-            Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.ingredient2);
+            buffer.writeVarInt(recipe.ingredients.size());
+            for (Ingredient ingredient : recipe.ingredients) {
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
+            }
             ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
             buffer.writeVarInt(recipe.getWorkCircles());
         }

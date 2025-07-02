@@ -10,6 +10,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -17,6 +18,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
+
+import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 
 public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStoneRecipe>> {
     public static final RecipeType<RecipeHolder<MillStoneRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("millstone"));
@@ -55,11 +58,15 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<MillStoneRecipe> recipe, IFocusGroup focuses) {
-        Ingredient ingredient1 = recipe.value().getIngredient1();
-        Ingredient ingredient2 = recipe.value().getIngredient2();
+        NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
+        int size = ingredients.size();
         //ItemInput
-        builder.addSlot(RecipeIngredientRole.INPUT, 42, 10).addIngredients(ingredient1);
-        builder.addSlot(RecipeIngredientRole.INPUT, 60, 10).addIngredients(ingredient2);
+        if (size == 1) {
+            addInput(builder, 42, 10, ingredients.getFirst());
+        } else if (size == 2) {
+            addInput(builder, 42, 10, ingredients.getFirst());
+            addInput(builder, 60, 10, ingredients.get(1));
+        }
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }

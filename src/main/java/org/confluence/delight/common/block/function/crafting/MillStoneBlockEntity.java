@@ -87,7 +87,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
             return;
         }
         ItemStack[] inputStacks = blockEntity.getInputStacks();
-        if (hasInputItems(inputStacks) && isInputValidForRecipe(inputStacks, level, blockEntity.cachedCheck)) {
+        if (hasInputItems(inputStacks)) {
             MillStoneRecipe.Input input = new MillStoneRecipe.Input(inputStacks);
             Optional<RecipeHolder<MillStoneRecipe>> optionalRecipe = blockEntity.cachedCheck.getRecipeFor(input, level);
             if (optionalRecipe.isPresent()) {
@@ -142,22 +142,6 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
         }
         return false;
     }
-
-    private static boolean isInputValidForRecipe(ItemStack[] inputStacks, Level level, RecipeManager.CachedCheck<MillStoneRecipe.Input, MillStoneRecipe> cachedCheck) {
-        MillStoneRecipe.Input input = new MillStoneRecipe.Input(inputStacks);
-        Optional<RecipeHolder<MillStoneRecipe>> optionalRecipe = cachedCheck.getRecipeFor(input, level);
-        if (optionalRecipe.isEmpty()) {
-            return false;
-        }
-        MillStoneRecipe recipe = optionalRecipe.get().value();
-        for (ItemStack stack : inputStacks) {
-            if (!stack.isEmpty() && !recipe.isValidInput(stack)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     public ItemStack addItem(ItemStack toAdd) {
         if (toAdd.isEmpty()) {
