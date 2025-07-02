@@ -21,6 +21,7 @@ public class CDCreativeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(CDBlocks.PICKLE_JARS_BLOCK.get());
                         output.accept(CDBlocks.MILLSTONE_BLOCK.get());
+                        output.accept(CDBlocks.JUICER_BLOCK.get());
                         output.accept(CDBlocks.SAP_COLLECTORS_BLOCK.get());
                         CDItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));
                         CDMaterialItems.ITEMS.getEntries().forEach((item) -> output.accept(item.get()));

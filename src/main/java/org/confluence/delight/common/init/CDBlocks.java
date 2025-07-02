@@ -32,8 +32,8 @@ public class CDBlocks {
     public static final Supplier<BlockEntityType<SapCollectorsBlock.Entity>> SAP_COLLECTORS_BLOCK_ENTITY = BLOCK_ENTITIES.register("sap_collectors_block", () -> BlockEntityType.Builder.of(SapCollectorsBlock.Entity::new, SAP_COLLECTORS_BLOCK.get()).build(null));
     public static final DeferredBlock<MillStoneBlock> MILLSTONE_BLOCK = registerBlockItem("millstone_block", "磨盘", () -> new MillStoneBlock(BlockBehaviour.Properties.of().strength(1.0f)));
     public static final Supplier<BlockEntityType<MillStoneBlockEntity>> MILLSTONE_BLOCK_ENTITY = BLOCK_ENTITIES.register("millstone_block", () -> BlockEntityType.Builder.of(MillStoneBlockEntity::new, MILLSTONE_BLOCK.get()).build(null));
-
-
+    public static final DeferredBlock<JuicerBlock> JUICER_BLOCK = registerBlockItem("juicer_block", "榨汁机", () -> new JuicerBlock(BlockBehaviour.Properties.of().strength(1.0f)));
+    public static final Supplier<BlockEntityType<JuicerBlockEntity>> JUICER_BLOCK_ENTITY = BLOCK_ENTITIES.register("juicer_block", () -> BlockEntityType.Builder.of(JuicerBlockEntity::new, JUICER_BLOCK.get()).build(null));
     //流体
     public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.WHITE)));
 

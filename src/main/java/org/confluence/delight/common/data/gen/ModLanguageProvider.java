@@ -54,6 +54,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("jei.confluence_delight.info.pickle_jars.fermented_item", "Hold down shift to display the time after acceleration", "按住shift显示加速后时间");
 
         add("title.confluence_delight.millstone", "Millstone", "磨盘");
+        add("title.confluence_delight.juicer", "Juicer", "榨汁机");
         add("jei.confluence_delight.info.millstone.work_circles", "%d circles", "%d 圈");
         //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");

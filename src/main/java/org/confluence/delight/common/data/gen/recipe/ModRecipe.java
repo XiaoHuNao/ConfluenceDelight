@@ -22,6 +22,7 @@ import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDMaterialItems;
 import org.confluence.delight.common.init.CDTags;
+import org.confluence.delight.common.recipe.JuicerRecipe;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
@@ -41,6 +42,7 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -93,6 +95,9 @@ public class ModRecipe extends AbstractRecipeProvider {
 
         //磨盘
         millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), 5, Ingredient.of(FoodItems.SPICY_PEPPER));
+
+        //榨汁机
+        juicerRecipe(recipeOutput, FoodItems.APPLE_JUICE.toStack(), 5, Ingredient.of(Items.APPLE), Ingredient.of(Items.GLASS_BOTTLE));
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -191,5 +196,13 @@ public class ModRecipe extends AbstractRecipeProvider {
         ResourceLocation id = ConfluenceDelight.asResource("millstone/" + getItemName(result.getItem()));
         NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
         recipeOutput.accept(id, new MillStoneRecipe(result, recipeIngredients, workCircles), null);
+    }
+
+    protected void juicerRecipe(RecipeOutput recipeOutput, ItemStack result, int workCircles, Ingredient... ingredients) {
+        ResourceLocation id = ConfluenceDelight.asResource("juicer/" + getItemName(result.getItem()));
+        NonNullList<Ingredient> ingredients1 = NonNullList.create();
+        ingredients1.addAll(Arrays.asList(ingredients));
+
+        recipeOutput.accept(id, new JuicerRecipe(result, ingredients1, workCircles), null);
     }
 }

@@ -28,6 +28,7 @@ public class ModJeiPlugin implements IModPlugin {
         IJeiHelpers jeiHelpers = registration.getJeiHelpers();
         registration.addRecipeCategories(new PickleJarsCategory(jeiHelpers));
         registration.addRecipeCategories(new MillStoneCategory(jeiHelpers));
+        registration.addRecipeCategories(new JuicerCategory(jeiHelpers));
     }
 
     @Override
@@ -37,11 +38,13 @@ public class ModJeiPlugin implements IModPlugin {
         RecipeManager recipeManager = level.getRecipeManager();
         registration.addRecipes(PickleJarsCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.PICKLE_JARS_TYPE.get()));
         registration.addRecipes(MillStoneCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.MILLSTONE_TYPE.get()));
+        registration.addRecipes(JuicerCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.JUICER_TYPE.get()));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(CDBlocks.PICKLE_JARS_BLOCK.toStack(), PickleJarsCategory.RECIPE_TYPE);
         registration.addRecipeCatalyst(CDBlocks.MILLSTONE_BLOCK.toStack(), MillStoneCategory.RECIPE_TYPE);
+        registration.addRecipeCatalyst(CDBlocks.JUICER_BLOCK.toStack(), JuicerCategory.RECIPE_TYPE);
     }
 }
