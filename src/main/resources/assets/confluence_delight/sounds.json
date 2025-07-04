@@ -1,12 +1,19 @@
 {
     "millstone_work": {
         "sounds": [
-            "confluence_delight:millstone_work"
-        ]
+            {
+                "type": "file",
+                "name": "confluence_delight:millstone_work"
+            }
+        ],
+        "subtitle": "confluence_delight.subtitle.millstone_work"
     },
     "hot_star_chicken": {
         "sounds": [
-            "confluence_delight:hot_star_chicken"
+            {
+                "type": "file",
+                "name": "confluence_delight:hot_star_chicken"
+            }
         ]
     }
 }

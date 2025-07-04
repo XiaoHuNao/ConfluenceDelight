@@ -10,7 +10,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -96,7 +95,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
                 MillStoneRecipe recipe = optionalRecipe.get().value();
                 blockEntity.craftTotalTime = recipe.getWorkCircles();
                 ItemStack resultItem = recipe.getResultItem(null);
-                level.playSound(null, pos, SoundEvents.SLIME_HURT, SoundSource.BLOCKS, 0.75f, 0.5f);
+                level.playSound(null, pos, CDSoundEvents.MILLSTONE_WORK.get(), SoundSource.BLOCKS, 0.75f, 0.5f);
                 blockEntity.spawnInputItemParticles(level, pos);
                 if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), resultItem)) {
                     if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
@@ -131,7 +130,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
         for (ItemStack stack : inputStacks) {
             if (!stack.isEmpty()) {
                 FoodProperties properties = stack.getFoodProperties(null);
-                if (properties != null && properties.nutrition() > 0.5f){
+                if (properties != null && properties.nutrition() > 0.5f) {
                     serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack), pos.getX() + 0.5F, pos.getY() + 0.75F, pos.getZ() + 0.5F, 20, 0F, 0.0625F, 0F, 0.15F);
                     break;
                 }

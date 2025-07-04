@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapedRecipePattern;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
@@ -65,7 +66,7 @@ public class ModRecipe extends AbstractRecipeProvider {
         CookingPotRecipe.HeatSourcePredicate blueIceHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(Blocks.BLUE_ICE).build();
         cookingPot(recipeOutput, CDFoodItems.CHICKEN_HOT_POT.toStack(), bowlContainer, stoveHeatSource, 500, AmountIngredient.of(16, FoodItems.SPICY_PEPPER), AmountIngredient.of(4, ModItems.CHICKEN_CUTS.get()), AmountIngredient.of(3, CDFoodItems.POTATO_PIECE));
         cookingPot(recipeOutput, CDFoodItems.ROYAL_GUMMY.toStack(), Ingredient.EMPTY, CookingPotRecipe.HeatSourcePredicate.EMPTY, 200, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(TCItems.ROYAL_GEL.get()), Ingredient.of(MaterialItems.AMBER));
-        cookingPot(recipeOutput, CDFoodItems.ATLANTIS_TSUNAMI.toStack(), Ingredient.of(PotionItems.MUG), blueIceHeatSource, 300, Ingredient.of(MaterialItems.HEIM), Ingredient.of(Items.SUGAR), Ingredient.of(CDTags.Items.FRUIT_LEMON), Ingredient.of(PotionItems.ALE));
+        cookingPot(recipeOutput, CDFoodItems.ATLANTIS_TSUNAMI.toStack(), Ingredient.of(PotionItems.MUG), blueIceHeatSource, 300, Ingredient.of(MaterialItems.HEIM), Ingredient.of(Items.SUGAR), Ingredient.of(CDTags.Items.C_FRUIT_LEMON), Ingredient.of(PotionItems.ALE));
         cookingPot(recipeOutput, CDFoodItems.DONKEY_MEAT_FIRE.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT), Ingredient.of(Items.BREAD));
         cookingPot(recipeOutput, CDFoodItems.HORSE_MEAT_SASHIMI.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(CDFoodItems.RAW_HORSE_MEAT));
         cookingPot(recipeOutput, CDFoodItems.BLACK_LUCK.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BLACKCURRANT));
@@ -74,6 +75,7 @@ public class ModRecipe extends AbstractRecipeProvider {
         cookingPot(recipeOutput, CDFoodItems.BUTTER.toStack(), Ingredient.EMPTY, stoveHeatSource, 50, Ingredient.of(ModItems.MILK_BOTTLE.get()));
         cookingPot(recipeOutput, CDFoodItems.SPICY_BOMB_FISH.toStack(), bowlContainer, stoveHeatSource, 50, Ingredient.of(ConsumableItems.BOMB_FISH), Ingredient.of(FoodItems.SPICY_PEPPER), Ingredient.of(ModItems.CABBAGE.get()));
         cookingPot(recipeOutput, CDFoodItems.CRISPY_RICE_WITH_POTATOES.toStack(), bowlContainer, stoveHeatSource, 120, Ingredient.of(CDFoodItems.POTATO_PIECE), Ingredient.of(CDFoodItems.CRUSHED_CHILLI));
+        cookingPot(recipeOutput, CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES.toStack(), Ingredient.EMPTY, stoveHeatSource, 100, Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE), Ingredient.of(CDFoodItems.BUTTER));
 
         //重型工作台
         heavyWorkBench(recipeOutput, "", ShapedRecipePattern.of(Map.of(
@@ -97,7 +99,7 @@ public class ModRecipe extends AbstractRecipeProvider {
         millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), 5, Ingredient.of(FoodItems.SPICY_PEPPER));
 
         //榨汁机
-        juicerRecipe(recipeOutput, FoodItems.APPLE_JUICE.toStack(), 5, Ingredient.of(Items.APPLE), Ingredient.of(Items.GLASS_BOTTLE));
+        juicerRecipe(recipeOutput, FoodItems.APPLE_JUICE.toStack(), 5, Items.GLASS_BOTTLE, Ingredient.of(Items.APPLE));
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -198,11 +200,9 @@ public class ModRecipe extends AbstractRecipeProvider {
         recipeOutput.accept(id, new MillStoneRecipe(result, recipeIngredients, workCircles), null);
     }
 
-    protected void juicerRecipe(RecipeOutput recipeOutput, ItemStack result, int workCircles, Ingredient... ingredients) {
+    protected void juicerRecipe(RecipeOutput recipeOutput, ItemStack result, int cycle, ItemLike container, Ingredient... ingredients) {
         ResourceLocation id = ConfluenceDelight.asResource("juicer/" + getItemName(result.getItem()));
-        NonNullList<Ingredient> ingredients1 = NonNullList.create();
-        ingredients1.addAll(Arrays.asList(ingredients));
-
-        recipeOutput.accept(id, new JuicerRecipe(result, ingredients1, workCircles), null);
+        NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
+        recipeOutput.accept(id, new JuicerRecipe(result, container, cycle, recipeIngredients), null);
     }
 }

@@ -13,18 +13,22 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.JuicerRecipe;
-import org.confluence.delight.common.recipe.MillStoneRecipe;
+
+import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 
 public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe>> {
     public static final RecipeType<RecipeHolder<JuicerRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("juicer"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.juicer");
-    ResourceLocation background = ConfluenceDelight.asResource("textures/gui/jei/millstone/millstone.png");  //todo
+    ResourceLocation background = ConfluenceDelight.asResource("textures/gui/jei/juicer/juicer.png");
     private final IDrawable icon;
+    private final int WIDTH = 158;
+    private final int HEIGHT = 84;
 
     public JuicerCategory(IJeiHelpers jeiHelpers) {
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.JUICER_BLOCK.toStack());
@@ -37,12 +41,12 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
 
     @Override
     public int getWidth() {
-        return 158;
+        return WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return 84;
+        return HEIGHT;
     }
 
     @Override
@@ -57,29 +61,34 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<JuicerRecipe> recipe, IFocusGroup focuses) {
-        NonNullList<Ingredient> ingredients = recipe.value().getIngredient();
-        //ItemInput
-        for (int i = 0; i < ingredients.size(); i++) {
-            int x = 42 + (i % 2) * 18;
-            int y = 10 + (i / 2) * 18;
-
-            builder.addSlot(RecipeIngredientRole.INPUT, x, y)
-                    .addIngredients(ingredients.get(i));
+        NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
+        int size = ingredients.size();
+        if (size == 1) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+        } else if (size == 2) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+            addInput(builder, 60, 27, ingredients.get(1));
+        } else if (size == 3) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+            addInput(builder, 60, 27, ingredients.get(1));
+            addInput(builder, 51, 45, ingredients.get(2));
         }
+        Item container = recipe.value().getContainer().asItem();
+        addInput(builder, 89, 48, Ingredient.of(container));
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }
 
     @Override
     public void draw(RecipeHolder<JuicerRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(background, 0, 0, 0, 0, 158, 84);
-        int workCircles = recipe.value().getWorkCircles();
-        Component timeText = Component.translatable("jei.confluence_delight.info.millstone.work_circles", workCircles);
+        guiGraphics.blit(background, 0, 0, 0, 0, WIDTH, HEIGHT);
+        int cycle = recipe.value().getCycle();
+        Component timeText = Component.translatable("jei.confluence_delight.info.juicer.cycle", cycle);
         guiGraphics.pose().pushPose();
         float scale = 0.8f;
         guiGraphics.pose().scale(scale, scale, 1.0f);
         int x = (int) (92 / scale);
-        int y = (int) (55 / scale);
+        int y = (int) (30 / scale);
         guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFF, true);
         guiGraphics.pose().popPose();
     }

@@ -119,7 +119,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(CDTags.Items.FRUIT_MANGO));
+                Ingredient.of(CDTags.Items.C_FRUIT_MANGO));
         shapeless(output, "", "", CDFoodItems.BANANA_PUDDING.toStack(),
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.SUGAR),
@@ -131,7 +131,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_JAM_MANGO_PUDDING.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(CDTags.Items.FRUIT_MANGO),
+                Ingredient.of(CDTags.Items.C_FRUIT_MANGO),
                 Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
                 Ingredient.of(MaterialItems.GEL));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN.toStack(),
@@ -160,7 +160,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.COCOA_BEANS),
                 Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
         shapeless(output, "", "", CDNaturalItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
-        shapeless(output, "", "", CDNaturalItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.FRUIT_PINEAPPLE));
+        shapeless(output, "", "", CDNaturalItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.C_FRUIT_PINEAPPLE));
         shapeless(output, "", "", CDNaturalItems.DRAGON_FRUIT_SEEDS.toStack(2), Ingredient.of(FoodItems.DRAGON_FRUIT));
         shapeless(output, "", "", CDFoodItems.BIG_CHICKEN_CUTLET.toStack(),
                 Ingredient.of(Items.CHICKEN),

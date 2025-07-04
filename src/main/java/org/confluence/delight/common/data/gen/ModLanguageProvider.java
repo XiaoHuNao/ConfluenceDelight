@@ -54,8 +54,10 @@ public class ModLanguageProvider extends LanguageProvider {
         add("jei.confluence_delight.info.pickle_jars.fermented_item", "Hold down shift to display the time after acceleration", "按住shift显示加速后时间");
 
         add("title.confluence_delight.millstone", "Millstone", "磨盘");
-        add("title.confluence_delight.juicer", "Juicer", "榨汁机");
         add("jei.confluence_delight.info.millstone.work_circles", "%d circles", "%d 圈");
+
+        add("title.confluence_delight.juicer", "Juicer", "榨汁机");
+        add("jei.confluence_delight.info.juicer.cycle", "%d cycle", "%d 次");
         //jade
         add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
@@ -159,6 +161,11 @@ public class ModLanguageProvider extends LanguageProvider {
                 "It can be obtained by right-clicking elderberry on on azalea or flowering azalea",
                 "使用接骨木右击杜鹃花丛或盛开的杜鹃花丛获得");
 
+        //SoundsSubmit
+        add("confluence_delight.subtitle.millstone_work",
+                "MillStone: is working",
+                "磨盘：工作");
+
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
 
         chineseProviders.forEach(a -> a.accept(this));
@@ -186,30 +193,30 @@ public class ModLanguageProvider extends LanguageProvider {
         return DataProvider.saveStable(cache, json, target);
     }
 
-    public void addBlock(DeferredHolder<Block, ? extends Block> key, String cn) {
+    public void addBlock(DeferredHolder<Block, ? extends Block> key, String zh) {
         String en = toTitleCase(key.get().getDescriptionId());
-        this.add(key.get().getDescriptionId(), en, cn);
+        this.add(key.get().getDescriptionId(), en, zh);
     }
 
-    public void addItem(DeferredHolder<Item, ? extends Item> key, String cn) {
+    public void addItem(DeferredHolder<Item, ? extends Item> key, String zh) {
         String en = toTitleCase(key.get().getDescriptionId());
-        this.add(key.get().getDescriptionId(), en, cn);
+        this.add(key.get().getDescriptionId(), en, zh);
     }
 
-    public void addEffect(DeferredHolder<MobEffect, ? extends MobEffect> key, String cn) {
+    public void addEffect(DeferredHolder<MobEffect, ? extends MobEffect> key, String zh) {
         String en = toTitleCase(key.get().getDescriptionId());
-        this.add(key.get().getDescriptionId(), en, cn);
+        this.add(key.get().getDescriptionId(), en, zh);
     }
 
-    private void addCreativeTab(Supplier<CreativeModeTab> tab, String en, String cn) {
-        this.add(tab.get().getDisplayName().getString(), en, cn);
+    private void addCreativeTab(Supplier<CreativeModeTab> tab, String en, String zh) {
+        this.add(tab.get().getDisplayName().getString(), en, zh);
     }
 
-    private void add(String key, String en, String cn) {
+    private void add(String key, String en, String zh) {
         if (this.locale.equals("en_us") && !this.enData.containsKey(key)) {
             this.enData.put(key, en);
         } else if (this.locale.equals("zh_cn") && !this.cnData.containsKey(key)) {
-            this.cnData.put(key, cn);
+            this.cnData.put(key, zh);
         }
     }
 }

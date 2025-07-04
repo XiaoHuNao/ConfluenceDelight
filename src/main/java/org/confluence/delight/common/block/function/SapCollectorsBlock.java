@@ -114,13 +114,8 @@ public class SapCollectorsBlock extends BaseEntityBlock {
     }
 
     @Override
-    public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return getDirectSignal(state, level, pos, direction);
-    }
-
-    @Override
-    public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        FillType fillType = state.getValue(FILL);
+    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+        FillType fillType = blockState.getValue(FILL);
         if (fillType != FillType.NONE) {
             return 15;
         }

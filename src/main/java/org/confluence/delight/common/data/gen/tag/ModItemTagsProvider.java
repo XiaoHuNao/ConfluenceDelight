@@ -1,12 +1,14 @@
 package org.confluence.delight.common.data.gen.tag;
 
 import dev.xkmc.fruitsdelight.init.food.FruitType;
+import dev.xkmc.fruitsdelight.init.plants.FDPineapple;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -17,6 +19,7 @@ import org.confluence.delight.common.init.CDNaturalItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.delight.integration.ModLoadUtil;
 import org.confluence.mod.common.init.item.FoodItems;
+import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,14 +39,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         for (DeferredHolder<Item, ? extends Item> food : CDFoodItems.ITEMS.getEntries()) {
             foods.add(food.get());
         }
-        addFruitToTag(CDTags.Items.FRUIT_MANGO, FoodItems.MANGO.get());
-        addFruitToTag(CDTags.Items.FRUIT_PINEAPPLE, FoodItems.PINEAPPLE.get());
-        addFruitToTag(CDTags.Items.FRUIT_LEMON, FoodItems.LEMON.get());
-        if (ModLoadUtil.isFruitDelightLoaded()) {
-            addFruitToTag(CDTags.Items.FRUIT_MANGO, FruitType.MANGO.getFruit());
-            addFruitToTag(CDTags.Items.FRUIT_PINEAPPLE, FruitType.PINEAPPLE.getFruit());
-            addFruitToTag(CDTags.Items.FRUIT_LEMON, FruitType.LEMON.getFruit());
-        }
+        addFruitToTag(CDTags.Items.C_FRUIT_MANGO, FoodItems.MANGO.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_PINEAPPLE, FoodItems.PINEAPPLE.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_LEMON, FoodItems.LEMON.get());
+        tag(CDTags.Items.JUICER_CONTAINER).add(
+                Items.GLASS_BOTTLE,
+                PotionItems.BOTTLE.get(),
+                PotionItems.MUG.get()
+        );
         tag(ItemTags.PARROT_FOOD).add(
                 CDNaturalItems.PINEAPPLE_SEEDS.get(),
                 CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),

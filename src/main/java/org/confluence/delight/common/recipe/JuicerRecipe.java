@@ -4,81 +4,71 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeInput;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
-    private final NonNullList<Ingredient> ingredients;
-    private final int workCircles;
+    private final int cycle;
+    private final ItemLike container;
 
-    public JuicerRecipe(ItemStack result, NonNullList<Ingredient> ingredients, int workCircles) {
+    public JuicerRecipe(ItemStack result, ItemLike container, int cycle, NonNullList<Ingredient> ingredients) {
         super(result, ingredients);
-        this.ingredients = ingredients;
-        this.workCircles = workCircles;
+        this.cycle = cycle;
+        this.container = container;
     }
 
     @Override
     public boolean matches(Input input, Level level) {
-        List<ItemStack> inputs = Arrays.stream(input.items)
-                .filter(stack -> !stack.isEmpty())
-                .toList();
-
+        if (input.getContainer().isEmpty() || input.getContainer().getItem() != container.asItem()) {
+            return false;
+        }
+        List<ItemStack> inputs = new ArrayList<>();
+        for (ItemStack stack : input.items) {
+            if (!stack.isEmpty()) inputs.add(stack);
+        }
         if (inputs.size() != ingredients.size()) return false;
 
-        List<Ingredient> remainingIngredients = new ArrayList<>(ingredients);
-
-        for (ItemStack item : inputs) {
-            boolean matched = false;
-            Iterator<Ingredient> it = remainingIngredients.iterator();
-            while (it.hasNext()) {
-                Ingredient ing = it.next();
-                if (ing.test(item)) {
-                    it.remove();
-                    matched = true;
+        boolean[] matched = new boolean[inputs.size()];
+        for (Ingredient ingredient : ingredients) {
+            boolean found = false;
+            for (int i = 0; i < inputs.size(); i++) {
+                if (!matched[i] && ingredient.test(inputs.get(i))) {
+                    matched[i] = true;
+                    found = true;
                     break;
                 }
             }
-            if (!matched) return false;
+            if (!found) return false;
         }
-
-        return remainingIngredients.isEmpty();
+        return true;
     }
 
-    public boolean isValidInput(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
 
-        for (Ingredient ingredient : ingredients) {
-            if (ingredient.test(stack)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public int getWorkCircles() {
-        return workCircles;
+    public int getCycle() {
+        return cycle;
     }
 
     public NonNullList<Ingredient> getIngredient() {
         return ingredients;
+    }
+
+    public ItemLike getContainer() {
+        return container;
     }
 
 
@@ -110,8 +100,9 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
     public static class Serializer implements RecipeSerializer<JuicerRecipe> {
         public static final MapCodec<JuicerRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                NonNullList.codecOf(Ingredient.CODEC).fieldOf("ingredients").forGetter(recipe -> recipe.ingredients),
-                Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.workCircles)
+                BuiltInRegistries.ITEM.byNameCodec().fieldOf("container").forGetter(recipe -> recipe.container.asItem()),
+                Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.cycle),
+                INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients)
         ).apply(instance, JuicerRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, JuicerRecipe> STREAM_CODEC = StreamCodec.of(JuicerRecipe.Serializer::toNetwork, JuicerRecipe.Serializer::fromNetwork);
@@ -127,14 +118,15 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
         }
 
         private static JuicerRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-            int ingredientCount = buffer.readVarInt();
-            NonNullList<Ingredient> ingredients = NonNullList.withSize(ingredientCount, Ingredient.EMPTY);
-            for (int i = 0; i < ingredientCount; i++) {
+            int size = buffer.readVarInt();
+            NonNullList<Ingredient> ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
+            for (int i = 0; i < size; i++) {
                 ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
+            Item container = BuiltInRegistries.ITEM.byId(buffer.readVarInt());
             ItemStack result = ItemStack.STREAM_CODEC.decode(buffer);
-            int workCircles = buffer.readVarInt();
-            return new JuicerRecipe(result, ingredients, workCircles);
+            int cycle = buffer.readVarInt();
+            return new JuicerRecipe(result, container, cycle, ingredients);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, JuicerRecipe recipe) {
@@ -142,16 +134,23 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
             for (Ingredient ingredient : recipe.ingredients) {
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
+            buffer.writeVarInt(BuiltInRegistries.ITEM.getId(recipe.container.asItem()));
             ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
-            buffer.writeVarInt(recipe.getWorkCircles());
+            buffer.writeVarInt(recipe.getCycle());
         }
     }
 
     public static class Input implements RecipeInput {
         private final ItemStack[] items;
+        private final ItemStack container;
 
-        public Input(ItemStack[] items) {
+        public Input(ItemStack[] items, ItemStack container) {
             this.items = items;
+            this.container = container;
+        }
+
+        public ItemStack getContainer() {
+            return container;
         }
 
         @Override

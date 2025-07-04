@@ -2,7 +2,6 @@ package org.confluence.delight.common.block.function.crafting;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -17,7 +16,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.confluence.delight.common.init.CDBlocks;
-import org.confluence.delight.common.init.CDSoundEvents;
 import org.confluence.lib.util.LibUtils;
 import org.jetbrains.annotations.Nullable;
 

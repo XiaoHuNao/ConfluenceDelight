@@ -81,7 +81,7 @@ public class JuicerBlock extends BaseEntityBlock {
                 JuicerBlockEntity.onEntityWork(level, pos, state, juicerBlock);
                 player.swing(player.getUsedItemHand(), true);
                 juicerBlock.setChanged();
-                juicerBlock.useCooldown = 42;
+                juicerBlock.useCooldown = 20;
                 return InteractionResult.sidedSuccess(false);
             }
         }

@@ -30,6 +30,8 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
     private final JarFluidIngredientRenderer fluidRenderer = new JarFluidIngredientRenderer();
     private final IDrawable icon;
+    private final int WIDTH = 158;
+    private final int HEIGHT = 84;
     ResourceLocation OpenCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_0.png");
     ResourceLocation CloseCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_1.png");
 
@@ -44,12 +46,12 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
 
     @Override
     public int getWidth() {
-        return 158;
+        return WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return 84;
+        return HEIGHT;
     }
 
 
@@ -84,9 +86,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         if (recipe.value().isFermentation()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)
                     .addItemStack(recipe.value().getFermentedItems())
-                    .addRichTooltipCallback((recipeSlotView, tooltip) -> {
-                        tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item"));
-                    });
+                    .addRichTooltipCallback((recipeSlotView, tooltip) -> tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item")));
         }
         //FluidInput
         builder.addSlot(RecipeIngredientRole.INPUT, 0, 0)
@@ -100,9 +100,9 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     @Override
     public void draw(RecipeHolder<PickleJarsRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         if (recipe.value().getCover()) {
-            guiGraphics.blit(CloseCoverGround, 0, 0, 0, 0, 158, 84);
+            guiGraphics.blit(CloseCoverGround, 0, 0, 0, 0, WIDTH, HEIGHT);
         } else {
-            guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, 158, 84);
+            guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, WIDTH, HEIGHT);
         }
         fluidRenderer.render(guiGraphics, recipe.value().getRequiredFluid(), 0, 0);
         int craftTimeTicks = recipe.value().getCraftTime();

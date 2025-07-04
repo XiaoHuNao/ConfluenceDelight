@@ -31,9 +31,10 @@ public final class CDTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> FRUIT_MANGO = register("mango");
-        public static final TagKey<Item> FRUIT_PINEAPPLE = register("pineapple");
-        public static final TagKey<Item> FRUIT_LEMON = register("lemon");
+        public static final TagKey<Item> C_FRUIT_MANGO = c("foods/fruits/mango");
+        public static final TagKey<Item> C_FRUIT_PINEAPPLE = c("foods/fruits/pineapple");
+        public static final TagKey<Item> C_FRUIT_LEMON = c("foods/fruits/lemon");
+        public static final TagKey<Item> JUICER_CONTAINER = register("juicer_container");
 
         private static TagKey<Item> c(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
