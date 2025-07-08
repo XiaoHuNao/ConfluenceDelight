@@ -3,19 +3,47 @@ package org.confluence.delight.common.event.game;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.effect.beneficial.ImmunityEffect;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
+import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDFoodItems;
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
 public final class LivingEntityEvent {
+
+    @SubscribeEvent
+    public static void mobEffectAdded(MobEffectEvent.Added event) {
+        LivingEntity entity = event.getEntity();
+        MobEffectInstance mobEffectInstance = event.getEffectInstance();
+        if (mobEffectInstance == null) return;
+        if (entity.hasEffect(CDEffects.IMMUNITY) && mobEffectInstance.getEffect().value().getCategory() == MobEffectCategory.HARMFUL) {
+            MobEffectInstance immunity = entity.getEffect(CDEffects.IMMUNITY);
+            if (immunity == null) return;
+            int immunityLevel = immunity.getAmplifier() + 1;
+            float reductionRate = switch (immunityLevel) {
+                case 2 -> 0.25f;
+                case 3 -> 0.35f;
+                default -> 0.15f;
+            };
+            int originalDuration = mobEffectInstance.getDuration();
+            int reducedDuration = Math.max(1, (int)(originalDuration * (1 - reductionRate)));
+            if (reducedDuration == originalDuration) return;
+            mobEffectInstance.duration = reducedDuration;
+        }
+    }
 
     @SubscribeEvent
     public static void mobEffect$Remove(MobEffectEvent.Remove event) {

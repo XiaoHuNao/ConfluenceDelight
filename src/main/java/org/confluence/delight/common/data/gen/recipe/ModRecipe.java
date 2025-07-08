@@ -99,7 +99,27 @@ public class ModRecipe extends AbstractRecipeProvider {
         millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), 5, Ingredient.of(FoodItems.SPICY_PEPPER));
 
         //榨汁机
-        juicerRecipe(recipeOutput, FoodItems.APPLE_JUICE.toStack(), 5, Items.GLASS_BOTTLE, Ingredient.of(Items.APPLE));
+        FluidStack WATER_1000 = new FluidStack(Fluids.WATER, 1000);
+        ItemLike BOTTLE = Items.GLASS_BOTTLE;
+        juicerRecipe(recipeOutput, FoodItems.APPLE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, Items.APPLE));
+        juicerRecipe(recipeOutput, CDFoodItems.APRICOT_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.APRICOT));
+        juicerRecipe(recipeOutput, CDFoodItems.BANANA_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.BANANA));
+        juicerRecipe(recipeOutput, CDFoodItems.CHERRY_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.CHERRY));
+        juicerRecipe(recipeOutput, CDFoodItems.COCONUT_JUICE.toStack(), 6, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.COCONUT));
+        juicerRecipe(recipeOutput, CDFoodItems.DRAGON_FRUIT_JUICE.toStack(), 6, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.DRAGON_FRUIT));
+        juicerRecipe(recipeOutput, CDFoodItems.GRAPEFRUIT_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.GRAPE_FRUIT));
+        juicerRecipe(recipeOutput, CDFoodItems.LEMON_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.LEMON));
+        juicerRecipe(recipeOutput, CDFoodItems.MANGO_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.MANGO));
+        juicerRecipe(recipeOutput, CDFoodItems.PEACH_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.PEACH));
+        juicerRecipe(recipeOutput, CDFoodItems.PINEAPPLE_JUICE.toStack(), 6, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.PINEAPPLE));
+        juicerRecipe(recipeOutput, CDFoodItems.PLUM_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.PLUM));
+        juicerRecipe(recipeOutput, CDFoodItems.GRAPE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.GRAPE));
+        juicerRecipe(recipeOutput, CDFoodItems.STAR_FRUIT_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.STAR_FRUIT));
+        juicerRecipe(recipeOutput, CDFoodItems.POMEGRANATE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.POMEGRANATE));
+        juicerRecipe(recipeOutput, CDFoodItems.RAMBUTAN_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.RAMBUTAN));
+        juicerRecipe(recipeOutput, CDFoodItems.BLOOD_ORANGE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.BLOOD_ORANGE));
+        juicerRecipe(recipeOutput, CDFoodItems.ELDERBERRY_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.ELDERBERRY));
+
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -200,9 +220,9 @@ public class ModRecipe extends AbstractRecipeProvider {
         recipeOutput.accept(id, new MillStoneRecipe(result, recipeIngredients, workCircles), null);
     }
 
-    protected void juicerRecipe(RecipeOutput recipeOutput, ItemStack result, int cycle, ItemLike container, Ingredient... ingredients) {
+    protected void juicerRecipe(RecipeOutput recipeOutput, ItemStack result, int cycle, ItemLike container, FluidStack fluidInput, Ingredient... ingredients) {
         ResourceLocation id = ConfluenceDelight.asResource("juicer/" + getItemName(result.getItem()));
         NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
-        recipeOutput.accept(id, new JuicerRecipe(result, container, cycle, recipeIngredients), null);
+        recipeOutput.accept(id, new JuicerRecipe(result, container, cycle, fluidInput, recipeIngredients), null);
     }
 }

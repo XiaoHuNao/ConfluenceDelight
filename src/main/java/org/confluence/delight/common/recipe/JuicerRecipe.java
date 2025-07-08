@@ -15,26 +15,36 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
+import org.confluence.lib.common.recipe.AmountIngredient;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
     private final int cycle;
     private final ItemLike container;
+    private final FluidStack fluid;
 
-    public JuicerRecipe(ItemStack result, ItemLike container, int cycle, NonNullList<Ingredient> ingredients) {
+    public JuicerRecipe(ItemStack result, ItemLike container, int cycle, FluidStack fluid, NonNullList<Ingredient> ingredients) {
         super(result, ingredients);
         this.cycle = cycle;
         this.container = container;
+        this.fluid = fluid;
     }
 
     @Override
     public boolean matches(Input input, Level level) {
         if (input.getContainer().isEmpty() || input.getContainer().getItem() != container.asItem()) {
+            return false;
+        }
+        if (!matchesFluid(input.fluid)) {
             return false;
         }
         List<ItemStack> inputs = new ArrayList<>();
@@ -58,6 +68,21 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
         return true;
     }
 
+    private boolean matchesFluid(FluidStack inputFluid) {
+        if (inputFluid.isEmpty()) return false;
+        return inputFluid.getFluid() == fluid.getFluid() && inputFluid.getAmount() >= fluid.getAmount();
+    }
+
+    public void consumeFluids(FluidTank fluidTank) {
+        FluidStack fluidInTank = fluidTank.getFluid();
+        if (fluidInTank.getFluid() == fluid.getFluid() && fluidInTank.getAmount() >= fluid.getAmount()) {
+            fluidTank.drain(fluid.getAmount(), IFluidHandler.FluidAction.EXECUTE);
+        }
+    }
+
+    public FluidStack getFluid() {
+        return fluid;
+    }
 
     public int getCycle() {
         return cycle;
@@ -102,6 +127,7 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
                 BuiltInRegistries.ITEM.byNameCodec().fieldOf("container").forGetter(recipe -> recipe.container.asItem()),
                 Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.cycle),
+                FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.fluid),
                 INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients)
         ).apply(instance, JuicerRecipe::new));
 
@@ -124,9 +150,10 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
                 ingredients.set(i, Ingredient.CONTENTS_STREAM_CODEC.decode(buffer));
             }
             Item container = BuiltInRegistries.ITEM.byId(buffer.readVarInt());
+            FluidStack fluid = FluidStack.STREAM_CODEC.decode(buffer);
             ItemStack result = ItemStack.STREAM_CODEC.decode(buffer);
             int cycle = buffer.readVarInt();
-            return new JuicerRecipe(result, container, cycle, ingredients);
+            return new JuicerRecipe(result, container, cycle, fluid, ingredients);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, JuicerRecipe recipe) {
@@ -135,6 +162,7 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
                 Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ingredient);
             }
             buffer.writeVarInt(BuiltInRegistries.ITEM.getId(recipe.container.asItem()));
+            FluidStack.STREAM_CODEC.encode(buffer, recipe.fluid);
             ItemStack.STREAM_CODEC.encode(buffer, recipe.result);
             buffer.writeVarInt(recipe.getCycle());
         }
@@ -143,10 +171,12 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
     public static class Input implements RecipeInput {
         private final ItemStack[] items;
         private final ItemStack container;
+        final FluidStack fluid;
 
-        public Input(ItemStack[] items, ItemStack container) {
+        public Input(ItemStack[] items, ItemStack container, FluidStack fluid) {
             this.items = items;
             this.container = container;
+            this.fluid = fluid;
         }
 
         public ItemStack getContainer() {

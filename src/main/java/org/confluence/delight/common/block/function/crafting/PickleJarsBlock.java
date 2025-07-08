@@ -73,7 +73,6 @@ public class PickleJarsBlock extends BaseEntityBlock {
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
-
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!(level.getBlockEntity(pos) instanceof PickleJarsBlockEntity entity)) {
@@ -91,16 +90,28 @@ public class PickleJarsBlock extends BaseEntityBlock {
                 }
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             } else {
-                return handleItemInteraction(entity, player, hand, handItem);
+                return handleTakeItem(entity, player);
             }
         }
         if (!(handItem.getItem() instanceof BucketItem)) {
-            return handleItemInteraction(entity, player, hand, handItem);
+            return handleAddItem(entity, player, hand, handItem);
         }
         return handleBucketInteraction(entity, player, hand, handItem, level);
     }
 
-    private ItemInteractionResult handleItemInteraction(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack handItem) {
+    private ItemInteractionResult handleAddItem(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack handItem) {
+        Level level = player.level();
+        ItemStack remaining = entity.addItem(handItem);
+        if (remaining.getCount() != handItem.getCount()) {
+            if (!level.isClientSide) {
+                player.setItemInHand(hand, remaining);
+            }
+            return success(level);
+        }
+        return ItemInteractionResult.FAIL;
+    }
+
+    private ItemInteractionResult handleTakeItem(PickleJarsBlockEntity entity, Player player) {
         Level level = player.level();
         ItemStack taken = entity.takeItem(PickleJarsBlockEntity.OUTPUT_SLOT);
         if (!taken.isEmpty()) {
@@ -125,17 +136,8 @@ public class PickleJarsBlock extends BaseEntityBlock {
                 return success(level);
             }
         }
-        ItemStack remaining = entity.addItem(handItem);
-        if (remaining.getCount() != handItem.getCount()) {
-            if (!level.isClientSide) {
-                player.setItemInHand(hand, remaining);
-            }
-            return success(level);
-        }
-
         return ItemInteractionResult.FAIL;
     }
-
 
     private ItemInteractionResult handleBucketInteraction(PickleJarsBlockEntity entity, Player player, InteractionHand hand, ItemStack bucket, Level level) {
         Optional<FluidStack> fluidOptional = FluidUtil.getFluidContained(bucket);
@@ -160,7 +162,6 @@ public class PickleJarsBlock extends BaseEntityBlock {
             }
             return success(level);
         }
-
         ItemStack emptyBucket = FluidUtil.tryEmptyContainer(bucket, entity.fluidTank, filled, player, true).getResult();
         if (!emptyBucket.isEmpty()) {
             player.setItemInHand(hand, emptyBucket);
@@ -196,7 +197,6 @@ public class PickleJarsBlock extends BaseEntityBlock {
                 return ItemInteractionResult.FAIL;
             }
         }
-
         FluidActionResult result = FluidUtil.tryFillContainer(bucket, entity.fluidTank, 1000, player, true);
         if (result.isSuccess()) {
             player.setItemInHand(hand, result.getResult());

@@ -16,18 +16,18 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.delight.common.recipe.JuicerRecipe;
+import org.confluence.lib.common.recipe.AmountIngredient;
 import org.confluence.lib.common.recipe.ItemStackHandlerRecipeInput;
-import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -41,6 +41,7 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
     public static final int TOTAL_SLOTS = INPUT_SIZE + CONTAINER_SIZE + 1;
 
     protected final ItemStackHandlerRecipeInput itemHandler;
+    public final FluidTank fluidTank;
     private final RecipeManager.CachedCheck<JuicerRecipe.Input, JuicerRecipe> cachedCheck;
 
     public int useCooldown;
@@ -51,6 +52,12 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
         super(CDBlocks.JUICER_BLOCK_ENTITY.get(), pos, blockState);
         this.itemHandler = new ItemStackHandlerRecipeInput(this, TOTAL_SLOTS);
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.JUICER_TYPE.get());
+        this.fluidTank = new FluidTank(8000) {
+            @Override
+            protected void onContentsChanged() {
+                setChanged();
+            }
+        };
     }
 
     private ItemStack[] getAllInputStacks() {
@@ -87,10 +94,10 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
             return;
         }
         ItemStack[] allInputs = blockEntity.getAllInputStacks();
-        if (hasInputItems(allInputs)) {
+        if (hasInputItems(allInputs) && hasFluid(blockEntity)) {
             ItemStack[] items = Arrays.copyOfRange(allInputs, 0, INPUT_SIZE);
             ItemStack container = allInputs[CONTAINER_SLOT];
-            JuicerRecipe.Input input = new JuicerRecipe.Input(items, container);
+            JuicerRecipe.Input input = new JuicerRecipe.Input(items, container, blockEntity.fluidTank.getFluid());
             Optional<RecipeHolder<JuicerRecipe>> optionalRecipe = blockEntity.cachedCheck.getRecipeFor(input, level);
             if (optionalRecipe.isPresent()) {
                 JuicerRecipe recipe = optionalRecipe.get().value();
@@ -99,6 +106,7 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
                 level.playSound(null, pos, SoundEvents.SLIME_HURT, SoundSource.BLOCKS, 0.75f, 0.5f);
                 if (canResultInsert(blockEntity.itemHandler.getItems(), blockEntity.getMaxStackSize(), resultItem)) {
                     if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
+                        recipe.consumeFluids(blockEntity.fluidTank);
                         ItemStack newResult = recipe.assemble(input, level.registryAccess());
                         ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(OUTPUT_SLOT);
                         if (currentResult.isEmpty()) {
@@ -106,13 +114,21 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
                         } else if (ItemStack.isSameItemSameComponents(currentResult, newResult)) {
                             currentResult.grow(newResult.getCount());
                         }
-                        for (int i = 0; i < INPUT_SIZE + CONTAINER_SIZE; i++) {
+                        for (int i = 0; i < recipe.ingredients.size(); i++) {
+                            AmountIngredient amountIngredient = new AmountIngredient(recipe.ingredients.get(i), AmountIngredient.getAmount(recipe.ingredients.get(i)));
                             ItemStack stack = blockEntity.itemHandler.getStackInSlot(i);
                             if (!stack.isEmpty()) {
-                                stack.shrink(1);
+                                stack.shrink(amountIngredient.amount());
                                 if (stack.isEmpty()) {
                                     blockEntity.itemHandler.setStackInSlot(i, ItemStack.EMPTY);
                                 }
+                            }
+                        }
+                        ItemStack containerStack = blockEntity.itemHandler.getStackInSlot(CONTAINER_SLOT);
+                        if (!containerStack.isEmpty()) {
+                            containerStack.shrink(1);
+                            if (containerStack.isEmpty()) {
+                                blockEntity.itemHandler.setStackInSlot(CONTAINER_SLOT, ItemStack.EMPTY);
                             }
                         }
                         blockEntity.craftProgress = 0;
@@ -132,6 +148,10 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
             }
         }
         return false;
+    }
+
+    private static boolean hasFluid(JuicerBlockEntity blockEntity) {
+        return !blockEntity.fluidTank.getFluid().isEmpty();
     }
 
     private boolean isContainerItem(ItemStack stack) {
@@ -256,14 +276,18 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
         ContainerHelper.loadAllItems(nbt, itemHandler.getItems(), registries);
         this.craftProgress = nbt.getInt("CraftTime");
         this.craftTotalTime = nbt.getInt("CraftTotalTime");
+        fluidTank.readFromNBT(registries, nbt.getCompound("FluidTank"));
     }
 
     @Override
     protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
         super.saveAdditional(nbt, registries);
+        CompoundTag fluidTag = new CompoundTag();
+        fluidTank.writeToNBT(registries, fluidTag);
         ContainerHelper.saveAllItems(nbt, itemHandler.getItems(), registries);
         nbt.putInt("CraftTime", this.craftProgress);
         nbt.putInt("CraftTotalTime", this.craftTotalTime);
+        nbt.put("FluidTank", fluidTag);
     }
 
     @Override

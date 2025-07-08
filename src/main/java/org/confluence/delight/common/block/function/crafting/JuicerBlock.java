@@ -2,11 +2,13 @@ package org.confluence.delight.common.block.function.crafting;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -14,10 +16,18 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.fluids.FluidActionResult;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidUtil;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.lib.util.LibUtils;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class JuicerBlock extends BaseEntityBlock {
     public static final MapCodec<JuicerBlock> CODEC = simpleCodec(JuicerBlock::new);
@@ -45,6 +55,9 @@ public class JuicerBlock extends BaseEntityBlock {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
         ItemStack handItem = player.getItemInHand(hand);
+        if (handItem.getItem() instanceof BucketItem) {
+            return handleBucketInteraction(juicerBlockEntity, player, hand, handItem, level);
+        }
         if (handItem.isEmpty() && player.isShiftKeyDown()) {
             ItemStack extracted = juicerBlockEntity.takeItem(-1);
             if (!extracted.isEmpty()) {
@@ -69,6 +82,84 @@ public class JuicerBlock extends BaseEntityBlock {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
     }
+
+    private ItemInteractionResult handleBucketInteraction(JuicerBlockEntity entity, Player player, InteractionHand hand, ItemStack bucket, Level level) {
+        Optional<FluidStack> fluidOptional = FluidUtil.getFluidContained(bucket);
+        if (fluidOptional.isPresent() && !fluidOptional.get().isEmpty()) {
+            return handleFluidFilling(entity, player, hand, bucket, fluidOptional.get(), level);
+        }
+        return handleFluidDraining(entity, player, hand, bucket, level);
+    }
+
+    private ItemInteractionResult handleFluidFilling(JuicerBlockEntity entity, Player player, InteractionHand hand, ItemStack bucket, FluidStack fluid, Level level) {
+        int filled = entity.fluidTank.fill(fluid, IFluidHandler.FluidAction.SIMULATE);
+        if (filled <= 0) return ItemInteractionResult.FAIL;
+        Fluid fluidType = fluid.getFluid();
+        if (player.isCreative()) {
+            entity.fluidTank.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
+            if (fluidType == Fluids.WATER) {
+                player.playSound(SoundEvents.BUCKET_EMPTY, 1.0f, 1.0f);
+            } else if (fluidType == Fluids.LAVA) {
+                player.playSound(SoundEvents.BUCKET_EMPTY_LAVA, 1.0f, 1.0f);
+            } else {
+                player.playSound(SoundEvents.BUCKET_EMPTY, 1.0f, 1.0f);
+            }
+            return success(level);
+        }
+        ItemStack emptyBucket = FluidUtil.tryEmptyContainer(bucket, entity.fluidTank, filled, player, true).getResult();
+        if (!emptyBucket.isEmpty()) {
+            player.setItemInHand(hand, emptyBucket);
+            if (fluidType == Fluids.WATER) {
+                player.playSound(SoundEvents.BUCKET_EMPTY, 1.0f, 1.0f);
+            } else if (fluidType == Fluids.LAVA) {
+                player.playSound(SoundEvents.BUCKET_EMPTY_LAVA, 1.0f, 1.0f);
+            } else {
+                player.playSound(SoundEvents.BUCKET_EMPTY, 1.0f, 1.0f);
+            }
+            return success(level);
+        }
+        return ItemInteractionResult.FAIL;
+    }
+
+    private ItemInteractionResult handleFluidDraining(JuicerBlockEntity entity, Player player, InteractionHand hand, ItemStack bucket, Level level) {
+        FluidStack tankFluid = entity.fluidTank.getFluid();
+        if (tankFluid.isEmpty()) return ItemInteractionResult.FAIL;
+        Fluid fluidType = tankFluid.getFluid();
+        if (player.isCreative()) {
+            int drainAmount = 1000;
+            if (entity.fluidTank.getFluidAmount() >= drainAmount) {
+                entity.fluidTank.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                if (fluidType == Fluids.WATER) {
+                    player.playSound(SoundEvents.BUCKET_FILL, 1.0f, 1.0f);
+                } else if (fluidType == Fluids.LAVA) {
+                    player.playSound(SoundEvents.BUCKET_FILL_LAVA, 1.0f, 1.0f);
+                } else {
+                    player.playSound(SoundEvents.BUCKET_FILL, 1.0f, 1.0f);
+                }
+                return success(level);
+            } else {
+                return ItemInteractionResult.FAIL;
+            }
+        }
+        FluidActionResult result = FluidUtil.tryFillContainer(bucket, entity.fluidTank, 1000, player, true);
+        if (result.isSuccess()) {
+            player.setItemInHand(hand, result.getResult());
+            if (fluidType == Fluids.WATER) {
+                player.playSound(SoundEvents.BUCKET_FILL, 1.0f, 1.0f);
+            } else if (fluidType == Fluids.LAVA) {
+                player.playSound(SoundEvents.BUCKET_FILL_LAVA, 1.0f, 1.0f);
+            } else {
+                player.playSound(SoundEvents.BUCKET_FILL, 1.0f, 1.0f);
+            }
+            return success(level);
+        }
+        return ItemInteractionResult.FAIL;
+    }
+
+    private ItemInteractionResult success(Level level) {
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
