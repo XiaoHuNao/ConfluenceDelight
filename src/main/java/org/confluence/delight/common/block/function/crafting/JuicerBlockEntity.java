@@ -22,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
+import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.init.CDTags;
@@ -52,7 +53,7 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
         super(CDBlocks.JUICER_BLOCK_ENTITY.get(), pos, blockState);
         this.itemHandler = new ItemStackHandlerRecipeInput(this, TOTAL_SLOTS);
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.JUICER_TYPE.get());
-        this.fluidTank = new FluidTank(8000) {
+        this.fluidTank = new FluidTank(StartupConfigs.FLUID_CAPACITY.get()) {
             @Override
             protected void onContentsChanged() {
                 setChanged();

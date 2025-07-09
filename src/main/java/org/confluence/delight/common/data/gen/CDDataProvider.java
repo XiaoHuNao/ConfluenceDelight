@@ -39,16 +39,14 @@ public class CDDataProvider {
         }
 
         private static void fruitTree(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Block log, Block leaves, Block fruitLeaves, int trunkHeight, int trunkRandomHeight, float fruitedPercent) {
-            FruitTreeFeature.Config config = new FruitTreeFeature.Config(
+            context.register(key, new ConfiguredFeature<>(CDFeature.FRUIT_TREE.get(), new FruitTreeFeature.Config(
                     BlockStateProvider.simple(log),
                     BlockStateProvider.simple(leaves),
                     BlockStateProvider.simple(fruitLeaves.defaultBlockState().setValue(CAN_GROW, true)),
                     trunkHeight,
                     trunkRandomHeight,
                     fruitedPercent
-            );
-            ConfiguredFeature<FruitTreeFeature.Config, ?> configuredFeature = new ConfiguredFeature<>(CDFeature.FRUIT_TREE.get(), config);
-            context.register(key, configuredFeature);
+            )));
         }
 
         private static ResourceKey<ConfiguredFeature<?, ?>> key(String path) {

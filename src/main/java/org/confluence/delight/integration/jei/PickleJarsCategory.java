@@ -19,7 +19,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.client.render.JarFluidIngredientRenderer;
+import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 
@@ -28,7 +28,6 @@ import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
 public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJarsRecipe>> {
     public static final RecipeType<RecipeHolder<PickleJarsRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("pickle_jars"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
-    private final JarFluidIngredientRenderer fluidRenderer = new JarFluidIngredientRenderer();
     private final IDrawable icon;
     private final int WIDTH = 158;
     private final int HEIGHT = 84;
@@ -89,9 +88,7 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
                     .addRichTooltipCallback((recipeSlotView, tooltip) -> tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item")));
         }
         //FluidInput
-        builder.addSlot(RecipeIngredientRole.INPUT, 0, 0)
-                .setFluidRenderer(fluidAmount, false, 16, 16)
-                .addIngredient(NeoForgeTypes.FLUID_STACK, fluidStack);
+        ModJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34)
                 .addItemStack(recipe.value().getResultItem(null));
@@ -104,7 +101,6 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         } else {
             guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, WIDTH, HEIGHT);
         }
-        fluidRenderer.render(guiGraphics, recipe.value().getRequiredFluid(), 0, 0);
         int craftTimeTicks = recipe.value().getCraftTime();
         if (recipe.value().isFermentation() && Screen.hasShiftDown()) {
             craftTimeTicks = (craftTimeTicks + 1) / 2;
@@ -127,5 +123,6 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
                 guiGraphics.renderTooltip(Minecraft.getInstance().font, tooltip, (int) mouseX, (int) mouseY);
             }
         }
+        ModJeiPlugin.drawFluidStack(guiGraphics, 0, 8);
     }
 }

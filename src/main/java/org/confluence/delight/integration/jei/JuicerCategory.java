@@ -16,7 +16,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 
@@ -62,6 +64,7 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<JuicerRecipe> recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
+        FluidStack fluidStack = recipe.value().getFluid();
         int size = ingredients.size();
         if (size == 1) {
             addInput(builder, 42, 27, ingredients.getFirst());
@@ -75,6 +78,7 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
         }
         Item container = recipe.value().getContainer().asItem();
         addInput(builder, 89, 48, Ingredient.of(container));
+        ModJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }
@@ -91,5 +95,6 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
         int y = (int) (30 / scale);
         guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFF, true);
         guiGraphics.pose().popPose();
+        ModJeiPlugin.drawFluidStack(guiGraphics, 0, 8);
     }
 }
