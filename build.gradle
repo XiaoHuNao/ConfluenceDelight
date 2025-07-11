@@ -166,6 +166,8 @@ repositories {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
     }
+
+    maven { url "https://maven.shedaniel.me/" }
 }
 
 dependencies {
@@ -184,7 +186,15 @@ dependencies {
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
+    compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}"
+
+    if (recipeViewer == "jei") {
+        runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    } else if (recipeViewer == "rei") {
+        runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    }
 
     compileOnly "curse.maven:jade-324717:6011258"
     runtimeOnly "curse.maven:jade-324717:6011258"

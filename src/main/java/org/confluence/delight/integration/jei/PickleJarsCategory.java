@@ -4,7 +4,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IJeiHelpers;
-import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
@@ -67,20 +66,12 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<PickleJarsRecipe> recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
-        int size = ingredients.size();
         FluidStack fluidStack = recipe.value().getRequiredFluid();
         int fluidAmount = fluidStack.getAmount();
         //ItemInput
-        if (size == 1) {
-            addInput(builder, 47, 28, ingredients.getFirst());
-        } else if (size == 2) {
-            addInput(builder, 47, 28, ingredients.getFirst());
-            addInput(builder, 40, 45, ingredients.get(1));
-        } else if (size == 3) {
-            addInput(builder, 47, 28, ingredients.getFirst());
-            addInput(builder, 40, 45, ingredients.get(1));
-            addInput(builder, 54, 45, ingredients.get(2));
-        }
+        addInput(builder, 47, 28, ingredients.getFirst());
+        addInput(builder, 40, 45, ingredients.get(1));
+        addInput(builder, 54, 45, ingredients.get(2));
         //FermentedItemInput
         if (recipe.value().isFermentation()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)
