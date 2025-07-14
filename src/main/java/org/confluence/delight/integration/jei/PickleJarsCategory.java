@@ -67,11 +67,18 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<PickleJarsRecipe> recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
         FluidStack fluidStack = recipe.value().getRequiredFluid();
-        int fluidAmount = fluidStack.getAmount();
+        int size = ingredients.size();
         //ItemInput
-        addInput(builder, 47, 28, ingredients.getFirst());
-        addInput(builder, 40, 45, ingredients.get(1));
-        addInput(builder, 54, 45, ingredients.get(2));
+        if (size == 1) {
+            addInput(builder, 47, 28, ingredients.getFirst());
+        } else if (size == 2) {
+            addInput(builder, 47, 28, ingredients.getFirst());
+            addInput(builder, 40, 45, ingredients.get(1));
+        } else if (size == 3) {
+            addInput(builder, 47, 28, ingredients.getFirst());
+            addInput(builder, 40, 45, ingredients.get(1));
+            addInput(builder, 54, 45, ingredients.get(2));
+        }
         //FermentedItemInput
         if (recipe.value().isFermentation()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)

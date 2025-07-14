@@ -48,6 +48,39 @@ public class ModClientSetups {
         }
     };
 
+    static final IClientFluidTypeExtensions BRINE_CLIENT_EXTENSIONS = new IClientFluidTypeExtensions() {
+        private static final ResourceLocation STILL = ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_still");
+        private static final ResourceLocation FLOWING = ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_flow");
+        private static final Vector3f FOG_COLOR = new Vector3f(0.3F, 0.5F, 0.9F);
+
+        @Override
+        public ResourceLocation getStillTexture() {
+            return STILL;
+        }
+
+        @Override
+        public ResourceLocation getFlowingTexture() {
+            return FLOWING;
+        }
+
+        @Override
+        public Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+            return FOG_COLOR;
+        }
+
+        @Override
+        public int getTintColor() {
+            return 0xFFB0D0FF;
+        }
+
+        @Override
+        public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTick, float nearDistance, float farDistance, FogShape shape) {
+            RenderSystem.setShaderFogStart(0.125F);
+            RenderSystem.setShaderFogEnd(5.0F);
+        }
+    };
+
+
     static void setRenderLayers() {
         RenderType translucent = RenderType.translucent();
         ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.fluid().get(), translucent);

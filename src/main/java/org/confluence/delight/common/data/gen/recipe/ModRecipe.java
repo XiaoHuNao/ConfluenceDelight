@@ -17,12 +17,10 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.CDFluids;
-import org.confluence.delight.common.init.CDFoodItems;
-import org.confluence.delight.common.init.CDMaterialItems;
-import org.confluence.delight.common.init.CDTags;
+import org.confluence.delight.common.init.*;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
@@ -43,7 +41,6 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -90,6 +87,18 @@ public class ModRecipe extends AbstractRecipeProvider {
                 "GGGK",
                 "PPPK"
         )), CDFoodItems.GILDED_LUXURY_CHOCOLATE_LUCK_COIN_BOX.toStack());
+        heavyWorkBench(recipeOutput, "", ShapedRecipePattern.of(Map.of(
+                'H', Ingredient.of(Items.HOPPER),
+                'C', Ingredient.of(Items.COPPER_INGOT),
+                'G', Ingredient.of(Tags.Items.GLASS_BLOCKS_CHEAP),
+                'F', Ingredient.of(ItemTags.FENCES),
+                'S', Ingredient.of(ConsumableItems.SHURIKEN)
+        ), List.of(
+                " H  ",
+                "CGC ",
+                "FSCG",
+                "CGC "
+        )), CDBlocks.JUICER_BLOCK.toStack());
 
         //泡菜罐
         pickleJarsRecipe(recipeOutput, true, CDFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, Ingredient.of(FoodItems.SPICY_PEPPER));

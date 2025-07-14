@@ -5,13 +5,16 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDNaturalBlocks;
+import org.confluence.delight.common.init.CDTags;
 import org.confluence.mod.common.init.ModTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -39,7 +42,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);
         tag(BlockTags.LEAVES).add(leaves);
         tag(BlockTags.MINEABLE_WITH_HOE).add(leaves);
-
+        tag(CDTags.Blocks.HEAT_SOURCE).add(
+                Blocks.FIRE,
+                Blocks.SOUL_FIRE,
+                Blocks.CAMPFIRE,
+                Blocks.SOUL_CAMPFIRE,
+                Blocks.MAGMA_BLOCK,
+                ModBlocks.STOVE.get()
+        );
     }
 
     Block[] leaves = new Block[]{

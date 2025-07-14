@@ -1,15 +1,17 @@
 {
-  "required": true,
-  "minVersion": "0.8",
-  "package": "org.confluence.delight.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "refmap": "ConfluenceDelight.refmap.json",
-  "mixins": [
-    "entity.UpdateSpecialPricesMixin"
-  ],
-  "client": [
-  ],
-  "injectors": {
-    "defaultRequire": 1
+    "required": true,
+    "minVersion": "0.8",
+    "package": "org.confluence.delight.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "refmap": "ConfluenceDelight.refmap.json",
+    "mixins": [
+        "entity.HarvestSpeedMixin$ChickenMixin",
+        "entity.HarvestSpeedMixin$EatBlockGoalMixin",
+        "entity.UpdateSpecialPricesMixin",
+    ],
+    "client": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
   }
 }

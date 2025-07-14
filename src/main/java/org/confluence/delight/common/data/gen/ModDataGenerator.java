@@ -32,6 +32,12 @@ public class ModDataGenerator {
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookup, helper);
         ModFluidTagsProvider fluidTagsProvider = new ModFluidTagsProvider(output, lookup, helper);
 
+        boolean client = event.includeClient();
+        generator.addProvider(client, new ModItemModelProvider(output, helper));
+//        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
+        generator.addProvider(client, new ModLanguageProvider(output, "en_us"));
+        generator.addProvider(client, new ModLanguageProvider(output, "zh_cn"));
+
         boolean server = event.includeServer();
         lookup = generator.addProvider(server, new DatapackBuiltinEntriesProvider(output, lookup, CDDataProvider.DATA_BUILDER, Set.of(ConfluenceDelight.MODID))).getRegistryProvider();
         generator.addProvider(server, blockTagsProvider);
@@ -41,12 +47,6 @@ public class ModDataGenerator {
                 ModRecipe::new,
                 VanillaCraftRecipe::new));
         generator.addProvider(server, new CDMusicProvider(output, lookup));
-
-
-        boolean client = event.includeClient();
-        generator.addProvider(client, new ModItemModelProvider(output, helper));
-//        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
-        generator.addProvider(client, new ModLanguageProvider(output, "en_us"));
-        generator.addProvider(client, new ModLanguageProvider(output, "zh_cn"));
+        generator.addProvider(server, new ModLootTableProvider(output, lookup));
     }
 }

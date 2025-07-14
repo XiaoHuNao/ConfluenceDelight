@@ -5,17 +5,127 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "condition": "minecraft:survives_explosion"
+          "block": "confluence_delight:blackcurrant_dark_chocolate_pie",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "block": "0"
+          }
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "confluence_delight:blackcurrant_dark_chocolate_pie"
+          "name": "confluence_delight:green_dumpling",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "confluence_delight:blackcurrant_dark_chocolate_pie",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "block": "1"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "confluence_delight:green_dumpling",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 2
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "confluence_delight:blackcurrant_dark_chocolate_pie",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "block": "2"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "confluence_delight:green_dumpling",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 3
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "confluence_delight:blackcurrant_dark_chocolate_pie",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "block": "3"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "confluence_delight:green_dumpling",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 4
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "confluence_delight:blackcurrant_dark_chocolate_pie",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "block": "4"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "confluence_delight:green_dumpling",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 5
+            }
+          ]
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "confluence_delight:blocks/blackcurrant_dark_chocolate_pie"
+  "random_sequence": "confluence_delight:block/blackcurrant_dark_chocolate_pie"
 }

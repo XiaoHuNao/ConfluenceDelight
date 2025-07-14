@@ -1,7 +1,5 @@
 package org.confluence.delight.common.data.gen.tag;
 
-import dev.xkmc.fruitsdelight.init.food.FruitType;
-import dev.xkmc.fruitsdelight.init.plants.FDPineapple;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -17,7 +15,6 @@ import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.delight.common.init.CDNaturalItems;
 import org.confluence.delight.common.init.CDTags;
-import org.confluence.delight.integration.ModLoadUtil;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.NotNull;

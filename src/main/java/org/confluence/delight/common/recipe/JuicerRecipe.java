@@ -21,10 +21,8 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.lib.common.recipe.AbstractAmountRecipe;
-import org.confluence.lib.common.recipe.AmountIngredient;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {

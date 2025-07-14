@@ -1,10 +1,9 @@
 package org.confluence.delight.common.food;
 
-import net.minecraft.core.Holder;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.ItemLike;
+import org.confluence.delight.util.CDEffectData;
 
 import java.util.Arrays;
 
@@ -33,43 +32,26 @@ public class DelightFoodProperties {
                 .build();
     }
 
-    public static FoodProperties hasEffectProperties(int nutrition, float rawSaturation, EffectData... effects) {
+    public static FoodProperties hasEffectProperties(int nutrition, float rawSaturation, CDEffectData... effects) {
         FoodProperties.Builder builder = new FoodProperties.Builder()
                 .nutrition(nutrition)
                 .saturationModifier(calcSaturationModifier(nutrition, rawSaturation))
                 .fast()
                 .alwaysEdible();
-        Arrays.stream(effects).forEach(e -> builder.effect(() -> new MobEffectInstance(e.effect, e.duration, e.level), e.probability));
+        Arrays.stream(effects).forEach(e -> builder.effect(() -> new MobEffectInstance(e.effect(), e.duration(), e.level()), e.probability()));
         return builder.build();
     }
 
-    public static FoodProperties hasEffectProperties(int nutrition, float rawSaturation, ItemLike item, EffectData... effects) {
+    public static FoodProperties hasEffectProperties(int nutrition, float rawSaturation, ItemLike item, CDEffectData... effects) {
         FoodProperties.Builder builder = new FoodProperties.Builder()
                 .nutrition(nutrition)
                 .saturationModifier(calcSaturationModifier(nutrition, rawSaturation))
                 .fast()
                 .usingConvertsTo(item)
                 .alwaysEdible();
-        Arrays.stream(effects).forEach(e -> builder.effect(() -> new MobEffectInstance(e.effect, e.duration, e.level), e.probability));
+        Arrays.stream(effects).forEach(e -> builder.effect(() -> new MobEffectInstance(e.effect(), e.duration(), e.level()), e.probability()));
         return builder.build();
     }
 
-    public record EffectData(Holder<MobEffect> effect, int duration, int level, float probability) {
 
-        public static EffectData of(Holder<MobEffect> effect, int duration) {
-            return new EffectData(effect, duration, 0, 1.0f);
-        }
-
-        public static EffectData of(Holder<MobEffect> effect, int duration, int level) {
-            return new EffectData(effect, duration, level, 1.0f);
-        }
-
-        public static EffectData of(Holder<MobEffect> effect, int duration, float probability) {
-            return new EffectData(effect, duration, 0, probability);
-        }
-
-        public static EffectData of(Holder<MobEffect> effect, int duration, int level, float probability) {
-            return new EffectData(effect, duration, level, probability);
-        }
-    }
 }

@@ -20,7 +20,7 @@ public class CDMaterialItems {
     public static final DeferredItem<Item> GLOWING_MUSHROOM_SAUCE = register("glowing_mushroom_sauce", "发光蘑菇酱");
     public static final DeferredItem<Item> WARPED_SAP = register("warped_sap", "诡异树液");
 
-    public static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> it) {
+    private static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> it) {
         DeferredItem<I> item = ITEMS.register(en, it);
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;

@@ -14,6 +14,7 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerFluidType(ModClientSetups.WINE_CLIENT_EXTENSIONS, CDFluids.WINE.type());
+        event.registerFluidType(ModClientSetups.BRINE_CLIENT_EXTENSIONS, CDFluids.BRINE.type());
     }
 
     @SubscribeEvent

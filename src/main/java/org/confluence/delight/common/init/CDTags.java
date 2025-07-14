@@ -14,6 +14,7 @@ import org.confluence.delight.ConfluenceDelight;
 public final class CDTags {
     public static class Fluids {
         public static final TagKey<Fluid> WINE = c("wine");
+        public static final TagKey<Fluid> BRINE = c("brine");
 
         private static TagKey<Fluid> register(String id) {
             return FluidTags.create(ConfluenceDelight.asResource(id));
@@ -25,6 +26,8 @@ public final class CDTags {
     }
 
     public static class Blocks {
+        public static final TagKey<Block> HEAT_SOURCE = register("heat_source");
+
         private static TagKey<Block> register(String id) {
             return BlockTags.create(ConfluenceDelight.asResource(id));
         }

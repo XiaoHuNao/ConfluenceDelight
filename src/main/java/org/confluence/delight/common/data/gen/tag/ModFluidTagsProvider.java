@@ -26,6 +26,10 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
                 CDFluids.WINE.fluid().get(),
                 CDFluids.WINE.flowing().get()
         );
+        tag(CDTags.Fluids.BRINE).add(
+                CDFluids.BRINE.fluid().get(),
+                CDFluids.BRINE.flowing().get()
+        );
     }
 
     @Override

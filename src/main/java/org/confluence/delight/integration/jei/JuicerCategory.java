@@ -65,9 +65,17 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
     public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<JuicerRecipe> recipe, IFocusGroup focuses) {
         NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
         FluidStack fluidStack = recipe.value().getFluid();
-        addInput(builder, 42, 27, ingredients.getFirst());
-        addInput(builder, 60, 27, ingredients.get(1));
-        addInput(builder, 51, 45, ingredients.get(2));
+        int size = ingredients.size();
+        if (size == 1) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+        } else if (size == 2) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+            addInput(builder, 60, 27, ingredients.get(1));
+        } else if (size == 3) {
+            addInput(builder, 42, 27, ingredients.getFirst());
+            addInput(builder, 60, 27, ingredients.get(1));
+            addInput(builder, 51, 45, ingredients.get(2));
+        }
         Item container = recipe.value().getContainer().asItem();
         addInput(builder, 89, 48, Ingredient.of(container));
         ModJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());

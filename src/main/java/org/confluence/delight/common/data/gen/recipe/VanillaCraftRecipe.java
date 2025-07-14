@@ -85,7 +85,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 'F', Ingredient.of(ItemTags.FENCES),
                 'S', Ingredient.of(Items.SMOOTH_STONE),
                 'T', Ingredient.of(Items.STONE)
-        ),List.of(
+        ), List.of(
                 "  F",
                 "SSS",
                 "TTT"
@@ -167,6 +167,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(FoodItems.SPICY_PEPPER),
                 Ingredient.of(Items.LAVA_BUCKET),
                 Ingredient.of(CDMaterialItems.SALT));
+        shapeless(output, "", "", CDMaterialItems.SALT.toStack(9), Ingredient.of(CDBlocks.SALT_BLOCK));
 
         //熔炉
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);

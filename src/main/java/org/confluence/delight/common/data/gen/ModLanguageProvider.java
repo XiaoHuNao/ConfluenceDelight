@@ -59,14 +59,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add("title.confluence_delight.juicer", "Juicer", "榨汁机");
         add("jei.confluence_delight.info.juicer.cycle", "%d cycle", "%d 次");
         //jade
-        add("config.jade.plugin_confluence_delight.jade_picklejars_info", "PickleJars Info", "泡菜罐信息");
+        add("config.jade.plugin_confluence_delight.picklejars_info", "PickleJars Info", "泡菜罐信息");
+        add("config.jade.plugin_confluence_delight.juicer_info", "Juicer Info", "榨汁机信息");
         add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
         add("info.confluence_delight.fluid_amount", "%s %dB", "%s %dB");
         add("info.confluence_delight.fluid_empty", "Empty %dB", "空 %dB");
 
         //config
         add("confluence_delight.configuration.machines", "Machines", "机器");
-        add("confluence_delight.configuration.fluid_capacity", "PickleJars Fluid Capacity", "泡菜罐液体容量");
+        add("confluence_delight.configuration.fluid_capacity", "Container liquid capacity", "容器液体容量");
+        add("confluence_delight.configuration.infinite_fluid", "Infinite Fluid", "无限流体");
+        add("confluence_delight.configuration.enable_infinite_fluid_brine", "Enable Infinite Fluid By Brine", "启用卤水无限流体");
 
         //tooltip
         add("tooltip.item.confluence.atlantis_tsunami.0",
@@ -111,6 +114,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("jukebox_song.confluence_delight.hot_star_chicken",
                 "The circus on the top floor - Hot Star Chicken",
                 "顶楼的马戏团 - 豪大大鸡排");
+        add("confluence_delight.harvest_stew.tooltip",
+                "When feed to chicken/sheep :",
+                "喂给鸡/羊时 ：");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",
@@ -167,6 +173,7 @@ public class ModLanguageProvider extends LanguageProvider {
                 "磨盘：工作");
 
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
+        add("fluid_type.confluence_delight.brine", "Brine", "卤水");
 
         chineseProviders.forEach(a -> a.accept(this));
     }

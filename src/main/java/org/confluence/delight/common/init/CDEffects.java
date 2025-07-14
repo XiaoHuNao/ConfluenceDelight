@@ -7,9 +7,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.effect.beneficial.ImmuneEffect;
 import org.confluence.delight.common.effect.beneficial.ImmunityEffect;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
-import org.confluence.delight.common.effect.beneficial.ImmuneEffect;
 import org.confluence.lib.common.effect.PublicMobEffect;
 import org.confluence.mod.common.init.ModEffects;
 
@@ -23,6 +23,7 @@ public class CDEffects {
 
     public static final DeferredHolder<MobEffect, MobEffect> LUCK_COIN = register("luck_coin", "幸运币", LuckCoinEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> MASTER_TRADER = register("master_trader", "交易大师", () -> new PublicMobEffect(MobEffectCategory.BENEFICIAL, 0x10bb13));
+    public static final DeferredHolder<MobEffect, MobEffect> HARVEST = register("harvest", "丰收", () -> new PublicMobEffect(MobEffectCategory.BENEFICIAL, 0x990000));
     public static final DeferredHolder<MobEffect, MobEffect> IMMUNITY = register("immunity", "免疫力", ImmunityEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> POISON_IMMUNE = register("poison_immune", "毒素免疫", () -> new ImmuneEffect().setImmuneEffects(Set.of(MobEffects.POISON)));
     public static final DeferredHolder<MobEffect, MobEffect> MINING_FATIGUE_IMMUNE = register("mining_fatigue_immune", "挖掘疲劳免疫", () -> new ImmuneEffect().setImmuneEffects(Set.of(MobEffects.DIG_SLOWDOWN)));

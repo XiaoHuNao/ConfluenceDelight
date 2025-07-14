@@ -1,4 +1,4 @@
-package org.confluence.delight.common.block.function.crafting;
+package org.confluence.delight.common.block.function;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;

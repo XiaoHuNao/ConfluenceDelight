@@ -1,9 +1,8 @@
-package org.confluence.delight.common.event.game;
+package org.confluence.delight.common.event.game.entity;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,16 +12,13 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.effect.beneficial.ImmunityEffect;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDFoodItems;
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
-public final class LivingEntityEvent {
+public final class LivingEntityEvents {
 
     @SubscribeEvent
     public static void mobEffectAdded(MobEffectEvent.Added event) {
@@ -39,7 +35,7 @@ public final class LivingEntityEvent {
                 default -> 0.15f;
             };
             int originalDuration = mobEffectInstance.getDuration();
-            int reducedDuration = Math.max(1, (int)(originalDuration * (1 - reductionRate)));
+            int reducedDuration = Math.max(1, (int) (originalDuration * (1 - reductionRate)));
             if (reducedDuration == originalDuration) return;
             mobEffectInstance.duration = reducedDuration;
         }
@@ -67,6 +63,5 @@ public final class LivingEntityEvent {
         } else if (itemStack.is(CDFoodItems.BIG_CHICKEN_CUTLET.get())) {
             player.teleportTo(player.getX(), player.getY() + 100, player.getZ());
         }
-
     }
 }

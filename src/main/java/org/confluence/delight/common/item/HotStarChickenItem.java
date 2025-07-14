@@ -8,6 +8,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.confluence.delight.common.food.DelightFoodProperties;
 import org.confluence.delight.common.init.CDJukeboxSongs;
+import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 public class HotStarChickenItem extends Item {
     public HotStarChickenItem() {
         super(new Properties().food(
-                DelightFoodProperties.hasEffectProperties(8, 12.0f,
-                        DelightFoodProperties.EffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400)))
+                        DelightFoodProperties.hasEffectProperties(8, 12.0f,
+                                CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400)))
                 .jukeboxPlayable(CDJukeboxSongs.HOT_STAR_CHICKEN));
     }
 

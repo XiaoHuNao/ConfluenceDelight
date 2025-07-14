@@ -63,8 +63,12 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
         NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
         int size = ingredients.size();
         //ItemInput
-        addInput(builder, 42, 10, ingredients.getFirst());
-        addInput(builder, 60, 10, ingredients.get(1));
+        if (size == 1) {
+            addInput(builder, 42, 10, ingredients.getFirst());
+        } else if (size == 2) {
+            addInput(builder, 42, 10, ingredients.getFirst());
+            addInput(builder, 60, 10, ingredients.get(1));
+        }
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }
