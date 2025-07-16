@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.common.init.CDBlocks;
@@ -23,8 +24,8 @@ public final class BlockSubProvider extends BlockLootSubProvider {
         dropSelf(CDBlocks.SAP_COLLECTORS_BLOCK.get());
         dropSelf(CDBlocks.MILLSTONE_BLOCK.get());
         dropSelf(CDBlocks.JUICER_BLOCK.get());
-        dropSelf(CDBlocks.WINE_CAULDRON.get());
-        dropSelf(CDBlocks.BRINE_CAULDRON.get());
+        dropOther(CDBlocks.WINE_CAULDRON.get(), Items.CAULDRON);
+        dropOther(CDBlocks.BRINE_CAULDRON.get(), Items.CAULDRON);
 
         dropSelf(CDFoodBlocks.WHITE_CHOCOLATE_BLOCK.get());
         dropSelf(CDFoodBlocks.BLACK_CHOCOLATE_BLOCK.get());

@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
@@ -42,7 +43,7 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
     public static final int TOTAL_SLOTS = INPUT_SIZE + CONTAINER_SIZE + 1;
 
     protected final ItemStackHandlerRecipeInput itemHandler;
-    public final FluidTank fluidTank;
+    public FluidTank fluidTank;
     private final RecipeManager.CachedCheck<JuicerRecipe.Input, JuicerRecipe> cachedCheck;
 
     public int useCooldown;
@@ -53,10 +54,13 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
         super(CDBlocks.JUICER_BLOCK_ENTITY.get(), pos, blockState);
         this.itemHandler = new ItemStackHandlerRecipeInput(this, TOTAL_SLOTS);
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.JUICER_TYPE.get());
-        this.fluidTank = new FluidTank(StartupConfigs.FLUID_CAPACITY.get()) {
+        this.fluidTank = new FluidTank(StartupConfigs.FLUID_CAPACITY.getAsInt()) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
+                if (level instanceof ServerLevel serverLevel) {
+                    serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                }
             }
         };
     }

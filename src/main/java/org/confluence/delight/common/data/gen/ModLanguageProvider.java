@@ -117,6 +117,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("confluence_delight.harvest_stew.tooltip",
                 "When feed to chicken/sheep :",
                 "喂给鸡/羊时 ：");
+        add("tooltip.item.confluence.freshly_squeezed_vitality.0",
+                "Legendary explorers' special juice blend, designed to delight your taste buds and fill your belly.",
+                "传说中的探险家们为了能满足味蕾需求和食物需求研发出的果汁特调");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

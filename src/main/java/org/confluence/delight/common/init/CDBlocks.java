@@ -41,12 +41,12 @@ public class CDBlocks {
 
     public static final DeferredBlock<LiquidBlock> WINE = registerWithoutItem("wine", "酒", () -> new LiquidBlock(CDFluids.WINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.WHITE)));
     public static final DeferredBlock<LiquidBlock> BRINE = registerWithoutItem("brine", "卤水", () -> new LiquidBlock(CDFluids.BRINE.fluid().get(), BlockBehaviour.Properties.ofFullCopy(Blocks.WATER).mapColor(DyeColor.BROWN)));
-    public static final DeferredBlock<WineCauldronBlock> WINE_CAULDRON = registerWithItem("wine_cauldron", "装有酒的炼药锅", () -> new WineCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
-    public static final DeferredBlock<BrineCauldronBlock> BRINE_CAULDRON = registerWithItem("brine_cauldron", "装有卤水的炼药锅", () -> new BrineCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
+    public static final DeferredBlock<WineCauldronBlock> WINE_CAULDRON = registerWithoutItem("wine_cauldron", "装有酒的炼药锅", () -> new WineCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
+    public static final DeferredBlock<BrineCauldronBlock> BRINE_CAULDRON = registerWithoutItem("brine_cauldron", "装有卤水的炼药锅", () -> new BrineCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
     public static final Supplier<BlockEntityType<BrineCauldronBlock.Entity>> BRINE_CAULDRON_ENTITY = BLOCK_ENTITIES.register("brine_cauldron", () -> BlockEntityType.Builder.of(BrineCauldronBlock.Entity::new, BRINE_CAULDRON.get()).build(null));
 
     public static final DeferredBlock<Block> SALT_BLOCK = registerWithItem("salt_block", "盐块", () -> new Block(BlockBehaviour.Properties.of()));
-    public static final DeferredBlock<Block> SALT_CAULDRON = registerWithItem("salt_cauldron", "装有盐的炼药锅", () -> new SaltCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
+    public static final DeferredBlock<Block> SALT_CAULDRON = registerWithoutItem("salt_cauldron", "装有盐的炼药锅", () -> new SaltCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));

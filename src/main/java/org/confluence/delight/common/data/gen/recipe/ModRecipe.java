@@ -128,7 +128,7 @@ public class ModRecipe extends AbstractRecipeProvider {
         juicerRecipe(recipeOutput, CDFoodItems.RAMBUTAN_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.RAMBUTAN));
         juicerRecipe(recipeOutput, CDFoodItems.BLOOD_ORANGE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.BLOOD_ORANGE));
         juicerRecipe(recipeOutput, CDFoodItems.ELDERBERRY_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.ELDERBERRY));
-
+        juicerRecipe(recipeOutput, CDFoodItems.FRESHLY_SQUEEZED_VITALITY.toStack(), 8, BOTTLE, WATER_1000, Ingredient.of(Tags.Items.FOODS_FRUIT), Ingredient.of(Tags.Items.FOODS_FRUIT), Ingredient.of(Tags.Items.FOODS_FRUIT));
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);

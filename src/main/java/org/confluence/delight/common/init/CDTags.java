@@ -26,8 +26,6 @@ public final class CDTags {
     }
 
     public static class Blocks {
-        public static final TagKey<Block> HEAT_SOURCE = register("heat_source");
-
         private static TagKey<Block> register(String id) {
             return BlockTags.create(ConfluenceDelight.asResource(id));
         }

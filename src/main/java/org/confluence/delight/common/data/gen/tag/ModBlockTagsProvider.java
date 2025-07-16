@@ -29,27 +29,27 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                CDBlocks.PICKLE_JARS_BLOCK.get()
+                CDBlocks.PICKLE_JARS_BLOCK.get(),
+                CDBlocks.MILLSTONE_BLOCK.get(),
+                CDBlocks.JUICER_BLOCK.get()
         );
         tag(ModTags.Blocks.MINEABLE_WITH_PICKAXE_AXE).add(
                 CDBlocks.PICKLE_JARS_BLOCK.get(),
-                CDBlocks.SAP_COLLECTORS_BLOCK.get()
+                CDBlocks.SAP_COLLECTORS_BLOCK.get(),
+                CDBlocks.MILLSTONE_BLOCK.get(),
+                CDBlocks.JUICER_BLOCK.get()
         );
         tag(BlockTags.MINEABLE_WITH_AXE).add(
                 CDBlocks.SAP_COLLECTORS_BLOCK.get()
+        );
+        tag(BlockTags.CAULDRONS).add(
+                CDBlocks.WINE_CAULDRON.get(),
+                CDBlocks.BRINE_CAULDRON.get()
         );
         tag(BlockTags.SAPLINGS).add(sapling);
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);
         tag(BlockTags.LEAVES).add(leaves);
         tag(BlockTags.MINEABLE_WITH_HOE).add(leaves);
-        tag(CDTags.Blocks.HEAT_SOURCE).add(
-                Blocks.FIRE,
-                Blocks.SOUL_FIRE,
-                Blocks.CAMPFIRE,
-                Blocks.SOUL_CAMPFIRE,
-                Blocks.MAGMA_BLOCK,
-                ModBlocks.STOVE.get()
-        );
     }
 
     Block[] leaves = new Block[]{

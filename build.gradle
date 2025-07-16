@@ -171,10 +171,11 @@ repositories {
 dependencies {
     implementation (files("libs/confluence_magic_lib-0.0.1.jar"))
     implementation "curse.maven:farmers-delight-398521:6597295"
-    implementation "curse.maven:confluence-1209464:6608114"
+    implementation "curse.maven:confluence-1209464:6775061"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     compileOnly "curse.maven:terra-curio-1027625:6545988"
+    compileOnly "curse.maven:terra-entity-1173196:6479056"
     compileOnly "curse.maven:create-328085:6323264"
     runtimeOnly "curse.maven:create-328085:6323264"
     compileOnly "curse.maven:fruits-delight-943774:6500952"

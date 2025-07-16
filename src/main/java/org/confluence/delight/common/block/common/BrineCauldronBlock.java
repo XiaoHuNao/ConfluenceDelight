@@ -21,6 +21,7 @@ import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.util.LibUtils;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Map;
 
@@ -86,7 +87,7 @@ public class BrineCauldronBlock extends AbstractCauldronBlock implements EntityB
         public static void tick(Level level, BlockPos pos, BlockState state, Entity entity) {
             BlockPos below = pos.below();
             BlockState belowState = level.getBlockState(below);
-            if (belowState.is(CDTags.Blocks.HEAT_SOURCE)) {
+            if (belowState.is(ModTags.HEAT_SOURCES)) {
                 if (++heatTime >= 200) {
                     level.setBlockAndUpdate(pos, CDBlocks.SALT_CAULDRON.get().defaultBlockState());
                     heatTime = 0;

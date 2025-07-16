@@ -7,6 +7,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -37,14 +38,13 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
     public static final int OUTPUT_SIZE = 1;
     public static final int CONTAINER_SIZE = TOTAL_INPUT_SIZE + OUTPUT_SIZE;
     public static final int OUTPUT_SLOT = CONTAINER_SIZE - 1;
-    public static final int FLUID_CAPACITY = StartupConfigs.FLUID_CAPACITY.getAsInt();
 
     protected NonNullList<ItemStack> items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
 
     int craftProgress, craftTotalTime;
 
     public final ItemStackHandlerRecipeInput itemHandler;
-    public final FluidTank fluidTank;
+    public FluidTank fluidTank;
     private final RecipeManager.CachedCheck<PickleJarsRecipe.Input, PickleJarsRecipe> cachedCheck;
 
     public PickleJarsBlockEntity(BlockPos pos, BlockState blockState) {
@@ -59,10 +59,13 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
             }
         };
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.PICKLE_JARS_TYPE.get());
-        this.fluidTank = new FluidTank(FLUID_CAPACITY) {
+        this.fluidTank = new FluidTank(StartupConfigs.FLUID_CAPACITY.getAsInt()) {
             @Override
             protected void onContentsChanged() {
                 setChanged();
+                if (level instanceof ServerLevel serverLevel) {
+                    serverLevel.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                }
             }
         };
     }
@@ -238,7 +241,7 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
         ContainerHelper.loadAllItems(nbt, itemHandler.getItems(), registries);
         this.craftProgress = nbt.getInt("CraftTime");
         this.craftTotalTime = nbt.getInt("CraftTotalTime");
-        fluidTank.readFromNBT(registries, nbt.getCompound("FluidTank"));
+        fluidTank.readFromNBT(registries, nbt);
     }
 
     @Override
@@ -248,7 +251,6 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
         fluidTank.writeToNBT(registries, fluidTag);
         nbt.putInt("CraftTime", this.craftProgress);
         nbt.putInt("CraftTotalTime", this.craftTotalTime);
-        nbt.put("FluidTank", fluidTag);
         ContainerHelper.saveAllItems(nbt, itemHandler.getItems(), registries);
     }
 
