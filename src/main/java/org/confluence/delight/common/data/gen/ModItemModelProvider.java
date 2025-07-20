@@ -43,26 +43,24 @@ public class ModItemModelProvider extends ItemModelProvider {
                 CDItems.BLOCK_ITEMS,
                 CDNaturalBlocks.BLOCK_ITEMS
         );
-        blocks.forEach(reg -> {
-            reg.getEntries().forEach(item -> {
-                Item item1 = item.get();
-                String path = item.getId().getPath().toLowerCase();
-                try {
-                    if (item1 instanceof BlockItem item2) {
-                        Block block = item2.getBlock();
-                        if (block instanceof DoorBlock) {
-                            withExistingParent(path, "item/generated").texture("layer0", ConfluenceDelight.asResource("item/" + path));
-                        } else if (block instanceof TrapDoorBlock) {
-                            withExistingParent(path, ConfluenceDelight.asResource("block/" + path + "_bottom"));
-                        } else {
-                            withExistingParent(path, ConfluenceDelight.asResource("block/" + path + (hasInventory(block) ? "_inventory" : "")));
-                        }
+        blocks.forEach(reg -> reg.getEntries().forEach(item -> {
+            Item item1 = item.get();
+            String path = item.getId().getPath().toLowerCase();
+            try {
+                if (item1 instanceof BlockItem item2) {
+                    Block block = item2.getBlock();
+                    if (block instanceof DoorBlock) {
+                        withExistingParent(path, "item/generated").texture("layer0", ConfluenceDelight.asResource("item/" + path));
+                    } else if (block instanceof TrapDoorBlock) {
+                        withExistingParent(path, ConfluenceDelight.asResource("block/" + path + "_bottom"));
+                    } else {
+                        withExistingParent(path, ConfluenceDelight.asResource("block/" + path + (hasInventory(block) ? "_inventory" : "")));
                     }
-                } catch (Exception e) {
-                    withExistingParent(path, MISSING_BLOCK);
                 }
-            });
-        });
+            } catch (Exception e) {
+                withExistingParent(path, MISSING_BLOCK);
+            }
+        }));
     }
 
     private static boolean hasInventory(Block block) {
