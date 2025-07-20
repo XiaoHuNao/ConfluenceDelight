@@ -115,16 +115,6 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(MaterialItems.GEL),
                 Ingredient.of(FoodItems.BLACKCURRANT),
                 Ingredient.of(CDFoodItems.BLACK_CHOCOLATE));
-        shapeless(output, "", "", CDFoodItems.MANGO_PUDDING.toStack(),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(CDTags.Items.C_FRUIT_MANGO));
-        shapeless(output, "", "", CDFoodItems.BANANA_PUDDING.toStack(),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(FoodItems.BANANA));
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_JAM_BREAD.toStack(),
                 Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
                 Ingredient.of(Items.BREAD));

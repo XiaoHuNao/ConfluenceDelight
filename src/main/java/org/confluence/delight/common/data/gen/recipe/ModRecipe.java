@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
@@ -21,6 +22,7 @@ import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.*;
+import org.confluence.delight.common.recipe.BlockInteractionRecipe;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
@@ -58,14 +60,16 @@ public class ModRecipe extends AbstractRecipeProvider {
         Ingredient bottleContainer = Ingredient.of(PotionItems.BOTTLE);
         Ingredient mugContainer = Ingredient.of(PotionItems.MUG);
         Ingredient bowlContainer = Ingredient.of(Items.BOWL);
+        Ingredient chinaBowlContainer = Ingredient.of(MaterialItems.CHINA_BOWL);
         CookingPotRecipe.HeatSourcePredicate campfireHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(BlockTags.CAMPFIRES).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BlockStateProperties.LIT, true)).build();
         CookingPotRecipe.HeatSourcePredicate stoveHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(ModBlocks.STOVE.get()).build();
         CookingPotRecipe.HeatSourcePredicate blueIceHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(Blocks.BLUE_ICE).build();
+        CookingPotRecipe.HeatSourcePredicate iceHeatSource = CookingPotRecipe.HeatSourcePredicate.builder().of(Blocks.ICE).build();
         cookingPot(recipeOutput, CDFoodItems.CHICKEN_HOT_POT.toStack(), bowlContainer, stoveHeatSource, 500, AmountIngredient.of(16, FoodItems.SPICY_PEPPER), AmountIngredient.of(4, ModItems.CHICKEN_CUTS.get()), AmountIngredient.of(3, CDFoodItems.POTATO_PIECE));
         cookingPot(recipeOutput, CDFoodItems.ROYAL_GUMMY.toStack(), Ingredient.EMPTY, CookingPotRecipe.HeatSourcePredicate.EMPTY, 200, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(TCItems.ROYAL_GEL.get()), Ingredient.of(MaterialItems.AMBER));
         cookingPot(recipeOutput, CDFoodItems.ATLANTIS_TSUNAMI.toStack(), Ingredient.of(PotionItems.MUG), blueIceHeatSource, 300, Ingredient.of(MaterialItems.HEIM), Ingredient.of(Items.SUGAR), Ingredient.of(CDTags.Items.C_FRUIT_LEMON), Ingredient.of(PotionItems.ALE));
-        cookingPot(recipeOutput, CDFoodItems.DONKEY_MEAT_FIRE.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT), Ingredient.of(Items.BREAD));
-        cookingPot(recipeOutput, CDFoodItems.HORSE_MEAT_SASHIMI.toStack(), Ingredient.EMPTY, stoveHeatSource, 400, Ingredient.of(CDFoodItems.RAW_HORSE_MEAT));
+        cookingPot(recipeOutput, CDFoodItems.DONKEY_MEAT_FIRE.toStack(), Ingredient.EMPTY, stoveHeatSource, 350, Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT), Ingredient.of(Items.BREAD));
+        cookingPot(recipeOutput, CDFoodItems.HORSE_MEAT_SASHIMI.toStack(), Ingredient.EMPTY, stoveHeatSource, 350, Ingredient.of(CDFoodItems.RAW_HORSE_MEAT));
         cookingPot(recipeOutput, CDFoodItems.BLACK_LUCK.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BLACKCURRANT));
         cookingPot(recipeOutput, CDFoodItems.WHITE_DAWN.toStack(), mugContainer, blueIceHeatSource, 200, Ingredient.of(Items.ICE), Ingredient.of(Items.MILK_BUCKET), Ingredient.of(FoodItems.BANANA));
         cookingPot(recipeOutput, CDFoodItems.SWEET_CARROT_CUBES.toStack(), mugContainer, CookingPotRecipe.HeatSourcePredicate.EMPTY, 100, Ingredient.of(Items.CARROT), Ingredient.of(Items.SUGAR), Ingredient.of(FoodItems.SPICY_PEPPER));
@@ -73,6 +77,11 @@ public class ModRecipe extends AbstractRecipeProvider {
         cookingPot(recipeOutput, CDFoodItems.SPICY_BOMB_FISH.toStack(), bowlContainer, stoveHeatSource, 50, Ingredient.of(ConsumableItems.BOMB_FISH), Ingredient.of(FoodItems.SPICY_PEPPER), Ingredient.of(ModItems.CABBAGE.get()));
         cookingPot(recipeOutput, CDFoodItems.CRISPY_RICE_WITH_POTATOES.toStack(), bowlContainer, stoveHeatSource, 120, Ingredient.of(CDFoodItems.POTATO_PIECE), Ingredient.of(CDFoodItems.CRUSHED_CHILLI));
         cookingPot(recipeOutput, CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES.toStack(), Ingredient.EMPTY, stoveHeatSource, 100, Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE), Ingredient.of(CDFoodItems.BUTTER));
+        cookingPot(recipeOutput, CDFoodItems.HARVEST_STEW.toStack(), bowlContainer, stoveHeatSource, 300, Ingredient.of(Items.WHEAT), Ingredient.of(Items.CARROT), Ingredient.of(Items.POTATO), Ingredient.of(Items.HONEY_BOTTLE));
+        cookingPot(recipeOutput, CDFoodItems.GEMINI_LANDING_STAR.toStack(), mugContainer, iceHeatSource, 120, Ingredient.of(Items.MILK_BUCKET), Ingredient.of(CDFoodItems.VANILLA_POD), Ingredient.of(Items.COCOA_BEANS));
+        cookingPot(recipeOutput, CDFoodItems.MANGO_PUDDING.toStack(), chinaBowlContainer, stoveHeatSource, 150, Ingredient.of(Items.MILK_BUCKET), Ingredient.of(Items.SUGAR), Ingredient.of(MaterialItems.GEL), Ingredient.of(CDTags.Items.C_FRUIT_MANGO));
+        cookingPot(recipeOutput, CDFoodItems.BANANA_PUDDING.toStack(), chinaBowlContainer, stoveHeatSource, 150, Ingredient.of(Items.MILK_BUCKET), Ingredient.of(Items.SUGAR), Ingredient.of(MaterialItems.GEL), Ingredient.of(FoodItems.BANANA));
+        cookingPot(recipeOutput, CDFoodItems.SLIME_DRAGON_PUDDING.toStack(), chinaBowlContainer, stoveHeatSource, 150, Ingredient.of(Items.HONEY_BOTTLE), Ingredient.of(Items.SUGAR), Ingredient.of(MaterialItems.GEL), Ingredient.of(Items.SLIME_BALL));
 
         //重型工作台
         heavyWorkBench(recipeOutput, "", ShapedRecipePattern.of(Map.of(
@@ -129,6 +138,24 @@ public class ModRecipe extends AbstractRecipeProvider {
         juicerRecipe(recipeOutput, CDFoodItems.BLOOD_ORANGE_JUICE.toStack(), 5, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.BLOOD_ORANGE));
         juicerRecipe(recipeOutput, CDFoodItems.ELDERBERRY_JUICE.toStack(), 4, BOTTLE, WATER_1000, AmountIngredient.of(2, FoodItems.ELDERBERRY));
         juicerRecipe(recipeOutput, CDFoodItems.FRESHLY_SQUEEZED_VITALITY.toStack(), 8, BOTTLE, WATER_1000, Ingredient.of(Tags.Items.FOODS_FRUIT), Ingredient.of(Tags.Items.FOODS_FRUIT), Ingredient.of(Tags.Items.FOODS_FRUIT));
+
+        //方块转换
+        blockInteractionRecipe(recipeOutput, Ingredient.of(Items.APPLE), CDNaturalBlocks.APPLE_SAPLING.get(), Blocks.OAK_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.APRICOT), CDNaturalBlocks.APRICOT_SAPLING.get(), Blocks.BIRCH_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.GRAPE_FRUIT), CDNaturalBlocks.GRAPEFRUIT_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.LEMON), CDNaturalBlocks.LEMON_SAPLING.get(), Blocks.SPRUCE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.PEACH), CDNaturalBlocks.PEACH_SAPLING.get(), Blocks.OAK_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.CHERRY), CDNaturalBlocks.CHERRY_SAPLING.get(), Blocks.SPRUCE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.PLUM), CDNaturalBlocks.PLUM_SAPLING.get(), Blocks.BIRCH_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.BLOOD_ORANGE), CDNaturalBlocks.BLOOD_ORANGE_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.RAMBUTAN), CDNaturalBlocks.RAMBUTAN_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.MANGO), CDNaturalBlocks.MANGO_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.BANANA), CDNaturalBlocks.BANANA_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.COCONUT), CDNaturalBlocks.COCONUT_SAPLING.get(), Blocks.JUNGLE_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.STAR_FRUIT), CDNaturalBlocks.STAR_FRUIT_SAPLING.get(), Blocks.OAK_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.POMEGRANATE), CDNaturalBlocks.POMEGRANATE_SAPLING.get(), Blocks.BIRCH_SAPLING);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.BLACKCURRANT), CDNaturalBlocks.BLACKCURRANT_SHRUB_BLOCK.get(), Blocks.AZALEA, Blocks.FLOWERING_AZALEA);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.ELDERBERRY), CDNaturalBlocks.ELDERBERRY_SHRUB_BLOCK.get(), Blocks.AZALEA, Blocks.FLOWERING_AZALEA);
 
         //砧板
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.HONEY_MOONCAKES.get()), Ingredient.of(ModTags.KNIVES), FoodItems.HONEY_MOONCAKES_CHUNKS, 3).build(recipeOutput);
@@ -233,5 +260,10 @@ public class ModRecipe extends AbstractRecipeProvider {
         ResourceLocation id = ConfluenceDelight.asResource("juicer/" + getItemName(result.getItem()));
         NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
         recipeOutput.accept(id, new JuicerRecipe(result, container, cycle, fluidInput, recipeIngredients), null);
+    }
+
+    protected void blockInteractionRecipe(RecipeOutput recipeOutput, Ingredient inputItem, Block resultBlock, Block... sourceBlocks) {
+        ResourceLocation id = ConfluenceDelight.asResource("block_interaction/" + getItemName(resultBlock));
+        recipeOutput.accept(id, new BlockInteractionRecipe(inputItem, sourceBlocks, resultBlock), null);
     }
 }

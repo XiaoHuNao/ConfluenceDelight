@@ -2,8 +2,6 @@ package org.confluence.delight.common.block.natural;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
@@ -34,13 +32,6 @@ public class DragonFruitBlock extends CocoaBlock {
         net.neoforged.neoforge.common.util.TriState soilDecision = blockstate.canSustainPlant(level, pos.relative(state.getValue(FACING)), state.getValue(FACING).getOpposite(), state);
         if (!soilDecision.isDefault()) return soilDecision.isTrue();
         return blockstate.is(CDNaturalBlocks.DRAGON_FRUIT_CACTUS);
-    }
-
-    @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (!canSurvive(state, level, pos)) {
-            level.destroyBlock(pos, true);
-        }
     }
 
     @Override

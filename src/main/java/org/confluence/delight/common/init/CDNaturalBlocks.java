@@ -15,6 +15,7 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.natural.*;
 import org.confluence.delight.common.item.ToolTipBlockItem;
 import org.confluence.mod.common.block.natural.sapling.BaseSaplingBlock;
+import org.confluence.mod.common.init.block.NatureBlocks;
 import org.confluence.mod.common.init.item.FoodItems;
 import vectorwing.farmersdelight.common.block.WildCropBlock;
 
@@ -43,6 +44,8 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<BaseSaplingBlock> STAR_FRUIT_SAPLING = registerBlockItem("star_fruit_sapling", "杨桃树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.STAR_FRUIT_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.star_fruit_sapling")));
     public static final DeferredBlock<BaseSaplingBlock> POMEGRANATE_SAPLING = registerBlockItem("pomegranate_sapling", "石榴树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.POMEGRANATE_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.pomegranate_sapling")));
 
+    public static final DeferredBlock<CoconutTreeTopBlock> COCONUT_TREE_TOP_BLOCK = registerBlockItem("coconut_tree_top", "椰子树头", CoconutTreeTopBlock::new);
+
     //灌木
     public static final DeferredBlock<BaseFruitShrubBlock> BLACKCURRANT_SHRUB_BLOCK = registerBlockItem("blackcurrant_shrub", "黑醋栗灌木", () -> new BaseFruitShrubBlock(FoodItems.BLACKCURRANT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.blackcurrant_shrub")));
     public static final DeferredBlock<BaseFruitShrubBlock> ELDERBERRY_SHRUB_BLOCK = registerBlockItem("elderberry_shrub", "接骨木灌木", () -> new BaseFruitShrubBlock(FoodItems.ELDERBERRY), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.elderberry_shrub")));
@@ -59,7 +62,7 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> RAMBUTAN_TREE_LEAVES_BLOCK = registerBlockItem("rambutan_tree_leaves", "红毛丹树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.RAMBUTAN));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> MANGO_TREE_LEAVES_BLOCK = registerBlockItem("mango_tree_leaves", "芒果树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.MANGO));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> BANANA_TREE_LEAVES_BLOCK = registerBlockItem("banana_tree_leaves", "香蕉树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.BANANA));
-    public static final DeferredBlock<BaseFruitTreeLeaveBlock> COCONUT_TREE_LEAVES_BLOCK = registerBlockItem("coconut_tree_leaves", "椰子树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.COCONUT));
+    public static final DeferredBlock<Block> COCONUT_TREE_LEAVES_BLOCK = registerBlockItem("coconut_tree_leaves", "椰子树叶", CoconutLeavesBlock::new);
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> STAR_FRUIT_TREE_LEAVES_BLOCK = registerBlockItem("star_fruit_tree_leaves", "杨桃树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.STAR_FRUIT));
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> POMEGRANATE_TREE_LEAVES_BLOCK = registerBlockItem("pomegranate_tree_leaves", "石榴树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.POMEGRANATE));
 
@@ -68,6 +71,7 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<SpicyPepperBlock> SPICY_PEPPER_CROP = registerWithoutItem("spicy_pepper_crop", "辣椒", SpicyPepperBlock::new);
     public static final DeferredBlock<DragonFruitCactusBlock> DRAGON_FRUIT_CACTUS = registerWithoutItem("dragon_fruit_cactus", "火龙果仙人掌", DragonFruitCactusBlock::new);
     public static final DeferredBlock<DragonFruitBlock> DRAGON_FRUIT_BLOCK = registerWithoutItem("dragon_fruit", "火龙果", DragonFruitBlock::new);
+    public static final DeferredBlock<CoconutBlock> COCONUT_BLOCK = registerWithoutItem("coconut", "椰子", CoconutBlock::new);
     public static final DeferredBlock<CuminCropBlock> CUMIN_CROP = registerWithoutItem("cumin_crop", "孜然", CuminCropBlock::new);
     public static final DeferredBlock<WildCropBlock> WILD_CUMIN_CROP = registerWithoutItem("wild_cumin_crop", "野生孜然", () -> new WildCropBlock(MobEffects.SATURATION, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.TALL_GRASS)));
 

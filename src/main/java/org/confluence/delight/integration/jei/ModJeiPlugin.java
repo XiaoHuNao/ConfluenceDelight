@@ -36,6 +36,7 @@ public class ModJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new PickleJarsCategory(jeiHelpers));
         registration.addRecipeCategories(new MillStoneCategory(jeiHelpers));
         registration.addRecipeCategories(new JuicerCategory(jeiHelpers));
+        registration.addRecipeCategories(new BlockInteractionCategory(jeiHelpers));
     }
 
     @Override
@@ -46,6 +47,7 @@ public class ModJeiPlugin implements IModPlugin {
         registration.addRecipes(PickleJarsCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.PICKLE_JARS_TYPE.get()));
         registration.addRecipes(MillStoneCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.MILLSTONE_TYPE.get()));
         registration.addRecipes(JuicerCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.JUICER_TYPE.get()));
+        registration.addRecipes(BlockInteractionCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.BLOCK_INTERACTION_TYPE.get()));
     }
 
     @Override
@@ -62,7 +64,7 @@ public class ModJeiPlugin implements IModPlugin {
     public static void renderFluid(IRecipeLayoutBuilder builder, FluidStack fluidStack, int maxAmount) {
         int amount = fluidStack.getAmount();
         int maxHeight = 64;
-        int height = Math.max(1, (int)((long) amount * maxHeight / maxAmount));
+        int height = Math.max(1, (int) ((long) amount * maxHeight / maxAmount));
         height = Math.min(height, maxHeight);
         int y = 69 - height + 4;
         builder.addSlot(RecipeIngredientRole.INPUT, 1, y)

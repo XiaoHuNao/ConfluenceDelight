@@ -12,6 +12,7 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFeature;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.delight.common.worldgen.feature.FruitTreeFeature;
+import org.confluence.mod.common.init.block.NatureBlocks;
 
 import static org.confluence.delight.common.block.natural.BaseFruitTreeLeaveBlock.CAN_GROW;
 
@@ -33,7 +34,6 @@ public class CDDataProvider {
             fruitTree(context, CDFeature.Configured.RAMBUTAN, Blocks.JUNGLE_LOG, CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.MANGO, Blocks.JUNGLE_LOG, CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.BANANA, Blocks.JUNGLE_LOG, CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
-            fruitTree(context, CDFeature.Configured.COCONUT, Blocks.JUNGLE_LOG, CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.STAR_FRUIT, Blocks.OAK_LOG, CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.POMEGRANATE, Blocks.BIRCH_LOG, CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
         }

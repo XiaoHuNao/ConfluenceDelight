@@ -58,6 +58,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         add("title.confluence_delight.juicer", "Juicer", "榨汁机");
         add("jei.confluence_delight.info.juicer.cycle", "%d cycle", "%d 次");
+
+        add("title.confluence_delight.block_interaction", "Block Interaction", "方块交互");
         //jade
         add("config.jade.plugin_confluence_delight.picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("config.jade.plugin_confluence_delight.juicer_info", "Juicer Info", "榨汁机信息");
@@ -155,8 +157,8 @@ public class ModLanguageProvider extends LanguageProvider {
                 "It is obtained by right-clicking the jungle sapling with a banana",
                 "使用香蕉右击丛林树苗获得");
         add("tooltip.item.confluence_delight.coconut_sapling",
-                "It is obtained by right-clicking the jungle sapling with a coconut",
-                "使用椰子右击丛林树苗获得");
+                "It is obtained by right-clicking the palm sapling with a coconut",
+                "使用椰子右击棕榈树苗获得");
         add("tooltip.item.confluence_delight.star_fruit_sapling",
                 "It is obtained by right-clicking the oak sapling with a star fruit",
                 "使用杨桃右击橡树树苗获得");
