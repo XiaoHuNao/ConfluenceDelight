@@ -17,7 +17,8 @@ import org.confluence.delight.common.init.CDRecipes;
 
 import java.util.List;
 
-public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks, Block resultBlock) implements Recipe<BlockInteractionRecipe.Inventory> {
+public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
+                                     Block resultBlock) implements Recipe<BlockInteractionRecipe.Inventory> {
 
     public boolean matchesBlock(BlockState state) {
         for (Block block : sourceBlocks) {
@@ -75,9 +76,9 @@ public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
 
     public static class Serializer implements RecipeSerializer<BlockInteractionRecipe> {
         public static final MapCodec<BlockInteractionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                Ingredient.CODEC.fieldOf("input").forGetter(BlockInteractionRecipe::inputItem),
-                BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("source_blocks").forGetter(recipe -> List.of(recipe.sourceBlocks)),
-                BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockInteractionRecipe::resultBlock)
+                        Ingredient.CODEC.fieldOf("input").forGetter(BlockInteractionRecipe::inputItem),
+                        BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("source_blocks").forGetter(recipe -> List.of(recipe.sourceBlocks)),
+                        BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockInteractionRecipe::resultBlock)
                 ).apply(instance, (input, sourceBlocks, resultBlock) -> new BlockInteractionRecipe(input, sourceBlocks.toArray(new Block[0]), resultBlock))
         );
 

@@ -288,8 +288,8 @@ public class CDFoodItems {
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200),
                     CDEffectData.of(ModEffects.WATER_WALKING, 1200)));
     public static final DeferredItem<BaseFoodItem> FRESHLY_SQUEEZED_VITALITY = registerToolTipFood("freshly_squeezed_vitality", "活力鲜榨", builder -> builder.food(
-            DelightFoodProperties.hasEffectProperties(3, 5.0f, PotionItems.BOTTLE,
-                    CDEffectData.of(CDEffects.DINE, 1800)))
+                    DelightFoodProperties.hasEffectProperties(3, 5.0f, PotionItems.BOTTLE,
+                            CDEffectData.of(CDEffects.DINE, 1800)))
             .duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
 
     public static <I extends Item> DeferredItem<I> normalItemRegister(final String en, final String zh, Supplier<I> it) {

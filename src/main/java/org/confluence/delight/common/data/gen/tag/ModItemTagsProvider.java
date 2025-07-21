@@ -11,12 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import org.confluence.delight.common.init.CDFoodItems;
-import org.confluence.delight.common.init.CDNaturalBlocks;
-import org.confluence.delight.common.init.CDNaturalItems;
-import org.confluence.delight.common.init.CDTags;
-import org.confluence.mod.common.init.ModTags;
-import org.confluence.mod.common.init.block.OreBlocks;
+import org.confluence.delight.common.init.*;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +36,22 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addFruitToTag(CDTags.Items.C_FRUIT_MANGO, FoodItems.MANGO.get());
         addFruitToTag(CDTags.Items.C_FRUIT_PINEAPPLE, FoodItems.PINEAPPLE.get());
         addFruitToTag(CDTags.Items.C_FRUIT_LEMON, FoodItems.LEMON.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_BLACKCURRANT, FoodItems.BLACKCURRANT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_BLOOD_ORANGE, FoodItems.BLOOD_ORANGE.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_BLOODY_MOSCATO, FoodItems.BLOODY_MOSCATO.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_ELDERBERRY, FoodItems.ELDERBERRY.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_APRICOT, FoodItems.APRICOT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_BANANA, FoodItems.BANANA.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_CHERRY, FoodItems.CHERRY.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_COCONUT, FoodItems.COCONUT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_DRAGON_FRUIT, FoodItems.DRAGON_FRUIT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_GRAPE_FRUIT, FoodItems.GRAPE_FRUIT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_PEACH, FoodItems.PEACH.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_PLUM, FoodItems.PLUM.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_STAR_FRUIT, FoodItems.STAR_FRUIT.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_POMEGRANATE, FoodItems.POMEGRANATE.get());
+        addFruitToTag(CDTags.Items.C_FRUIT_RAMBUTAN, FoodItems.RAMBUTAN.get());
+        tag(CDTags.Items.C_VEGETABLES_SPICY_PEPPER).add(FoodItems.SPICY_PEPPER.get());
         tag(CDTags.Items.JUICER_CONTAINER).add(
                 Items.GLASS_BOTTLE,
                 PotionItems.BOTTLE.get(),
@@ -104,45 +115,46 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
                 CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
         );
-        tag(CDTags.Items.C_FRUIT_BLACKCURRANT).add(FoodItems.BLACKCURRANT.get());
-        tag(CDTags.Items.C_FRUIT_BLOOD_ORANGE).add(FoodItems.BLOOD_ORANGE.get());
-        tag(CDTags.Items.C_FRUIT_BLOODY_MOSCATO).add(FoodItems.BLOODY_MOSCATO.get());
-        tag(CDTags.Items.C_FRUIT_ELDERBERRY).add(FoodItems.ELDERBERRY.get());
-        tag(CDTags.Items.C_FRUIT_APRICOT).add(FoodItems.APRICOT.get());
-        tag(CDTags.Items.C_FRUIT_BANANA).add(FoodItems.BANANA.get());
-        tag(CDTags.Items.C_FRUIT_CHERRY).add(FoodItems.CHERRY.get());
-        tag(CDTags.Items.C_FRUIT_COCONUT).add(FoodItems.COCONUT.get());
-        tag(CDTags.Items.C_FRUIT_DRAGON_FRUIT).add(FoodItems.DRAGON_FRUIT.get());
-        tag(CDTags.Items.C_FRUIT_GRAPE_FRUIT).add(FoodItems.GRAPE_FRUIT.get());
-        tag(CDTags.Items.C_FRUIT_LEMON).add(FoodItems.LEMON.get());
-        tag(CDTags.Items.C_FRUIT_MANGO).add(FoodItems.MANGO.get());
-        tag(CDTags.Items.C_FRUIT_PEACH).add(FoodItems.PEACH.get());
-        tag(CDTags.Items.C_FRUIT_PINEAPPLE).add(FoodItems.PINEAPPLE.get());
-        tag(CDTags.Items.C_FRUIT_PLUM).add(FoodItems.PLUM.get());
-        tag(CDTags.Items.C_FRUIT_SPICY_PEPPER).add(FoodItems.SPICY_PEPPER.get());
-        tag(CDTags.Items.C_FRUIT_STAR_FRUIT).add(FoodItems.STAR_FRUIT.get());
-        tag(CDTags.Items.C_FRUIT_POMEGRANATE).add(FoodItems.POMEGRANATE.get());
-        tag(CDTags.Items.C_FRUIT_RAMBUTAN).add(FoodItems.RAMBUTAN.get());
-
-        tag(CDTags.Items.BLACKCURRANT_CRATE).add(CDNaturalBlocks.BLACKCURRANT_CRATE.asItem());
-        tag(CDTags.Items.BLOOD_ORANGE_CRATE).add(CDNaturalBlocks.BLOOD_ORANGE_CRATE.asItem());
-        tag(CDTags.Items.BLOODY_MOSCATO_CRATE).add(CDNaturalBlocks.BLOODY_MOSCATO_CRATE.asItem());
-        tag(CDTags.Items.ELDERBERRY_CRATE).add(CDNaturalBlocks.ELDERBERRY_CRATE.asItem());
-        tag(CDTags.Items.APRICOT_CRATE).add(CDNaturalBlocks.APRICOT_CRATE.asItem());
-        tag(CDTags.Items.BANANA_CRATE).add(CDNaturalBlocks.BANANA_CRATE.asItem());
-        tag(CDTags.Items.CHERRY_CRATE).add(CDNaturalBlocks.CHERRY_CRATE.asItem());
-        tag(CDTags.Items.COCONUT_CRATE).add(CDNaturalBlocks.COCONUT_CRATE.asItem());
-        tag(CDTags.Items.DRAGON_FRUIT_CRATE).add(CDNaturalBlocks.DRAGON_FRUIT_CRATE.asItem());
-        tag(CDTags.Items.GRAPE_FRUIT_CRATE).add(CDNaturalBlocks.GRAPE_FRUIT_CRATE.asItem());
-        tag(CDTags.Items.LEMON_CRATE).add(CDNaturalBlocks.LEMON_CRATE.asItem());
-        tag(CDTags.Items.MANGO_CRATE).add(CDNaturalBlocks.MANGO_CRATE.asItem());
-        tag(CDTags.Items.PEACH_CRATE).add(CDNaturalBlocks.PEACH_CRATE.asItem());
-        tag(CDTags.Items.PINEAPPLE_CRATE).add(CDNaturalBlocks.PINEAPPLE_CRATE.asItem());
-        tag(CDTags.Items.PLUM_CRATE).add(CDNaturalBlocks.PLUM_CRATE.asItem());
-        tag(CDTags.Items.SPICY_PEPPER_CRATE).add(CDNaturalBlocks.SPICY_PEPPER_CRATE.asItem());
-        tag(CDTags.Items.STAR_FRUIT_CRATE).add(CDNaturalBlocks.STAR_FRUIT_CRATE.asItem());
-        tag(CDTags.Items.POMEGRANATE_CRATE).add(CDNaturalBlocks.POMEGRANATE_CRATE.asItem());
-        tag(CDTags.Items.RAMBUTAN_CRATE).add(CDNaturalBlocks.RAMBUTAN_CRATE.asItem());
+        tag(Tags.Items.STORAGE_BLOCKS).add(
+                CDBlocks.BLACKCURRANT_CRATE.asItem(),
+                CDBlocks.BLOOD_ORANGE_CRATE.asItem(),
+                CDBlocks.BLOODY_MOSCATO_CRATE.asItem(),
+                CDBlocks.ELDERBERRY_CRATE.asItem(),
+                CDBlocks.APRICOT_CRATE.asItem(),
+                CDBlocks.BANANA_CRATE.asItem(),
+                CDBlocks.CHERRY_CRATE.asItem(),
+                CDBlocks.COCONUT_CRATE.asItem(),
+                CDBlocks.DRAGON_FRUIT_CRATE.asItem(),
+                CDBlocks.GRAPE_FRUIT_CRATE.asItem(),
+                CDBlocks.LEMON_CRATE.asItem(),
+                CDBlocks.MANGO_CRATE.asItem(),
+                CDBlocks.PEACH_CRATE.asItem(),
+                CDBlocks.PINEAPPLE_CRATE.asItem(),
+                CDBlocks.PLUM_CRATE.asItem(),
+                CDBlocks.SPICY_PEPPER_CRATE.asItem(),
+                CDBlocks.STAR_FRUIT_CRATE.asItem(),
+                CDBlocks.POMEGRANATE_CRATE.asItem(),
+                CDBlocks.RAMBUTAN_CRATE.asItem()
+        );
+        tag(CDTags.Items.BLACKCURRANT_CRATE).add(CDBlocks.BLACKCURRANT_CRATE.asItem());
+        tag(CDTags.Items.BLOOD_ORANGE_CRATE).add(CDBlocks.BLOOD_ORANGE_CRATE.asItem());
+        tag(CDTags.Items.BLOODY_MOSCATO_CRATE).add(CDBlocks.BLOODY_MOSCATO_CRATE.asItem());
+        tag(CDTags.Items.ELDERBERRY_CRATE).add(CDBlocks.ELDERBERRY_CRATE.asItem());
+        tag(CDTags.Items.APRICOT_CRATE).add(CDBlocks.APRICOT_CRATE.asItem());
+        tag(CDTags.Items.BANANA_CRATE).add(CDBlocks.BANANA_CRATE.asItem());
+        tag(CDTags.Items.CHERRY_CRATE).add(CDBlocks.CHERRY_CRATE.asItem());
+        tag(CDTags.Items.COCONUT_CRATE).add(CDBlocks.COCONUT_CRATE.asItem());
+        tag(CDTags.Items.DRAGON_FRUIT_CRATE).add(CDBlocks.DRAGON_FRUIT_CRATE.asItem());
+        tag(CDTags.Items.GRAPE_FRUIT_CRATE).add(CDBlocks.GRAPE_FRUIT_CRATE.asItem());
+        tag(CDTags.Items.LEMON_CRATE).add(CDBlocks.LEMON_CRATE.asItem());
+        tag(CDTags.Items.MANGO_CRATE).add(CDBlocks.MANGO_CRATE.asItem());
+        tag(CDTags.Items.PEACH_CRATE).add(CDBlocks.PEACH_CRATE.asItem());
+        tag(CDTags.Items.PINEAPPLE_CRATE).add(CDBlocks.PINEAPPLE_CRATE.asItem());
+        tag(CDTags.Items.PLUM_CRATE).add(CDBlocks.PLUM_CRATE.asItem());
+        tag(CDTags.Items.SPICY_PEPPER_CRATE).add(CDBlocks.SPICY_PEPPER_CRATE.asItem());
+        tag(CDTags.Items.STAR_FRUIT_CRATE).add(CDBlocks.STAR_FRUIT_CRATE.asItem());
+        tag(CDTags.Items.POMEGRANATE_CRATE).add(CDBlocks.POMEGRANATE_CRATE.asItem());
+        tag(CDTags.Items.RAMBUTAN_CRATE).add(CDBlocks.RAMBUTAN_CRATE.asItem());
     }
 
     @Override

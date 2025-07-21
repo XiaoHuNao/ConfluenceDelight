@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -22,6 +23,7 @@ import org.confluence.delight.common.block.function.crafting.*;
 
 import java.util.function.Supplier;
 
+import static net.minecraft.world.level.block.Blocks.ACACIA_PLANKS;
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 
 public class CDBlocks {
@@ -45,6 +47,27 @@ public class CDBlocks {
 
     public static final DeferredBlock<Block> SALT_BLOCK = registerWithItem("salt_block", "盐块", () -> new Block(BlockBehaviour.Properties.of()));
     public static final DeferredBlock<Block> SALT_CAULDRON = registerWithoutItem("salt_cauldron", "装有盐的炼药锅", () -> new SaltCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WATER_CAULDRON)));
+
+    // 箱装水果
+    public static final DeferredBlock<Block> APRICOT_CRATE = registerWithItem("apricot_crate", "箱装杏子", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<Block> GRAPE_FRUIT_CRATE = registerWithItem("grape_fruit_crate", "箱装葡萄柚", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_CYAN)));
+    public static final DeferredBlock<Block> LEMON_CRATE = registerWithItem("lemon_crate", "箱装柠檬", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> PEACH_CRATE = registerWithItem("peach_crate", "箱装桃子", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<Block> CHERRY_CRATE = registerWithItem("cherry_crate", "箱装樱桃", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> PLUM_CRATE = registerWithItem("plum_crate", "箱装李子", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_PURPLE)));
+    public static final DeferredBlock<Block> BLOOD_ORANGE_CRATE = registerWithItem("blood_orange_crate", "箱装血橙", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> DRAGON_FRUIT_CRATE = registerWithItem("dragon_fruit_crate", "箱装火龙果", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> RAMBUTAN_CRATE = registerWithItem("rambutan_crate", "箱装红毛丹", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> MANGO_CRATE = registerWithItem("mango_crate", "箱装芒果", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<Block> BANANA_CRATE = registerWithItem("banana_crate", "箱装香蕉", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> COCONUT_CRATE = registerWithItem("coconut_crate", "箱装椰子", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_ORANGE)));
+    public static final DeferredBlock<Block> STAR_FRUIT_CRATE = registerWithItem("star_fruit_crate", "箱装杨桃", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> POMEGRANATE_CRATE = registerWithItem("pomegranate_crate", "箱装石榴", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
+    public static final DeferredBlock<Block> BLACKCURRANT_CRATE = registerWithItem("blackcurrant_crate", "箱装黑醋栗", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_BLACK)));
+    public static final DeferredBlock<Block> BLOODY_MOSCATO_CRATE = registerWithItem("bloody_moscato_crate", "箱装血腥麝香葡萄", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_PURPLE)));
+    public static final DeferredBlock<Block> ELDERBERRY_CRATE = registerWithItem("elderberry_crate", "箱装接骨木果", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_PURPLE)));
+    public static final DeferredBlock<Block> PINEAPPLE_CRATE = registerWithItem("pineapple_crate", "箱装菠萝", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
+    public static final DeferredBlock<Block> SPICY_PEPPER_CRATE = registerWithItem("spicy_pepper_crate", "箱装辣椒", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
 
     public static DeferredHolder<Block, Block> register(final String en, final String zh) {
         DeferredHolder<Block, Block> block = BLOCKS.register(en, () -> new Block(BlockBehaviour.Properties.of()));

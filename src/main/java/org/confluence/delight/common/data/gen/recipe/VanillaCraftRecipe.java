@@ -16,9 +16,6 @@ import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.*;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
-import org.confluence.mod.Confluence;
-import org.confluence.mod.common.init.ModTags;
-import org.confluence.mod.common.init.block.OreBlocks;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -172,25 +169,25 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.2f, 100);
         furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.2f, 100);
 
-        compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDNaturalBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
-        compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDNaturalBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);
-        compressAndDecompressNine(output, FoodItems.BLOODY_MOSCATO, CDTags.Items.C_FRUIT_BLOODY_MOSCATO, CDNaturalBlocks.BLOODY_MOSCATO_CRATE, CDTags.Items.BLOODY_MOSCATO_CRATE);
-        compressAndDecompressNine(output, FoodItems.ELDERBERRY, CDTags.Items.C_FRUIT_ELDERBERRY, CDNaturalBlocks.ELDERBERRY_CRATE, CDTags.Items.ELDERBERRY_CRATE);
-        compressAndDecompressNine(output, FoodItems.APRICOT, CDTags.Items.C_FRUIT_APRICOT, CDNaturalBlocks.APRICOT_CRATE, CDTags.Items.APRICOT_CRATE);
-        compressAndDecompressNine(output, FoodItems.BANANA, CDTags.Items.C_FRUIT_BANANA, CDNaturalBlocks.BANANA_CRATE, CDTags.Items.BANANA_CRATE);
-        compressAndDecompressNine(output, FoodItems.CHERRY, CDTags.Items.C_FRUIT_CHERRY, CDNaturalBlocks.CHERRY_CRATE, CDTags.Items.CHERRY_CRATE);
-        compressAndDecompressNine(output, FoodItems.COCONUT, CDTags.Items.C_FRUIT_COCONUT, CDNaturalBlocks.COCONUT_CRATE, CDTags.Items.COCONUT_CRATE);
-        compressAndDecompressNine(output, FoodItems.DRAGON_FRUIT, CDTags.Items.C_FRUIT_DRAGON_FRUIT, CDNaturalBlocks.DRAGON_FRUIT_CRATE, CDTags.Items.DRAGON_FRUIT_CRATE);
-        compressAndDecompressNine(output, FoodItems.GRAPE_FRUIT, CDTags.Items.C_FRUIT_GRAPE_FRUIT, CDNaturalBlocks.GRAPE_FRUIT_CRATE, CDTags.Items.GRAPE_FRUIT_CRATE);
-        compressAndDecompressNine(output, FoodItems.LEMON, CDTags.Items.C_FRUIT_LEMON, CDNaturalBlocks.LEMON_CRATE, CDTags.Items.LEMON_CRATE);
-        compressAndDecompressNine(output, FoodItems.MANGO, CDTags.Items.C_FRUIT_MANGO, CDNaturalBlocks.MANGO_CRATE, CDTags.Items.MANGO_CRATE);
-        compressAndDecompressNine(output, FoodItems.PEACH, CDTags.Items.C_FRUIT_PEACH, CDNaturalBlocks.PEACH_CRATE, CDTags.Items.PEACH_CRATE);
-        compressAndDecompressNine(output, FoodItems.PINEAPPLE, CDTags.Items.C_FRUIT_PINEAPPLE, CDNaturalBlocks.PINEAPPLE_CRATE, CDTags.Items.PINEAPPLE_CRATE);
-        compressAndDecompressNine(output, FoodItems.PLUM, CDTags.Items.C_FRUIT_PLUM, CDNaturalBlocks.PLUM_CRATE, CDTags.Items.PLUM_CRATE);
-        compressAndDecompressNine(output, FoodItems.SPICY_PEPPER, CDTags.Items.C_FRUIT_SPICY_PEPPER, CDNaturalBlocks.SPICY_PEPPER_CRATE, CDTags.Items.SPICY_PEPPER_CRATE);
-        compressAndDecompressNine(output, FoodItems.STAR_FRUIT, CDTags.Items.C_FRUIT_STAR_FRUIT, CDNaturalBlocks.STAR_FRUIT_CRATE, CDTags.Items.STAR_FRUIT_CRATE);
-        compressAndDecompressNine(output, FoodItems.POMEGRANATE, CDTags.Items.C_FRUIT_POMEGRANATE, CDNaturalBlocks.POMEGRANATE_CRATE, CDTags.Items.POMEGRANATE_CRATE);
-        compressAndDecompressNine(output, FoodItems.RAMBUTAN, CDTags.Items.C_FRUIT_RAMBUTAN, CDNaturalBlocks.RAMBUTAN_CRATE, CDTags.Items.RAMBUTAN_CRATE);
+        compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
+        compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);
+        compressAndDecompressNine(output, FoodItems.BLOODY_MOSCATO, CDTags.Items.C_FRUIT_BLOODY_MOSCATO, CDBlocks.BLOODY_MOSCATO_CRATE, CDTags.Items.BLOODY_MOSCATO_CRATE);
+        compressAndDecompressNine(output, FoodItems.ELDERBERRY, CDTags.Items.C_FRUIT_ELDERBERRY, CDBlocks.ELDERBERRY_CRATE, CDTags.Items.ELDERBERRY_CRATE);
+        compressAndDecompressNine(output, FoodItems.APRICOT, CDTags.Items.C_FRUIT_APRICOT, CDBlocks.APRICOT_CRATE, CDTags.Items.APRICOT_CRATE);
+        compressAndDecompressNine(output, FoodItems.BANANA, CDTags.Items.C_FRUIT_BANANA, CDBlocks.BANANA_CRATE, CDTags.Items.BANANA_CRATE);
+        compressAndDecompressNine(output, FoodItems.CHERRY, CDTags.Items.C_FRUIT_CHERRY, CDBlocks.CHERRY_CRATE, CDTags.Items.CHERRY_CRATE);
+        compressAndDecompressNine(output, FoodItems.COCONUT, CDTags.Items.C_FRUIT_COCONUT, CDBlocks.COCONUT_CRATE, CDTags.Items.COCONUT_CRATE);
+        compressAndDecompressNine(output, FoodItems.DRAGON_FRUIT, CDTags.Items.C_FRUIT_DRAGON_FRUIT, CDBlocks.DRAGON_FRUIT_CRATE, CDTags.Items.DRAGON_FRUIT_CRATE);
+        compressAndDecompressNine(output, FoodItems.GRAPE_FRUIT, CDTags.Items.C_FRUIT_GRAPE_FRUIT, CDBlocks.GRAPE_FRUIT_CRATE, CDTags.Items.GRAPE_FRUIT_CRATE);
+        compressAndDecompressNine(output, FoodItems.LEMON, CDTags.Items.C_FRUIT_LEMON, CDBlocks.LEMON_CRATE, CDTags.Items.LEMON_CRATE);
+        compressAndDecompressNine(output, FoodItems.MANGO, CDTags.Items.C_FRUIT_MANGO, CDBlocks.MANGO_CRATE, CDTags.Items.MANGO_CRATE);
+        compressAndDecompressNine(output, FoodItems.PEACH, CDTags.Items.C_FRUIT_PEACH, CDBlocks.PEACH_CRATE, CDTags.Items.PEACH_CRATE);
+        compressAndDecompressNine(output, FoodItems.PINEAPPLE, CDTags.Items.C_FRUIT_PINEAPPLE, CDBlocks.PINEAPPLE_CRATE, CDTags.Items.PINEAPPLE_CRATE);
+        compressAndDecompressNine(output, FoodItems.PLUM, CDTags.Items.C_FRUIT_PLUM, CDBlocks.PLUM_CRATE, CDTags.Items.PLUM_CRATE);
+        compressAndDecompressNine(output, FoodItems.SPICY_PEPPER, CDTags.Items.C_VEGETABLES_SPICY_PEPPER, CDBlocks.SPICY_PEPPER_CRATE, CDTags.Items.SPICY_PEPPER_CRATE);
+        compressAndDecompressNine(output, FoodItems.STAR_FRUIT, CDTags.Items.C_FRUIT_STAR_FRUIT, CDBlocks.STAR_FRUIT_CRATE, CDTags.Items.STAR_FRUIT_CRATE);
+        compressAndDecompressNine(output, FoodItems.POMEGRANATE, CDTags.Items.C_FRUIT_POMEGRANATE, CDBlocks.POMEGRANATE_CRATE, CDTags.Items.POMEGRANATE_CRATE);
+        compressAndDecompressNine(output, FoodItems.RAMBUTAN, CDTags.Items.C_FRUIT_RAMBUTAN, CDBlocks.RAMBUTAN_CRATE, CDTags.Items.RAMBUTAN_CRATE);
     }
 
     protected void shaped(RecipeOutput output, String prefix, String suffix, ShapedRecipePattern pattern, ItemStack result) {
@@ -210,10 +207,10 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
     }
 
     protected void compressAndDecompressNine(RecipeOutput recipeOutput, ItemLike decompressed, TagKey<Item> decompressedTag, ItemLike compressed, TagKey<Item> compressedTag) {
-        ResourceLocation id1 = Confluence.asResource(getItemName(decompressed));
+        ResourceLocation id1 = ConfluenceDelight.asResource("shaped/" + getItemName(decompressed));
         NonNullList<Ingredient> ingredients = NonNullList.of(Ingredient.EMPTY, Ingredient.of(compressedTag));
         recipeOutput.accept(id1, new ShapelessRecipe("", CraftingBookCategory.BUILDING, new ItemStack(decompressed, 9), ingredients), createAdvancementHolder(recipeOutput, id1, ingredients));
-        ResourceLocation id2 = Confluence.asResource(getItemName(compressed));
+        ResourceLocation id2 = ConfluenceDelight.asResource("shaped/" + getItemName(compressed));
         ShapedRecipePattern pattern = ShapedRecipePattern.of(Map.of('A', Ingredient.of(decompressedTag)), List.of("AAA", "AAA", "AAA"));
         recipeOutput.accept(id2, new ShapedRecipe("", CraftingBookCategory.BUILDING, pattern, compressed.asItem().getDefaultInstance()), createAdvancementHolder(recipeOutput, id2, pattern.ingredients()));
     }

@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDItems;
-import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.util.LibUtils;
 import org.jetbrains.annotations.Nullable;
 import vectorwing.farmersdelight.common.tag.ModTags;

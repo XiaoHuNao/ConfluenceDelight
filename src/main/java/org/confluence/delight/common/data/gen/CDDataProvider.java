@@ -12,7 +12,6 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFeature;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.delight.common.worldgen.feature.FruitTreeFeature;
-import org.confluence.mod.common.init.block.NatureBlocks;
 
 import static org.confluence.delight.common.block.natural.BaseFruitTreeLeaveBlock.CAN_GROW;
 

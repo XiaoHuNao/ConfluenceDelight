@@ -16,10 +16,6 @@ public final class CDTags {
         public static final TagKey<Fluid> WINE = c("wine");
         public static final TagKey<Fluid> BRINE = c("brine");
 
-        private static TagKey<Fluid> register(String id) {
-            return FluidTags.create(ConfluenceDelight.asResource(id));
-        }
-
         private static TagKey<Fluid> c(String id) {
             return FluidTags.create(ResourceLocation.fromNamespaceAndPath("c", id));
         }
@@ -49,6 +45,7 @@ public final class CDTags {
         private static TagKey<Block> c(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }
+
         private static TagKey<Block> register(String id) {
             return BlockTags.create(ConfluenceDelight.asResource(id));
         }
@@ -69,11 +66,11 @@ public final class CDTags {
         public static final TagKey<Item> C_FRUIT_PEACH = c("foods/fruits/peach");
         public static final TagKey<Item> C_FRUIT_PINEAPPLE = c("foods/fruits/pineapple");
         public static final TagKey<Item> C_FRUIT_PLUM = c("foods/fruits/plum");
-        public static final TagKey<Item> C_FRUIT_SPICY_PEPPER = c("foods/fruits/spicy_pepper");
         public static final TagKey<Item> C_FRUIT_STAR_FRUIT = c("foods/fruits/star_fruit");
         public static final TagKey<Item> C_FRUIT_POMEGRANATE = c("foods/fruits/pomegranate");
         public static final TagKey<Item> C_FRUIT_RAMBUTAN = c("foods/fruits/rambutan");
         public static final TagKey<Item> C_FRUIT_LEMON = c("foods/fruits/lemon");
+        public static final TagKey<Item> C_VEGETABLES_SPICY_PEPPER = c("foods/vegetables/spicy_pepper");
         public static final TagKey<Item> JUICER_CONTAINER = register("juicer_container");
 
         public static final TagKey<Item> BLACKCURRANT_CRATE = c("storage_blocks/blackcurrant");
@@ -95,7 +92,7 @@ public final class CDTags {
         public static final TagKey<Item> STAR_FRUIT_CRATE = c("storage_blocks/star_fruit");
         public static final TagKey<Item> POMEGRANATE_CRATE = c("storage_blocks/pomegranate");
         public static final TagKey<Item> RAMBUTAN_CRATE = c("storage_blocks/rambutan");
-        
+
         private static TagKey<Item> c(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }
