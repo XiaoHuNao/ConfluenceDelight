@@ -63,6 +63,12 @@ public class SapCollectorsBlock extends BaseEntityBlock {
     }
 
     @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState blockstate = this.defaultBlockState();
         LevelReader levelreader = context.getLevel();
