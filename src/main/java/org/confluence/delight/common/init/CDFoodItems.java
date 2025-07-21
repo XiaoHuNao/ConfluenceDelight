@@ -37,6 +37,13 @@ public class CDFoodItems {
     public static final DeferredItem<BaseFoodItem> RAW_HORSE_MEAT = registerNormalFood("raw_horse_meat", "生马肉", () -> DelightFoodProperties.noEffectProperties(3, 1.5f));
     public static final DeferredItem<BaseFoodItem> COOKED_DONKEY_MEAT = registerNormalFood("cooked_donkey_meat", "熟驴肉", () -> DelightFoodProperties.noEffectProperties(8, 12.8f));
     public static final DeferredItem<BaseFoodItem> COOKED_HORSE_MEAT = registerNormalFood("cooked_horse_meat", "熟马肉", () -> DelightFoodProperties.noEffectProperties(8, 12.8f));
+    public static final DeferredItem<BaseFoodItem> SQUIRREL_MEAT_CHUNKS = registerNormalFood("squirrel_meat_chunks", "松鼠肉块", () -> DelightFoodProperties.noEffectProperties(2, 1.8f));
+    public static final DeferredItem<BaseFoodItem> BIRD_MEAT_CHUNKS = registerNormalFood("bird_meat_chunks", "鸟肉块", () -> DelightFoodProperties.noEffectProperties(2, 1.8f));
+    public static final DeferredItem<BaseFoodItem> DUCK_MEAT_CHUNKS = registerNormalFood("duck_meat_chunks", "鸭肉块", () -> DelightFoodProperties.noEffectProperties(3, 2.6f));
+    public static final DeferredItem<BaseFoodItem> FROG_MEAT_CHUNKS = registerNormalFood("frog_meat_chunks", "青蛙肉块", () -> DelightFoodProperties.noEffectProperties(2, 1.8f));
+    public static final DeferredItem<BaseFoodItem> DONKEY_MEAT_CHUNKS = registerNormalFood("donkey_meat_chunks", "驴肉块", () -> DelightFoodProperties.noEffectProperties(4, 6.4f));
+    public static final DeferredItem<BaseFoodItem> HORSE_MEAT_CHUNKS = registerNormalFood("horse_meat_chunks", "马肉块", () -> DelightFoodProperties.noEffectProperties(4, 6.4f));
+    public static final DeferredItem<BaseFoodItem> SQUIRREL_CITATAP = registerNormalFood("squirrel_citatap", "松鼠齐塔塔普", () -> DelightFoodProperties.noEffectProperties(2, 1.8f));
     public static final DeferredItem<BaseFoodItem> BUTTER = registerNormalFood("butter", "黄油",
             () -> DelightFoodProperties.hasEffectProperties(3, 4.5f,
                     CDEffectData.of(MobEffects.CONFUSION, 400)));

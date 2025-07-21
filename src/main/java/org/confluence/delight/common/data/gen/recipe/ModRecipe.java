@@ -174,6 +174,13 @@ public class ModRecipe extends AbstractRecipeProvider {
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.SPICY_PEPPER.get()), Ingredient.of(ModTags.KNIVES), CDFoodItems.CRUSHED_CHILLI.get(), 5).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.CARROT), Ingredient.of(ModTags.KNIVES), CDFoodItems.CARROT_CUBES, 3).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.CLOUD_BREAD), Ingredient.of(ModTags.KNIVES), CDFoodItems.CLOUD_BREAD_SLICE, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_SQUIRREL), Ingredient.of(ModTags.KNIVES), CDFoodItems.SQUIRREL_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_BIRD), Ingredient.of(ModTags.KNIVES), CDFoodItems.BIRD_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_DUCK), Ingredient.of(ModTags.KNIVES), CDFoodItems.DUCK_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_FROG), Ingredient.of(ModTags.KNIVES), CDFoodItems.FROG_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_DONKEY_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.DONKEY_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_HORSE_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.HORSE_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS), Ingredient.of(ModTags.KNIVES), CDFoodItems.SQUIRREL_CITATAP).build(recipeOutput);
 
         //厨锅
         CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.BUTTER.get(), 1, 50, 0.2f)
