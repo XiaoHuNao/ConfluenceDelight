@@ -1,0 +1,10 @@
+{
+    "type": "neoforge:add_table",
+    "conditions": [
+        {
+            "condition": "neoforge:loot_table_id",
+            "loot_table_id": "confluence:entities/terra_entity/green_dumpling_slime"
+        }
+    ],
+    "table": "confluence_delight:with/entities/green_dumpling_slime"
+}

@@ -2,6 +2,22 @@
     "replace": false,
     "entries": [
         "confluence_delight:entities/horse",
-        "confluence_delight:entities/donkey"
+        "confluence_delight:entities/donkey",
+        "confluence_delight:entities/terra_entity/ice_slime",
+        "confluence_delight:entities/terra_entity/blue_slime",
+        "confluence_delight:entities/terra_entity/red_slime",
+        "confluence_delight:entities/terra_entity/purple_slime",
+        "confluence_delight:entities/terra_entity/jungle_slime",
+        "confluence_delight:entities/terra_entity/pink_slime",
+        "confluence_delight:entities/terra_entity/yellow_slime",
+        "confluence_delight:entities/terra_entity/crimslime",
+        "confluence_delight:entities/terra_entity/corrupt_slime",
+        "confluence_delight:entities/terra_entity/desert_slime",
+        "confluence_delight:entities/terra_entity/tropic_slime",
+        "confluence_delight:entities/terra_entity/green_slime",
+        "confluence_delight:entities/terra_entity/black_slime",
+        "confluence_delight:entities/terra_entity/lava_slime",
+        "confluence_delight:entities/terra_entity/green_dumpling_slime",
+        "confluence_delight:entities/terra_entity/swamp_slime"
     ]
 }

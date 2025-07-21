@@ -1,0 +1,10 @@
+{
+    "type": "neoforge:add_table",
+    "conditions": [
+        {
+            "condition": "neoforge:loot_table_id",
+            "loot_table_id": "confluence:entities/terra_entity/ice_slime"
+        }
+    ],
+    "table": "confluence_delight:with/entities/ice_slime"
+}
