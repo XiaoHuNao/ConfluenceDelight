@@ -6,6 +6,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.confluence.delight.common.init.CDBlocks;
@@ -19,6 +20,7 @@ import vectorwing.farmersdelight.common.registry.ModBlocks;
 import java.util.concurrent.CompletableFuture;
 
 import static org.confluence.delight.ConfluenceDelight.MODID;
+import static org.confluence.mod.common.init.block.OreBlocks.TIN_BLOCK;
 
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
@@ -50,6 +52,48 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);
         tag(BlockTags.LEAVES).add(leaves);
         tag(BlockTags.MINEABLE_WITH_HOE).add(leaves);
+
+        tag(Tags.Blocks.STORAGE_BLOCKS).add(
+                CDNaturalBlocks.BLACKCURRANT_CRATE.get(),
+                CDNaturalBlocks.BLOOD_ORANGE_CRATE.get(),
+                CDNaturalBlocks.BLOODY_MOSCATO_CRATE.get(),
+                CDNaturalBlocks.ELDERBERRY_CRATE.get(),
+                CDNaturalBlocks.APRICOT_CRATE.get(),
+                CDNaturalBlocks.BANANA_CRATE.get(),
+                CDNaturalBlocks.CHERRY_CRATE.get(),
+                CDNaturalBlocks.COCONUT_CRATE.get(),
+                CDNaturalBlocks.DRAGON_FRUIT_CRATE.get(),
+                CDNaturalBlocks.GRAPE_FRUIT_CRATE.get(),
+                CDNaturalBlocks.LEMON_CRATE.get(),
+                CDNaturalBlocks.MANGO_CRATE.get(),
+                CDNaturalBlocks.PEACH_CRATE.get(),
+                CDNaturalBlocks.PINEAPPLE_CRATE.get(),
+                CDNaturalBlocks.PLUM_CRATE.get(),
+                CDNaturalBlocks.SPICY_PEPPER_CRATE.get(),
+                CDNaturalBlocks.STAR_FRUIT_CRATE.get(),
+                CDNaturalBlocks.POMEGRANATE_CRATE.get(),
+                CDNaturalBlocks.RAMBUTAN_CRATE.get()
+        );
+
+        tag(CDTags.Blocks.BLACKCURRANT_CRATE).add(CDNaturalBlocks.BLACKCURRANT_CRATE.get());
+        tag(CDTags.Blocks.BLOOD_ORANGE_CRATE).add(CDNaturalBlocks.BLOOD_ORANGE_CRATE.get());
+        tag(CDTags.Blocks.BLOODY_MOSCATO_CRATE).add(CDNaturalBlocks.BLOODY_MOSCATO_CRATE.get());
+        tag(CDTags.Blocks.ELDERBERRY_CRATE).add(CDNaturalBlocks.ELDERBERRY_CRATE.get());
+        tag(CDTags.Blocks.APRICOT_CRATE).add(CDNaturalBlocks.APRICOT_CRATE.get());
+        tag(CDTags.Blocks.BANANA_CRATE).add(CDNaturalBlocks.BANANA_CRATE.get());
+        tag(CDTags.Blocks.CHERRY_CRATE).add(CDNaturalBlocks.CHERRY_CRATE.get());
+        tag(CDTags.Blocks.COCONUT_CRATE).add(CDNaturalBlocks.COCONUT_CRATE.get());
+        tag(CDTags.Blocks.DRAGON_FRUIT_CRATE).add(CDNaturalBlocks.DRAGON_FRUIT_CRATE.get());
+        tag(CDTags.Blocks.GRAPE_FRUIT_CRATE).add(CDNaturalBlocks.GRAPE_FRUIT_CRATE.get());
+        tag(CDTags.Blocks.LEMON_CRATE).add(CDNaturalBlocks.LEMON_CRATE.get());
+        tag(CDTags.Blocks.MANGO_CRATE).add(CDNaturalBlocks.MANGO_CRATE.get());
+        tag(CDTags.Blocks.PEACH_CRATE).add(CDNaturalBlocks.PEACH_CRATE.get());
+        tag(CDTags.Blocks.PINEAPPLE_CRATE).add(CDNaturalBlocks.PINEAPPLE_CRATE.get());
+        tag(CDTags.Blocks.PLUM_CRATE).add(CDNaturalBlocks.PLUM_CRATE.get());
+        tag(CDTags.Blocks.SPICY_PEPPER_CRATE).add(CDNaturalBlocks.SPICY_PEPPER_CRATE.get());
+        tag(CDTags.Blocks.STAR_FRUIT_CRATE).add(CDNaturalBlocks.STAR_FRUIT_CRATE.get());
+        tag(CDTags.Blocks.POMEGRANATE_CRATE).add(CDNaturalBlocks.POMEGRANATE_CRATE.get());
+        tag(CDTags.Blocks.RAMBUTAN_CRATE).add(CDNaturalBlocks.RAMBUTAN_CRATE.get());
     }
 
     Block[] leaves = new Block[]{

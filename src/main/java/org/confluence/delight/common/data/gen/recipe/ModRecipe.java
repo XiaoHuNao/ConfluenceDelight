@@ -1,6 +1,11 @@
 package org.confluence.delight.common.data.gen.recipe;
 
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -9,6 +14,8 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -19,6 +26,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.crafting.ICustomIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.*;
@@ -43,8 +51,10 @@ import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -265,5 +275,36 @@ public class ModRecipe extends AbstractRecipeProvider {
     protected void blockInteractionRecipe(RecipeOutput recipeOutput, Ingredient inputItem, Block resultBlock, Block... sourceBlocks) {
         ResourceLocation id = ConfluenceDelight.asResource("block_interaction/" + getItemName(resultBlock));
         recipeOutput.accept(id, new BlockInteractionRecipe(inputItem, sourceBlocks, resultBlock), null);
+    }
+
+    public static AdvancementHolder createAdvancementHolder(RecipeOutput recipeOutput, ResourceLocation id, NonNullList<Ingredient> ingredients) {
+        Set<Item> itemCounter = new HashSet<>();
+        Set<TagKey<Item>> tagCounter = new HashSet<>();
+        Advancement.Builder builder = recipeOutput.advancement()
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(AdvancementRequirements.Strategy.OR);
+        for (Ingredient ingredient : ingredients) {
+            Ingredient.Value[] values;
+            ICustomIngredient customIngredient = ingredient.getCustomIngredient();
+            if (customIngredient == null) {
+                values = ingredient.getValues();
+            } else {
+                values = customIngredient.getItems().map(Ingredient.ItemValue::new).toArray(Ingredient.Value[]::new);
+            }
+            for (Ingredient.Value value : values) {
+                if (value instanceof Ingredient.ItemValue(ItemStack itemStack)) {
+                    Item item = itemStack.getItem();
+                    if (itemCounter.contains(item)) continue;
+                    itemCounter.add(item);
+                    builder.addCriterion(getHasName(item), has(item));
+                } else if (value instanceof Ingredient.TagValue(TagKey<Item> tag)) {
+                    if (tagCounter.contains(tag)) continue;
+                    tagCounter.add(tag);
+                    builder.addCriterion("has_tag_" + tag.location().getPath(), has(tag));
+                }
+            }
+        }
+        return builder.build(id.withPrefix("recipes/confluence_delight/"));
     }
 }
