@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -75,6 +76,13 @@ public class CoconutBlock extends Block {
         net.neoforged.neoforge.common.util.TriState soilDecision = blockstate.canSustainPlant(level, pos.relative(state.getValue(FACING)), state.getValue(FACING).getOpposite(), state);
         if (!soilDecision.isDefault()) return soilDecision.isTrue();
         return blockstate.is(CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK);
+    }
+
+    @Override
+    public void onProjectileHit(Level level, BlockState state, BlockHitResult hitResult, Projectile projectile) {
+        if (!level.isClientSide) {
+            level.destroyBlock(hitResult.getBlockPos(), true);
+        }
     }
 
     @Override

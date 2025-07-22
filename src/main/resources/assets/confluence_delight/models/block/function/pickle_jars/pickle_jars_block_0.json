@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "confluence_delight:block/pickle_jars_block",
-		"particle": "confluence_delight:block/pickle_jars_block"
+		"0": "confluence_delight:block/function/pickle_jars_block",
+		"particle": "confluence_delight:block/function/pickle_jars_block"
 	},
 	"elements": [
 		{

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "confluence_delight:block/natural/fruit_tree/grapefruit_tree_leaves"
+  }
+}

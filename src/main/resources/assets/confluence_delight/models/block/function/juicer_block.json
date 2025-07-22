@@ -4,8 +4,8 @@
 	"render_type": "cutout_mipped",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "confluence_delight:block/juicer_block",
-		"particle": "confluence_delight:block/juicer_block"
+		"0": "confluence_delight:block/function/juicer_block",
+		"particle": "confluence_delight:block/function/juicer_block"
 	},
 	"elements": [
 		{

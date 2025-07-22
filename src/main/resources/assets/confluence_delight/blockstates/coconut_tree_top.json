@@ -1,7 +1,7 @@
 {
     "variants": {
         "": {
-            "model": "confluence_delight:block/coconut_tree/coconut_tree_top"
+            "model": "confluence_delight:block/fruit_tree/coconut_tree_top"
         }
     }
 }

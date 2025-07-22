@@ -2,9 +2,9 @@
 	"format_version": "1.21.6",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "confluence_delight:block/coconut_leaves_top",
-		"1": "confluence_delight:block/coconut_leaves_side_1",
-		"particle": "confluence_delight:block/coconut_leaves_top"
+		"0": "confluence_delight:block/natural/fruit_tree/coconut_leaves_top",
+		"1": "confluence_delight:block/natural/fruit_tree/coconut_leaves_side_1",
+		"particle": "confluence_delight:block/natural/fruit_tree/coconut_leaves_top"
 	},
 	"elements": [
 		{

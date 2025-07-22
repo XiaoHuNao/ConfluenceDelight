@@ -4,8 +4,8 @@
 	"render_type": "cutout_mipped",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "confluence_delight:block/coconut_tree_top",
-		"particle": "confluence_delight:block/coconut_tree_top"
+		"0": "confluence_delight:block/natural/fruit_tree/coconut_tree_top",
+		"particle": "confluence_delight:block/natural/fruit_tree/coconut_tree_top"
 	},
 	"elements": [
 		{

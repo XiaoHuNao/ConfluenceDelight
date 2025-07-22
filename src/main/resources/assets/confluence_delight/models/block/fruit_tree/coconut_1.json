@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "confluence_delight:block/coconut",
-		"particle": "confluence_delight:block/coconut"
+		"0": "confluence_delight:block/natural/fruit_tree/coconut",
+		"particle": "confluence_delight:block/natural/fruit_tree/coconut"
 	},
 	"elements": [
 		{

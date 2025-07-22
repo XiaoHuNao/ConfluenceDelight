@@ -3,14 +3,14 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "confluence_delight:block/apple_block",
-		"particle": "confluence_delight:block/apple_block"
+		"0": "confluence_delight:block/natural/fruit_tree/grapefruits",
+		"particle": "confluence_delight:block/natural/fruit_tree/grapefruits"
 	},
 	"elements": [
 		{
-			"from": [2, -2, 8],
-			"to": [9, 5, 15],
-			"rotation": {"angle": 22.5, "axis": "y", "origin": [2, -2, 8]},
+			"from": [1.25, -1, 6.25],
+			"to": [8.25, 6, 13.25],
+			"rotation": {"angle": 45, "axis": "y", "origin": [4.75, 2.5, 9.75]},
 			"faces": {
 				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
 				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
@@ -24,9 +24,9 @@
 			}
 		},
 		{
-			"from": [8, 7, 3],
-			"to": [15, 14, 10],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 7, 3]},
+			"from": [9.5412, 10, 6.69344],
+			"to": [16.5412, 17, 13.69344],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [14.0412, 13.5, 9.19344]},
 			"faces": {
 				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
 				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
@@ -40,20 +40,21 @@
 			}
 		},
 		{
-			"from": [-2.03553, 2, 2.5],
-			"to": [4.96447, 9, 9.5],
-			"rotation": {"angle": 45, "axis": "y", "origin": [-1.03553, 2, 3.5]},
+			"from": [5, 8, 0],
+			"to": [10, 13, 5],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [7.5, 10.5, 2.5]},
 			"faces": {
-				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
-				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
-				"south": {"uv": [3.5, 0, 7, 3.5], "texture": "#0"},
-				"west": {"uv": [3.5, 3.5, 7, 7], "texture": "#0"},
-				"up": {"uv": [3.5, 10.5, 0, 7], "texture": "#0"},
-				"down": {"uv": [10.5, 0, 7, 3.5], "texture": "#0"}
+				"north": {"uv": [6, 7, 8.5, 9.5], "texture": "#0"},
+				"east": {"uv": [8.5, 6, 11, 8.5], "texture": "#0"},
+				"south": {"uv": [3.5, 7, 6, 9.5], "texture": "#0"},
+				"west": {"uv": [7, 3.5, 9.5, 6], "texture": "#0"},
+				"up": {"uv": [11, 11, 8.5, 8.5], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [6, 9.5, 3.5, 12], "rotation": 180, "texture": "#0"}
 			},
 			"neoforge_data": {
 				"ambient_occlusion": false
 			}
 		}
-	]
+	],
+	"display": {}
 }
