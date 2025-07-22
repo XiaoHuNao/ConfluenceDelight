@@ -50,7 +50,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);
         tag(BlockTags.LEAVES).add(leaves);
         tag(BlockTags.MINEABLE_WITH_HOE).add(leaves);
-
+        tag(BlockTags.LOGS).add(
+                CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK.get(),
+                CDNaturalBlocks.BANANA_TRUNK_BLOCK.get()
+        );
         tag(Tags.Blocks.STORAGE_BLOCKS).add(
                 CDBlocks.BLACKCURRANT_CRATE.get(),
                 CDBlocks.BLOOD_ORANGE_CRATE.get(),

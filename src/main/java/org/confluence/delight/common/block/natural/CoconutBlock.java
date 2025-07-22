@@ -44,23 +44,6 @@ public class CoconutBlock extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(PIECE, 0).setValue(FACING, Direction.NORTH));
     }
 
-    @Nullable
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState blockstate = this.defaultBlockState();
-        LevelReader levelreader = context.getLevel();
-        BlockPos blockpos = context.getClickedPos();
-        Direction[] directions = context.getNearestLookingDirections();
-        for (Direction direction : directions) {
-            if (direction.getAxis().isHorizontal()) {
-                blockstate = blockstate.setValue(FACING, direction);
-                if (blockstate.canSurvive(levelreader, blockpos)) {
-                    return blockstate;
-                }
-            }
-        }
-        return null;
-    }
-
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         int i = state.getValue(PIECE);

@@ -52,6 +52,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addFruitToTag(CDTags.Items.C_FRUIT_POMEGRANATE, FoodItems.POMEGRANATE.get());
         addFruitToTag(CDTags.Items.C_FRUIT_RAMBUTAN, FoodItems.RAMBUTAN.get());
         tag(CDTags.Items.C_VEGETABLES_SPICY_PEPPER).add(FoodItems.SPICY_PEPPER.get());
+        tag(ItemTags.LOGS).add(
+                CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK.asItem(),
+                CDNaturalBlocks.BANANA_TRUNK_BLOCK.asItem()
+        );
         tag(CDTags.Items.JUICER_CONTAINER).add(
                 Items.GLASS_BOTTLE,
                 PotionItems.BOTTLE.get(),

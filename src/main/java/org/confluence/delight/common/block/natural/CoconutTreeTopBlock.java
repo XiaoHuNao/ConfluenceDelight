@@ -21,21 +21,13 @@ public class CoconutTreeTopBlock extends Block {
         Direction randomHorizontalDir = Direction.Plane.HORIZONTAL.getRandomDirection(random);
         BlockPos targetPos = pos.relative(randomHorizontalDir);
         BlockState targetState = level.getBlockState(targetPos);
-        if (targetState.isAir()) {
+        if (targetState.isAir() && random.nextFloat() < 0.35) {
             Direction coconutFacing = randomHorizontalDir.getOpposite();
-            level.setBlockAndUpdate(
-                    targetPos,
-                    CDNaturalBlocks.COCONUT_BLOCK.get()
-                            .defaultBlockState()
-                            .setValue(CoconutBlock.PIECE, 0)
-                            .setValue(CoconutBlock.FACING, coconutFacing));
+            level.setBlockAndUpdate(targetPos, CDNaturalBlocks.COCONUT_BLOCK.get().defaultBlockState().setValue(CoconutBlock.PIECE, 0).setValue(CoconutBlock.FACING, coconutFacing));
         } else if (targetState.is(CDNaturalBlocks.COCONUT_BLOCK.get())) {
             int currentPiece = targetState.getValue(CoconutBlock.PIECE);
             if (currentPiece < 3) {
-                level.setBlockAndUpdate(
-                        targetPos,
-                        targetState.setValue(CoconutBlock.PIECE, currentPiece + 1)
-                );
+                level.setBlockAndUpdate(targetPos, targetState.setValue(CoconutBlock.PIECE, currentPiece + 1));
             }
         }
     }
