@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "confluence_delight:block/apple_tree_leaves"
+        "model": "confluence_delight:block/apple_tree/apple_tree_leaves"
       }
     },
     {
@@ -10,7 +10,7 @@
         "age": 12
       },
       "apply": {
-        "model": "confluence_delight:block/apple_flower"
+        "model": "confluence_delight:block/apple_tree/apple_flower"
       }
     },
     {
@@ -19,18 +19,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/apples_0"
+          "model": "confluence_delight:block/apple_tree/apples_0"
         },
         {
-          "model": "confluence_delight:block/apples_0",
+          "model": "confluence_delight:block/apple_tree/apples_0",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/apples_0",
+          "model": "confluence_delight:block/apple_tree/apples_0",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/apples_0",
+          "model": "confluence_delight:block/apple_tree/apples_0",
           "y": 270
         }
       ]
@@ -41,18 +41,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/apples_1"
+          "model": "confluence_delight:block/apple_tree/apples_1"
         },
         {
-          "model": "confluence_delight:block/apples_1",
+          "model": "confluence_delight:block/apple_tree/apples_1",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/apples_1",
+          "model": "confluence_delight:block/apple_tree/apples_1",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/apples_1",
+          "model": "confluence_delight:block/apple_tree/apples_1",
           "y": 270
         }
       ]
@@ -63,18 +63,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/apples_2"
+          "model": "confluence_delight:block/apple_tree/apples_2"
         },
         {
-          "model": "confluence_delight:block/apples_2",
+          "model": "confluence_delight:block/apple_tree/apples_2",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/apples_2",
+          "model": "confluence_delight:block/apple_tree/apples_2",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/apples_2",
+          "model": "confluence_delight:block/apple_tree/apples_2",
           "y": 270
         }
       ]

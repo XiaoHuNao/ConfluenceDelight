@@ -5,13 +5,15 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 
 public class CoconutTreeTopBlock extends Block {
     public CoconutTreeTopBlock() {
-        super(BlockBehaviour.Properties.of().randomTicks());
+        super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD).ignitedByLava().randomTicks());
     }
 
     @Override

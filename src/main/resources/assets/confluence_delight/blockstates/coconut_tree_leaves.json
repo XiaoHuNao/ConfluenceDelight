@@ -1,13 +1,13 @@
 {
     "variants": {
         "type=bottom": {
-            "model": "confluence_delight:block/coconut_leaves_bottom"
+            "model": "confluence_delight:block/coconut_tree/coconut_leaves_bottom"
         },
         "type=double": {
-            "model": "confluence_delight:block/coconut_leaves_all"
+            "model": "confluence_delight:block/coconut_tree/coconut_leaves_all"
         },
         "type=top": {
-            "model": "confluence_delight:block/coconut_leaves_top"
+            "model": "confluence_delight:block/coconut_tree/coconut_leaves_top"
         }
     }
 }
