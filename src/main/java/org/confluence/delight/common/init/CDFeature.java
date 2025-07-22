@@ -10,6 +10,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.worldgen.feature.CoconutTreeFeature;
 import org.confluence.delight.common.worldgen.feature.FruitTreeFeature;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class CDFeature {
     public static final DeferredRegister<PlacementModifierType<?>> MODIFIER_TYPES = DeferredRegister.create(BuiltInRegistries.PLACEMENT_MODIFIER_TYPE, ConfluenceDelight.MODID);
 
     public static final Supplier<FruitTreeFeature> FRUIT_TREE = FEATURES.register("fruit_tree", () -> new FruitTreeFeature(FruitTreeFeature.Config.CODEC));
+    public static final Supplier<CoconutTreeFeature> COCONUT_TREE = FEATURES.register("coconut_tree", () -> new CoconutTreeFeature(CoconutTreeFeature.Config.CODEC));
 
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);

@@ -1,0 +1,83 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "confluence_delight:block/grapefruit_tree_leaves"
+      }
+    },
+    {
+      "when": {
+        "age": 12
+      },
+      "apply": {
+        "model": "confluence_delight:block/grapefruit_flower"
+      }
+    },
+    {
+      "when": {
+        "age": 13
+      },
+      "apply": [
+        {
+          "model": "confluence_delight:block/grapefruits_0"
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_0",
+          "y": 90
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_0",
+          "y": 180
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_0",
+          "y": 270
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": 14
+      },
+      "apply": [
+        {
+          "model": "confluence_delight:block/grapefruits_1"
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_1",
+          "y": 90
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_1",
+          "y": 180
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_1",
+          "y": 270
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": 15
+      },
+      "apply": [
+        {
+          "model": "confluence_delight:block/grapefruits_2"
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_2",
+          "y": 90
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_2",
+          "y": 180
+        },
+        {
+          "model": "confluence_delight:block/grapefruits_2",
+          "y": 270
+        }
+      ]
+    }
+  ]
+}

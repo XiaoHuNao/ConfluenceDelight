@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "confluence_delight:block/apricot_tree_leaves"
+  }
+}

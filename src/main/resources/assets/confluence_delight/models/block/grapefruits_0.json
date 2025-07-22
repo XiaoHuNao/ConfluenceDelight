@@ -1,0 +1,44 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "confluence_delight:block/grapefruits",
+		"particle": "confluence_delight:block/grapefruits"
+	},
+	"elements": [
+		{
+			"from": [1.25, -1, 6.25],
+			"to": [8.25, 6, 13.25],
+			"rotation": {"angle": 45, "axis": "y", "origin": [4.75, 2.5, 9.75]},
+			"faces": {
+				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
+				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
+				"south": {"uv": [3.5, 0, 7, 3.5], "texture": "#0"},
+				"west": {"uv": [3.5, 3.5, 7, 7], "texture": "#0"},
+				"up": {"uv": [3.5, 10.5, 0, 7], "texture": "#0"},
+				"down": {"uv": [10.5, 0, 7, 3.5], "texture": "#0"}
+			},
+			"neoforge_data": {
+				"ambient_occlusion": false
+			}
+		},
+		{
+			"from": [11, 12, 8],
+			"to": [16, 17, 13],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [13.5, 14.5, 10.5]},
+			"faces": {
+				"north": {"uv": [3.5, 7, 6, 9.5], "texture": "#0"},
+				"east": {"uv": [7, 3.5, 9.5, 6], "texture": "#0"},
+				"south": {"uv": [6, 7, 8.5, 9.5], "texture": "#0"},
+				"west": {"uv": [8.5, 6, 11, 8.5], "texture": "#0"},
+				"up": {"uv": [11, 11, 8.5, 8.5], "texture": "#0"},
+				"down": {"uv": [6, 9.5, 3.5, 12], "texture": "#0"}
+			},
+			"neoforge_data": {
+				"ambient_occlusion": false
+			}
+		}
+	],
+	"display": {}
+}

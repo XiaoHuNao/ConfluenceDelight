@@ -6,14 +6,22 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import org.apache.commons.compress.archivers.dump.DumpArchiveEntry;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDFeature;
 import org.confluence.delight.common.init.CDNaturalBlocks;
+import org.confluence.delight.common.worldgen.feature.CoconutTreeFeature;
 import org.confluence.delight.common.worldgen.feature.FruitTreeFeature;
+import org.confluence.mod.common.block.natural.PalmLeaves;
+import org.confluence.mod.common.init.block.NatureBlocks;
 
 import static org.confluence.delight.common.block.natural.BaseFruitTreeLeaveBlock.CAN_GROW;
+import static org.confluence.delight.common.init.CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK;
 
 public class CDDataProvider {
     public static final RegistrySetBuilder DATA_BUILDER = new RegistrySetBuilder()
@@ -35,6 +43,7 @@ public class CDDataProvider {
             fruitTree(context, CDFeature.Configured.BANANA, Blocks.JUNGLE_LOG, CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.STAR_FRUIT, Blocks.OAK_LOG, CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
             fruitTree(context, CDFeature.Configured.POMEGRANATE, Blocks.BIRCH_LOG, CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.get(), CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.get(), 3, 2, 0.3f);
+            coconutTree(context, CDFeature.Configured.COCONUT, NatureBlocks.PALM_LOG_BLOCKS.getLog().get(), CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get().defaultBlockState().trySetValue(PalmLeaves.TYPE, SlabType.BOTTOM), CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get().defaultBlockState().trySetValue(PalmLeaves.TYPE, SlabType.TOP), CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.get().defaultBlockState().trySetValue(PalmLeaves.TYPE, SlabType.DOUBLE), COCONUT_TREE_TOP_BLOCK.get());
         }
 
         private static void fruitTree(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Block log, Block leaves, Block fruitLeaves, int trunkHeight, int trunkRandomHeight, float fruitedPercent) {
@@ -45,6 +54,16 @@ public class CDDataProvider {
                     trunkHeight,
                     trunkRandomHeight,
                     fruitedPercent
+            )));
+        }
+
+        private static void coconutTree(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Block log, BlockState leaves1, BlockState leaves2, BlockState leaves3, Block top) {
+            context.register(key, new ConfiguredFeature<>(CDFeature.COCONUT_TREE.get(), new CoconutTreeFeature.Config(
+                    BlockStateProvider.simple(log),
+                    BlockStateProvider.simple(leaves1),
+                    BlockStateProvider.simple(leaves2),
+                    BlockStateProvider.simple(leaves3),
+                    BlockStateProvider.simple(top)
             )));
         }
 

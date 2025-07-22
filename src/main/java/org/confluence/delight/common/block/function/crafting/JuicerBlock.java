@@ -10,6 +10,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -20,6 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.fluids.FluidActionResult;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.FluidUtil;
@@ -32,6 +36,14 @@ import java.util.Optional;
 
 public class JuicerBlock extends BaseEntityBlock {
     public static final MapCodec<JuicerBlock> CODEC = simpleCodec(JuicerBlock::new);
+    private static final VoxelShape SHAPE = Shapes.or(
+            box(3.5, 0, 3.5, 12.5, 3, 12.5),
+            box(3, 13, 3, 13, 16, 13),
+            box(6.5, 7, 12, 9.5, 13, 13),
+            box(7, 5, 14, 9, 13, 16),
+            box(7, 11, 13, 9, 13, 14),
+            box(3.984, 2.984, 4.016, 11.984, 12.984, 12.016)
+    );
 
     public JuicerBlock(Properties properties) {
         super(properties);
@@ -48,6 +60,11 @@ public class JuicerBlock extends BaseEntityBlock {
             Containers.dropContents(pLevel, pPos, entity.itemHandler.getItems());
         }
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+    }
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override

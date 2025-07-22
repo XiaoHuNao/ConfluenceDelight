@@ -1,0 +1,6 @@
+{
+    "parent": "confluence_delight:block/leaves_layer",
+    "textures": {
+        "layer": "confluence_delight:block/apricot_flower"
+    }
+}
