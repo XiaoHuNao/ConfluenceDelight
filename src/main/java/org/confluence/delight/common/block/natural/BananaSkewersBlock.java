@@ -57,7 +57,15 @@ public class BananaSkewersBlock extends Block {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState aboveState = level.getBlockState(pos.above());
-        return aboveState.is(this) || aboveState.is(CDNaturalBlocks.BANANA_TREE_TOP_BLOCK);
+        boolean isBelowValid = aboveState.is(this);
+        boolean isAdjacentToTop = false;
+        for (Direction dir : Direction.Plane.HORIZONTAL) {
+            if (level.getBlockState(pos.relative(dir)).is(CDNaturalBlocks.BANANA_TREE_TOP_BLOCK)) {
+                isAdjacentToTop = true;
+                break;
+            }
+        }
+        return isBelowValid || isAdjacentToTop;
     }
 
     @Override

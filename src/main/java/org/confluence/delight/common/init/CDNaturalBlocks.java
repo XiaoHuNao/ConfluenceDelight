@@ -59,7 +59,7 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<BaseFruitTreeLeaveBlock> MANGO_TREE_LEAVES_BLOCK = registerBlockItem("mango_tree_leaves", "芒果树叶", () -> new BaseFruitTreeLeaveBlock(FoodItems.MANGO));
 
     public static final DeferredBlock<BaseSaplingBlock> BANANA_SAPLING = registerBlockItem("banana_sapling", "香蕉树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.BANANA_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.banana_sapling")));
-    public static final DeferredBlock<BananaTrunkBlock> BANANA_TRUNK_BLOCK = registerBlockItem("banana_trunk", "香蕉树干", BananaTrunkBlock::new);
+    public static final DeferredBlock<Block> BANANA_TRUNK_BLOCK = registerBlockItem("banana_trunk", "香蕉树干", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.HAY_BLOCK)));
     public static final DeferredBlock<BananaTreeTopBlock> BANANA_TREE_TOP_BLOCK = registerBlockItem("banana_tree_top", "香蕉树头", BananaTreeTopBlock::new);
     public static final DeferredBlock<HalfLeavesBlock> BANANA_TREE_LEAVES_BLOCK = registerBlockItem("banana_tree_leaves", "香蕉树叶", HalfLeavesBlock::new);
     public static final DeferredBlock<BananaSkewersBlock> BANANA_SKEWERS_BLOCK = registerWithoutItem("banana_skewers", "香蕉串", BananaSkewersBlock::new);

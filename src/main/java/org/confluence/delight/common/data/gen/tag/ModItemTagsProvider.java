@@ -66,6 +66,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
                 CDNaturalItems.SPICY_PEPPER_SEEDS.get()
         );
+        tag(Tags.Items.SEEDS).add(
+                CDNaturalItems.PINEAPPLE_SEEDS.get(),
+                CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
+                CDNaturalItems.SPICY_PEPPER_SEEDS.get()
+        );
         tag(ItemTags.CHICKEN_FOOD).add(
                 CDNaturalItems.PINEAPPLE_SEEDS.get(),
                 CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
