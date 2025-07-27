@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "confluence_delight:block/fruit_tree/apricot_tree_leaves"
+        "model": "confluence_delight:block/apricot_tree_leaves"
       }
     },
     {
@@ -10,7 +10,7 @@
         "age": 12
       },
       "apply": {
-        "model": "confluence_delight:block/fruit_tree/apricot_flower"
+        "model": "confluence_delight:block/apricot_flower"
       }
     },
     {
@@ -19,18 +19,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_0"
+          "model": "confluence_delight:block/apricots_0"
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_0",
+          "model": "confluence_delight:block/apricots_0",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_0",
+          "model": "confluence_delight:block/apricots_0",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_0",
+          "model": "confluence_delight:block/apricots_0",
           "y": 270
         }
       ]
@@ -41,18 +41,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_1"
+          "model": "confluence_delight:block/apricots_1"
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_1",
+          "model": "confluence_delight:block/apricots_1",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_1",
+          "model": "confluence_delight:block/apricots_1",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_1",
+          "model": "confluence_delight:block/apricots_1",
           "y": 270
         }
       ]
@@ -63,18 +63,18 @@
       },
       "apply": [
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_2"
+          "model": "confluence_delight:block/apricots_2"
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_2",
+          "model": "confluence_delight:block/apricots_2",
           "y": 90
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_2",
+          "model": "confluence_delight:block/apricots_2",
           "y": 180
         },
         {
-          "model": "confluence_delight:block/fruit_tree/apricots_2",
+          "model": "confluence_delight:block/apricots_2",
           "y": 270
         }
       ]

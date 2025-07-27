@@ -1,7 +1,7 @@
 {
     "variants": {
         "": {
-            "model": "confluence_delight:block/function/juicer_block"
+            "model": "confluence_delight:block/juicer_block"
         }
     }
 }
