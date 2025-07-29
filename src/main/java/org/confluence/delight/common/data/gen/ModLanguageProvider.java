@@ -128,7 +128,7 @@ public class ModLanguageProvider extends LanguageProvider {
                 "使用苹果右击橡树树苗获得");
         add("tooltip.item.confluence_delight.apricot_sapling",
                 "It is obtained by right-clicking the birch sapling with an apricot",
-                "使用杏子右击白桦树苗获得");
+                "使用杏右击白桦树苗获得");
         add("tooltip.item.confluence_delight.grapefruit_sapling",
                 "It is obtained by right-clicking the jungle sapling with a grapefruit",
                 "使用葡萄柚右击丛林树苗获得");
