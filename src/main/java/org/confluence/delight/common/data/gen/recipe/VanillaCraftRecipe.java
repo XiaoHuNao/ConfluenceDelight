@@ -174,6 +174,14 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         furnace(output, "", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.2f, 100);
         furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.2f, 100);
+        furnace(output, "", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.2f, 100);
 
         compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
         compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);
@@ -211,6 +219,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         ResourceLocation id = ConfluenceDelight.asResource("furnace/" + prefix + getItemName(result.getItem()) + suffix);
         output.accept(id, new SmeltingRecipe("", CookingBookCategory.FOOD, ingredient, result, experience, cookingTime), null);
     }
+
 
     protected void compressAndDecompressNine(RecipeOutput recipeOutput, ItemLike decompressed, TagKey<Item> decompressedTag, ItemLike compressed, TagKey<Item> compressedTag) {
         ResourceLocation id1 = ConfluenceDelight.asResource("shaped/" + getItemName(decompressed));

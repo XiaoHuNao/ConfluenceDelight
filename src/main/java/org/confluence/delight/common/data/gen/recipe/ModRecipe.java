@@ -178,13 +178,19 @@ public class ModRecipe extends AbstractRecipeProvider {
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.SPICY_PEPPER.get()), Ingredient.of(ModTags.KNIVES), CDFoodItems.CRUSHED_CHILLI.get(), 5).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(Items.CARROT), Ingredient.of(ModTags.KNIVES), CDFoodItems.CARROT_CUBES, 3).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.CLOUD_BREAD), Ingredient.of(ModTags.KNIVES), CDFoodItems.CLOUD_BREAD_SLICE, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_SQUIRREL), Ingredient.of(ModTags.KNIVES), CDFoodItems.SQUIRREL_MEAT_CHUNKS, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_BIRD), Ingredient.of(ModTags.KNIVES), CDFoodItems.BIRD_MEAT_CHUNKS, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_DUCK), Ingredient.of(ModTags.KNIVES), CDFoodItems.DUCK_MEAT_CHUNKS, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_FROG), Ingredient.of(ModTags.KNIVES), CDFoodItems.FROG_MEAT_CHUNKS, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_DONKEY_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.DONKEY_MEAT_CHUNKS, 2).build(recipeOutput);
-        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_HORSE_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.HORSE_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.RAW_SQUIRREL), Ingredient.of(ModTags.KNIVES), CDFoodItems.SQUIRREL_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.RAW_BIRD), Ingredient.of(ModTags.KNIVES), CDFoodItems.BIRD_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.RAW_DUCK), Ingredient.of(ModTags.KNIVES), CDFoodItems.DUCK_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.RAW_FROG), Ingredient.of(ModTags.KNIVES), CDFoodItems.FROG_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.DONKEY_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.RAW_HORSE_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.HORSE_MEAT_CHUNKS, 2).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS), Ingredient.of(ModTags.KNIVES), CDFoodItems.SQUIRREL_CITATAP).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_SQUIRREL), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_BIRD), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_DUCK), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_FROG), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_FROG_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_DONKEY_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_HORSE_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS, 2).build(recipeOutput);
 
         //厨锅
         CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.BUTTER.get(), 1, 50, 0.2f)
@@ -242,6 +248,54 @@ public class ModRecipe extends AbstractRecipeProvider {
                 .addIngredient(Items.CHICKEN)
                 .addIngredient(CDMaterialItems.CHILI_POWDER)
                 .addIngredient(CDMaterialItems.SALT)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.DUCK_MEAT_CHUNKS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_FROG_MEAT_CHUNKS.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.FROG_MEAT_CHUNKS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.DONKEY_MEAT_CHUNKS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.HORSE_MEAT_CHUNKS.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_SQUIRREL.get(), 1, 50, 0.2f)
+                .addIngredient(FoodItems.RAW_SQUIRREL.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_SQUIRREL.get(), 1, 50, 0.2f)
+                .addIngredient(FoodItems.RAW_SQUIRREL.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_BIRD.get(), 1, 50, 0.2f)
+                .addIngredient(FoodItems.RAW_BIRD.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_DUCK.get(), 1, 50, 0.2f)
+                .addIngredient(FoodItems.RAW_DUCK.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_FROG.get(), 1, 50, 0.2f)
+                .addIngredient(FoodItems.RAW_FROG.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_DONKEY_MEAT.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.RAW_DONKEY_MEAT.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_HORSE_MEAT.get(), 1, 50, 0.2f)
+                .addIngredient(CDFoodItems.RAW_HORSE_MEAT.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(recipeOutput);
     }
