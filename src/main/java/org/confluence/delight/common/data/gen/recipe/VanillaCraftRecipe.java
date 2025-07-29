@@ -1,5 +1,10 @@
 package org.confluence.delight.common.data.gen.recipe;
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.PackOutput;
@@ -13,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.crafting.ICustomIngredient;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.*;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
@@ -20,11 +26,11 @@ import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-
-import static org.confluence.delight.common.data.gen.recipe.ModRecipe.createAdvancementHolder;
 
 public class VanillaCraftRecipe extends AbstractRecipeProvider {
     public VanillaCraftRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
@@ -213,5 +219,36 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         ResourceLocation id2 = ConfluenceDelight.asResource("shaped/" + getItemName(compressed));
         ShapedRecipePattern pattern = ShapedRecipePattern.of(Map.of('A', Ingredient.of(decompressedTag)), List.of("AAA", "AAA", "AAA"));
         recipeOutput.accept(id2, new ShapedRecipe("", CraftingBookCategory.BUILDING, pattern, compressed.asItem().getDefaultInstance()), createAdvancementHolder(recipeOutput, id2, pattern.ingredients()));
+    }
+
+    public static AdvancementHolder createAdvancementHolder(RecipeOutput recipeOutput, ResourceLocation id, NonNullList<Ingredient> ingredients) {
+        Set<Item> itemCounter = new HashSet<>();
+        Set<TagKey<Item>> tagCounter = new HashSet<>();
+        Advancement.Builder builder = recipeOutput.advancement()
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(AdvancementRequirements.Strategy.OR);
+        for (Ingredient ingredient : ingredients) {
+            Ingredient.Value[] values;
+            ICustomIngredient customIngredient = ingredient.getCustomIngredient();
+            if (customIngredient == null) {
+                values = ingredient.getValues();
+            } else {
+                values = customIngredient.getItems().map(Ingredient.ItemValue::new).toArray(Ingredient.Value[]::new);
+            }
+            for (Ingredient.Value value : values) {
+                if (value instanceof Ingredient.ItemValue(ItemStack itemStack)) {
+                    Item item = itemStack.getItem();
+                    if (itemCounter.contains(item)) continue;
+                    itemCounter.add(item);
+                    builder.addCriterion(getHasName(item), has(item));
+                } else if (value instanceof Ingredient.TagValue(TagKey<Item> tag)) {
+                    if (tagCounter.contains(tag)) continue;
+                    tagCounter.add(tag);
+                    builder.addCriterion("has_tag_" + tag.location().getPath(), has(tag));
+                }
+            }
+        }
+        return builder.build(id.withPrefix("recipes/confluence_delight/"));
     }
 }
