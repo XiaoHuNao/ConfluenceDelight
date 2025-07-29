@@ -120,8 +120,12 @@ public class ModRecipe extends AbstractRecipeProvider {
         )), CDBlocks.JUICER_BLOCK.toStack());
 
         //泡菜罐
-        pickleJarsRecipe(recipeOutput, true, CDFoodItems.JAR_CHILI_PEPPERS.toStack(), new FluidStack(Fluids.WATER, 2000), 1000, Ingredient.of(FoodItems.SPICY_PEPPER));
-        pickleJarsRecipe(recipeOutput, true, CDFoodItems.SPICY_PICKLED_FISH.toStack(), new FluidStack(CDFluids.WINE.fluid(), 2000), 1200, Ingredient.of(ItemTags.CAT_FOOD), AmountIngredient.of(10, FoodItems.SPICY_PEPPER), AmountIngredient.of(2, Items.SUGAR));
+        FluidStack water1000 = new FluidStack(Fluids.WATER, 1000);
+        FluidStack water2000 = new FluidStack(Fluids.WATER, 2000);
+        FluidStack wine1000 = new FluidStack(CDFluids.WINE.fluid(), 1000);
+        FluidStack wine2000 = new FluidStack(CDFluids.WINE.fluid(), 2000);
+        pickleJarsRecipe(recipeOutput, true, CDFoodItems.JAR_CHILI_PEPPERS.toStack(), water2000, 1000, Ingredient.of(FoodItems.SPICY_PEPPER));
+        pickleJarsRecipe(recipeOutput, true, CDFoodItems.CHOP_BELL_PEPPER.toStack(10), wine1000, 1000, AmountIngredient.of(5, CDMaterialItems.SALT), AmountIngredient.of(10, Items.SUGAR), AmountIngredient.of(10, CDFoodItems.CRUSHED_CHILLI));
 
         //磨盘
         millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), 5, Ingredient.of(FoodItems.SPICY_PEPPER));
@@ -251,9 +255,7 @@ public class ModRecipe extends AbstractRecipeProvider {
     protected void heavyWorkBench(RecipeOutput recipeOutput, String suffix, ShapedRecipePattern pattern, ItemStack result) {
         ResourceLocation id = Confluence.asResource("heavy_work_bench/" + getItemName(result.getItem()) + suffix);
         recipeOutput.accept(id, new HeavyWorkBenchRecipe(result, pattern), null);
-    }
-
-    protected void pickleJarsRecipe(RecipeOutput recipeOutput, boolean cover, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {
+    }    protected void pickleJarsRecipe(RecipeOutput recipeOutput, boolean cover, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {
         ResourceLocation id = ConfluenceDelight.asResource("pickle_jars/" + getItemName(result.getItem()));
         NonNullList<Ingredient> recipeIngredients = NonNullList.of(Ingredient.EMPTY, ingredients);
         PickleJarsRecipe recipe = new PickleJarsRecipe(result, recipeIngredients, fluidInput, craftTime, cover);
@@ -266,6 +268,8 @@ public class ModRecipe extends AbstractRecipeProvider {
         PickleJarsRecipe recipe = new PickleJarsRecipe(fermentation, result, recipeIngredients, fluidInput, craftTime, cover);
         recipeOutput.accept(id, recipe, null);
     }
+
+
 
     protected void millStoneRecipe(RecipeOutput recipeOutput, ItemStack result, int workCircles, Ingredient... ingredients) {
         ResourceLocation id = ConfluenceDelight.asResource("millstone/" + getItemName(result.getItem()));
@@ -284,34 +288,4 @@ public class ModRecipe extends AbstractRecipeProvider {
         recipeOutput.accept(id, new BlockInteractionRecipe(inputItem, sourceBlocks, resultBlock), null);
     }
 
-    public static AdvancementHolder createAdvancementHolder(RecipeOutput recipeOutput, ResourceLocation id, NonNullList<Ingredient> ingredients) {
-        Set<Item> itemCounter = new HashSet<>();
-        Set<TagKey<Item>> tagCounter = new HashSet<>();
-        Advancement.Builder builder = recipeOutput.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-                .rewards(AdvancementRewards.Builder.recipe(id))
-                .requirements(AdvancementRequirements.Strategy.OR);
-        for (Ingredient ingredient : ingredients) {
-            Ingredient.Value[] values;
-            ICustomIngredient customIngredient = ingredient.getCustomIngredient();
-            if (customIngredient == null) {
-                values = ingredient.getValues();
-            } else {
-                values = customIngredient.getItems().map(Ingredient.ItemValue::new).toArray(Ingredient.Value[]::new);
-            }
-            for (Ingredient.Value value : values) {
-                if (value instanceof Ingredient.ItemValue(ItemStack itemStack)) {
-                    Item item = itemStack.getItem();
-                    if (itemCounter.contains(item)) continue;
-                    itemCounter.add(item);
-                    builder.addCriterion(getHasName(item), has(item));
-                } else if (value instanceof Ingredient.TagValue(TagKey<Item> tag)) {
-                    if (tagCounter.contains(tag)) continue;
-                    tagCounter.add(tag);
-                    builder.addCriterion("has_tag_" + tag.location().getPath(), has(tag));
-                }
-            }
-        }
-        return builder.build(id.withPrefix("recipes/confluence_delight/"));
-    }
 }

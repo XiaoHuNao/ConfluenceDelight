@@ -29,10 +29,13 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 public class CDFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
+    //泡菜
+    public static final DeferredItem<BaseFoodItem> JAR_CHILI_PEPPERS = registerNormalFood("jar_chili_peppers", "泡椒", () -> DelightFoodProperties.noEffectProperties(1, 1.0f));
+    public static final DeferredItem<BaseFoodItem> CHOP_BELL_PEPPER = registerNormalFood("chop_bell_pepper", "剁椒", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
+
     //食材
     public static final DeferredItem<BaseFoodItem> POTATO_PIECE = registerNormalFood("potato_piece", "马铃薯块", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
     public static final DeferredItem<BaseFoodItem> CRUSHED_CHILLI = registerNormalFood("crushed_chilli", "辣椒碎", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
-    public static final DeferredItem<BaseFoodItem> JAR_CHILI_PEPPERS = registerNormalFood("jar_chili_peppers", "泡椒", () -> DelightFoodProperties.noEffectProperties(1, 1.0f));
     public static final DeferredItem<BaseFoodItem> RAW_DONKEY_MEAT = registerNormalFood("raw_donkey_meat", "生驴肉", () -> DelightFoodProperties.noEffectProperties(3, 1.5f));
     public static final DeferredItem<BaseFoodItem> RAW_HORSE_MEAT = registerNormalFood("raw_horse_meat", "生马肉", () -> DelightFoodProperties.noEffectProperties(3, 1.5f));
     public static final DeferredItem<BaseFoodItem> COOKED_DONKEY_MEAT = registerNormalFood("cooked_donkey_meat", "熟驴肉", () -> DelightFoodProperties.noEffectProperties(8, 12.8f));
@@ -49,7 +52,6 @@ public class CDFoodItems {
                     CDEffectData.of(MobEffects.CONFUSION, 400)));
     public static final DeferredItem<BaseFoodItem> CARROT_CUBES = registerNormalFood("carrot_cubes", "胡萝卜丁", () -> DelightFoodProperties.noEffectProperties(1, 0.6f));
     public static final DeferredItem<BaseFoodItem> SWEET_CARROT_CUBES = registerNormalFood("sweet_carrot_cubes", "甜胡萝卜丁", () -> DelightFoodProperties.noEffectProperties(3, 3f));//TODO 温暖效果
-    public static final DeferredItem<BaseFoodItem> SPICY_PICKLED_FISH = registerNormalFood("spicy_pickled_fish", "泡鱼辣子", () -> DelightFoodProperties.noEffectProperties(4, 4.8f));
     public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM = registerNormalFood("blackcurrant_jam", "黑醋栗果酱", () -> DelightFoodProperties.noEffectProperties(1, 1f, Items.GLASS_BOTTLE));
     public static final DeferredItem<BaseFoodItem> CLOUD_BREAD_SLICE = registerNormalFood("cloud_bread_slice", "云朵面包片",
             () -> DelightFoodProperties.hasEffectProperties(2, 6.0f,
@@ -213,82 +215,82 @@ public class CDFoodItems {
 
     //果汁
     public static final DeferredItem<BaseFoodItem> APRICOT_JUICE = registerDrinkingFood("apricot_juice", "杏汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(MobEffects.REGENERATION, 300),
                     CDEffectData.of(CDEffects.POISON_IMMUNE, 300)));
     public static final DeferredItem<BaseFoodItem> BANANA_JUICE = registerDrinkingFood("banana_juice", "香蕉汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 1.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 1.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 300)));
     public static final DeferredItem<BaseFoodItem> CHERRY_JUICE = registerDrinkingFood("cherry_juice", "樱桃汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(MobEffects.NIGHT_VISION, 300)));
     public static final DeferredItem<BaseFoodItem> COCONUT_JUICE = registerDrinkingFood("coconut_juice", "椰汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 1.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 1.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 300)));
     public static final DeferredItem<BaseFoodItem> DRAGON_FRUIT_JUICE = registerDrinkingFood("dragon_fruit_juice", "火龙果汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600, 1),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 600),
                     CDEffectData.of(MobEffects.DAMAGE_RESISTANCE, 300)));
     public static final DeferredItem<BaseFoodItem> GRAPEFRUIT_JUICE = registerDrinkingFood("grapefruit_juice", "葡萄柚汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600, 1),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 600),
                     CDEffectData.of(CDEffects.MINING_FATIGUE_IMMUNE, 300)));
     public static final DeferredItem<BaseFoodItem> LEMON_JUICE = registerDrinkingFood("lemon_juice", "柠檬汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.IMMUNITY, 1200)));
     public static final DeferredItem<BaseFoodItem> MANGO_JUICE = registerDrinkingFood("mango_juice", "芒果汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.IMMUNITY, 1200)));
     public static final DeferredItem<BaseFoodItem> PEACH_JUICE = registerDrinkingFood("peach_juice", "桃汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.POISON_IMMUNE, 1200)));
     public static final DeferredItem<BaseFoodItem> PINEAPPLE_JUICE = registerDrinkingFood("pineapple_juice", "菠萝汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600)));
     public static final DeferredItem<BaseFoodItem> PLUM_JUICE = registerDrinkingFood("plum_juice", "李子汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.IMMUNITY, 1200)));
     public static final DeferredItem<BaseFoodItem> GRAPE_JUICE = registerDrinkingFood("grape_juice", "葡萄汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600, 1),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 600),
                     CDEffectData.of(MobEffects.NIGHT_VISION, 1200)));
     public static final DeferredItem<BaseFoodItem> STAR_FRUIT_JUICE = registerDrinkingFood("star_fruit_juice", "杨桃汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600, 1),
                     CDEffectData.of(ModEffects.HUNGER_DELAYED, 600)));
     public static final DeferredItem<BaseFoodItem> POMEGRANATE_JUICE = registerDrinkingFood("pomegranate_juice", "番石榴汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.IMMUNITY, 1800)));
     public static final DeferredItem<BaseFoodItem> RAMBUTAN_JUICE = registerDrinkingFood("rambutan_juice", "红毛丹汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.BLINDNESS_IMMUNE, 1200)));
     public static final DeferredItem<BaseFoodItem> BLOOD_ORANGE_JUICE = registerDrinkingFood("blood_orange_juice", "血橙汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.BLEEDING_IMMUNE, 1200)));
     public static final DeferredItem<BaseFoodItem> ELDERBERRY_JUICE = registerDrinkingFood("elderberry_juice", "接骨木果汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 0.5f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3600),
                     CDEffectData.of(CDEffects.IMMUNITY, 1200)));
     public static final DeferredItem<BaseFoodItem> GEL_JUICE = registerDrinkingFood("gel_juice", "凝胶果汁",
-            () -> DelightFoodProperties.hasEffectProperties(4, 6.0f, PotionItems.BOTTLE,
+            () -> DelightFoodProperties.hasEffectProperties(4, 6.0f, Items.GLASS_BOTTLE,
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200),
                     CDEffectData.of(ModEffects.WATER_WALKING, 1200)));
     public static final DeferredItem<BaseFoodItem> FRESHLY_SQUEEZED_VITALITY = registerToolTipFood("freshly_squeezed_vitality", "活力鲜榨", builder -> builder.food(
-                    DelightFoodProperties.hasEffectProperties(3, 5.0f, PotionItems.BOTTLE,
+                    DelightFoodProperties.hasEffectProperties(3, 5.0f, Items.GLASS_BOTTLE,
                             CDEffectData.of(CDEffects.DINE, 1800)))
             .duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
 
