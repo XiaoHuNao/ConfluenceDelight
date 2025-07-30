@@ -32,6 +32,7 @@ public class CDFoodItems {
     //泡菜
     public static final DeferredItem<BaseFoodItem> JAR_CHILI_PEPPERS = registerNormalFood("jar_chili_peppers", "泡椒", () -> DelightFoodProperties.noEffectProperties(1, 1.0f));
     public static final DeferredItem<BaseFoodItem> CHOP_BELL_PEPPER = registerNormalFood("chop_bell_pepper", "剁椒", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
+    public static final DeferredItem<BaseFoodItem> SPICY_PICKLED_FISH = registerNormalFood("spicy_pickled_fish", "泡鱼辣子", () -> DelightFoodProperties.noEffectProperties(4, 4.8f));
 
     //食材
     public static final DeferredItem<BaseFoodItem> POTATO_PIECE = registerNormalFood("potato_piece", "马铃薯块", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
