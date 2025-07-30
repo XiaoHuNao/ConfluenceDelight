@@ -274,10 +274,6 @@ public class ModRecipe extends AbstractRecipeProvider {
                 .addIngredient(FoodItems.RAW_SQUIRREL.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(recipeOutput);
-        CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_SQUIRREL.get(), 1, 50, 0.2f)
-                .addIngredient(FoodItems.RAW_SQUIRREL.get())
-                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
-                .build(recipeOutput);
         CookingPotRecipeBuilder.cookingPotRecipe(FoodItems.COOKED_BIRD.get(), 1, 50, 0.2f)
                 .addIngredient(FoodItems.RAW_BIRD.get())
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
