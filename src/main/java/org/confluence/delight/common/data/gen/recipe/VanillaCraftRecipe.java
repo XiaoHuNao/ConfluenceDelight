@@ -173,32 +173,32 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
 
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f,200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 200);
         // 烟熏炉
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f,100);
-        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f,100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 100);
         // 篝火
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f,200);
-        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f,200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.SQUIRREL_MEAT_CHUNKS.get()), CDFoodItems.COOKED_SQUIRREL_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.BIRD_MEAT_CHUNKS.get()), CDFoodItems.COOKED_BIRD_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DUCK_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DUCK_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 200);
 
 
         compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);

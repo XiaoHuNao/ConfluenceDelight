@@ -26,8 +26,6 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
     public static final Component TITLE = Component.translatable("title.confluence_delight.millstone");
     ResourceLocation background = ConfluenceDelight.asResource("textures/gui/jei/millstone/millstone.png");
     private final IDrawable icon;
-    private final int WIDTH = 158;
-    private final int HEIGHT = 84;
 
     public MillStoneCategory(IJeiHelpers jeiHelpers) {
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.MILLSTONE_BLOCK.toStack());
@@ -40,12 +38,12 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
 
     @Override
     public int getWidth() {
-        return WIDTH;
+        return ModJeiPlugin.DefaultWeight;
     }
 
     @Override
     public int getHeight() {
-        return HEIGHT;
+        return ModJeiPlugin.DefaultHeight;
     }
 
     @Override
@@ -75,7 +73,7 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
 
     @Override
     public void draw(RecipeHolder<MillStoneRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(background, 0, 0, 0, 0, WIDTH, HEIGHT);
+        guiGraphics.blit(background, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
         int workCircles = recipe.value().getWorkCircles();
         Component timeText = Component.translatable("jei.confluence_delight.info.millstone.work_circles", workCircles);
         guiGraphics.pose().pushPose();

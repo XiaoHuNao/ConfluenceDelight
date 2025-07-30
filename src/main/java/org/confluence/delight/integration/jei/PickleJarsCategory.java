@@ -28,8 +28,6 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     public static final RecipeType<RecipeHolder<PickleJarsRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("pickle_jars"));
     public static final Component TITLE = Component.translatable("title.confluence_delight.pickle_jars");
     private final IDrawable icon;
-    private final int WIDTH = 158;
-    private final int HEIGHT = 84;
     ResourceLocation OpenCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_0.png");
     ResourceLocation CloseCoverGround = ResourceLocation.fromNamespaceAndPath(ConfluenceDelight.MODID, "textures/gui/jei/pickle_jars/pickle_jars_background_1.png");
 
@@ -44,12 +42,12 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
 
     @Override
     public int getWidth() {
-        return WIDTH;
+        return ModJeiPlugin.DefaultWeight;
     }
 
     @Override
     public int getHeight() {
-        return HEIGHT;
+        return ModJeiPlugin.DefaultHeight;
     }
 
 
@@ -95,9 +93,9 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
     @Override
     public void draw(RecipeHolder<PickleJarsRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         if (recipe.value().getCover()) {
-            guiGraphics.blit(CloseCoverGround, 0, 0, 0, 0, WIDTH, HEIGHT);
+            guiGraphics.blit(CloseCoverGround, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
         } else {
-            guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, WIDTH, HEIGHT);
+            guiGraphics.blit(OpenCoverGround, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
         }
         int craftTimeTicks = recipe.value().getCraftTime();
         if (recipe.value().isFermentation() && Screen.hasShiftDown()) {

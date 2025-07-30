@@ -29,8 +29,6 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
     public static final Component TITLE = Component.translatable("title.confluence_delight.juicer");
     ResourceLocation background = ConfluenceDelight.asResource("textures/gui/jei/juicer/juicer.png");
     private final IDrawable icon;
-    private final int WIDTH = 158;
-    private final int HEIGHT = 84;
 
     public JuicerCategory(IJeiHelpers jeiHelpers) {
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(CDBlocks.JUICER_BLOCK.toStack());
@@ -43,12 +41,12 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
 
     @Override
     public int getWidth() {
-        return WIDTH;
+        return ModJeiPlugin.DefaultWeight;
     }
 
     @Override
     public int getHeight() {
-        return HEIGHT;
+        return ModJeiPlugin.DefaultHeight;
     }
 
     @Override
@@ -85,7 +83,7 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
 
     @Override
     public void draw(RecipeHolder<JuicerRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(background, 0, 0, 0, 0, WIDTH, HEIGHT);
+        guiGraphics.blit(background, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
         int cycle = recipe.value().getCycle();
         Component timeText = Component.translatable("jei.confluence_delight.info.juicer.cycle", cycle);
         guiGraphics.pose().pushPose();

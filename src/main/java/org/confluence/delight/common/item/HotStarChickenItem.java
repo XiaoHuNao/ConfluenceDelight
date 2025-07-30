@@ -35,5 +35,4 @@ public class HotStarChickenItem extends Item {
         tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.hot_star_chicken"));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
-
 }

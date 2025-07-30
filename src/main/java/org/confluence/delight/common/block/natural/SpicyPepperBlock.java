@@ -57,7 +57,7 @@ public class SpicyPepperBlock extends CropBlock {
         if (isMature) {
             int quantity = 1 + level.random.nextInt(2);
             popResource(level, pos, new ItemStack(FoodItems.SPICY_PEPPER.get(), quantity));
-            level.setBlock(pos, state.setValue(this.getAgeProperty(), 0), 2);
+            level.setBlock(pos, state.setValue(this.getAgeProperty(), 4), 2);
             return InteractionResult.SUCCESS;
         } else {
             return super.useWithoutItem(state, level, pos, player, hit);

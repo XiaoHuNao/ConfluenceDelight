@@ -24,6 +24,8 @@ import org.confluence.mod.Confluence;
 public class ModJeiPlugin implements IModPlugin {
     public static final ResourceLocation UID = Confluence.asResource("jei_plugin");
     public static final ResourceLocation FLUID_STACK = ConfluenceDelight.asResource("textures/gui/jei/fluid_stack.png");
+    public static final int DefaultWeight = 158;
+    public static final int DefaultHeight = 84;
 
     @Override
     public ResourceLocation getPluginUid() {
