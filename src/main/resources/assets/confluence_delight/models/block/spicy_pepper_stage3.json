@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/crop",
+    "textures": {
+        "crop": "confluence_delight:block/natural/crop/spicy_pepper_stage3"
+    }
+}

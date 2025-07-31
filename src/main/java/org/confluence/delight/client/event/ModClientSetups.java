@@ -13,6 +13,7 @@ import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtension
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDFluids;
+import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.joml.Vector3f;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -87,6 +88,9 @@ public class ModClientSetups {
         ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.flowing().get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(CDFluids.BRINE.fluid().get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(CDFluids.BRINE.flowing().get(), translucent);
+        RenderType cutout = RenderType.cutout();
+        ItemBlockRenderTypes.setRenderLayer(CDNaturalBlocks.SPICY_PEPPER_CROP.get(), cutout);
+        ItemBlockRenderTypes.setRenderLayer(CDNaturalBlocks.PINEAPPLE_CROP.get(), cutout);
         RenderType cutoutMipped = RenderType.cutoutMipped();
         ItemBlockRenderTypes.setRenderLayer(CDBlocks.PICKLE_JARS_BLOCK.get(), cutoutMipped);
     }

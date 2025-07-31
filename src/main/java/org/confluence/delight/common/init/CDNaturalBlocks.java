@@ -64,7 +64,7 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<HalfLeavesBlock> BANANA_TREE_LEAVES_BLOCK = registerBlockItem("banana_tree_leaves", "香蕉树叶", HalfLeavesBlock::new);
     public static final DeferredBlock<BananaSkewersBlock> BANANA_SKEWERS_BLOCK = registerWithoutItem("banana_skewers", "香蕉串", BananaSkewersBlock::new);
 
-    public static final DeferredBlock<BaseSaplingBlock> COCONUT_SAPLING = registerBlockItem("coconut_sapling", "椰子树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.COCONUT_GROWER, BlockTags.DIRT), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.coconut_sapling")));
+    public static final DeferredBlock<BaseSaplingBlock> COCONUT_SAPLING = registerBlockItem("coconut_sapling", "椰子树苗", () -> new BaseSaplingBlock(CDFeature.TreeGrowers.COCONUT_GROWER, BlockTags.SAND), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.coconut_sapling")));
     public static final DeferredBlock<CoconutTreeTopBlock> COCONUT_TREE_TOP_BLOCK = registerBlockItem("coconut_tree_top", "椰子树头", CoconutTreeTopBlock::new);
     public static final DeferredBlock<HalfLeavesBlock> COCONUT_TREE_LEAVES_BLOCK = registerBlockItem("coconut_tree_leaves", "椰子树叶", HalfLeavesBlock::new);
     public static final DeferredBlock<CoconutBlock> COCONUT_BLOCK = registerWithoutItem("coconut", "椰子", CoconutBlock::new);
