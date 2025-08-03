@@ -16,22 +16,9 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-allprojects {
-    apply {
-        plugin('maven-publish')
-        publishing {
-            repositories {
-                maven {
-                    name = "Confluence"
-                    url = "http://maven.confluence.ink/snapshots"
-                    credentials {
-                        username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
-                        password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
-                    }
-                }
-            }
-        }
-    }
+// build.gradle (Groovy DSL)
+plugins {
+    id 'maven-publish' // 声明 maven-publish 插件
 }
 
 neoForge {
@@ -246,7 +233,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            name = "Confluence"
+            url = "http://maven.confluence.ink/snapshots"
+            credentials {
+                username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
+                password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
+            }
         }
     }
 }
