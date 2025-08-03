@@ -23,7 +23,7 @@ allprojects {
             repositories {
                 maven {
                     name = "Confluence"
-                    url = "http://maven.confluence.ink/private"
+                    url = "http://maven.confluence.ink/snapshots"
                     credentials {
                         username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
                         password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
