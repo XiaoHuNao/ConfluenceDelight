@@ -16,11 +16,6 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-// build.gradle (Groovy DSL)
-plugins {
-    id 'maven-publish' // 声明 maven-publish 插件
-}
-
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
@@ -224,7 +219,6 @@ tasks.withType(ProcessResources).configureEach {
     }
 }
 
-// Example configuration to allow publishing using the maven-publish plugin
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
