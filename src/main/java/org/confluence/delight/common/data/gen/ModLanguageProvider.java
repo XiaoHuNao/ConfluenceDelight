@@ -122,6 +122,18 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.freshly_squeezed_vitality.0",
                 "Legendary explorers' special juice blend, designed to delight your taste buds and fill your belly.",
                 "传说中的探险家们为了能满足味蕾需求和食物需求研发出的果汁特调");
+        add("tooltip.item.confluence_delight.the_meal_of_life",
+                "Products from the Goddess of Life are bound to be of high quality",
+                "生命女神出品，必属精品");
+        add("tooltip.item.confluence.grass_seed_soup.0",
+                "It's all oil and very bitter, but it's healthy",
+                "全是油，而且很苦涩，但是健康");
+        add("tooltip.item.confluence.mushroom_platter.0",
+                "A hodgepodge of mushrooms from another world",
+                "异世蘑菇大杂烩");
+        add("tooltip.item.confluence.blood_red_pork_rib_soup.0",
+                "You are a monster.",
+                "你是怪物");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

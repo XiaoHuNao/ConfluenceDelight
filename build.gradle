@@ -228,10 +228,10 @@ publishing {
     repositories {
         maven {
             name = "Confluence"
-            url = "https://maven.confluence.ink/private"
+            url = "https://maven.confluence.ink/snapshots"
             credentials {
-                username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
-                password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
+                username = System.getenv("MAGIC_TEAM_USERNAME")
+                password = System.getenv("MAGIC_TEAM_TOKEN")
             }
         }
     }

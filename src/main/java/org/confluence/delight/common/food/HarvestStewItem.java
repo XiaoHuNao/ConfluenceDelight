@@ -1,4 +1,4 @@
-package org.confluence.delight.common.item;
+package org.confluence.delight.common.food;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
@@ -18,7 +18,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.confluence.delight.common.food.DelightFoodProperties;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.delight.util.CDTextUtils;

@@ -22,7 +22,6 @@ import net.neoforged.neoforge.common.crafting.ICustomIngredient;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.*;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
-import org.confluence.mod.Confluence;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -33,8 +32,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class VanillaCraftRecipe extends AbstractRecipeProvider {
-    public VanillaCraftRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
+public class VanillaRecipe extends AbstractRecipeProvider {
+    public VanillaRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
         super(output, lookup);
     }
 
@@ -170,7 +169,6 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.LAVA_BUCKET),
                 Ingredient.of(CDMaterialItems.SALT));
         shapeless(output, "", "", CDMaterialItems.SALT.toStack(9), Ingredient.of(CDBlocks.SALT_BLOCK));
-
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
@@ -199,7 +197,6 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 200);
-
 
         compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
         compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);
@@ -235,7 +232,7 @@ public class VanillaCraftRecipe extends AbstractRecipeProvider {
 
 
     protected <T extends AbstractCookingRecipe> void cooking(RecipeOutput recipeOutput, AbstractCookingRecipe.Factory<T> factory, String prefix, String suffix, Ingredient ingredient, ItemStack result, float experience, int cookingTime) {
-        ResourceLocation id = Confluence.asResource(prefix + getItemName(result.getItem()) + suffix);
+        ResourceLocation id = ConfluenceDelight.asResource(prefix + getItemName(result.getItem()) + suffix);
         NonNullList<Ingredient> ingredients = NonNullList.withSize(1, ingredient);
         recipeOutput.accept(id, factory.create("", CookingBookCategory.MISC, ingredient, result, experience, cookingTime), createAdvancementHolder(recipeOutput, id, ingredients));
     }

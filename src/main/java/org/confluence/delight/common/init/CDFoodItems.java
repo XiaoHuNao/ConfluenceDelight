@@ -11,9 +11,10 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.food.TheMealOfLifeItem;
 import org.confluence.delight.common.food.DelightFoodProperties;
-import org.confluence.delight.common.item.HarvestStewItem;
-import org.confluence.delight.common.item.HotStarChickenItem;
+import org.confluence.delight.common.food.HarvestStewItem;
+import org.confluence.delight.common.food.HotStarChickenItem;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;
 import org.confluence.mod.common.init.item.PotionItems;
@@ -219,6 +220,19 @@ public class CDFoodItems {
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
     public static final DeferredItem<Item> HOT_STAR_CHICKEN = normalItemRegister("hot_star_chicken", "豪大大鸡排", HotStarChickenItem::new);
     public static final DeferredItem<Item> HARVEST_STEW = normalItemRegister("harvest_stew", "丰收大锅炖", HarvestStewItem::new);
+    public static final DeferredItem<Item> THE_MEAL_OF_LIFE = normalItemRegister("the_meal_of_life", "晶髓金菇膳", TheMealOfLifeItem::new);
+    public static final DeferredItem<BaseFoodItem> GRASS_SEED_SOUP = registerToolTipFood("grass_seed_soup", "草籽汤", builder -> builder.food(
+            DelightFoodProperties.hasEffectProperties(6, 6.0f, Items.BOWL,
+                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 900)))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> MUSHROOM_PLATTER = registerToolTipFood("mushroom_platter", "菌类拼盘", builder -> builder.food(
+            DelightFoodProperties.noEffectProperties(9, 8.0f, Items.BOWL))
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> BLOOD_RED_PORK_RIB_SOUP = registerToolTipFood("blood_red_pork_rib_soup", "血红排骨汤", builder -> builder.food(
+            DelightFoodProperties.hasEffectProperties(10, 10.0f, Items.BOWL,
+                    CDEffectData.of(MobEffects.POISON, 200),
+                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 5200)))//TODO 同化？
+            .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
 
     //果汁
     public static final DeferredItem<BaseFoodItem> APRICOT_JUICE = registerDrinkingFood("apricot_juice", "杏汁",

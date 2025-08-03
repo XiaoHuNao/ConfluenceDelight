@@ -1,4 +1,4 @@
-package org.confluence.delight.common.item;
+package org.confluence.delight.common.food;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
-import org.confluence.delight.common.food.DelightFoodProperties;
 import org.confluence.delight.common.init.CDJukeboxSongs;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;

@@ -36,7 +36,11 @@ public class CDFoodBlocks {
             CDEffectData.of(MobEffects.REGENERATION, 600),
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 600, 1),
             CDEffectData.of(MobEffects.DAMAGE_RESISTANCE, 600)));
-
+    public static final DeferredBlock<BaseFoodBlock> THE_MEAL_OF_LIFE_BLOCK = registerWithoutItem("the_meal_of_life", () -> new BaseFoodBlock(18, 36.0f, Items.BOWL,
+            CDEffectData.of(MobEffects.REGENERATION, 600, 1),
+            CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),
+            CDEffectData.of(MobEffects.ABSORPTION, 2400),
+            CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 18000)));
     public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, Supplier<B> bl) {
         return BLOCKS.register(en, bl);
     }

@@ -9,8 +9,10 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.data.gen.recipe.ModRecipe;
-import org.confluence.delight.common.data.gen.recipe.VanillaCraftRecipe;
+import org.confluence.delight.common.data.gen.recipe.CDRecipe;
+import org.confluence.delight.common.data.gen.recipe.ConfluenceRecipe;
+import org.confluence.delight.common.data.gen.recipe.FDRecipe;
+import org.confluence.delight.common.data.gen.recipe.VanillaRecipe;
 import org.confluence.delight.common.data.gen.tag.ModBlockTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModFluidTagsProvider;
 import org.confluence.delight.common.data.gen.tag.ModItemTagsProvider;
@@ -44,8 +46,10 @@ public class ModDataGenerator {
         generator.addProvider(server, fluidTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
         generator.addProvider(server, new CollectRecipeProvider(output, lookup,
-                ModRecipe::new,
-                VanillaCraftRecipe::new));
+                CDRecipe::new,
+                ConfluenceRecipe::new,
+                FDRecipe::new,
+                VanillaRecipe::new));
         generator.addProvider(server, new CDMusicProvider(output, lookup));
         generator.addProvider(server, new ModLootTableProvider(output, lookup));
     }
