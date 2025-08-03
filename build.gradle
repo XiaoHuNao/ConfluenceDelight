@@ -16,6 +16,24 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
+allprojects {
+    apply {
+        plugin('maven-publish')
+        publishing {
+            repositories {
+                maven {
+                    name = "Confluence"
+                    url = "http://maven.confluence.ink/private"
+                    credentials {
+                        username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
+                        password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
+                    }
+                }
+            }
+        }
+    }
+}
+
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
