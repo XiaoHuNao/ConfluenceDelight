@@ -228,7 +228,7 @@ publishing {
     repositories {
         maven {
             name = "Confluence"
-            url = "http://maven.confluence.ink/private"
+            url = "https://maven.confluence.ink/private"
             credentials {
                 username = System.getenv("CONFLUENCE_DELIGHT_USERNAME")
                 password = System.getenv("CONFLUENCE_DELIGHT_TOKEN")
