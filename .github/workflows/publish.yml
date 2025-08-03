@@ -12,6 +12,9 @@ permissions:
 jobs:
   Build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./ConfluenceDelight
 
     steps:
       - uses: actions/checkout@v4
