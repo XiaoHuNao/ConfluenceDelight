@@ -63,15 +63,10 @@ public class ModLanguageProvider extends LanguageProvider {
         //jade
         add("config.jade.plugin_confluence_delight.picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("config.jade.plugin_confluence_delight.juicer_info", "Juicer Info", "榨汁机信息");
-        add("info.confluence_delight.fluid_capacity", "%s %dB / %dB", "%s %dB / %dB");
-        add("info.confluence_delight.fluid_amount", "%s %dB", "%s %dB");
-        add("info.confluence_delight.fluid_empty", "Empty %dB", "空 %dB");
 
         //config
         add("confluence_delight.configuration.machines", "Machines", "机器");
         add("confluence_delight.configuration.fluid_capacity", "Container liquid capacity", "容器液体容量");
-        add("confluence_delight.configuration.infinite_fluid", "Infinite Fluid", "无限流体");
-        add("confluence_delight.configuration.enable_infinite_fluid_brine", "Enable Infinite Fluid By Brine", "启用卤水无限流体");
 
         //tooltip
         add("tooltip.item.confluence.atlantis_tsunami.0",

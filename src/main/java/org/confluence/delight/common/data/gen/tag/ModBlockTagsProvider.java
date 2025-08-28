@@ -34,17 +34,13 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         );
         tag(ModTags.Blocks.MINEABLE_WITH_PICKAXE_AXE).add(
                 CDBlocks.PICKLE_JARS_BLOCK.get(),
-                CDBlocks.SAP_COLLECTORS_BLOCK.get(),
                 CDBlocks.MILLSTONE_BLOCK.get(),
                 CDBlocks.JUICER_BLOCK.get()
         ).add(crate);
-        tag(BlockTags.MINEABLE_WITH_AXE).add(
-                CDBlocks.SAP_COLLECTORS_BLOCK.get()
-        ).add(crate);
+        tag(BlockTags.MINEABLE_WITH_AXE).add(crate);
         tag(ModTags.Blocks.MINEABLE_WITH_HAMAXE).add(crate);
         tag(BlockTags.CAULDRONS).add(
-                CDBlocks.WINE_CAULDRON.get(),
-                CDBlocks.BRINE_CAULDRON.get()
+                CDBlocks.WINE_CAULDRON.get()
         );
         tag(BlockTags.SAPLINGS).add(sapling);
         tag(ModTags.Blocks.MINEABLE_WITH_HOE_SHOVEL).add(leaves);

@@ -11,10 +11,10 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.food.TheMealOfLifeItem;
 import org.confluence.delight.common.food.DelightFoodProperties;
 import org.confluence.delight.common.food.HarvestStewItem;
 import org.confluence.delight.common.food.HotStarChickenItem;
+import org.confluence.delight.common.food.TheMealOfLifeItem;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;
 import org.confluence.mod.common.init.item.PotionItems;
@@ -55,6 +55,22 @@ public class CDFoodItems {
     public static final DeferredItem<BaseFoodItem> COOKED_DONKEY_MEAT_CHUNKS = registerNormalFood("cooked_donkey_meat_chunks", "熟驴肉块", () -> DelightFoodProperties.noEffectProperties(4, 6.4f));
     public static final DeferredItem<BaseFoodItem> COOKED_HORSE_MEAT_CHUNKS = registerNormalFood("cooked_horse_meat_chunks", "熟马肉块", () -> DelightFoodProperties.noEffectProperties(4, 6.4f));
     public static final DeferredItem<BaseFoodItem> SQUIRREL_CITATAP = registerNormalFood("squirrel_citatap", "松鼠齐塔塔普", () -> DelightFoodProperties.noEffectProperties(1, 0.9f));
+    public static final DeferredItem<BaseFoodItem> RAW_ROSEWOOD_MEAT = registerNormalFood("raw_rosewood_meat", "生紫檀肉",
+            () -> DelightFoodProperties.hasEffectProperties(5, 3.0f,
+                    CDEffectData.of(MobEffects.HUNGER, 600),
+                    CDEffectData.of(ModEffects.CURSED_INFERNO, 100)));
+    public static final DeferredItem<BaseFoodItem> COOKED_ROSEWOOD_MEAT = registerNormalFood("cooked_rosewood_meat", "熟紫檀肉",
+            () -> DelightFoodProperties.hasEffectProperties(7, 5.0f,
+                    CDEffectData.of(ModEffects.CURSED_INFERNO, 40),
+                    CDEffectData.of(ModEffects.WRATH, 2400)));
+    public static final DeferredItem<BaseFoodItem> RAW_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("raw_proliferating_flesh_and_blood", "生增生血肉",
+            () -> DelightFoodProperties.hasEffectProperties(5, 3.0f,
+                    CDEffectData.of(MobEffects.HUNGER, 600),
+                    CDEffectData.of(MobEffects.POISON, 100)));
+    public static final DeferredItem<BaseFoodItem> COOKED_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("cooked_proliferating_flesh_and_blood", "熟增生血肉",
+            () -> DelightFoodProperties.hasEffectProperties(7, 5.0f,
+                    CDEffectData.of(MobEffects.POISON, 40, 1),
+                    CDEffectData.of(ModEffects.RAGE, 2400)));
     public static final DeferredItem<BaseFoodItem> BUTTER = registerNormalFood("butter", "黄油",
             () -> DelightFoodProperties.hasEffectProperties(3, 4.5f,
                     CDEffectData.of(MobEffects.CONFUSION, 400)));
@@ -66,21 +82,21 @@ public class CDFoodItems {
                     CDEffectData.of(MobEffects.LEVITATION, 140),
                     CDEffectData.of(MobEffects.SLOW_FALLING, 300),
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 3000)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> WHITE_CHOCOLATE = registerNormalBlockItemFood("white_chocolate", "白巧克力", CDFoodBlocks.WHITE_CHOCOLATE_BLOCK,
+    public static final DeferredItem<BaseFoodItem.BItem> WHITE_CHOCOLATE = registerNormalBlockItemFood("white_chocolate", "白巧克力", CDFoodBlocks.WHITE_CHOCOLATE_BLOCK,
             DelightFoodProperties.hasEffectProperties(2, 4,
                     CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 200)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> BLACK_CHOCOLATE = registerNormalBlockItemFood("black_chocolate", "黑巧克力", CDFoodBlocks.BLACK_CHOCOLATE_BLOCK,
+    public static final DeferredItem<BaseFoodItem.BItem> BLACK_CHOCOLATE = registerNormalBlockItemFood("black_chocolate", "黑巧克力", CDFoodBlocks.BLACK_CHOCOLATE_BLOCK,
             DelightFoodProperties.hasEffectProperties(2, 4,
                     CDEffectData.of(ModEffects.RAGE, 200),
                     CDEffectData.of(MobEffects.WEAKNESS, 200, 0.5f)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> FLAVORED_WHITE_CHOCOLATE = registerNormalBlockItemFood("flavored_white_chocolate", "调味白巧克力", CDFoodBlocks.FLAVORED_WHITE_CHOCOLATE_BLOCK,
+    public static final DeferredItem<BaseFoodItem.BItem> FLAVORED_WHITE_CHOCOLATE = registerNormalBlockItemFood("flavored_white_chocolate", "调味白巧克力", CDFoodBlocks.FLAVORED_WHITE_CHOCOLATE_BLOCK,
             DelightFoodProperties.hasEffectProperties(4, 6,
                     CDEffectData.of(MobEffects.LUCK, 200),
                     CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 200)));
     public static final DeferredItem<BaseFoodItem> VANILLA_POD = registerNormalFood("vanilla_pod", "香草荚", () -> DelightFoodProperties.noEffectProperties(1, 1.0f));
 
     //成品
-    public static final DeferredItem<BaseFoodItem.BlockItem> CHICKEN_HOT_POT = registerNormalBlockItemFood("chicken_hot_pot", "鸡公煲", CDFoodBlocks.CHICKEN_HOT_POT_BLOCK,
+    public static final DeferredItem<BaseFoodItem.BItem> CHICKEN_HOT_POT = registerNormalBlockItemFood("chicken_hot_pot", "鸡公煲", CDFoodBlocks.CHICKEN_HOT_POT_BLOCK,
             ModFoodProperties.PlentySatisfiedProperties(6000, 20, 20.0f, Items.BOWL));
     public static final DeferredItem<BaseFoodItem> CRISPY_RICE_WITH_POTATOES = registerNormalFood("crispy_rice_with_potatoes", "锅巴土豆", () -> DelightFoodProperties.noEffectProperties(3, 1.8f));
     public static final DeferredItem<BaseFoodItem> ROYAL_GUMMY = registerNormalFood("royal_gummy", "皇家软糖",
@@ -133,18 +149,18 @@ public class CDFoodItems {
                     CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 600),
                     CDEffectData.of(MobEffects.REGENERATION, 600),
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 300, 1)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", CDFoodBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE_BLOCK,
+    public static final DeferredItem<BaseFoodItem.BItem> BLACKCURRANT_DARK_CHOCOLATE_PIE = registerNormalBlockItemFood("blackcurrant_dark_chocolate_pie", "黑醋栗黑巧克力派", CDFoodBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE_BLOCK,
             DelightFoodProperties.hasEffectProperties(12, 12.0f,
                     CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600),
                     CDEffectData.of(MobEffects.LUCK, 600),
                     CDEffectData.of(ModEffects.MAGIC_POWER, 600)));
-    public static final DeferredItem<BaseFoodItem.BlockItem> BRAISED_BEEF_RICE = registerBlockItemFood("braised_beef_rice", "红烧牛肉饭", builder -> builder.stackTo(1).food(
+    public static final DeferredItem<BaseFoodItem.BItem> BRAISED_BEEF_RICE = registerBlockItemFood("braised_beef_rice", "红烧牛肉饭", builder -> builder.stackTo(1).food(
             DelightFoodProperties.hasEffectProperties(18, 20.0f, Items.BOWL,
                     CDEffectData.of(MobEffects.REGENERATION, 600),
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 600, 1),
                     CDEffectData.of(MobEffects.DAMAGE_BOOST, 600, 1))
     ).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), CDFoodBlocks.BRAISED_BEEF_RICE_BLOCK);
-    public static final DeferredItem<BaseFoodItem.BlockItem> BRAISED_BEEF_NOODLES = registerBlockItemFood("braised_beef_noodles", "红烧牛肉面", builder -> builder.stackTo(1).food(
+    public static final DeferredItem<BaseFoodItem.BItem> BRAISED_BEEF_NOODLES = registerBlockItemFood("braised_beef_noodles", "红烧牛肉面", builder -> builder.stackTo(1).food(
             DelightFoodProperties.hasEffectProperties(18, 20.0f, Items.BOWL,
                     CDEffectData.of(MobEffects.REGENERATION, 600),
                     CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 600, 1),
@@ -203,12 +219,6 @@ public class CDFoodItems {
                             CDEffectData.of(MobEffects.DAMAGE_BOOST, 10800, 2),
                             CDEffectData.of(MobEffects.REGENERATION, 10800, 1)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GOLD);
-    public static final DeferredItem<BaseFoodItem> CUMIN_FLAVORED_HORSE_MEAT_OVER_RICE = registerNormalFood("cumin_flavored_horse_meat_over_rice", "孜然马肉盖浇饭",
-            () -> DelightFoodProperties.hasEffectProperties(14, 18.0f,
-                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 4000)));
-    public static final DeferredItem<BaseFoodItem> CUMIN_FLAVORED_DONKEY_MEAT_OVER_RICE = registerNormalFood("cumin_flavored_donkey_meat_over_rice", "孜然驴肉盖浇饭",
-            () -> DelightFoodProperties.hasEffectProperties(14, 18.0f,
-                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 4000)));
     public static final DeferredItem<BaseFoodItem> BRAISED_CHICKEN = registerToolTipFood("braised_chicken", "扒鸡", builder -> builder.food(
                     DelightFoodProperties.hasEffectProperties(16, 20.0f,
                             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 4600, 1),
@@ -222,16 +232,16 @@ public class CDFoodItems {
     public static final DeferredItem<Item> HARVEST_STEW = normalItemRegister("harvest_stew", "丰收大锅炖", HarvestStewItem::new);
     public static final DeferredItem<Item> THE_MEAL_OF_LIFE = normalItemRegister("the_meal_of_life", "晶髓金菇膳", TheMealOfLifeItem::new);
     public static final DeferredItem<BaseFoodItem> GRASS_SEED_SOUP = registerToolTipFood("grass_seed_soup", "草籽汤", builder -> builder.food(
-            DelightFoodProperties.hasEffectProperties(6, 6.0f, Items.BOWL,
-                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 900)))
+                    DelightFoodProperties.hasEffectProperties(6, 6.0f, Items.BOWL,
+                            CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 900)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
     public static final DeferredItem<BaseFoodItem> MUSHROOM_PLATTER = registerToolTipFood("mushroom_platter", "菌类拼盘", builder -> builder.food(
-            DelightFoodProperties.noEffectProperties(9, 8.0f, Items.BOWL))
+                    DelightFoodProperties.noEffectProperties(9, 8.0f, Items.BOWL))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
     public static final DeferredItem<BaseFoodItem> BLOOD_RED_PORK_RIB_SOUP = registerToolTipFood("blood_red_pork_rib_soup", "血红排骨汤", builder -> builder.food(
-            DelightFoodProperties.hasEffectProperties(10, 10.0f, Items.BOWL,
-                    CDEffectData.of(MobEffects.POISON, 200),
-                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 5200)))//TODO 同化？
+                    DelightFoodProperties.hasEffectProperties(10, 10.0f, Items.BOWL,
+                            CDEffectData.of(MobEffects.POISON, 200),
+                            CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 5200)))//TODO 同化？
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
 
     //果汁
@@ -350,20 +360,20 @@ public class CDFoodItems {
         return item;
     }
 
-    public static DeferredItem<BaseFoodItem.BlockItem> registerNormalBlockItemFood(String en, String zh, Supplier<? extends Block> block, FoodProperties foodProperties) {
-        DeferredItem<BaseFoodItem.BlockItem> item = ITEMS.register(en, () -> {
+    public static DeferredItem<BaseFoodItem.BItem> registerNormalBlockItemFood(String en, String zh, Supplier<? extends Block> block, FoodProperties foodProperties) {
+        DeferredItem<BaseFoodItem.BItem> item = ITEMS.register(en, () -> {
             BaseFoodItem.Builder builder = BaseFoodItem.builder().stackTo(64).food(foodProperties).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT);
-            return new BaseFoodItem.BlockItem(block.get(), builder.getProperties());
+            return new BaseFoodItem.BItem(block.get(), builder.getProperties());
         });
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;
     }
 
-    public static DeferredItem<BaseFoodItem.BlockItem> registerBlockItemFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer, Supplier<? extends Block> block) {
-        DeferredItem<BaseFoodItem.BlockItem> item = ITEMS.register(en, () -> {
+    public static DeferredItem<BaseFoodItem.BItem> registerBlockItemFood(String en, String zh, Consumer<BaseFoodItem.Builder> consumer, Supplier<? extends Block> block) {
+        DeferredItem<BaseFoodItem.BItem> item = ITEMS.register(en, () -> {
             BaseFoodItem.Builder builder = BaseFoodItem.builder().stackTo(64);
             consumer.accept(builder);
-            return new BaseFoodItem.BlockItem(block.get(), builder.getProperties());
+            return new BaseFoodItem.BItem(block.get(), builder.getProperties());
         });
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;

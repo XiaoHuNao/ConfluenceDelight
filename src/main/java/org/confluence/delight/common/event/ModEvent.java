@@ -2,8 +2,6 @@ package org.confluence.delight.common.event;
 
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -15,10 +13,7 @@ import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.CommonConfigs;
-import org.confluence.delight.common.block.common.BrineCauldronBlock;
-import org.confluence.delight.common.block.common.SaltCauldronBlock;
 import org.confluence.delight.common.block.common.WineCauldronBlock;
-import org.confluence.delight.common.block.function.SapCollectorsBlock;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDItems;
@@ -33,7 +28,6 @@ public class ModEvent {
             CommonConfigs.onLoad();
             StartupConfigs.onLoad();
         });
-        DispenserBlock.registerBehavior(Items.GLASS_BOTTLE, new SapCollectorsBlock.SapCollectorDispenseBehavior());
     }
 
     @SubscribeEvent
@@ -42,8 +36,6 @@ public class ModEvent {
             CauldronInteraction.INTERACTIONS.values().forEach(map -> {
                 Map<Item, CauldronInteraction> interactionMap = map.map();
                 interactionMap.put(CDItems.WINE_BUCKET.get(), WineCauldronBlock.FILL_WINE);
-                interactionMap.put(CDItems.BRINE_BUCKET.get(), BrineCauldronBlock.FILL_BRINE);
-                interactionMap.put(CDBlocks.SALT_BLOCK.get().asItem(), SaltCauldronBlock.FILL_SALT);
             });
         });
     }
@@ -57,6 +49,5 @@ public class ModEvent {
     @SubscribeEvent
     public static void registerCauldronFluidContent(RegisterCauldronFluidContentEvent event) {
         event.register(CDBlocks.WINE_CAULDRON.get(), CDFluids.WINE.fluid().get(), FluidType.BUCKET_VOLUME, null);
-        event.register(CDBlocks.BRINE_CAULDRON.get(), CDFluids.BRINE.fluid().get(), FluidType.BUCKET_VOLUME, null);
     }
 }

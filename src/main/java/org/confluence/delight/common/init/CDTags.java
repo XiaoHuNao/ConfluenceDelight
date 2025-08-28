@@ -42,6 +42,8 @@ public final class CDTags {
         public static final TagKey<Block> POMEGRANATE_CRATE = c("storage_blocks/pomegranate");
         public static final TagKey<Block> RAMBUTAN_CRATE = c("storage_blocks/rambutan");
 
+        public static final TagKey<Block> SALT_BLOCKS = c("salt_blocks");
+
         private static TagKey<Block> c(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
         }

@@ -4,6 +4,8 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.food.DelightFoodProperties;
+import org.confluence.mod.common.item.food.BaseFoodItem;
 
 import java.util.function.Supplier;
 
@@ -12,13 +14,7 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 public class CDMaterialItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
-    public static final DeferredItem<Item> SALT = register("salt", "盐");
-    public static final DeferredItem<Item> CHILI_POWDER = register("chili_powder", "辣椒面");
-    public static final DeferredItem<Item> CUMIN_POWDER = register("cumin_powder", "孜然粉");
-    public static final DeferredItem<Item> WHITE_PEPPER = register("white_pepper", "白胡椒");
-    public static final DeferredItem<Item> MAPLE_SYRUP = register("maple_syrup", "枫糖浆");
-    public static final DeferredItem<Item> GLOWING_MUSHROOM_SAUCE = register("glowing_mushroom_sauce", "发光蘑菇酱");
-    public static final DeferredItem<Item> WARPED_SAP = register("warped_sap", "诡异树液");
+    public static final DeferredItem<Item> RICE_NOODLES = register("rice_noodles", "米粉");
 
     private static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> it) {
         DeferredItem<I> item = ITEMS.register(en, it);

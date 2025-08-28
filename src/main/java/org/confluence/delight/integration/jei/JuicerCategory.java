@@ -22,7 +22,7 @@ import org.confluence.delight.StartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 
-import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
+import static org.confluence.mod.integration.jei.ModJeiPlugin.addInput;
 
 public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe>> {
     public static final RecipeType<RecipeHolder<JuicerRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("juicer"));
@@ -41,12 +41,12 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
 
     @Override
     public int getWidth() {
-        return ModJeiPlugin.DefaultWeight;
+        return CDJeiPlugin.DefaultWeight;
     }
 
     @Override
     public int getHeight() {
-        return ModJeiPlugin.DefaultHeight;
+        return CDJeiPlugin.DefaultHeight;
     }
 
     @Override
@@ -76,14 +76,14 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
         }
         Item container = recipe.value().getContainer().asItem();
         addInput(builder, 89, 48, Ingredient.of(container));
-        ModJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());
+        CDJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }
 
     @Override
     public void draw(RecipeHolder<JuicerRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(background, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
+        guiGraphics.blit(background, 0, 0, 0, 0, CDJeiPlugin.DefaultWeight, CDJeiPlugin.DefaultHeight);
         int cycle = recipe.value().getCycle();
         Component timeText = Component.translatable("jei.confluence_delight.info.juicer.cycle", cycle);
         guiGraphics.pose().pushPose();
@@ -93,6 +93,6 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
         int y = (int) (30 / scale);
         guiGraphics.drawString(Minecraft.getInstance().font, timeText, x, y, 0xFFFFFF, true);
         guiGraphics.pose().popPose();
-        ModJeiPlugin.drawFluidStack(guiGraphics, 0, 8);
+        CDJeiPlugin.drawFluidStack(guiGraphics, 0, 8);
     }
 }

@@ -17,7 +17,6 @@ public class CDItems {
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
     public static final DeferredItem<Item> WINE_BUCKET = register("wine_bucket", "酒桶", () -> new BucketItem(CDFluids.WINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-    public static final DeferredItem<Item> BRINE_BUCKET = register("brine_bucket", "卤水桶", () -> new BucketItem(CDFluids.BRINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final DeferredItem<Item> FUNGAL_YEAST = register("fungal_yeast", "菌曲", () -> new Item(new Item.Properties()));
 

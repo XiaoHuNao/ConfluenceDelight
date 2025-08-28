@@ -6,7 +6,6 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.neoforged.neoforge.common.SoundActions;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.StartupConfigs;
 import org.confluence.lib.common.fluid.FluidTriple;
 
 public class CDFluids {
@@ -36,30 +35,5 @@ public class CDFluids {
             ).baseProperties(properties -> properties
                     .block(CDBlocks.WINE)
                     .bucket(CDItems.WINE_BUCKET)
-            ).build();
-
-    public static final FluidTriple BRINE = FluidTriple.builder(ConfluenceDelight.asResource("brine"))
-            .typeProperties(properties -> properties
-                    .density(1025)
-                    .canSwim(false)
-                    .viscosity(1300)
-                    .motionScale(0.011)
-                    .canExtinguish(false)
-                    .supportsBoating(true)
-                    .rarity(Rarity.UNCOMMON)
-                    .fallDistanceModifier(0.0F)
-                    .canConvertToSource(StartupConfigs.INFINITE_FLUID_BRINE_ENABLED.get())
-                    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
-                    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
-                    .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
-                    .addDripstoneDripping(
-                            PointedDripstoneBlock.WATER_TRANSFER_PROBABILITY_PER_RANDOM_TICK,
-                            ParticleTypes.DRIPPING_DRIPSTONE_WATER,
-                            CDBlocks.BRINE_CAULDRON.get(),
-                            SoundEvents.POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON
-                    )
-            ).baseProperties(properties -> properties
-                    .block(CDBlocks.BRINE)
-                    .bucket(CDItems.BRINE_BUCKET)
             ).build();
 }

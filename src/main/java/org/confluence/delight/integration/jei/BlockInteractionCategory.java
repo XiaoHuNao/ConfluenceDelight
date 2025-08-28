@@ -30,7 +30,8 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
+import static org.confluence.mod.integration.jei.ModJeiPlugin.addInput;
+
 
 public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<BlockInteractionRecipe>> {
     public static final RecipeType<RecipeHolder<BlockInteractionRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("block_interaction"));

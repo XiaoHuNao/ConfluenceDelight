@@ -17,9 +17,6 @@ public class StartupConfigs {
             BUILDER.push("machines");
             FLUID_CAPACITY = BUILDER.defineInRange("fluid_capacity", 16000, 1, 64000);
             BUILDER.pop();
-            BUILDER.push("infinite_fluid");
-            INFINITE_FLUID_BRINE_ENABLED = BUILDER.define("enable_infinite_fluid_brine", true);
-            BUILDER.pop();
         }
         container.registerConfig(ModConfig.Type.STARTUP, BUILDER.build());
     }

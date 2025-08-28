@@ -41,6 +41,7 @@ public class CDFoodBlocks {
             CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),
             CDEffectData.of(MobEffects.ABSORPTION, 2400),
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 18000)));
+
     public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, Supplier<B> bl) {
         return BLOCKS.register(en, bl);
     }

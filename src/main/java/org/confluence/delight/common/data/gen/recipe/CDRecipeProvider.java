@@ -17,7 +17,6 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDFoodItems;
-import org.confluence.delight.common.init.CDMaterialItems;
 import org.confluence.delight.common.init.CDNaturalBlocks;
 import org.confluence.delight.common.recipe.BlockInteractionRecipe;
 import org.confluence.delight.common.recipe.JuicerRecipe;
@@ -29,8 +28,8 @@ import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CDRecipe extends AbstractRecipeProvider {
-    public CDRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
+public class CDRecipeProvider extends AbstractRecipeProvider {
+    public CDRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
         super(output, lookup);
     }
 
@@ -42,10 +41,9 @@ public class CDRecipe extends AbstractRecipeProvider {
         FluidStack wine1000 = new FluidStack(CDFluids.WINE.fluid(), 1000);
         FluidStack wine2000 = new FluidStack(CDFluids.WINE.fluid(), 2000);
         pickleJarsRecipe(recipeOutput, true, CDFoodItems.JAR_CHILI_PEPPERS.toStack(), water2000, 1000, Ingredient.of(FoodItems.SPICY_PEPPER));
-        pickleJarsRecipe(recipeOutput, true, CDFoodItems.CHOP_BELL_PEPPER.toStack(10), wine1000, 1000, AmountIngredient.of(5, CDMaterialItems.SALT), AmountIngredient.of(10, Items.SUGAR), AmountIngredient.of(10, CDFoodItems.CRUSHED_CHILLI));
+        pickleJarsRecipe(recipeOutput, true, CDFoodItems.CHOP_BELL_PEPPER.toStack(10), wine1000, 1000, AmountIngredient.of(10, Items.SUGAR), AmountIngredient.of(10, CDFoodItems.CRUSHED_CHILLI));
 
         //磨盘
-        millStoneRecipe(recipeOutput, CDMaterialItems.CHILI_POWDER.toStack(), 5, Ingredient.of(FoodItems.SPICY_PEPPER));
 
         //榨汁机
         FluidStack WATER_1000 = new FluidStack(Fluids.WATER, 1000);

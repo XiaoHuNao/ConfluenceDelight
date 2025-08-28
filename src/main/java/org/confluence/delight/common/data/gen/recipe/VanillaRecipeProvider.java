@@ -20,7 +20,10 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.crafting.ICustomIngredient;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.init.*;
+import org.confluence.delight.common.init.CDBlocks;
+import org.confluence.delight.common.init.CDFoodItems;
+import org.confluence.delight.common.init.CDNaturalItems;
+import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
@@ -32,8 +35,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class VanillaRecipe extends AbstractRecipeProvider {
-    public VanillaRecipe(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
+public class VanillaRecipeProvider extends AbstractRecipeProvider {
+    public VanillaRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
         super(output, lookup);
     }
 
@@ -83,15 +86,6 @@ public class VanillaRecipe extends AbstractRecipeProvider {
                 "d  ",
                 "   "
         )), CDBlocks.PICKLE_JARS_BLOCK.toStack());
-        shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'S', Ingredient.of(ItemTags.WOODEN_SLABS),
-                'I', Ingredient.of(Items.IRON_NUGGET),
-                'B', Ingredient.of(Items.BARREL)
-        ), List.of(
-                "SSS",
-                " I ",
-                " B "
-        )), CDBlocks.SAP_COLLECTORS_BLOCK.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
                 'F', Ingredient.of(ItemTags.FENCES),
                 'S', Ingredient.of(Items.SMOOTH_STONE),
@@ -149,7 +143,7 @@ public class VanillaRecipe extends AbstractRecipeProvider {
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.MILK_BUCKET),
                 Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.GOLDEN_COIN));
+                Ingredient.of(org.confluence.mod.common.init.item.ModItems.GOLD_COIN));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(Items.MILK_BUCKET),
@@ -166,9 +160,7 @@ public class VanillaRecipe extends AbstractRecipeProvider {
         shapeless(output, "", "", CDFoodItems.BIG_CHICKEN_CUTLET.toStack(),
                 Ingredient.of(Items.CHICKEN),
                 Ingredient.of(FoodItems.SPICY_PEPPER),
-                Ingredient.of(Items.LAVA_BUCKET),
-                Ingredient.of(CDMaterialItems.SALT));
-        shapeless(output, "", "", CDMaterialItems.SALT.toStack(9), Ingredient.of(CDBlocks.SALT_BLOCK));
+                Ingredient.of(Items.LAVA_BUCKET));
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
@@ -179,6 +171,8 @@ public class VanillaRecipe extends AbstractRecipeProvider {
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT.get()), CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), 0.35f, 200);
+        cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD.get()), CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD.toStack(), 0.35f, 200);
         // 烟熏炉
         cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 100);
         cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f, 100);
@@ -188,6 +182,8 @@ public class VanillaRecipe extends AbstractRecipeProvider {
         cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 100);
         cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 100);
         cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 100);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT.get()), CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), 0.35f, 200);
+        cooking(output, SmokingRecipe::new, "smoking/", "", Ingredient.of(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD.get()), CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD.toStack(), 0.35f, 200);
         // 篝火
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_HORSE_MEAT.get()), CDFoodItems.COOKED_HORSE_MEAT.toStack(), 0.35f, 200);
@@ -197,6 +193,8 @@ public class VanillaRecipe extends AbstractRecipeProvider {
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.FROG_MEAT_CHUNKS.get()), CDFoodItems.COOKED_FROG_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.DONKEY_MEAT_CHUNKS.get()), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS.toStack(), 0.35f, 200);
         cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.HORSE_MEAT_CHUNKS.get()), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT.get()), CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), 0.35f, 200);
+        cooking(output, CampfireCookingRecipe::new, "campfire_cooking/", "", Ingredient.of(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD.get()), CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD.toStack(), 0.35f, 200);
 
         compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
         compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);

@@ -33,11 +33,9 @@ public final class BlockSubProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(CDBlocks.PICKLE_JARS_BLOCK.get());
-        dropSelf(CDBlocks.SAP_COLLECTORS_BLOCK.get());
         dropSelf(CDBlocks.MILLSTONE_BLOCK.get());
         dropSelf(CDBlocks.JUICER_BLOCK.get());
         dropOther(CDBlocks.WINE_CAULDRON.get(), Items.CAULDRON);
-        dropOther(CDBlocks.BRINE_CAULDRON.get(), Items.CAULDRON);
 
         dropSelf(CDNaturalBlocks.APPLE_SAPLING.get());
         dropSelf(CDNaturalBlocks.APRICOT_SAPLING.get());

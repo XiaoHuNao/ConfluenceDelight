@@ -21,7 +21,7 @@ import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.mod.Confluence;
 
 @JeiPlugin
-public class ModJeiPlugin implements IModPlugin {
+public class CDJeiPlugin implements IModPlugin {
     public static final ResourceLocation UID = Confluence.asResource("jei_plugin");
     public static final ResourceLocation FLUID_STACK = ConfluenceDelight.asResource("textures/gui/jei/fluid_stack.png");
     public static final int DefaultWeight = 158;

@@ -22,7 +22,6 @@ public class CDCreativeTabs {
                         output.accept(CDBlocks.PICKLE_JARS_BLOCK.get());
                         output.accept(CDBlocks.MILLSTONE_BLOCK.get());
                         output.accept(CDBlocks.JUICER_BLOCK.get());
-                        output.accept(CDBlocks.SAP_COLLECTORS_BLOCK.get());
                         output.accept(CDBlocks.APRICOT_CRATE.get());
                         output.accept(CDBlocks.GRAPE_FRUIT_CRATE.get());
                         output.accept(CDBlocks.LEMON_CRATE.get());

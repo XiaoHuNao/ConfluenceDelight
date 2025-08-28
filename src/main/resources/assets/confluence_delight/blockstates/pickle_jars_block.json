@@ -1,6 +1,6 @@
 {
     "variants": {
-        "cover=false":  { "model": "confluence_delight:block/pickle_jars/pickle_jars_block_0" },
-        "cover=true":  { "model": "confluence_delight:block/pickle_jars/pickle_jars_block_1" }
+        "cover=false":  { "model": "confluence_delight:block/pickle_jars_block_0" },
+        "cover=true":  { "model": "confluence_delight:block/pickle_jars_block_1" }
     }
 }

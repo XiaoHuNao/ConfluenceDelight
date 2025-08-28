@@ -22,7 +22,7 @@ public class ItemEvents {
             if (foodProperties != null && !foodProperties.effects().isEmpty()) {
                 CDTextUtils.addFoodEffectTooltip(stack, event.getToolTip()::add, 1.0f, event.getContext().tickRate());
             }
-        } else if (item instanceof BaseFoodItem.BlockItem baseFoodItem) {
+        } else if (item instanceof BaseFoodItem.BItem baseFoodItem) {
             FoodProperties foodProperties = baseFoodItem.getFoodProperties(new ItemStack(baseFoodItem), event.getEntity());
             if (foodProperties != null && !foodProperties.effects().isEmpty()) {
                 CDTextUtils.addFoodEffectTooltip(stack, event.getToolTip()::add, 1.0f, event.getContext().tickRate());

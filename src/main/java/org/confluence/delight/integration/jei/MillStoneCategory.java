@@ -19,7 +19,7 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 
-import static org.confluence.terra_curio.integration.jei.ModJeiPlugin.addInput;
+import static org.confluence.mod.integration.jei.ModJeiPlugin.addInput;
 
 public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStoneRecipe>> {
     public static final RecipeType<RecipeHolder<MillStoneRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("millstone"));
@@ -38,12 +38,12 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
 
     @Override
     public int getWidth() {
-        return ModJeiPlugin.DefaultWeight;
+        return CDJeiPlugin.DefaultWeight;
     }
 
     @Override
     public int getHeight() {
-        return ModJeiPlugin.DefaultHeight;
+        return CDJeiPlugin.DefaultHeight;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class MillStoneCategory implements IRecipeCategory<RecipeHolder<MillStone
 
     @Override
     public void draw(RecipeHolder<MillStoneRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        guiGraphics.blit(background, 0, 0, 0, 0, ModJeiPlugin.DefaultWeight, ModJeiPlugin.DefaultHeight);
+        guiGraphics.blit(background, 0, 0, 0, 0, CDJeiPlugin.DefaultWeight, CDJeiPlugin.DefaultHeight);
         int workCircles = recipe.value().getWorkCircles();
         Component timeText = Component.translatable("jei.confluence_delight.info.millstone.work_circles", workCircles);
         guiGraphics.pose().pushPose();

@@ -9,7 +9,7 @@ import org.confluence.mod.common.init.block.NatureBlocks;
 
 public class HalfLeavesBlock extends PalmLeaves {
     public HalfLeavesBlock() {
-        super(BlockBehaviour.Properties.ofFullCopy(NatureBlocks.PALM_LOG_BLOCKS.getLeaves().get()));
+        super(BlockBehaviour.Properties.ofFullCopy(NatureBlocks.PALM_LOG_BLOCKS.LEAVES.get()));
     }
 
     @Override

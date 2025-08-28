@@ -39,13 +39,10 @@ public class EntitySubProvider extends EntityLootSubProvider {
 
     }
 
-    @Override
-    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-        return Streams.concat(
-                TEEntities.ENTITIES.getEntries().stream().map(DeferredHolder::get)
-        );
-    }
-
+//    @Override
+//    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
+//        return Streams.concat();
+//    }
 
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {

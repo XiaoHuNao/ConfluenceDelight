@@ -17,7 +17,6 @@ public class CDNaturalItems {
     public static final DeferredItem<Item> PINEAPPLE_SEEDS = register("pineapple_seeds", "菠萝种子", () -> new ItemNameBlockItem(CDNaturalBlocks.PINEAPPLE_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> DRAGON_FRUIT_SEEDS = register("dragon_fruit_seeds", "火龙果种子", () -> new ItemNameBlockItem(CDNaturalBlocks.DRAGON_FRUIT_CACTUS.get(), new Item.Properties()));
     public static final DeferredItem<Item> SPICY_PEPPER_SEEDS = register("spicy_pepper_seeds", "辣椒种子", () -> new ItemNameBlockItem(CDNaturalBlocks.SPICY_PEPPER_CROP.get(), new Item.Properties()));
-    public static final DeferredItem<Item> CUMIN_SEEDS = register("cumin_seeds", "孜然种子", () -> new ItemNameBlockItem(CDNaturalBlocks.CUMIN_CROP.get(), new Item.Properties()));
 
     private static <I extends Item> DeferredItem<I> register(final String en, final String zh, Supplier<I> it) {
         DeferredItem<I> item = ITEMS.register(en, it);

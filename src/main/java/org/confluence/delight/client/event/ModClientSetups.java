@@ -86,8 +86,6 @@ public class ModClientSetups {
         RenderType translucent = RenderType.translucent();
         ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.fluid().get(), translucent);
         ItemBlockRenderTypes.setRenderLayer(CDFluids.WINE.flowing().get(), translucent);
-        ItemBlockRenderTypes.setRenderLayer(CDFluids.BRINE.fluid().get(), translucent);
-        ItemBlockRenderTypes.setRenderLayer(CDFluids.BRINE.flowing().get(), translucent);
         RenderType cutout = RenderType.cutout();
         ItemBlockRenderTypes.setRenderLayer(CDNaturalBlocks.SPICY_PEPPER_CROP.get(), cutout);
         ItemBlockRenderTypes.setRenderLayer(CDNaturalBlocks.PINEAPPLE_CROP.get(), cutout);

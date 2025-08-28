@@ -94,9 +94,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenLocal()
-    maven { // Registrate
-        url "https://maven.ithundxr.dev/snapshots"
-    }
     maven {
         url = "https://www.cursemaven.com"
     }
@@ -132,9 +129,6 @@ repositories {
         }
     }
     maven {
-        url = "https://maven.bawnorton.com/releases"
-    }
-    maven {
         // For Terra Blender
         name = 'Forge'
         url = "https://maven.minecraftforge.net"
@@ -154,28 +148,27 @@ repositories {
         }
     }
     maven {
-        name = "Curios"
-        url = uri("https://maven.theillusivec4.top/")
-    }
-    maven { url = "https://maven.createmod.net" } // Create
-    maven {
-        name = "Fuzs Mod Resources"
-        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
-    }
-    maven {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
+    }
+    maven {
+        name "magicTeam MavenReleases"
+        url "https://maven.confluence.ink/releases"
+    }
+    maven {
+        name "magicTeam MavenSnapshots"
+        url "https://maven.confluence.ink/snapshots"
     }
 }
 
 dependencies {
-    implementation (files("libs/confluence_magic_lib-0.0.1.jar"))
+    implementation "org.confluence.lib:Confluence-Magic-Lib:0.0.2c-SNAPSHOT"
+    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-250819"){transitive = false}
     implementation "curse.maven:farmers-delight-398521:6597295"
-    implementation "curse.maven:confluence-1209464:6775061"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
-    compileOnly "curse.maven:terra-curio-1027625:6775102"
-    compileOnly "curse.maven:terra-entity-1173196:6479056"
+    compileOnly "curse.maven:terra-curio-1027625:6881159"
+    compileOnly "curse.maven:terra-entity-1173196:6878178"
     compileOnly "curse.maven:create-328085:6323264"
     runtimeOnly "curse.maven:create-328085:6323264"
     compileOnly "curse.maven:fruits-delight-943774:6500952"
@@ -219,16 +212,27 @@ tasks.withType(ProcessResources).configureEach {
     }
 }
 
+tasks.register('sourceJar', Jar) {
+    from sourceSets.main.allJava
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveClassifier.set('sources')
+}
+
+ext {
+    releasesUrl = "https://maven.confluence.ink/releases"
+    snapshotsUrl = "https://maven.confluence.ink/snapshots"
+}
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
+            artifact sourceJar
         }
     }
     repositories {
         maven {
             name = "Confluence"
-            url = "https://maven.confluence.ink/snapshots"
+            url = version.toString().endsWith("SNAPSHOT") ? snapshotsUrl : releasesUrl
             credentials {
                 username = System.getenv("MAGIC_TEAM_USERNAME")
                 password = System.getenv("MAGIC_TEAM_TOKEN")
