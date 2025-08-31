@@ -53,7 +53,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(Tags.Blocks.STORAGE_BLOCKS).add(
                 CDBlocks.BLACKCURRANT_CRATE.get(),
                 CDBlocks.BLOOD_ORANGE_CRATE.get(),
-                CDBlocks.BLOODY_MOSCATO_CRATE.get(),
                 CDBlocks.ELDERBERRY_CRATE.get(),
                 CDBlocks.APRICOT_CRATE.get(),
                 CDBlocks.BANANA_CRATE.get(),
@@ -74,7 +73,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(CDTags.Blocks.BLACKCURRANT_CRATE).add(CDBlocks.BLACKCURRANT_CRATE.get());
         tag(CDTags.Blocks.BLOOD_ORANGE_CRATE).add(CDBlocks.BLOOD_ORANGE_CRATE.get());
-        tag(CDTags.Blocks.BLOODY_MOSCATO_CRATE).add(CDBlocks.BLOODY_MOSCATO_CRATE.get());
         tag(CDTags.Blocks.ELDERBERRY_CRATE).add(CDBlocks.ELDERBERRY_CRATE.get());
         tag(CDTags.Blocks.APRICOT_CRATE).add(CDBlocks.APRICOT_CRATE.get());
         tag(CDTags.Blocks.BANANA_CRATE).add(CDBlocks.BANANA_CRATE.get());
@@ -130,7 +128,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     Block[] crate = new Block[]{
             CDBlocks.BLACKCURRANT_CRATE.get(),
             CDBlocks.BLOOD_ORANGE_CRATE.get(),
-            CDBlocks.BLOODY_MOSCATO_CRATE.get(),
             CDBlocks.ELDERBERRY_CRATE.get(),
             CDBlocks.APRICOT_CRATE.get(),
             CDBlocks.BANANA_CRATE.get(),

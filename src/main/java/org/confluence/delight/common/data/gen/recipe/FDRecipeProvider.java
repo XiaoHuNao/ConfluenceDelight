@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.mod.common.init.item.ConsumableItems;
@@ -48,6 +49,7 @@ public class FDRecipeProvider extends AbstractRecipeProvider {
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(FoodItems.COOKED_FROG), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_FROG_MEAT_CHUNKS, 2).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_DONKEY_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_DONKEY_MEAT_CHUNKS, 2).build(recipeOutput);
         CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.COOKED_HORSE_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.COOKED_HORSE_MEAT_CHUNKS, 2).build(recipeOutput);
+        CuttingBoardRecipeBuilder.cuttingRecipe(Ingredient.of(CDFoodItems.RAW_FLYING_FISH_MEAT), Ingredient.of(ModTags.KNIVES), CDFoodItems.RAW_FLYING_FISH_SLICES, 3).build(recipeOutput);
 
         //厨锅
         CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.BUTTER, 1, 50, 0.2f)
@@ -150,6 +152,20 @@ public class FDRecipeProvider extends AbstractRecipeProvider {
                 .build(recipeOutput);
         CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD, 1, 200, 0.35f)
                 .addIngredient(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD)
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.FLYING_FISH_SHARK_FIN_SOUP, 1, 200, 1.0f, Items.BOWL)
+                .addIngredient(MaterialItems.FILAMENTOUS_FIN)
+                .addIngredient(Tags.Items.MUSHROOMS)
+                .addIngredient(ModItems.ONION.get())
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.FLYING_FISH_SOUP, 1, 200, 1.0f, Items.BOWL)
+                .addIngredient(CDFoodItems.RAW_FLYING_FISH_MEAT)
+                .addIngredient(Tags.Items.MUSHROOMS)
+                .addIngredient(CDFoodItems.POTATO_PIECE)
+                .addIngredient(CDFoodItems.POTATO_PIECE)
+                .addIngredient(CDFoodItems.POTATO_PIECE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .build(recipeOutput);
     }

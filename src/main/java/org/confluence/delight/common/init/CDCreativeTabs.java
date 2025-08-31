@@ -37,7 +37,6 @@ public class CDCreativeTabs {
                         output.accept(CDBlocks.STAR_FRUIT_CRATE.get());
                         output.accept(CDBlocks.POMEGRANATE_CRATE.get());
                         output.accept(CDBlocks.BLACKCURRANT_CRATE.get());
-                        output.accept(CDBlocks.BLOODY_MOSCATO_CRATE.get());
                         output.accept(CDBlocks.ELDERBERRY_CRATE.get());
                         output.accept(CDBlocks.PINEAPPLE_CRATE.get());
                         output.accept(CDBlocks.SPICY_PEPPER_CRATE.get());

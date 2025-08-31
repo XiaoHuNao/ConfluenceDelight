@@ -38,7 +38,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addFruitToTag(CDTags.Items.C_FRUIT_LEMON, FoodItems.LEMON.get());
         addFruitToTag(CDTags.Items.C_FRUIT_BLACKCURRANT, FoodItems.BLACKCURRANT.get());
         addFruitToTag(CDTags.Items.C_FRUIT_BLOOD_ORANGE, FoodItems.BLOOD_ORANGE.get());
-        addFruitToTag(CDTags.Items.C_FRUIT_BLOODY_MOSCATO, FoodItems.BLOODY_MOSCATO.get());
         addFruitToTag(CDTags.Items.C_FRUIT_ELDERBERRY, FoodItems.ELDERBERRY.get());
         addFruitToTag(CDTags.Items.C_FRUIT_APRICOT, FoodItems.APRICOT.get());
         addFruitToTag(CDTags.Items.C_FRUIT_BANANA, FoodItems.BANANA.get());
@@ -127,7 +126,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(Tags.Items.STORAGE_BLOCKS).add(
                 CDBlocks.BLACKCURRANT_CRATE.asItem(),
                 CDBlocks.BLOOD_ORANGE_CRATE.asItem(),
-                CDBlocks.BLOODY_MOSCATO_CRATE.asItem(),
                 CDBlocks.ELDERBERRY_CRATE.asItem(),
                 CDBlocks.APRICOT_CRATE.asItem(),
                 CDBlocks.BANANA_CRATE.asItem(),
@@ -147,7 +145,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         );
         tag(CDTags.Items.BLACKCURRANT_CRATE).add(CDBlocks.BLACKCURRANT_CRATE.asItem());
         tag(CDTags.Items.BLOOD_ORANGE_CRATE).add(CDBlocks.BLOOD_ORANGE_CRATE.asItem());
-        tag(CDTags.Items.BLOODY_MOSCATO_CRATE).add(CDBlocks.BLOODY_MOSCATO_CRATE.asItem());
         tag(CDTags.Items.ELDERBERRY_CRATE).add(CDBlocks.ELDERBERRY_CRATE.asItem());
         tag(CDTags.Items.APRICOT_CRATE).add(CDBlocks.APRICOT_CRATE.asItem());
         tag(CDTags.Items.BANANA_CRATE).add(CDBlocks.BANANA_CRATE.asItem());

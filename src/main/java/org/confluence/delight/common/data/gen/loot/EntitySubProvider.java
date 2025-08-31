@@ -2,18 +2,26 @@ package org.confluence.delight.common.data.gen.loot;
 
 import com.google.common.collect.Streams;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.mod.mixin.accessor.EntityLootSubProviderAccessor;
 import org.confluence.terraentity.init.TEEntities;
+import org.confluence.terraentity.init.entity.TEMonsterEntities;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
@@ -33,15 +41,26 @@ public class EntitySubProvider extends EntityLootSubProvider {
     @Override
     public void generate() {
         EnchantedCountIncreaseFunction.Builder random0To1 = EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 1.0F));
+        LootItemConditionalFunction.Builder<?> count1To2 = SetItemCountFunction.setCount(UniformGenerator.between(1, 2));
         LootItemConditionalFunction.Builder<?> count1To3 = SetItemCountFunction.setCount(UniformGenerator.between(1, 3));
         LootItemConditionalFunction.Builder<?> count2To5 = SetItemCountFunction.setCount(UniformGenerator.between(2, 5));
         LootItemConditionalFunction.Builder<?> count2To6 = SetItemCountFunction.setCount(UniformGenerator.between(2, 6));
 
+//        add(TEMonsterEntities.BLACK_SLIME, ConfluenceDelight.asResourceKey(Registries.LOOT_TABLE, "entities/terra_entity/black_slime"), LootTable.lootTable()
+//                .withPool(LootPool.lootPool()
+//                        .setRolls(ConstantValue.exactly(1))
+//                        .add(LootItem.lootTableItem(CDFoodItems.GEL_JUICE).setWeight(2))));
+//        add(TEMonsterEntities.FLYING_FISH., ConfluenceDelight.asResourceKey(Registries.LOOT_TABLE, "entities/terra_entity/flying_fish"), LootTable.lootTable()
+//                .withPool(LootPool.lootPool()
+//                        .setRolls(ConstantValue.exactly(1))
+//                        .add(LootItem.lootTableItem(CDFoodItems.RAW_FLYING_FISH_MEAT).apply(count1To2))));
     }
 
 //    @Override
 //    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
-//        return Streams.concat();
+//        return Streams.concat(
+//                TEEntities.ENTITIES
+//        );
 //    }
 
     @Override

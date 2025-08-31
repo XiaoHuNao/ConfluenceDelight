@@ -56,7 +56,6 @@ public final class CDTags {
     public static class Items {
         public static final TagKey<Item> C_FRUIT_BLACKCURRANT = c("foods/fruits/blackcurrant");
         public static final TagKey<Item> C_FRUIT_BLOOD_ORANGE = c("foods/fruits/blood_orange");
-        public static final TagKey<Item> C_FRUIT_BLOODY_MOSCATO = c("foods/fruits/bloody_moscato");
         public static final TagKey<Item> C_FRUIT_ELDERBERRY = c("foods/fruits/elderberry");
         public static final TagKey<Item> C_FRUIT_APRICOT = c("foods/fruits/apricot");
         public static final TagKey<Item> C_FRUIT_BANANA = c("foods/fruits/banana");
@@ -77,7 +76,6 @@ public final class CDTags {
 
         public static final TagKey<Item> BLACKCURRANT_CRATE = c("storage_blocks/blackcurrant");
         public static final TagKey<Item> BLOOD_ORANGE_CRATE = c("storage_blocks/blood_orange");
-        public static final TagKey<Item> BLOODY_MOSCATO_CRATE = c("storage_blocks/bloody_moscato");
         public static final TagKey<Item> ELDERBERRY_CRATE = c("storage_blocks/elderberry");
         public static final TagKey<Item> APRICOT_CRATE = c("storage_blocks/apricot");
         public static final TagKey<Item> BANANA_CRATE = c("storage_blocks/banana");

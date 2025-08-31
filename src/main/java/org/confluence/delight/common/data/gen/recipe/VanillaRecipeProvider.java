@@ -161,6 +161,13 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
                 Ingredient.of(Items.CHICKEN),
                 Ingredient.of(FoodItems.SPICY_PEPPER),
                 Ingredient.of(Items.LAVA_BUCKET));
+        shapeless(output, "", "", CDFoodItems.FLYING_FISH_SASHIMI.toStack(),
+                Ingredient.of(MaterialItems.FILAMENTOUS_FIN),
+                Ingredient.of(CDFoodItems.FLYING_FISH_CAVIAR),
+                Ingredient.of(ModItems.ONION.get()));
+        shapeless(output, "", "", CDFoodItems.FLYING_FISH_CAVIAR.toStack(),
+                Ingredient.of(Items.GLASS_BOTTLE),
+                Ingredient.of(CDFoodItems.FLYING_FISH_ROE.toStack(64)));
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);
@@ -198,7 +205,6 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
 
         compressAndDecompressNine(output, FoodItems.BLACKCURRANT, CDTags.Items.C_FRUIT_BLACKCURRANT, CDBlocks.BLACKCURRANT_CRATE, CDTags.Items.BLACKCURRANT_CRATE);
         compressAndDecompressNine(output, FoodItems.BLOOD_ORANGE, CDTags.Items.C_FRUIT_BLOOD_ORANGE, CDBlocks.BLOOD_ORANGE_CRATE, CDTags.Items.BLOOD_ORANGE_CRATE);
-        compressAndDecompressNine(output, FoodItems.BLOODY_MOSCATO, CDTags.Items.C_FRUIT_BLOODY_MOSCATO, CDBlocks.BLOODY_MOSCATO_CRATE, CDTags.Items.BLOODY_MOSCATO_CRATE);
         compressAndDecompressNine(output, FoodItems.ELDERBERRY, CDTags.Items.C_FRUIT_ELDERBERRY, CDBlocks.ELDERBERRY_CRATE, CDTags.Items.ELDERBERRY_CRATE);
         compressAndDecompressNine(output, FoodItems.APRICOT, CDTags.Items.C_FRUIT_APRICOT, CDBlocks.APRICOT_CRATE, CDTags.Items.APRICOT_CRATE);
         compressAndDecompressNine(output, FoodItems.BANANA, CDTags.Items.C_FRUIT_BANANA, CDBlocks.BANANA_CRATE, CDTags.Items.BANANA_CRATE);
