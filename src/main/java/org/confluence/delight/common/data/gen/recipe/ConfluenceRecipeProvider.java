@@ -11,23 +11,29 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.checkerframework.checker.units.qual.C;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.lib.common.recipe.AmountIngredient;
 import org.confluence.mod.Confluence;
+import org.confluence.mod.common.init.block.DecorativeBlocks;
 import org.confluence.mod.common.init.block.NatureBlocks;
 import org.confluence.mod.common.init.item.ConsumableItems;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.confluence.mod.common.recipe.CookingPotRecipe;
+import org.confluence.mod.common.recipe.SolidifierRecipe;
 import org.confluence.terra_curio.common.init.TCItems;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
@@ -67,11 +73,35 @@ public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
         cookingPot(recipeOutput, CDFoodItems.BLOOD_RED_PORK_RIB_SOUP.toStack(), bowlContainer, stoveHeatSource, 200, Ingredient.of(MaterialItems.VERTEBRA), Ingredient.of(NatureBlocks.VICIOUS_MUSHROOM), Ingredient.of(ItemTags.MEAT), AmountIngredient.of(4, CDFoodItems.POTATO_PIECE));
         cookingPot(recipeOutput, CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), Ingredient.EMPTY, stoveHeatSource, 200, Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT));
         cookingPot(recipeOutput, CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD.toStack(), Ingredient.EMPTY, stoveHeatSource, 200, Ingredient.of(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD));
+        cookingPot(recipeOutput, CDFoodItems.SPECIAL_MUSHROOM_SOUP.toStack(), bowlContainer, campfireHeatSource, 100, Ingredient.of(MaterialItems.LIFE_MUSHROOM), Ingredient.of(MaterialItems.GLOWING_MUSHROOM), Ingredient.of(Items.RED_MUSHROOM), Ingredient.of(Items.BROWN_MUSHROOM));
+
+        //固化机
+        solidifier(recipeOutput, CDFoodItems.BUBBLE_GUM.toStack(),
+                ShapedRecipePattern.of(Map.of(
+                        '#', Ingredient.of(MaterialItems.GEL)
+        ),
+                        List.of(
+                                "# ",
+                                "  "
+                        )));
+        solidifier(recipeOutput, CDFoodItems.SUPER_BUBBLE_GUM.toStack(),
+                ShapedRecipePattern.of(Map.of(
+                        '#', Ingredient.of(DecorativeBlocks.BLUE_GEL_BLOCK)
+                ),
+                        List.of(
+                                "# ",
+                                "  "
+                        )));
     }
 
     protected void cookingPot(RecipeOutput recipeOutput, ItemStack result, Ingredient container, CookingPotRecipe.HeatSourcePredicate heatSource, int cookingTime, Ingredient... ingredients) {
         ResourceLocation id = Confluence.asResource("cooking_pot/" + getItemName(result.getItem()));
         NonNullList<Ingredient> zingredients = NonNullList.of(Ingredient.EMPTY, ingredients);
         recipeOutput.accept(id, new CookingPotRecipe(result, zingredients, container, heatSource, cookingTime), null);
+    }
+
+    protected void solidifier(RecipeOutput recipeOutput, ItemStack result, ShapedRecipePattern pattern) {
+        ResourceLocation id = Confluence.asResource("solidifier/" + getItemName(result.getItem()));
+        recipeOutput.accept(id, new SolidifierRecipe(result, pattern), null);
     }
 }

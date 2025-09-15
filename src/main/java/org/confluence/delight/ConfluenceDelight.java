@@ -61,6 +61,10 @@ public class ConfluenceDelight {
         return ResourceKey.create(registryKey, asResource(path));
     }
 
+    public static String asPlainId(String path) {
+        return MODID + ':' + path;
+    }
+
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent

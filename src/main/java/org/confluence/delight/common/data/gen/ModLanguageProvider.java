@@ -129,6 +129,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence.blood_red_pork_rib_soup.0",
                 "You are a monster.",
                 "你是怪物");
+        add("tooltip.item.confluence_delight.special_mushroom_soup",
+                "only the simplest processing is needed",
+                "只需要最简单的处理");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

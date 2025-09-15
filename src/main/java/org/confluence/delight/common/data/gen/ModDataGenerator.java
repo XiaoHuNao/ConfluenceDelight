@@ -42,7 +42,7 @@ public class ModDataGenerator {
         generator.addProvider(server, blockTagsProvider);
         generator.addProvider(server, fluidTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
-        generator.addProvider(server, new CollectRecipeProvider(output, lookup,
+        generator.addProvider(server, new CollectRecipeProvider(ConfluenceDelight.asPlainId("server"), output, lookup,
                 CDRecipeProvider::new,
                 ConfluenceRecipeProvider::new,
                 HeavyWorkBenchProvider::new,

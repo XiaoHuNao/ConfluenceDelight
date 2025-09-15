@@ -7,7 +7,7 @@
     "mixins": [
         "entity.HarvestSpeedMixin$ChickenMixin",
         "entity.HarvestSpeedMixin$EatBlockGoalMixin",
-        "entity.UpdateSpecialPricesMixin",
+        "entity.UpdateSpecialPricesMixin"
     ],
     "client": [
     ],

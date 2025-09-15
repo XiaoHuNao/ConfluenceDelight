@@ -162,8 +162,8 @@ repositories {
 }
 
 dependencies {
-    implementation "org.confluence.lib:Confluence-Magic-Lib:0.0.2c-SNAPSHOT"
-    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-250819"){transitive = false}
+    implementation "org.confluence.lib:Confluence-Magic-Lib:0.0.2d-SNAPSHOT"
+    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-250915"){transitive = false}
     implementation "curse.maven:farmers-delight-398521:6597295"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
@@ -190,6 +190,7 @@ dependencies {
 // When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
 // See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.withType(Copy).configureEach { duplicatesStrategy = DuplicatesStrategy.EXCLUDE }
+tasks.withType(Jar).configureEach { duplicatesStrategy = DuplicatesStrategy.EXCLUDE }
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 
@@ -212,12 +213,7 @@ tasks.withType(ProcessResources).configureEach {
     }
 }
 
-tasks.register('sourceJar', Jar) {
-    from sourceSets.main.allJava
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    archiveClassifier.set('sources')
-}
-
+java.withSourcesJar()
 ext {
     releasesUrl = "https://maven.confluence.ink/releases"
     snapshotsUrl = "https://maven.confluence.ink/snapshots"
@@ -226,7 +222,6 @@ publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
-            artifact sourceJar
         }
     }
     repositories {
