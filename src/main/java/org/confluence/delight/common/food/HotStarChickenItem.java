@@ -8,6 +8,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.confluence.delight.common.init.CDJukeboxSongs;
 import org.confluence.delight.util.CDEffectData;
+import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class HotStarChickenItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.hot_star_chicken"));
+        CDTextUtils.addFoodEffectTooltip(stack, tooltipComponents::add, 1.0f, context.tickRate());
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

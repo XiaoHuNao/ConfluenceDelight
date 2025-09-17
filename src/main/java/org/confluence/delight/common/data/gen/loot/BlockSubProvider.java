@@ -14,12 +14,10 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.common.block.natural.CoconutBlock;
-import org.confluence.delight.common.init.CDBlocks;
-import org.confluence.delight.common.init.CDFoodBlocks;
-import org.confluence.delight.common.init.CDNaturalBlocks;
-import org.confluence.delight.common.init.CDNaturalItems;
+import org.confluence.delight.common.init.*;
 import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.Set;
@@ -89,6 +87,22 @@ public final class BlockSubProvider extends BlockLootSubProvider {
                                         .hasProperty(CoconutBlock.PIECE, piece)))
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(piece))));
             }
+            return LootTable.lootTable().withPool(pool);
+        });
+
+        add(CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get(), loot -> {
+            LootPool.Builder pool = LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1))
+                    .add(LootItem.lootTableItem(CDFoodItems.BLOOD_TUMOR_FRUIT)
+                            .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(
+                                            CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get())
+                                    .setProperties(StatePropertiesPredicate.Builder.properties()
+                                            .hasProperty(CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get().AGE, 5)
+                                    )
+                            )
+                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                    );
+
             return LootTable.lootTable().withPool(pool);
         });
     }

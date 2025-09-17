@@ -104,7 +104,9 @@ public class CoconutTreeFeature extends Feature<CoconutTreeFeature.Config> {
         return false;
     }
 
-    public record Config(BlockStateProvider trunk, BlockStateProvider leavesBlockBottom, BlockStateProvider leavesBlockTop, BlockStateProvider leaveBlockDouble, BlockStateProvider topBlock) implements FeatureConfiguration {
+    public record Config(BlockStateProvider trunk, BlockStateProvider leavesBlockBottom,
+                         BlockStateProvider leavesBlockTop, BlockStateProvider leaveBlockDouble,
+                         BlockStateProvider topBlock) implements FeatureConfiguration {
         public static final Codec<Config> CODEC = RecordCodecBuilder.create(instance -> instance.group(
                 BlockStateProvider.CODEC.fieldOf("trunk_block").forGetter(Config::trunk),
                 BlockStateProvider.CODEC.fieldOf("leaves_block_bottom").forGetter(Config::leavesBlockBottom),

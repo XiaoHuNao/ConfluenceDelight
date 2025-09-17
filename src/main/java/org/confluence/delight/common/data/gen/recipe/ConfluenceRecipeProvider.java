@@ -14,7 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import org.checkerframework.checker.units.qual.C;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
@@ -74,20 +73,21 @@ public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
         cookingPot(recipeOutput, CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), Ingredient.EMPTY, stoveHeatSource, 200, Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT));
         cookingPot(recipeOutput, CDFoodItems.COOKED_PROLIFERATING_FLESH_AND_BLOOD.toStack(), Ingredient.EMPTY, stoveHeatSource, 200, Ingredient.of(CDFoodItems.RAW_PROLIFERATING_FLESH_AND_BLOOD));
         cookingPot(recipeOutput, CDFoodItems.SPECIAL_MUSHROOM_SOUP.toStack(), bowlContainer, campfireHeatSource, 100, Ingredient.of(MaterialItems.LIFE_MUSHROOM), Ingredient.of(MaterialItems.GLOWING_MUSHROOM), Ingredient.of(Items.RED_MUSHROOM), Ingredient.of(Items.BROWN_MUSHROOM));
+        cookingPot(recipeOutput, CDFoodItems.OVERLOADED_BREAD.toStack(), Ingredient.of(FoodItems.BOULDER_BREAD), campfireHeatSource, 1000, Ingredient.of(ModItems.BACON.get()), Ingredient.of(FoodItems.BURGER), Ingredient.of(FoodItems.GOLDEN_DELIGHT), Ingredient.of(CDFoodItems.GRAPE_JUICE));
 
         //固化机
         solidifier(recipeOutput, CDFoodItems.BUBBLE_GUM.toStack(),
                 ShapedRecipePattern.of(Map.of(
-                        '#', Ingredient.of(MaterialItems.GEL)
-        ),
+                                '#', Ingredient.of(MaterialItems.GEL)
+                        ),
                         List.of(
                                 "# ",
                                 "  "
                         )));
         solidifier(recipeOutput, CDFoodItems.SUPER_BUBBLE_GUM.toStack(),
                 ShapedRecipePattern.of(Map.of(
-                        '#', Ingredient.of(DecorativeBlocks.BLUE_GEL_BLOCK)
-                ),
+                                '#', Ingredient.of(DecorativeBlocks.BLUE_GEL_BLOCK)
+                        ),
                         List.of(
                                 "# ",
                                 "  "

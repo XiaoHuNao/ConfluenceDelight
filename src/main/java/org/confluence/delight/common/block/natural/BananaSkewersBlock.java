@@ -23,6 +23,7 @@ import org.confluence.delight.common.init.CDNaturalBlocks;
 
 public class BananaSkewersBlock extends Block {
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 2);
+
     public BananaSkewersBlock() {
         super(BlockBehaviour.Properties.of().strength(1.0f).pushReaction(PushReaction.DESTROY).randomTicks());
     }

@@ -4,6 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
@@ -76,6 +77,9 @@ public class CDFoodItems {
             () -> DelightFoodProperties.hasEffectProperties(5, 7,
                     CDEffectData.of(MobEffects.POISON, 40, 1),
                     CDEffectData.of(ModEffects.RAGE, 2400)));
+    public static final DeferredItem<BaseFoodItem> BLOOD_TUMOR_FRUIT = registerNormalFood("blood_tumor_fruit", "血瘤果",
+            () -> DelightFoodProperties.hasEffectProperties(1, 1,
+                    CDEffectData.of(CDEffects.PARASITIC, Integer.MAX_VALUE)));
     public static final DeferredItem<BaseFoodItem> BUTTER = registerNormalFood("butter", "黄油",
             () -> DelightFoodProperties.hasEffectProperties(3, 4.5f,
                     CDEffectData.of(MobEffects.CONFUSION, 400)));
@@ -137,21 +141,7 @@ public class CDFoodItems {
     public static final DeferredItem<Item> SPECIAL_MUSHROOM_SOUP = normalItemRegister("special_mushroom_soup", "特色蘑菇汤", SpecialMushroomSoup::new);
 
     //大型成品
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SOUP = registerNormalFood("flying_fish_soup", "飞鱼汤",
-            () -> DelightFoodProperties.hasEffectProperties(12, 8, Items.BOWL,
-                    CDEffectData.of(MobEffects.JUMP, 1200, 1),
-                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200)));
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SHARK_FIN_SOUP = registerNormalFood("flying_fish_shark_fin_soup", "飞鱼鱼翅汤",
-            () -> DelightFoodProperties.hasEffectProperties(3, 1, Items.BOWL,
-                    CDEffectData.of(MobEffects.SLOW_FALLING, 1800)));
-    public static final DeferredItem<BaseFoodItem.BItem> CHICKEN_HOT_POT = registerNormalBlockItemFood("chicken_hot_pot", "鸡公煲", CDFoodBlocks.CHICKEN_HOT_POT_BLOCK,
-            ModFoodProperties.PlentySatisfiedProperties(6000, 20, 20, Items.BOWL));
-    public static final DeferredItem<BaseFoodItem> DONKEY_MEAT_FIRE = registerNormalFood("donkey_meat_fire", "驴肉火烧",
-            () -> DelightFoodProperties.hasEffectProperties(10, 12f,
-                    CDEffectData.of(ModEffects.HUNGER_DELAYED, 3600)));
-    public static final DeferredItem<BaseFoodItem> HORSE_MEAT_SASHIMI = registerNormalFood("horse_meat_sashimi", "马肉刺身",
-            () -> DelightFoodProperties.hasEffectProperties(8, 9.2f,
-                    CDEffectData.of(MobEffects.MOVEMENT_SPEED, 3600, 1)));
+    public static final DeferredItem<Item> OVERLOADED_BREAD = normalItemRegister("overloaded_bread", "过载面包", OverloadedBreadItem::new);
     public static final DeferredItem<BaseFoodItem> BUTTER_FRIED_CLOUD_BREAD_SLICES = registerFood("butter_fried_cloud_bread_slices", "黄油煎云朵面包片", builder -> builder.food(
             DelightFoodProperties.hasEffectProperties(5, 10f, CDEffectData.of(MobEffects.SLOW_FALLING, 300))
     ).duration(d -> 25).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT));
@@ -249,6 +239,21 @@ public class CDFoodItems {
                             CDEffectData.of(ModEffects.CHOKING, 2000)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
     public static final DeferredItem<Item> HOT_STAR_CHICKEN = normalItemRegister("hot_star_chicken", "豪大大鸡排", HotStarChickenItem::new);
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SOUP = registerNormalFood("flying_fish_soup", "飞鱼汤",
+            () -> DelightFoodProperties.hasEffectProperties(12, 8, Items.BOWL,
+                    CDEffectData.of(MobEffects.JUMP, 1200, 1),
+                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200)));
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SHARK_FIN_SOUP = registerNormalFood("flying_fish_shark_fin_soup", "飞鱼鱼翅汤",
+            () -> DelightFoodProperties.hasEffectProperties(3, 1, Items.BOWL,
+                    CDEffectData.of(MobEffects.SLOW_FALLING, 1800)));
+    public static final DeferredItem<BaseFoodItem.BItem> CHICKEN_HOT_POT = registerNormalBlockItemFood("chicken_hot_pot", "鸡公煲", CDFoodBlocks.CHICKEN_HOT_POT_BLOCK,
+            ModFoodProperties.PlentySatisfiedProperties(6000, 20, 20, Items.BOWL));
+    public static final DeferredItem<BaseFoodItem> DONKEY_MEAT_FIRE = registerNormalFood("donkey_meat_fire", "驴肉火烧",
+            () -> DelightFoodProperties.hasEffectProperties(10, 12f,
+                    CDEffectData.of(ModEffects.HUNGER_DELAYED, 3600)));
+    public static final DeferredItem<BaseFoodItem> HORSE_MEAT_SASHIMI = registerNormalFood("horse_meat_sashimi", "马肉刺身",
+            () -> DelightFoodProperties.hasEffectProperties(8, 9.2f,
+                    CDEffectData.of(MobEffects.MOVEMENT_SPEED, 3600, 1)));
     public static final DeferredItem<Item> HARVEST_STEW = normalItemRegister("harvest_stew", "丰收大锅炖", HarvestStewItem::new);
     public static final DeferredItem<Item> THE_MEAL_OF_LIFE = normalItemRegister("the_meal_of_life", "晶髓金菇膳", TheMealOfLifeItem::new);
     public static final DeferredItem<BaseFoodItem> GRASS_SEED_SOUP = registerToolTipFood("grass_seed_soup", "草籽汤", builder -> builder.food(
@@ -351,6 +356,12 @@ public class CDFoodItems {
             .duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
 
     public static <I extends Item> DeferredItem<I> normalItemRegister(final String en, final String zh, Supplier<I> it) {
+        DeferredItem<I> item = ITEMS.register(en, it);
+        chineseProviders.add(l -> l.addItem(item, zh));
+        return item;
+    }
+
+    public static <I extends BlockItem> DeferredItem<I> normalBItemRegister(final String en, final String zh, Supplier<I> it) {
         DeferredItem<I> item = ITEMS.register(en, it);
         chineseProviders.add(l -> l.addItem(item, zh));
         return item;

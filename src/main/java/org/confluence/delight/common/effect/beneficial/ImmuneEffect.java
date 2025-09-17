@@ -34,7 +34,4 @@ public class ImmuneEffect extends MobEffect {
         return true;
     }
 
-    public boolean isImmuneTo(Holder<MobEffect> effect) {
-        return immuneEffects.contains(effect);
-    }
 }

@@ -6,7 +6,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class StartupConfigs {
     public static ModConfigSpec.IntValue FLUID_CAPACITY;
-    public static ModConfigSpec.BooleanValue INFINITE_FLUID_BRINE_ENABLED ;
+    public static ModConfigSpec.BooleanValue INFINITE_FLUID_BRINE_ENABLED;
 
     public static void onLoad() {
     }

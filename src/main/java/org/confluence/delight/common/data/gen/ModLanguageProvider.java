@@ -132,55 +132,61 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence_delight.special_mushroom_soup",
                 "only the simplest processing is needed",
                 "只需要最简单的处理");
+        add("tooltip.item.confluence_delight.overloaded_bread",
+                "It feels like I won't have to eat for a month",
+                "感觉一个月不用吃饭了");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",
-                "使用苹果右击橡树树苗获得");
+                "使用苹果右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.apricot_sapling",
                 "It is obtained by right-clicking the birch sapling with an apricot",
-                "使用杏右击白桦树苗获得");
+                "使用杏右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.grapefruit_sapling",
                 "It is obtained by right-clicking the jungle sapling with a grapefruit",
-                "使用葡萄柚右击丛林树苗获得");
+                "使用葡萄柚右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.lemon_sapling",
                 "It is obtained by right-clicking the spruce sapling with a lemon",
-                "使用柠檬右击云杉树苗获得");
+                "使用柠檬右键点击云杉树苗获得");
         add("tooltip.item.confluence_delight.peach_sapling",
                 "It is obtained by right-clicking the oak sapling with a peach",
-                "使用桃子右击橡树树苗获得");
+                "使用桃子右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.cherry_sapling",
                 "It is obtained by right-clicking the spruce sapling with a cherry",
-                "使用樱桃右击云杉树苗获得");
+                "使用樱桃右键点击云杉树苗获得");
         add("tooltip.item.confluence_delight.plum_sapling",
                 "It is obtained by right-clicking the birch sapling with a plum",
-                "使用李子右击白桦树苗获得");
+                "使用李子右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.blood_orange_sapling",
                 "It is obtained by right-clicking the jungle sapling with a blood orange",
-                "使用血橙右击丛林树苗获得");
+                "使用血橙右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.rambutan_sapling",
                 "It is obtained by right-clicking the jungle sapling with a rambutan",
-                "使用红毛丹右击丛林树苗获得");
+                "使用红毛丹右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.mango_sapling",
                 "It is obtained by right-clicking the jungle sapling with a mango",
-                "使用芒果右击丛林树苗获得");
+                "使用芒果右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.banana_sapling",
                 "It is obtained by right-clicking the jungle sapling with a banana",
-                "使用香蕉右击丛林树苗获得");
+                "使用香蕉右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.coconut_sapling",
                 "It is obtained by right-clicking the palm sapling with a coconut",
-                "使用椰子右击棕榈树苗获得");
+                "使用椰子右键点击棕榈树苗获得");
         add("tooltip.item.confluence_delight.star_fruit_sapling",
                 "It is obtained by right-clicking the oak sapling with a star fruit",
-                "使用杨桃右击橡树树苗获得");
+                "使用杨桃右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.pomegranate_sapling",
                 "It is obtained by right-clicking the birch sapling with a pomegranate",
-                "使用石榴右击白桦树苗获得");
+                "使用石榴右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.blackcurrant_shrub",
                 "It can be obtained by right-clicking blackcurrant on azalea or flowering azalea",
-                "使用黑醋栗右击杜鹃花丛或盛开的杜鹃花丛获得");
+                "使用黑醋栗右键点击杜鹃花丛或盛开的杜鹃花丛获得");
         add("tooltip.item.confluence_delight.elderberry_shrub",
-                "It can be obtained by right-clicking elderberry on on azalea or flowering azalea",
-                "使用接骨木右击杜鹃花丛或盛开的杜鹃花丛获得");
+                "It can be obtained by right-clicking elderberry on azalea or flowering azalea",
+                "使用接骨木右键点击杜鹃花丛或盛开的杜鹃花丛获得");
+        add("tooltip.item.confluence_delight.blood_meat_vine",
+                "It can be obtained by right-clicking blood tumor fruit on crimson drooping vine",
+                "使用血藤果右键点击猩红垂蔓获得");
 
         //SoundsSubmit
         add("confluence_delight.subtitle.millstone_work",

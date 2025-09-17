@@ -24,6 +24,7 @@ import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
 import org.confluence.lib.common.recipe.AmountIngredient;
+import org.confluence.mod.common.init.block.NatureBlocks;
 import org.confluence.mod.common.init.item.FoodItems;
 
 import java.util.concurrent.CompletableFuture;
@@ -85,6 +86,7 @@ public class CDRecipeProvider extends AbstractRecipeProvider {
         blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.POMEGRANATE), CDNaturalBlocks.POMEGRANATE_SAPLING.get(), Blocks.BIRCH_SAPLING);
         blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.BLACKCURRANT), CDNaturalBlocks.BLACKCURRANT_SHRUB_BLOCK.get(), Blocks.AZALEA, Blocks.FLOWERING_AZALEA);
         blockInteractionRecipe(recipeOutput, Ingredient.of(FoodItems.ELDERBERRY), CDNaturalBlocks.ELDERBERRY_SHRUB_BLOCK.get(), Blocks.AZALEA, Blocks.FLOWERING_AZALEA);
+        blockInteractionRecipe(recipeOutput, Ingredient.of(CDFoodItems.BLOOD_TUMOR_FRUIT), CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get(), NatureBlocks.CRIMSON_DROOPING_VINE.get());
     }
 
     protected void pickleJarsRecipe(RecipeOutput recipeOutput, boolean cover, ItemStack result, FluidStack fluidInput, int craftTime, Ingredient... ingredients) {

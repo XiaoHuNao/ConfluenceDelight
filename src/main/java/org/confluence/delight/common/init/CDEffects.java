@@ -11,6 +11,7 @@ import org.confluence.delight.common.effect.beneficial.DineEffect;
 import org.confluence.delight.common.effect.beneficial.ImmuneEffect;
 import org.confluence.delight.common.effect.beneficial.ImmunityEffect;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
+import org.confluence.delight.common.effect.harmful.ParasiticEffect;
 import org.confluence.lib.common.effect.PublicMobEffect;
 import org.confluence.mod.common.init.ModEffects;
 
@@ -31,6 +32,8 @@ public class CDEffects {
     public static final DeferredHolder<MobEffect, MobEffect> MINING_FATIGUE_IMMUNE = register("mining_fatigue_immune", "挖掘疲劳免疫", () -> new ImmuneEffect().setImmuneEffects(Set.of(MobEffects.DIG_SLOWDOWN)));
     public static final DeferredHolder<MobEffect, MobEffect> BLINDNESS_IMMUNE = register("blindness_immune", "失明免疫", () -> new ImmuneEffect().setImmuneEffects(Set.of(MobEffects.BLINDNESS)));
     public static final DeferredHolder<MobEffect, MobEffect> BLEEDING_IMMUNE = register("bleeding_immune", "流血免疫", () -> new ImmuneEffect().setImmuneEffects(Set.of(ModEffects.BLEEDING)));
+
+    public static final DeferredHolder<MobEffect, MobEffect> PARASITIC = register("parasitic", "寄生", ParasiticEffect::new);
 
     public static DeferredHolder<MobEffect, MobEffect> register(final String en, final String zh, Supplier<? extends MobEffect> it) {
         DeferredHolder<MobEffect, MobEffect> mobEffect = EFFECTS.register(en, it);

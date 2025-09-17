@@ -4,8 +4,6 @@ import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.food.DelightFoodProperties;
-import org.confluence.mod.common.item.food.BaseFoodItem;
 
 import java.util.function.Supplier;
 

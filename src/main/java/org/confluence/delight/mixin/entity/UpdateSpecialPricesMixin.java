@@ -1,6 +1,5 @@
 package org.confluence.delight.mixin.entity;
 
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.trading.MerchantOffer;
