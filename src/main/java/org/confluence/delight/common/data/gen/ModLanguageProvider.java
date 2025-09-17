@@ -67,6 +67,8 @@ public class ModLanguageProvider extends LanguageProvider {
         //config
         add("confluence_delight.configuration.machines", "Machines", "机器");
         add("confluence_delight.configuration.fluid_capacity", "Container liquid capacity", "容器液体容量");
+        add("confluence_delight.configuration.misc", "Misc", "杂项");
+        add("confluence_delight.configuration.enable_tooltip", "Enable Tooltip", "启用工具提示");
 
         //tooltip
         add("tooltip.item.confluence.atlantis_tsunami.0",

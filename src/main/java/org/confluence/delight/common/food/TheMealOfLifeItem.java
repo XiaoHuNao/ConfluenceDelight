@@ -8,17 +8,19 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.confluence.delight.common.init.CDFoodBlocks;
 import org.confluence.delight.util.CDEffectData;
-import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.effect.harmful.PotionSicknessEffect;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
 
-public class TheMealOfLifeItem extends BlockItem {
+public class TheMealOfLifeItem extends CDBaseFoodItem.BItem {
     public TheMealOfLifeItem() {
         super(CDFoodBlocks.THE_MEAL_OF_LIFE_BLOCK.get(), new Properties().food(
                 DelightFoodProperties.hasEffectProperties(18, 36.0f, Items.BOWL,
@@ -54,9 +56,7 @@ public class TheMealOfLifeItem extends BlockItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    protected void addCustomTooltip(ItemStack stack, List<Component> tooltipComponents) {
         tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.the_meal_of_life").withStyle(ChatFormatting.GRAY));
-        CDTextUtils.addFoodEffectTooltip(stack, tooltipComponents::add, 1.0f, context.tickRate());
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

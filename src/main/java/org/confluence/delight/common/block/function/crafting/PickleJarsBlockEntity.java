@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
-import org.confluence.delight.StartupConfigs;
+import org.confluence.delight.CDStartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDItems;
 import org.confluence.delight.common.init.CDRecipes;
@@ -59,7 +59,7 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
             }
         };
         this.cachedCheck = RecipeManager.createCheck(CDRecipes.PICKLE_JARS_TYPE.get());
-        this.fluidTank = new FluidTank(StartupConfigs.FLUID_CAPACITY.getAsInt()) {
+        this.fluidTank = new FluidTank(CDStartupConfigs.FLUID_CAPACITY.getAsInt()) {
             @Override
             protected void onContentsChanged() {
                 setChanged();

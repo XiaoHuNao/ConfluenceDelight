@@ -4,9 +4,8 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class StartupConfigs {
+public class CDStartupConfigs {
     public static ModConfigSpec.IntValue FLUID_CAPACITY;
-    public static ModConfigSpec.BooleanValue INFINITE_FLUID_BRINE_ENABLED;
 
     public static void onLoad() {
     }

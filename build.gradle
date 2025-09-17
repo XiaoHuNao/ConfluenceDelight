@@ -95,6 +95,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     mavenLocal()
     maven {
+        url 'https://maven.aliyun.com/repository/public'
+    }
+    maven {
         url = "https://www.cursemaven.com"
     }
     maven {
@@ -162,8 +165,10 @@ repositories {
 }
 
 dependencies {
+    implementation "net.neoforged:DevLaunch:1.0.1"
+
     implementation "org.confluence.lib:Confluence-Magic-Lib:0.0.2d-SNAPSHOT"
-    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-250915"){transitive = false}
+    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-250917"){transitive = false}
     implementation "curse.maven:farmers-delight-398521:6597295"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 

@@ -15,7 +15,7 @@ import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import org.confluence.delight.client.ModClient;
-import org.confluence.delight.common.CommonConfigs;
+import org.confluence.delight.common.CDCommonConfigs;
 import org.confluence.delight.common.data.gen.ModLanguageProvider;
 import org.confluence.delight.common.init.*;
 import org.confluence.mod.client.ClientConfigs;
@@ -35,8 +35,8 @@ public class ConfluenceDelight {
 
     public ConfluenceDelight(IEventBus modEventBus, ModContainer modContainer) {
 //        NeoForge.EVENT_BUS.register(this);
-        StartupConfigs.register(modContainer);
-        CommonConfigs.register(modContainer);
+        CDStartupConfigs.register(modContainer);
+        CDCommonConfigs.register(modContainer);
         if (FMLEnvironment.dist.isClient()) {
             ClientConfigs.register(modContainer);
             modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);

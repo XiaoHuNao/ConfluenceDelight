@@ -18,7 +18,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.StartupConfigs;
+import org.confluence.delight.CDStartupConfigs;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 
@@ -76,7 +76,7 @@ public class JuicerCategory implements IRecipeCategory<RecipeHolder<JuicerRecipe
         }
         Item container = recipe.value().getContainer().asItem();
         addInput(builder, 89, 48, Ingredient.of(container));
-        CDJeiPlugin.renderFluid(builder, fluidStack, StartupConfigs.FLUID_CAPACITY.get());
+        CDJeiPlugin.renderFluid(builder, fluidStack, CDStartupConfigs.FLUID_CAPACITY.get());
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34).addItemStack(recipe.value().getResultItem(null));
     }

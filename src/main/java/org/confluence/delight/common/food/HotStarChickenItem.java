@@ -2,18 +2,15 @@ package org.confluence.delight.common.food;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.confluence.delight.common.init.CDJukeboxSongs;
 import org.confluence.delight.util.CDEffectData;
-import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
 
-public class HotStarChickenItem extends Item {
+public class HotStarChickenItem extends CDBaseFoodItem {
     public HotStarChickenItem() {
         super(new Properties().food(
                         DelightFoodProperties.hasEffectProperties(8, 12.0f,
@@ -31,9 +28,7 @@ public class HotStarChickenItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    protected void addCustomTooltip(ItemStack stack, List<Component> tooltipComponents) {
         tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.hot_star_chicken"));
-        CDTextUtils.addFoodEffectTooltip(stack, tooltipComponents::add, 1.0f, context.tickRate());
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

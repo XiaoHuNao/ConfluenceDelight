@@ -7,6 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.CDCommonConfigs;
 import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 
@@ -15,6 +16,7 @@ public class ItemEvents {
 
     @SubscribeEvent
     public static void tooltip$Event(ItemTooltipEvent event) {
+        if (!CDCommonConfigs.ENABLE_TOOLTIP.get()) return;
         ItemStack stack = event.getItemStack();
         Item item = stack.getItem();
         if (item instanceof BaseFoodItem baseFoodItem) {

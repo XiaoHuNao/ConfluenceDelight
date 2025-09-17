@@ -8,10 +8,11 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.confluence.delight.util.CDEffectData;
-import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.effect.harmful.PotionSicknessEffect;
 import org.confluence.mod.common.init.ModAttachmentTypes;
 import org.confluence.mod.common.init.ModEffects;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import static org.confluence.mod.util.PlayerUtils.receiveMana;
 
-public class OverloadedBreadItem extends Item {
+public class OverloadedBreadItem extends CDBaseFoodItem {
     public OverloadedBreadItem() {
         super(new Properties().food(
                 DelightFoodProperties.hasEffectProperties(60, 100,
@@ -55,9 +56,7 @@ public class OverloadedBreadItem extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    protected void addCustomTooltip(ItemStack stack, List<Component> tooltipComponents) {
         tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.overloaded_bread").withStyle(ChatFormatting.GRAY));
-        CDTextUtils.addFoodEffectTooltip(stack, tooltipComponents::add, 1.0f, context.tickRate());
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

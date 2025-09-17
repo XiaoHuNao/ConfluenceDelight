@@ -4,6 +4,7 @@ import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -11,8 +12,8 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.fluids.RegisterCauldronFluidContentEvent;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.StartupConfigs;
-import org.confluence.delight.common.CommonConfigs;
+import org.confluence.delight.CDStartupConfigs;
+import org.confluence.delight.common.CDCommonConfigs;
 import org.confluence.delight.common.block.common.WineCauldronBlock;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDFluids;
@@ -25,10 +26,18 @@ public class ModEvent {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            CommonConfigs.onLoad();
-            StartupConfigs.onLoad();
+            CDCommonConfigs.onLoad();
+            CDStartupConfigs.onLoad();
         });
     }
+
+    @SubscribeEvent
+    public static void onConfigReload(ModConfigEvent.Reloading event) {
+        if (event.getConfig().getModId().equals(ConfluenceDelight.MODID)) {
+            CDCommonConfigs.onLoad();
+        }
+    }
+
 
     @SubscribeEvent
     public static void loadComplete(FMLLoadCompleteEvent event) {
