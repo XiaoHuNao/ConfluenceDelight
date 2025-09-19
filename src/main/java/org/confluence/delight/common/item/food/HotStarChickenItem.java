@@ -1,4 +1,4 @@
-package org.confluence.delight.common.food;
+package org.confluence.delight.common.item.food;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;

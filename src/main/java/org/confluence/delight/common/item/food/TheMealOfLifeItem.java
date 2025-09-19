@@ -1,4 +1,4 @@
-package org.confluence.delight.common.food;
+package org.confluence.delight.common.item.food;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -10,28 +10,29 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.confluence.delight.common.init.CDFoodBlocks;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.effect.harmful.PotionSicknessEffect;
-import org.confluence.mod.common.init.ModAttachmentTypes;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
 
-import static org.confluence.mod.util.PlayerUtils.receiveMana;
-
-public class OverloadedBreadItem extends CDBaseFoodItem {
-    public OverloadedBreadItem() {
-        super(new Properties().food(
-                DelightFoodProperties.hasEffectProperties(60, 100,
-                        CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 36000, 2),
-                        CDEffectData.of(MobEffects.ABSORPTION, 100, 127))));
+public class TheMealOfLifeItem extends CDBaseFoodItem.BItem {
+    public TheMealOfLifeItem() {
+        super(CDFoodBlocks.THE_MEAL_OF_LIFE_BLOCK.get(), new Properties().food(
+                DelightFoodProperties.hasEffectProperties(18, 36.0f, Items.BOWL,
+                        CDEffectData.of(MobEffects.REGENERATION, 600, 1),
+                        CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),
+                        CDEffectData.of(MobEffects.ABSORPTION, 2400),
+                        CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 18000))));
     }
 
     @Override
     public int getUseDuration(ItemStack itemStack, LivingEntity livingEntity) {
-        return 60;
+        return 15;
     }
 
     @Override
@@ -48,15 +49,14 @@ public class OverloadedBreadItem extends CDBaseFoodItem {
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity living) {
         super.finishUsingItem(itemStack, level, living);
         if (!level.isClientSide && living instanceof ServerPlayer player) {
-            player.heal(player.getMaxHealth() * 20);
-            receiveMana(player, () -> player.getData(ModAttachmentTypes.MANA_STORAGE).getMaxMana() * 20);
-            PotionSicknessEffect.addTo(player, 4000);
+            player.heal(50);
+            PotionSicknessEffect.addTo(player, 900);
         }
         return itemStack;
     }
 
     @Override
     protected void addCustomTooltip(ItemStack stack, List<Component> tooltipComponents) {
-        tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.overloaded_bread").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.item.confluence_delight.the_meal_of_life").withStyle(ChatFormatting.GRAY));
     }
 }

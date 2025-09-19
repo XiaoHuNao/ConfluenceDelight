@@ -1,4 +1,4 @@
-package org.confluence.delight.common.food;
+package org.confluence.delight.common.item.food;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;

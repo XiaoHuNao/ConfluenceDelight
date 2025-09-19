@@ -1,4 +1,4 @@
-package org.confluence.delight.common.food;
+package org.confluence.delight.common.item.food;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;

@@ -1,3 +1,3 @@
 @javax.annotation.ParametersAreNonnullByDefault
 @net.minecraft.MethodsReturnNonnullByDefault
-package org.confluence.delight.common.food;
+package org.confluence.delight.common.attachment;

@@ -1,6 +1,7 @@
 package org.confluence.delight.common.init;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -12,14 +13,16 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.food.*;
+import org.confluence.delight.common.item.food.*;
 import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 import org.confluence.mod.common.item.food.ModFoodProperties;
 
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
@@ -268,6 +271,14 @@ public class CDFoodItems {
                             CDEffectData.of(MobEffects.POISON, 200),
                             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 5200)))
             .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
+
+    //永久增益
+    public static final DeferredItem<CDEverBeneficialItem> UTILITY_APPLE = normalItemRegister("utility_apple", "效用苹果", () -> new CDEverBeneficialItem(
+            CDEverBeneficialItem.UTILITY_APPLE, () -> DelightFoodProperties.hasEffectProperties(5, 10,
+                    CDEffectData.of(MobEffects.DIG_SPEED, 600, 2))));
+    public static final DeferredItem<CDEverBeneficialItem> SPEEDY_COKE = normalItemRegister("speedy_coke", "疾行可乐", () -> new CDEverBeneficialItem(
+            SoundEvents.GENERIC_DRINK, UseAnim.DRINK, CDEverBeneficialItem.SPEEDY_COKE, () -> DelightFoodProperties.hasEffectProperties(1, 1,
+                    CDEffectData.of(MobEffects.MOVEMENT_SPEED, 9600, 1)), CDEverBeneficialItem.getTooltipsFromString("speedy_coke", 1, ChatFormatting.GRAY)));
 
     //饮品
     public static final DeferredItem<BaseFoodItem> APRICOT_JUICE = registerDrinkingFood("apricot_juice", "杏汁",

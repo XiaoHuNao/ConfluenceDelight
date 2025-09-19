@@ -2,6 +2,7 @@ package org.confluence.delight.common.event.game.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -12,11 +13,14 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.attachment.CDEverBeneficial;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDRecipes;
+import org.confluence.delight.common.item.food.CDEverBeneficialItem;
 import org.confluence.delight.common.recipe.BlockInteractionRecipe;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = ConfluenceDelight.MODID)
@@ -55,5 +59,12 @@ public class PlayerEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void respawn(PlayerEvent.PlayerRespawnEvent event) {
+        ServerPlayer player = (ServerPlayer) event.getEntity();
+        CDEverBeneficial cdEverBeneficial = CDEverBeneficial.of(player);
+        CDEverBeneficialItem.UTILITY_APPLE.recovery(cdEverBeneficial, CDEverBeneficial::isAegisAppleUsed, player);
     }
 }

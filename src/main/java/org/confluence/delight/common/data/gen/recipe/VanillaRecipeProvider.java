@@ -25,6 +25,7 @@ import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDNaturalItems;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
+import org.confluence.mod.common.init.item.ConsumableItems;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -168,6 +169,11 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
         shapeless(output, "", "", CDFoodItems.FLYING_FISH_CAVIAR.toStack(),
                 Ingredient.of(Items.GLASS_BOTTLE),
                 Ingredient.of(CDFoodItems.FLYING_FISH_ROE.toStack(64)));
+        shapeless(output, "", "",CDFoodItems.SPEEDY_COKE.toStack(),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(ConsumableItems.VITAL_CRYSTAL),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(FoodItems.JOJA_COLA));
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_DONKEY_MEAT.get()), CDFoodItems.COOKED_DONKEY_MEAT.toStack(), 0.35f, 200);

@@ -137,6 +137,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence_delight.overloaded_bread",
                 "It feels like I won't have to eat for a month",
                 "感觉一个月不用吃饭了");
+        add("tooltip.item.confluence_delight.speedy_coke",
+                "It feels like flying",
+                "飞一般的感觉");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",
