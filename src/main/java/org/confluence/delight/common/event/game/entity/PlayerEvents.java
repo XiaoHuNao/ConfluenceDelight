@@ -66,5 +66,6 @@ public class PlayerEvents {
         ServerPlayer player = (ServerPlayer) event.getEntity();
         CDEverBeneficial cdEverBeneficial = CDEverBeneficial.of(player);
         CDEverBeneficialItem.UTILITY_APPLE.recovery(cdEverBeneficial, CDEverBeneficial::isAegisAppleUsed, player);
+        CDEverBeneficialItem.SPEEDY_COKE.recovery(cdEverBeneficial, CDEverBeneficial::isSpeedyCokeUsed, player);
     }
 }

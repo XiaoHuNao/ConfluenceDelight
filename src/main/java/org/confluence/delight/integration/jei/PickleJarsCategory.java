@@ -17,8 +17,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
-import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.CDStartupConfigs;
+import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
 

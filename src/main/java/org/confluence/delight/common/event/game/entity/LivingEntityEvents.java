@@ -13,6 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
 import org.confluence.delight.ConfluenceDelight;
+import org.confluence.delight.common.effect.beneficial.ImmuneEffect;
 import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDFoodItems;
@@ -21,10 +22,14 @@ import org.confluence.delight.common.init.CDFoodItems;
 public final class LivingEntityEvents {
 
     @SubscribeEvent
-    public static void mobEffectAdded(MobEffectEvent.Added event) {
+    public static void mobEffect$Added(MobEffectEvent.Added event) {
         LivingEntity entity = event.getEntity();
         MobEffectInstance mobEffectInstance = event.getEffectInstance();
         if (mobEffectInstance == null) return;
+        if (mobEffectInstance.getEffect().value() instanceof ImmuneEffect) {
+            ImmuneEffect.removeImmuneEffects(entity);
+            return;
+        }
         if (entity.hasEffect(CDEffects.IMMUNITY) && mobEffectInstance.getEffect().value().getCategory() == MobEffectCategory.HARMFUL) {
             MobEffectInstance immunity = entity.getEffect(CDEffects.IMMUNITY);
             if (immunity == null) return;
@@ -42,10 +47,20 @@ public final class LivingEntityEvents {
     }
 
     @SubscribeEvent
+    public static void mobEffect$Applicable(MobEffectEvent.Applicable event) {
+        MobEffectInstance mobEffectInstance = event.getEffectInstance();
+        if (mobEffectInstance == null) return;
+        if (ImmuneEffect.isEffectImmune(event.getEntity(), mobEffectInstance.getEffect())) {
+            event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+        }
+    }
+
+    @SubscribeEvent
     public static void mobEffect$Remove(MobEffectEvent.Remove event) {
         MobEffectInstance effectInstance = event.getEffectInstance();
         if (effectInstance == null) return;
         LuckCoinEffect.onRemove(event.getEntity(), effectInstance.getEffect(), effectInstance.getAmplifier());
+        ImmuneEffect.onRemove(effectInstance.getEffect());
     }
 
     @SubscribeEvent

@@ -169,7 +169,7 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
         shapeless(output, "", "", CDFoodItems.FLYING_FISH_CAVIAR.toStack(),
                 Ingredient.of(Items.GLASS_BOTTLE),
                 Ingredient.of(CDFoodItems.FLYING_FISH_ROE.toStack(64)));
-        shapeless(output, "", "",CDFoodItems.SPEEDY_COKE.toStack(),
+        shapeless(output, "", "", CDFoodItems.SPEEDY_COKE.toStack(),
                 Ingredient.of(Items.SUGAR),
                 Ingredient.of(ConsumableItems.VITAL_CRYSTAL),
                 Ingredient.of(Items.GLOWSTONE_DUST),

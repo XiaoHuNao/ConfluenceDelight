@@ -30,7 +30,7 @@ public class CDEverBeneficial implements INBTSerializable<CompoundTag> {
     }
 
     public boolean setSpeedyCokeUsed() {
-        if (isAegisAppleUsed) return false;
+        if (isSpeedyCokeUsed) return false;
         return this.isSpeedyCokeUsed = true;
     }
 

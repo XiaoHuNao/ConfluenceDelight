@@ -1,7 +1,6 @@
 package org.confluence.delight.common.init;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -20,9 +19,7 @@ import org.confluence.mod.common.init.item.PotionItems;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 import org.confluence.mod.common.item.food.ModFoodProperties;
 
-import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static org.confluence.delight.ConfluenceDelight.chineseProviders;
@@ -275,10 +272,10 @@ public class CDFoodItems {
     //永久增益
     public static final DeferredItem<CDEverBeneficialItem> UTILITY_APPLE = normalItemRegister("utility_apple", "效用苹果", () -> new CDEverBeneficialItem(
             CDEverBeneficialItem.UTILITY_APPLE, () -> DelightFoodProperties.hasEffectProperties(5, 10,
-                    CDEffectData.of(MobEffects.DIG_SPEED, 600, 2))));
+            CDEffectData.of(MobEffects.DIG_SPEED, 600, 2))));
     public static final DeferredItem<CDEverBeneficialItem> SPEEDY_COKE = normalItemRegister("speedy_coke", "疾行可乐", () -> new CDEverBeneficialItem(
             SoundEvents.GENERIC_DRINK, UseAnim.DRINK, CDEverBeneficialItem.SPEEDY_COKE, () -> DelightFoodProperties.hasEffectProperties(1, 1,
-                    CDEffectData.of(MobEffects.MOVEMENT_SPEED, 9600, 1)), CDEverBeneficialItem.getTooltipsFromString("speedy_coke", 1, ChatFormatting.GRAY)));
+            CDEffectData.of(MobEffects.MOVEMENT_SPEED, 9600, 1)), CDEverBeneficialItem.getTooltipsFromString("speedy_coke", 1, ChatFormatting.GRAY)));
 
     //饮品
     public static final DeferredItem<BaseFoodItem> APRICOT_JUICE = registerDrinkingFood("apricot_juice", "杏汁",
@@ -365,6 +362,10 @@ public class CDFoodItems {
                             CDEffectData.of(MobEffects.MOVEMENT_SPEED, 1200, 1),
                             CDEffectData.of(MobEffects.CONFUSION, 400)))
             .duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
+    public static final DeferredItem<BaseFoodItem> ASH_TEA = registerDrinkingFood("ash_tea", "灰烬茶",
+            () -> DelightFoodProperties.hasEffectProperties(4, 5,
+                    CDEffectData.of(MobEffects.FIRE_RESISTANCE, 1200),
+                    CDEffectData.of(CDEffects.SOUL_SAND_SLOWS_DOWN_IMMUNE, 1800)));
 
     public static <I extends Item> DeferredItem<I> normalItemRegister(final String en, final String zh, Supplier<I> it) {
         DeferredItem<I> item = ITEMS.register(en, it);

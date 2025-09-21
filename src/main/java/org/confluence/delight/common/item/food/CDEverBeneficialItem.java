@@ -32,7 +32,7 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
         if (miningEfficiency == null) return;
         miningEfficiency.addOrReplacePermanentModifier(new AttributeModifier(id, 5.0, AttributeModifier.Operation.ADD_VALUE));
     });
-    public static final Beneficial SPEEDY_COKE = new Beneficial(ConfluenceDelight.asResource("speedy_coke"), CDEverBeneficial::isSpeedyCokeUsed, (id, player, data, isRespawn) -> {
+    public static final Beneficial SPEEDY_COKE = new Beneficial(ConfluenceDelight.asResource("speedy_coke"), CDEverBeneficial::setSpeedyCokeUsed, (id, player, data, isRespawn) -> {
         AttributeInstance sneakingSpeed = player.getAttributes().getInstance(Attributes.SNEAKING_SPEED);
         AttributeInstance movementEfficiency = player.getAttributes().getInstance(Attributes.MOVEMENT_EFFICIENCY);
         if (sneakingSpeed == null || movementEfficiency == null) return;
@@ -50,7 +50,7 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
         this.beneficial = beneficial;
         this.drinkSound = null;
         this.drinkAnimation = null;
-        this.tooltips = null;
+        this.tooltips = new ArrayList<>();
     }
 
     public CDEverBeneficialItem(SoundEvent drinkSound, UseAnim drinkAnimation, Beneficial beneficial, Supplier<FoodProperties> foodProperties) {
@@ -58,7 +58,7 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
         this.beneficial = beneficial;
         this.drinkSound = drinkSound;
         this.drinkAnimation = drinkAnimation;
-        this.tooltips = null;
+        this.tooltips = new ArrayList<>();
     }
 
     public CDEverBeneficialItem(Beneficial beneficial, Supplier<FoodProperties> foodProperties, List<Component> tooltips) {
@@ -91,6 +91,7 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
     public SoundEvent getEatingSound() {
         return drinkSound != null ? SoundEvents.EMPTY : SoundEvents.GENERIC_EAT;
     }
+
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
         super.finishUsingItem(stack, level, livingEntity);
@@ -108,6 +109,7 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.addAll(tooltips);
     }
 

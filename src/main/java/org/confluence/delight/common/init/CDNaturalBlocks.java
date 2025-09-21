@@ -83,7 +83,7 @@ public class CDNaturalBlocks {
     public static final DeferredBlock<SpicyPepperBlock> SPICY_PEPPER_CROP = registerWithoutItem("spicy_pepper_crop", "辣椒", SpicyPepperBlock::new);
     public static final DeferredBlock<DragonFruitCactusBlock> DRAGON_FRUIT_CACTUS = registerWithoutItem("dragon_fruit_cactus", "火龙果仙人掌", DragonFruitCactusBlock::new);
     public static final DeferredBlock<DragonFruitBlock> DRAGON_FRUIT_BLOCK = registerWithoutItem("dragon_fruit", "火龙果", DragonFruitBlock::new);
-    public static final DeferredBlock<BaseDroopingPlantsHeadBlock> BLOOD_MEAT_VINE_BLOCK = registerBlockItem("blood_meat_vine", "血肉藤", () -> new BaseDroopingPlantsHeadBlock(10, 5, true, true), block -> new ToolTipBlockItem(block,Component.translatable("tooltip.item.confluence_delight.blood_meat_vine")));
+    public static final DeferredBlock<BaseDroopingPlantsHeadBlock> BLOOD_MEAT_VINE_BLOCK = registerBlockItem("blood_meat_vine", "血肉藤", () -> new BaseDroopingPlantsHeadBlock(10, 5, true, true), block -> new ToolTipBlockItem(block, Component.translatable("tooltip.item.confluence_delight.blood_meat_vine")));
 
     public static <B extends Block> DeferredBlock<B> registerWithoutItem(final String en, Supplier<B> bl) {
         return BLOCKS.register(en, bl);

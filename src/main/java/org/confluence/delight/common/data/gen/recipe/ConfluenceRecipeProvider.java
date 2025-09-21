@@ -43,6 +43,7 @@ public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
         Ingredient bottleContainer = Ingredient.of(PotionItems.BOTTLE);
+        Ingredient waterBottleContainer = Ingredient.of(Items.POTION);
         Ingredient mugContainer = Ingredient.of(PotionItems.MUG);
         Ingredient bowlContainer = Ingredient.of(Items.BOWL);
         Ingredient chinaBowlContainer = Ingredient.of(MaterialItems.CHINA_BOWL);
@@ -75,6 +76,7 @@ public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
         cookingPot(recipeOutput, CDFoodItems.SPECIAL_MUSHROOM_SOUP.toStack(), bowlContainer, campfireHeatSource, 100, Ingredient.of(MaterialItems.LIFE_MUSHROOM), Ingredient.of(MaterialItems.GLOWING_MUSHROOM), Ingredient.of(Items.RED_MUSHROOM), Ingredient.of(Items.BROWN_MUSHROOM));
         cookingPot(recipeOutput, CDFoodItems.OVERLOADED_BREAD.toStack(), Ingredient.of(FoodItems.BOULDER_BREAD), campfireHeatSource, 1000, Ingredient.of(ModItems.BACON.get()), Ingredient.of(FoodItems.BURGER), Ingredient.of(FoodItems.GOLDEN_DELIGHT), Ingredient.of(CDFoodItems.GRAPE_JUICE));
         cookingPot(recipeOutput, CDFoodItems.UTILITY_APPLE.toStack(), Ingredient.of(Items.ENCHANTED_GOLDEN_APPLE), campfireHeatSource, 500, Ingredient.of(MaterialItems.BLINKROOT), Ingredient.of(MaterialItems.ANTLION_MANDIBLE), Ingredient.of(Items.BONE));
+        cookingPot(recipeOutput, CDFoodItems.ASH_TEA.toStack(), waterBottleContainer, stoveHeatSource, 300, Ingredient.of(ItemTags.LEAVES), Ingredient.of(NatureBlocks.ASH_BLOCK), Ingredient.of(Items.CHARCOAL), Ingredient.of(Items.SUGAR));
 
         //固化机
         solidifier(recipeOutput, CDFoodItems.BUBBLE_GUM.toStack(),

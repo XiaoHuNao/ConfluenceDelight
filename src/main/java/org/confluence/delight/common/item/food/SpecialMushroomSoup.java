@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import org.confluence.mod.common.effect.harmful.PotionSicknessEffect;
+import org.confluence.delight.util.CDEffectData;
 import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
@@ -21,7 +21,8 @@ import static org.confluence.mod.util.PlayerUtils.receiveMana;
 
 public class SpecialMushroomSoup extends CDBaseFoodItem {
     public SpecialMushroomSoup() {
-        super(new Properties().food(DelightFoodProperties.noEffectProperties(6, 6, Items.BOWL)));
+        super(new Properties().food(DelightFoodProperties.hasEffectProperties(6, 6, Items.BOWL,
+                CDEffectData.of(ModEffects.POTION_SICKNESS, 160))));
     }
 
     @Override
@@ -44,9 +45,8 @@ public class SpecialMushroomSoup extends CDBaseFoodItem {
         if (!level.isClientSide && living instanceof ServerPlayer player) {
             player.heal(10);
             receiveMana(player, () -> 50);
-            PotionSicknessEffect.addTo(player, 160);
         }
-        return itemStack;
+        return super.finishUsingItem(itemStack, level, living);
     }
 
     @Override

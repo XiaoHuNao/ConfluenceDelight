@@ -4,11 +4,13 @@ package org.confluence.delight.common.data.gen.recipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.lib.common.data.gen.AbstractRecipeProvider;
+import org.confluence.mod.common.init.block.NatureBlocks;
 import org.confluence.mod.common.init.item.ConsumableItems;
 import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.MaterialItems;
@@ -167,6 +169,13 @@ public class FDRecipeProvider extends AbstractRecipeProvider {
                 .addIngredient(CDFoodItems.POTATO_PIECE)
                 .addIngredient(CDFoodItems.POTATO_PIECE)
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .build(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CDFoodItems.ASH_TEA, 1, 300, 0.5f, Items.POTION)
+                .addIngredient(ItemTags.LEAVES)
+                .addIngredient(NatureBlocks.ASH_BLOCK)
+                .addIngredient(Items.CHARCOAL)
+                .addIngredient(Items.SUGAR)
+                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
                 .build(recipeOutput);
     }
 }

@@ -13,7 +13,6 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.confluence.delight.util.CDEffectData;
-import org.confluence.mod.common.effect.harmful.PotionSicknessEffect;
 import org.confluence.mod.common.init.ModAttachmentTypes;
 import org.confluence.mod.common.init.ModEffects;
 
@@ -26,7 +25,8 @@ public class OverloadedBreadItem extends CDBaseFoodItem {
         super(new Properties().food(
                 DelightFoodProperties.hasEffectProperties(60, 100,
                         CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 36000, 2),
-                        CDEffectData.of(MobEffects.ABSORPTION, 100, 127))));
+                        CDEffectData.of(MobEffects.ABSORPTION, 100, 127),
+                        CDEffectData.of(ModEffects.POTION_SICKNESS, 4000))));
     }
 
     @Override
@@ -46,13 +46,11 @@ public class OverloadedBreadItem extends CDBaseFoodItem {
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity living) {
-        super.finishUsingItem(itemStack, level, living);
         if (!level.isClientSide && living instanceof ServerPlayer player) {
             player.heal(player.getMaxHealth() * 20);
             receiveMana(player, () -> player.getData(ModAttachmentTypes.MANA_STORAGE).getMaxMana() * 20);
-            PotionSicknessEffect.addTo(player, 4000);
         }
-        return itemStack;
+        return super.finishUsingItem(itemStack, level, living);
     }
 
     @Override
