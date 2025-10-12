@@ -24,7 +24,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.recipe.BlockInteractionRecipe;
+import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -33,9 +33,9 @@ import java.util.List;
 import static org.confluence.mod.integration.jei.ModJeiPlugin.addInput;
 
 
-public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<BlockInteractionRecipe>> {
-    public static final RecipeType<RecipeHolder<BlockInteractionRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("block_interaction"));
-    public static final Component TITLE = Component.translatable("title.confluence_delight.block_interaction");
+public class BlockAndItemInteractionCategory implements IRecipeCategory<RecipeHolder<BlockAndItemInteractionRecipe>> {
+    public static final RecipeType<RecipeHolder<BlockAndItemInteractionRecipe>> RECIPE_TYPE = RecipeType.createRecipeHolderType(ConfluenceDelight.asResource("block_interaction"));
+    public static final Component TITLE = Component.translatable("title.confluence_delight.block_and_item_interaction");
     private final IDrawable icon;
     private final Rectangle sourceBlockRenderArea = new Rectangle();
     private static final long ANIMATION_INTERVAL = 1100L;
@@ -44,12 +44,12 @@ public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<Bl
     private static final int BASE_RENDER_SIZE = 20;
     private static final float BASE_SCALE = 20.0F;
 
-    public BlockInteractionCategory(IJeiHelpers jeiHelpers) {
+    public BlockAndItemInteractionCategory(IJeiHelpers jeiHelpers) {
         this.icon = jeiHelpers.getGuiHelper().createDrawableItemStack(new ItemStack(Blocks.COBBLESTONE));
     }
 
     @Override
-    public RecipeType<RecipeHolder<BlockInteractionRecipe>> getRecipeType() {
+    public RecipeType<RecipeHolder<BlockAndItemInteractionRecipe>> getRecipeType() {
         return RECIPE_TYPE;
     }
 
@@ -74,13 +74,13 @@ public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<Bl
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<BlockInteractionRecipe> recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<BlockAndItemInteractionRecipe> recipe, IFocusGroup focuses) {
         addInput(builder, 5, 2, recipe.value().inputItem());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 75, 2).addItemStack(new ItemStack(recipe.value().resultBlock()));
     }
 
     @Override
-    public void draw(RecipeHolder<BlockInteractionRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<BlockAndItemInteractionRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         final Minecraft mc = Minecraft.getInstance();
         final BlockRenderDispatcher blockRenderDispatcher = mc.getBlockRenderer();
         final PoseStack poseStack = guiGraphics.pose();
@@ -100,8 +100,8 @@ public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<Bl
     private void renderBlock(BlockRenderDispatcher dispatcher, PoseStack poseStack, Block block, int x) {
         poseStack.pushPose();
         {
-            poseStack.translate(x, BlockInteractionCategory.BASE_RENDER_Y, 100);
-            poseStack.scale(BlockInteractionCategory.BASE_SCALE, BlockInteractionCategory.BASE_SCALE, BlockInteractionCategory.BASE_SCALE);
+            poseStack.translate(x, BlockAndItemInteractionCategory.BASE_RENDER_Y, 100);
+            poseStack.scale(BlockAndItemInteractionCategory.BASE_SCALE, BlockAndItemInteractionCategory.BASE_SCALE, BlockAndItemInteractionCategory.BASE_SCALE);
             poseStack.translate(0.5D, 0.5D, 0.5D);
             poseStack.mulPose(Axis.XP.rotationDegrees(-12));
             poseStack.mulPose(Axis.YP.rotationDegrees(22));
@@ -113,7 +113,7 @@ public class BlockInteractionCategory implements IRecipeCategory<RecipeHolder<Bl
     }
 
     @Override
-    public void getTooltip(ITooltipBuilder tooltip, RecipeHolder<BlockInteractionRecipe> recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public void getTooltip(ITooltipBuilder tooltip, RecipeHolder<BlockAndItemInteractionRecipe> recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         List<Block> sourceBlocks = Arrays.asList(recipe.value().sourceBlocks());
         if (!sourceBlocks.isEmpty() && sourceBlockRenderArea.contains(mouseX, mouseY)) {
             int index = (int) ((System.currentTimeMillis() / ANIMATION_INTERVAL) % sourceBlocks.size());

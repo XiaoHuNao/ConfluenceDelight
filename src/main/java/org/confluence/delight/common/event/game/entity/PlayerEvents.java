@@ -21,7 +21,7 @@ import org.confluence.delight.common.attachment.CDEverBeneficial;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.item.food.CDEverBeneficialItem;
-import org.confluence.delight.common.recipe.BlockInteractionRecipe;
+import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = ConfluenceDelight.MODID)
 public class PlayerEvents {
@@ -34,7 +34,7 @@ public class PlayerEvents {
         ItemStack heldItem = player.getItemInHand(event.getHand());
         BlockPos targetPos = event.getPos();
         BlockState clickedState = level.getBlockState(targetPos);
-        for (RecipeHolder<BlockInteractionRecipe> recipe : level.getRecipeManager().getAllRecipesFor(CDRecipes.BLOCK_INTERACTION_TYPE.get())) {
+        for (RecipeHolder<BlockAndItemInteractionRecipe> recipe : level.getRecipeManager().getAllRecipesFor(CDRecipes.BLOCK_AND_ITEM_INTERACTION_TYPE.get())) {
             if (recipe.value().matchesItem(heldItem) && recipe.value().matchesBlock(clickedState)) {
                 if (recipe.value().transformBlock(level, targetPos, heldItem, player)) {
                     event.setCanceled(true);
@@ -65,7 +65,8 @@ public class PlayerEvents {
     public static void respawn(PlayerEvent.PlayerRespawnEvent event) {
         ServerPlayer player = (ServerPlayer) event.getEntity();
         CDEverBeneficial cdEverBeneficial = CDEverBeneficial.of(player);
-        CDEverBeneficialItem.UTILITY_APPLE.recovery(cdEverBeneficial, CDEverBeneficial::isAegisAppleUsed, player);
+        CDEverBeneficialItem.UTILITY_APPLE.recovery(cdEverBeneficial, CDEverBeneficial::isUtilityAppleUsed, player);
         CDEverBeneficialItem.SPEEDY_COKE.recovery(cdEverBeneficial, CDEverBeneficial::isSpeedyCokeUsed, player);
+        CDEverBeneficialItem.EZ_CONSTANT.recovery(cdEverBeneficial, CDEverBeneficial::isEzConstantUsed, player);
     }
 }

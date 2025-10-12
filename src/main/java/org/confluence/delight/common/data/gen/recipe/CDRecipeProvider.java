@@ -18,7 +18,7 @@ import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFluids;
 import org.confluence.delight.common.init.CDFoodItems;
 import org.confluence.delight.common.init.CDNaturalBlocks;
-import org.confluence.delight.common.recipe.BlockInteractionRecipe;
+import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
@@ -118,6 +118,6 @@ public class CDRecipeProvider extends AbstractRecipeProvider {
 
     protected void blockInteractionRecipe(RecipeOutput recipeOutput, Ingredient inputItem, Block resultBlock, Block... sourceBlocks) {
         ResourceLocation id = ConfluenceDelight.asResource("block_interaction/" + getItemName(resultBlock));
-        recipeOutput.accept(id, new BlockInteractionRecipe(inputItem, sourceBlocks, resultBlock), null);
+        recipeOutput.accept(id, new BlockAndItemInteractionRecipe(inputItem, sourceBlocks, resultBlock), null);
     }
 }

@@ -23,7 +23,7 @@ import org.confluence.delight.util.CDTextUtils;
 
 import java.util.List;
 
-public class HarvestStewItem extends CDBaseFoodItem {
+public class HarvestStewItem extends CDFoodItem {
     public static final MobEffectInstance EFFECT = new MobEffectInstance(CDEffects.HARVEST, 6000);
     private static final List<EntityType<?>> ALLOW_ENTITY = List.of(
             EntityType.CHICKEN,

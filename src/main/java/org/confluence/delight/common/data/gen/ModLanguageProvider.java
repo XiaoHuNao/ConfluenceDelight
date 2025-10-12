@@ -47,6 +47,8 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addCreativeTab(CDCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
 
+        add("confluence_delight.permanent_attribute_bonus", "permanent_attribute_bonus", "永久属性加成");
+
         //jei
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
         add("jei.confluence_delight.info.pickle_jars.crafttime", "%d s", "%d 秒");
@@ -59,7 +61,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("title.confluence_delight.juicer", "Juicer", "榨汁机");
         add("jei.confluence_delight.info.juicer.cycle", "%d cycle", "%d 次");
 
-        add("title.confluence_delight.block_interaction", "Block Interaction", "方块交互");
+        add("title.confluence_delight.block_and_item_interaction", "Block And Item Interaction", "物块交互");
         //jade
         add("config.jade.plugin_confluence_delight.picklejars_info", "PickleJars Info", "泡菜罐信息");
         add("config.jade.plugin_confluence_delight.juicer_info", "Juicer Info", "榨汁机信息");
@@ -137,9 +139,21 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.item.confluence_delight.overloaded_bread",
                 "It feels like I won't have to eat for a month",
                 "感觉一个月不用吃饭了");
+        add("tooltip.item.confluence_delight.utility_apple.0",
+                "The first ingestion will permanently raise the mining efficiency by 5",
+                "首次食用永久增加5挖掘效率");
         add("tooltip.item.confluence_delight.speedy_coke.0",
+                "The first ingestion will permanently raise the sneaking speed by 0.4 and the movement efficiency by 0.5",
+                "首次食用永久增加0.4潜行速度和0.5移动效率");
+        add("tooltip.item.confluence_delight.speedy_coke.1",
                 "It feels like flying",
                 "飞一般的感觉");
+        add("tooltip.item.confluence_delight.ez_constant.0",
+                "The first ingestion will permanently raise ranged damage by 50%",
+                "首次食用永久增加50%远程伤害");
+        add("tooltip.item.confluence_delight.ez_constant.1",
+                "A string of mysterious numbers, seemingly with some special meaning",
+                "一串神秘数字，似乎有什么特殊含义");
 
         add("tooltip.item.confluence_delight.apple_sapling",
                 "It is obtained by right-clicking the oak sapling with an apple",

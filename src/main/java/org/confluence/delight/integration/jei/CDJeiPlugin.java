@@ -38,7 +38,7 @@ public class CDJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new PickleJarsCategory(jeiHelpers));
         registration.addRecipeCategories(new MillStoneCategory(jeiHelpers));
         registration.addRecipeCategories(new JuicerCategory(jeiHelpers));
-        registration.addRecipeCategories(new BlockInteractionCategory(jeiHelpers));
+        registration.addRecipeCategories(new BlockAndItemInteractionCategory(jeiHelpers));
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CDJeiPlugin implements IModPlugin {
         registration.addRecipes(PickleJarsCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.PICKLE_JARS_TYPE.get()));
         registration.addRecipes(MillStoneCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.MILLSTONE_TYPE.get()));
         registration.addRecipes(JuicerCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.JUICER_TYPE.get()));
-        registration.addRecipes(BlockInteractionCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.BLOCK_INTERACTION_TYPE.get()));
+        registration.addRecipes(BlockAndItemInteractionCategory.RECIPE_TYPE, recipeManager.getAllRecipesFor(CDRecipes.BLOCK_AND_ITEM_INTERACTION_TYPE.get()));
     }
 
     @Override

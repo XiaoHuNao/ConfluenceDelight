@@ -54,6 +54,17 @@ public class HeavyWorkBenchProvider extends AbstractRecipeProvider {
                 "FSCG",
                 "CGC "
         )), CDBlocks.JUICER_BLOCK.toStack());
+        shaped(recipeOutput, "", ShapedRecipePattern.of(Map.of(
+                'P', AmountIngredient.of(591, CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN),
+                'S', AmountIngredient.of(60, CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
+                'G', AmountIngredient.of(15, CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
+                'C', AmountIngredient.of(3, CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN)
+        ), List.of(
+                "PSGC",
+                "    ",
+                "    ",
+                "    "
+        )), CDFoodItems.EZConstant.toStack());
     }
 
     protected void shaped(RecipeOutput recipeOutput, String suffix, ShapedRecipePattern pattern, ItemStack result) {

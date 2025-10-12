@@ -11,8 +11,8 @@ import org.confluence.delight.util.CDTextUtils;
 
 import java.util.List;
 
-public class CDBaseFoodItem extends Item {
-    public CDBaseFoodItem(Properties properties) {
+public class CDFoodItem extends Item {
+    public CDFoodItem(Properties properties) {
         super(properties);
     }
 

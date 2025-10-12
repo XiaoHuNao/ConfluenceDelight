@@ -17,8 +17,8 @@ import org.confluence.delight.common.init.CDRecipes;
 
 import java.util.List;
 
-public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
-                                     Block resultBlock) implements Recipe<BlockInteractionRecipe.Inventory> {
+public record BlockAndItemInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
+                                            Block resultBlock) implements Recipe<BlockAndItemInteractionRecipe.Inventory> {
 
     public boolean matchesBlock(BlockState state) {
         for (Block block : sourceBlocks) {
@@ -66,35 +66,35 @@ public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return CDRecipes.BLOCK_INTERACTION_SERIALIZER.get();
+        return CDRecipes.BLOCK_AND_ITEM_INTERACTION_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return CDRecipes.BLOCK_INTERACTION_TYPE.get();
+        return CDRecipes.BLOCK_AND_ITEM_INTERACTION_TYPE.get();
     }
 
-    public static class Serializer implements RecipeSerializer<BlockInteractionRecipe> {
-        public static final MapCodec<BlockInteractionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                        Ingredient.CODEC.fieldOf("input").forGetter(BlockInteractionRecipe::inputItem),
+    public static class Serializer implements RecipeSerializer<BlockAndItemInteractionRecipe> {
+        public static final MapCodec<BlockAndItemInteractionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+                        Ingredient.CODEC.fieldOf("input").forGetter(BlockAndItemInteractionRecipe::inputItem),
                         BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("source_blocks").forGetter(recipe -> List.of(recipe.sourceBlocks)),
-                        BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockInteractionRecipe::resultBlock)
-                ).apply(instance, (input, sourceBlocks, resultBlock) -> new BlockInteractionRecipe(input, sourceBlocks.toArray(new Block[0]), resultBlock))
+                        BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockAndItemInteractionRecipe::resultBlock)
+                ).apply(instance, (input, sourceBlocks, resultBlock) -> new BlockAndItemInteractionRecipe(input, sourceBlocks.toArray(new Block[0]), resultBlock))
         );
 
-        public static final StreamCodec<RegistryFriendlyByteBuf, BlockInteractionRecipe> STREAM_CODEC = StreamCodec.of(BlockInteractionRecipe.Serializer::toNetwork, BlockInteractionRecipe.Serializer::fromNetwork);
+        public static final StreamCodec<RegistryFriendlyByteBuf, BlockAndItemInteractionRecipe> STREAM_CODEC = StreamCodec.of(BlockAndItemInteractionRecipe.Serializer::toNetwork, BlockAndItemInteractionRecipe.Serializer::fromNetwork);
 
         @Override
-        public MapCodec<BlockInteractionRecipe> codec() {
+        public MapCodec<BlockAndItemInteractionRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public StreamCodec<RegistryFriendlyByteBuf, BlockInteractionRecipe> streamCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, BlockAndItemInteractionRecipe> streamCodec() {
             return STREAM_CODEC;
         }
 
-        private static BlockInteractionRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+        private static BlockAndItemInteractionRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             Ingredient inputItem = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
             int count = buffer.readVarInt();
             Block[] sourceBlocks = new Block[count];
@@ -102,10 +102,10 @@ public record BlockInteractionRecipe(Ingredient inputItem, Block[] sourceBlocks,
                 sourceBlocks[i] = BuiltInRegistries.BLOCK.byId(buffer.readVarInt());
             }
             Block resultBlock = BuiltInRegistries.BLOCK.byId(buffer.readVarInt());
-            return new BlockInteractionRecipe(inputItem, sourceBlocks, resultBlock);
+            return new BlockAndItemInteractionRecipe(inputItem, sourceBlocks, resultBlock);
         }
 
-        private static void toNetwork(RegistryFriendlyByteBuf buffer, BlockInteractionRecipe recipe) {
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, BlockAndItemInteractionRecipe recipe) {
             Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.inputItem);
             buffer.writeVarInt(recipe.sourceBlocks.length);
             for (Block block : recipe.sourceBlocks) {

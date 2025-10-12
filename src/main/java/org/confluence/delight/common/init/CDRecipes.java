@@ -7,7 +7,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.recipe.BlockInteractionRecipe;
+import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
 import org.confluence.delight.common.recipe.JuicerRecipe;
 import org.confluence.delight.common.recipe.MillStoneRecipe;
 import org.confluence.delight.common.recipe.PickleJarsRecipe;
@@ -24,8 +24,8 @@ public class CDRecipes {
     public static final Supplier<RecipeType<MillStoneRecipe>> MILLSTONE_TYPE = registerRecipeType("millstone");
     public static final Supplier<RecipeSerializer<?>> JUICER_SERIALIZER = RECIPE_SERIALIZERS.register("juicer", JuicerRecipe.Serializer::new);
     public static final Supplier<RecipeType<JuicerRecipe>> JUICER_TYPE = registerRecipeType("juicer");
-    public static final Supplier<RecipeSerializer<?>> BLOCK_INTERACTION_SERIALIZER = RECIPE_SERIALIZERS.register("block_interaction", BlockInteractionRecipe.Serializer::new);
-    public static final Supplier<RecipeType<BlockInteractionRecipe>> BLOCK_INTERACTION_TYPE = registerRecipeType("block_interaction");
+    public static final Supplier<RecipeSerializer<?>> BLOCK_AND_ITEM_INTERACTION_SERIALIZER = RECIPE_SERIALIZERS.register("block_and_item_interaction", BlockAndItemInteractionRecipe.Serializer::new);
+    public static final Supplier<RecipeType<BlockAndItemInteractionRecipe>> BLOCK_AND_ITEM_INTERACTION_TYPE = registerRecipeType("block_and_item_interaction");
 
 
     public static <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(final String identifier) {

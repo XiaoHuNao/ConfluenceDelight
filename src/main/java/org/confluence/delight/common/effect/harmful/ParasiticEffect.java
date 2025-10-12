@@ -13,8 +13,7 @@ public class ParasiticEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         if (entity.isAlive()) {
-            float damage = 2.0f + amplifier;
-            entity.hurt(entity.damageSources().source(DamageTypes.MAGIC), damage);
+            entity.hurt(entity.damageSources().source(DamageTypes.MAGIC), 2.0f + amplifier);
         }
         return true;
     }

@@ -20,7 +20,7 @@ import java.util.List;
 
 import static org.confluence.mod.util.PlayerUtils.receiveMana;
 
-public class OverloadedBreadItem extends CDBaseFoodItem {
+public class OverloadedBreadItem extends CDFoodItem {
     public OverloadedBreadItem() {
         super(new Properties().food(
                 DelightFoodProperties.hasEffectProperties(60, 100,

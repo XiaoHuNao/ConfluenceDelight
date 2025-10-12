@@ -10,7 +10,7 @@ import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
 
-public class HotStarChickenItem extends CDBaseFoodItem {
+public class HotStarChickenItem extends CDFoodItem {
     public HotStarChickenItem() {
         super(new Properties().food(
                         DelightFoodProperties.hasEffectProperties(8, 12.0f,

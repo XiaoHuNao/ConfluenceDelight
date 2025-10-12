@@ -1,60 +1,257 @@
 {
-	"format_version": "1.9.0",
-	"credit": "Made with Blockbench",
-	"texture_size": [32, 32],
-	"textures": {
-		"0": "confluence_delight:block/natural/fruit_tree/apricots",
-		"particle": "confluence_delight:block/natural/fruit_tree/apricots"
-	},
-	"elements": [
-		{
-			"from": [2, -2, 7],
-			"to": [9, 5, 14],
-			"rotation": {"angle": 0, "axis": "y", "origin": [2, -2, 7]},
-			"faces": {
-				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
-				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
-				"south": {"uv": [3.5, 0, 7, 3.5], "texture": "#0"},
-				"west": {"uv": [3.5, 3.5, 7, 7], "texture": "#0"},
-				"up": {"uv": [3.5, 10.5, 0, 7], "texture": "#0"},
-				"down": {"uv": [10.5, 0, 7, 3.5], "texture": "#0"}
-			},
-			"neoforge_data": {
-				"ambient_occlusion": false
-			}
-		},
-		{
-			"from": [6.69344, 8, -0.5412],
-			"to": [13.69344, 15, 6.4588],
-			"rotation": {"angle": 22.5, "axis": "y", "origin": [9.19344, 11.5, 1.9588]},
-			"faces": {
-				"north": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
-				"east": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
-				"south": {"uv": [3.5, 0, 7, 3.5], "texture": "#0"},
-				"west": {"uv": [3.5, 3.5, 7, 7], "texture": "#0"},
-				"up": {"uv": [3.5, 10.5, 0, 7], "texture": "#0"},
-				"down": {"uv": [10.5, 0, 7, 3.5], "texture": "#0"}
-			},
-			"neoforge_data": {
-				"ambient_occlusion": false
-			}
-		},
-		{
-			"from": [8.41421, 4, 10.41421],
-			"to": [15.41421, 11, 17.41421],
-			"rotation": {"angle": 45, "axis": "y", "origin": [11.91421, 7.5, 15.91421]},
-			"faces": {
-				"north": {"uv": [0, 3.5, 3.5, 7], "texture": "#0"},
-				"east": {"uv": [3.5, 0, 7, 3.5], "texture": "#0"},
-				"south": {"uv": [3.5, 3.5, 7, 7], "texture": "#0"},
-				"west": {"uv": [0, 0, 3.5, 3.5], "texture": "#0"},
-				"up": {"uv": [3.5, 10.5, 0, 7], "rotation": 270, "texture": "#0"},
-				"down": {"uv": [10.5, 0, 7, 3.5], "rotation": 90, "texture": "#0"}
-			},
-			"neoforge_data": {
-				"ambient_occlusion": false
-			}
-		}
-	],
-	"display": {}
+    "format_version": "1.9.0",
+    "credit": "Made with Blockbench",
+    "texture_size": [
+        32,
+        32
+    ],
+    "textures": {
+        "0": "confluence_delight:block/natural/fruit_tree/apricots",
+        "particle": "confluence_delight:block/natural/fruit_tree/apricots"
+    },
+    "elements": [
+        {
+            "from": [
+                2,
+                -2,
+                7
+            ],
+            "to": [
+                9,
+                5,
+                14
+            ],
+            "rotation": {
+                "angle": 0,
+                "axis": "y",
+                "origin": [
+                    2,
+                    -2,
+                    7
+                ]
+            },
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        3.5,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        3.5,
+                        3.5,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "south": {
+                    "uv": [
+                        3.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "west": {
+                    "uv": [
+                        3.5,
+                        3.5,
+                        7,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "up": {
+                    "uv": [
+                        3.5,
+                        10.5,
+                        0,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "down": {
+                    "uv": [
+                        10.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "texture": "#0"
+                }
+            },
+            "neoforge_data": {
+                "ambient_occlusion": false
+            }
+        },
+        {
+            "from": [
+                6.69344,
+                8,
+                -0.5412
+            ],
+            "to": [
+                13.69344,
+                15,
+                6.4588
+            ],
+            "rotation": {
+                "angle": 22.5,
+                "axis": "y",
+                "origin": [
+                    9.19344,
+                    11.5,
+                    1.9588
+                ]
+            },
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        0,
+                        3.5,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "east": {
+                    "uv": [
+                        0,
+                        3.5,
+                        3.5,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "south": {
+                    "uv": [
+                        3.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "west": {
+                    "uv": [
+                        3.5,
+                        3.5,
+                        7,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "up": {
+                    "uv": [
+                        3.5,
+                        10.5,
+                        0,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "down": {
+                    "uv": [
+                        10.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "texture": "#0"
+                }
+            },
+            "neoforge_data": {
+                "ambient_occlusion": false
+            }
+        },
+        {
+            "from": [
+                8.41421,
+                4,
+                10.41421
+            ],
+            "to": [
+                15.41421,
+                11,
+                17.41421
+            ],
+            "rotation": {
+                "angle": 45,
+                "axis": "y",
+                "origin": [
+                    11.91421,
+                    7.5,
+                    15.91421
+                ]
+            },
+            "faces": {
+                "north": {
+                    "uv": [
+                        0,
+                        3.5,
+                        3.5,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "east": {
+                    "uv": [
+                        3.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "south": {
+                    "uv": [
+                        3.5,
+                        3.5,
+                        7,
+                        7
+                    ],
+                    "texture": "#0"
+                },
+                "west": {
+                    "uv": [
+                        0,
+                        0,
+                        3.5,
+                        3.5
+                    ],
+                    "texture": "#0"
+                },
+                "up": {
+                    "uv": [
+                        3.5,
+                        10.5,
+                        0,
+                        7
+                    ],
+                    "rotation": 270,
+                    "texture": "#0"
+                },
+                "down": {
+                    "uv": [
+                        10.5,
+                        0,
+                        7,
+                        3.5
+                    ],
+                    "rotation": 90,
+                    "texture": "#0"
+                }
+            },
+            "neoforge_data": {
+                "ambient_occlusion": false
+            }
+        }
+    ],
+    "display": {}
 }

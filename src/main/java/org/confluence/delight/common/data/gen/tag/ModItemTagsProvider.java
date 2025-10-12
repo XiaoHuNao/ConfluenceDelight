@@ -16,6 +16,8 @@ import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import vectorwing.farmersdelight.common.tag.CommonTags;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -143,6 +145,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 CDBlocks.POMEGRANATE_CRATE.asItem(),
                 CDBlocks.RAMBUTAN_CRATE.asItem()
         );
+        tag(ModTags.KNIVES).add(knife);
+        tag(Tags.Items.TOOLS).add(knife);
+        tag(CommonTags.TOOLS_KNIFE).add(knife);
         tag(CDTags.Items.BLACKCURRANT_CRATE).add(CDBlocks.BLACKCURRANT_CRATE.asItem());
         tag(CDTags.Items.BLOOD_ORANGE_CRATE).add(CDBlocks.BLOOD_ORANGE_CRATE.asItem());
         tag(CDTags.Items.ELDERBERRY_CRATE).add(CDBlocks.ELDERBERRY_CRATE.asItem());
@@ -162,6 +167,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(CDTags.Items.POMEGRANATE_CRATE).add(CDBlocks.POMEGRANATE_CRATE.asItem());
         tag(CDTags.Items.RAMBUTAN_CRATE).add(CDBlocks.RAMBUTAN_CRATE.asItem());
     }
+
+    Item[] knife = new Item[]{
+            CDItems.CORRUPT_KNIFE.get(),
+            CDItems.CRIMSON_KNIFE.get()
+    };
 
     @Override
     public IntrinsicTagAppender<Item> tag(TagKey<Item> tag) {

@@ -19,7 +19,7 @@ import org.confluence.mod.common.init.ModEffects;
 
 import java.util.List;
 
-public class TheMealOfLifeItem extends CDBaseFoodItem.BItem {
+public class TheMealOfLifeItem extends CDFoodItem.BItem {
     public TheMealOfLifeItem() {
         super(CDFoodBlocks.THE_MEAL_OF_LIFE_BLOCK.get(), new Properties().food(
                 DelightFoodProperties.hasEffectProperties(18, 36.0f, Items.BOWL,

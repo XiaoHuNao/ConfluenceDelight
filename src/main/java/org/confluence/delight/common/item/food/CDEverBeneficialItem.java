@@ -17,6 +17,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.attachment.CDEverBeneficial;
+import org.confluence.terra_curio.common.init.TCAttributes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,9 +25,10 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class CDEverBeneficialItem extends CDBaseFoodItem {
+public class CDEverBeneficialItem extends CDFoodItem {
     public static final Post DO_NOTHING = (id, player, everBeneficial, isRespawn) -> {
     };
+
     public static final Beneficial UTILITY_APPLE = new Beneficial(ConfluenceDelight.asResource("utility_apple"), CDEverBeneficial::setUtilityAppleUsed, (id, player, data, isRespawn) -> {
         AttributeInstance miningEfficiency = player.getAttributes().getInstance(Attributes.MINING_EFFICIENCY);
         if (miningEfficiency == null) return;
@@ -38,6 +40,11 @@ public class CDEverBeneficialItem extends CDBaseFoodItem {
         if (sneakingSpeed == null || movementEfficiency == null) return;
         sneakingSpeed.addOrReplacePermanentModifier(new AttributeModifier(id, 0.4, AttributeModifier.Operation.ADD_VALUE));
         movementEfficiency.addOrReplacePermanentModifier(new AttributeModifier(id, 0.5, AttributeModifier.Operation.ADD_VALUE));
+    });
+    public static final Beneficial EZ_CONSTANT = new Beneficial(ConfluenceDelight.asResource("ez_constant"), CDEverBeneficial::setEzConstantUsed, (id, player, data, isRespawn) -> {
+        AttributeInstance rangeDamage = player.getAttributes().getInstance(TCAttributes.getRangedDamage());
+        if (rangeDamage == null) return;
+        rangeDamage.addOrReplacePermanentModifier(new AttributeModifier(id, 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
     });
 
     private final Beneficial beneficial;

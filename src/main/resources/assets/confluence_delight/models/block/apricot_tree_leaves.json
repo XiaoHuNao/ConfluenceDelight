@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/leaves",
-  "textures": {
-    "all": "confluence_delight:block/natural/fruit_tree/apricot_tree_leaves"
-  }
+    "parent": "minecraft:block/leaves",
+    "textures": {
+        "all": "confluence_delight:block/natural/fruit_tree/apricot_tree_leaves"
+    }
 }

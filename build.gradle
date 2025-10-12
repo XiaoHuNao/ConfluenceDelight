@@ -99,6 +99,9 @@ repositories {
     }
     maven {
         url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
     }
     maven {
         // location of the maven that hosts JEI files since January 2023
@@ -167,12 +170,12 @@ repositories {
 dependencies {
     implementation "net.neoforged:DevLaunch:1.0.1"
 
-    implementation "org.confluence.lib:Confluence-Magic-Lib:0.0.2d-SNAPSHOT"
-    implementation ("org.confluence.mod:ConfluenceOtherworld:1.2.0-alpha-251005"){transitive = false}
+    implementation ("org.confluence.lib:Confluence-Magic-Lib:${confluence_lib_version}")
+    implementation ("org.confluence.mod:ConfluenceOtherworld:${confluence_version}"){transitive = false}
     implementation "curse.maven:farmers-delight-398521:6597295"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
-    compileOnly "curse.maven:terra-curio-1027625:6881159"
+    compileOnly ("org.confluence:TerraCurio:${terra_curio_version}")
     compileOnly "curse.maven:terra-entity-1173196:6878178"
     compileOnly "curse.maven:create-328085:6323264"
     runtimeOnly "curse.maven:create-328085:6323264"

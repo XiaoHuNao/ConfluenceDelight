@@ -1,33 +1,33 @@
-modLoader="javafml"
+modLoader = "javafml"
 # A version range to match for said mod loader - for regular FML @Mod it will be the FML version. This is currently 47.
-loaderVersion="${loader_version_range}"
-license="${mod_license}"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
-logoFile="logo.png"
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+logoFile = "logo.png"
 logoBlur = false
-authors="${mod_authors}"
-description='''${mod_description}'''
+authors = "${mod_authors}"
+description = '''${mod_description}'''
 
 [[mixins]]
-config="confluence_delight.mixins.json"
+config = "confluence_delight.mixins.json"
 
 [[accessTransformers]]
-file="META-INF/accesstransformer.cfg"
+file = "META-INF/accesstransformer.cfg"
 
 [[dependencies."${mod_id}"]] #optional
-modId="neoforge"
-type="required"
-versionRange="${neo_version_range}" #mandatory
-ordering="NONE"
-side="BOTH"
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}" #mandatory
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies."${mod_id}"]]
-modId="minecraft"
-type="required"
-versionRange="${minecraft_version_range}"
-ordering="NONE"
-side="BOTH"
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

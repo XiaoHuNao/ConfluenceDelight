@@ -8,21 +8,24 @@ import org.confluence.delight.common.init.CDAttachmentTypes;
 import org.jetbrains.annotations.UnknownNullability;
 
 public class CDEverBeneficial implements INBTSerializable<CompoundTag> {
-    private boolean isAegisAppleUsed;
+    private boolean isUtilityAppleUsed;
     private boolean isSpeedyCokeUsed;
+    private boolean isEzConstantUsed;
+
 
     public CDEverBeneficial() {
-        this.isAegisAppleUsed = false;
+        this.isUtilityAppleUsed = false;
         this.isSpeedyCokeUsed = false;
+        this.isEzConstantUsed = false;
     }
 
-    public boolean isAegisAppleUsed() {
-        return isAegisAppleUsed;
+    public boolean isUtilityAppleUsed() {
+        return isUtilityAppleUsed;
     }
 
     public boolean setUtilityAppleUsed() {
-        if (isAegisAppleUsed) return false;
-        return this.isAegisAppleUsed = true;
+        if (isUtilityAppleUsed) return false;
+        return this.isUtilityAppleUsed = true;
     }
 
     public boolean isSpeedyCokeUsed() {
@@ -34,16 +37,29 @@ public class CDEverBeneficial implements INBTSerializable<CompoundTag> {
         return this.isSpeedyCokeUsed = true;
     }
 
+    public boolean isEzConstantUsed() {
+        return isEzConstantUsed;
+    }
+
+    public boolean setEzConstantUsed() {
+        if (isEzConstantUsed) return false;
+        return this.isEzConstantUsed = true;
+    }
+
     @Override
     public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag nbt = new CompoundTag();
-        nbt.putBoolean("isAegisAppleUsed", isAegisAppleUsed);
+        nbt.putBoolean("isUtilityAppleUsed", isUtilityAppleUsed);
+        nbt.putBoolean("isSpeedyCokeUsed", isSpeedyCokeUsed);
+        nbt.putBoolean("isEzConstantUsed", isEzConstantUsed);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(HolderLookup.Provider provider, CompoundTag nbt) {
-        this.isAegisAppleUsed = nbt.getBoolean("isAegisAppleUsed");
+        this.isUtilityAppleUsed = nbt.getBoolean("isUtilityAppleUsed");
+        this.isSpeedyCokeUsed = nbt.getBoolean("isSpeedyCokeUsed");
+        this.isEzConstantUsed = nbt.getBoolean("isEzConstantUsed");
     }
 
     public static CDEverBeneficial of(LivingEntity living) {
