@@ -169,7 +169,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     Item[] knife = new Item[]{
-            CDItems.CORRUPT_KNIFE.get(),
             CDItems.CRIMSON_KNIFE.get()
     };
 
