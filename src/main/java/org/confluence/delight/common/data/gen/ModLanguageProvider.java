@@ -62,9 +62,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add("jei.confluence_delight.info.juicer.cycle", "%d cycle", "%d 次");
 
         add("title.confluence_delight.block_and_item_interaction", "Block And Item Interaction", "物块交互");
+
         //jade
-        add("config.jade.plugin_confluence_delight.picklejars_info", "PickleJars Info", "泡菜罐信息");
-        add("config.jade.plugin_confluence_delight.juicer_info", "Juicer Info", "榨汁机信息");
+        add("config.jade.plugin_confluence_delight.jade_millstone_info", "MillStone Info", "磨盘信息");
 
         //config
         add("confluence_delight.configuration.machines", "Machines", "机器");

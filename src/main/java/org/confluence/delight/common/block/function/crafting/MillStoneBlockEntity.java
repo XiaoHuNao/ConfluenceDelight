@@ -39,8 +39,8 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
 
     protected NonNullList<ItemStack> items = NonNullList.withSize(TOTAL_SIZE, ItemStack.EMPTY);
 
-    private int craftProgress = 0;
-    private int craftTotalTime = 0;
+    public float craftProgress = 0;
+    public int craftTotalTime = 0;
     public int useCooldown;
 
     public final ItemStackHandlerRecipeInput itemHandler;
@@ -98,21 +98,14 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
                 level.playSound(null, pos, CDSoundEvents.MILLSTONE_WORK.get(), SoundSource.BLOCKS, 0.75f, 0.5f);
                 blockEntity.spawnInputItemParticles(level, pos);
                 if (canResultInsert(blockEntity.items, blockEntity.getMaxStackSize(), resultItem)) {
-                    if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
-                        ItemStack newResult = recipe.assemble(input, level.registryAccess());
+                    blockEntity.craftProgress += 0.125f;
+                    if (blockEntity.craftProgress >= blockEntity.craftTotalTime) {
+                        ItemStack newResult = recipe.assembleAndExtract(input, level.registryAccess());
                         ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(INPUT_SIZE);
                         if (currentResult.isEmpty()) {
                             blockEntity.itemHandler.setStackInSlot(INPUT_SIZE, newResult.copy());
                         } else if (ItemStack.isSameItemSameComponents(currentResult, newResult)) {
                             currentResult.grow(newResult.getCount());
-                        }
-                        for (int i = 0; i < INPUT_SIZE; i++) {
-                            ItemStack stack = blockEntity.itemHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()) {
-                                ItemStack newStack = stack.copy();
-                                newStack.shrink(1);
-                                blockEntity.itemHandler.setStackInSlot(i, newStack.isEmpty() ? ItemStack.EMPTY : newStack);
-                            }
                         }
                         blockEntity.craftProgress = 0;
                         blockEntity.setChanged();
@@ -201,7 +194,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
         super.loadAdditional(nbt, registries);
         itemHandler.setItems(NonNullList.withSize(TOTAL_SIZE, ItemStack.EMPTY));
         ContainerHelper.loadAllItems(nbt, itemHandler.getItems(), registries);
-        this.craftProgress = nbt.getInt("CraftTime");
+        this.craftProgress = nbt.getFloat("CraftTime");
         this.craftTotalTime = nbt.getInt("CraftTotalTime");
     }
 
@@ -209,7 +202,7 @@ public class MillStoneBlockEntity extends BaseContainerBlockEntity implements Wo
     protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registries) {
         super.saveAdditional(nbt, registries);
         ContainerHelper.saveAllItems(nbt, itemHandler.getItems(), registries);
-        nbt.putInt("CraftTime", this.craftProgress);
+        nbt.putFloat("CraftTime", this.craftProgress);
         nbt.putInt("CraftTotalTime", this.craftTotalTime);
     }
 

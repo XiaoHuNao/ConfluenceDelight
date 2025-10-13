@@ -45,6 +45,7 @@ public class CDRecipeProvider extends AbstractRecipeProvider {
         pickleJarsRecipe(recipeOutput, true, CDFoodItems.CHOP_BELL_PEPPER.toStack(10), wine1000, 1000, AmountIngredient.of(10, Items.SUGAR), AmountIngredient.of(10, CDFoodItems.CRUSHED_CHILLI));
 
         //磨盘
+        millStoneRecipe(recipeOutput, CDFoodItems.CRUSHED_CHILLI.toStack(10), 2, Ingredient.of(FoodItems.SPICY_PEPPER));
 
         //榨汁机
         FluidStack WATER_1000 = new FluidStack(Fluids.WATER, 1000);

@@ -28,7 +28,6 @@ import org.confluence.delight.common.init.CDBlocks;
 import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.init.CDTags;
 import org.confluence.delight.common.recipe.JuicerRecipe;
-import org.confluence.lib.common.recipe.AmountIngredient;
 import org.confluence.lib.common.recipe.ItemStackHandlerRecipeInput;
 import org.jetbrains.annotations.Nullable;
 
@@ -112,22 +111,12 @@ public class JuicerBlockEntity extends BaseContainerBlockEntity implements World
                 if (canResultInsert(blockEntity.itemHandler.getItems(), blockEntity.getMaxStackSize(), resultItem)) {
                     if (++blockEntity.craftProgress >= blockEntity.craftTotalTime) {
                         recipe.consumeFluids(blockEntity.fluidTank);
-                        ItemStack newResult = recipe.assemble(input, level.registryAccess());
+                        ItemStack newResult = recipe.assembleAndExtract(input, level.registryAccess());
                         ItemStack currentResult = blockEntity.itemHandler.getStackInSlot(OUTPUT_SLOT);
                         if (currentResult.isEmpty()) {
                             blockEntity.itemHandler.setStackInSlot(OUTPUT_SLOT, newResult.copy());
                         } else if (ItemStack.isSameItemSameComponents(currentResult, newResult)) {
                             currentResult.grow(newResult.getCount());
-                        }
-                        for (int i = 0; i < recipe.ingredients.size(); i++) {
-                            AmountIngredient amountIngredient = new AmountIngredient(recipe.ingredients.get(i), AmountIngredient.getAmount(recipe.ingredients.get(i)));
-                            ItemStack stack = blockEntity.itemHandler.getStackInSlot(i);
-                            if (!stack.isEmpty()) {
-                                stack.shrink(amountIngredient.amount());
-                                if (stack.isEmpty()) {
-                                    blockEntity.itemHandler.setStackInSlot(i, ItemStack.EMPTY);
-                                }
-                            }
                         }
                         ItemStack containerStack = blockEntity.itemHandler.getStackInSlot(CONTAINER_SLOT);
                         if (!containerStack.isEmpty()) {
