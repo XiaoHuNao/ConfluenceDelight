@@ -53,7 +53,6 @@ public class CDBlocks {
     public static final DeferredBlock<Block> STAR_FRUIT_CRATE = registerWithItem("star_fruit_crate", "箱装杨桃", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> POMEGRANATE_CRATE = registerWithItem("pomegranate_crate", "箱装石榴", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));
     public static final DeferredBlock<Block> BLACKCURRANT_CRATE = registerWithItem("blackcurrant_crate", "箱装黑醋栗", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_BLACK)));
-    public static final DeferredBlock<Block> BLOODY_MOSCATO_CRATE = registerWithItem("bloody_moscato_crate", "箱装血腥麝香葡萄", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_PURPLE)));
     public static final DeferredBlock<Block> ELDERBERRY_CRATE = registerWithItem("elderberry_crate", "箱装接骨木果", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_PURPLE)));
     public static final DeferredBlock<Block> PINEAPPLE_CRATE = registerWithItem("pineapple_crate", "箱装菠萝", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_YELLOW)));
     public static final DeferredBlock<Block> SPICY_PEPPER_CRATE = registerWithItem("spicy_pepper_crate", "箱装辣椒", () -> new Block(BlockBehaviour.Properties.ofFullCopy(ACACIA_PLANKS).mapColor(MapColor.COLOR_RED)));

@@ -28,14 +28,6 @@ public class CDFoodBlocks {
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 6000, 1),
             CDEffectData.of(ModEffects.HUNGER_DELAYED, 1000)));
     public static final DeferredBlock<BlackCurrantDarkChocolatePieBlock> BLACKCURRANT_DARK_CHOCOLATE_PIE_BLOCK = registerWithoutItem("blackcurrant_dark_chocolate_pie", BlackCurrantDarkChocolatePieBlock::new);
-    public static final DeferredBlock<BaseFoodBlock> BRAISED_BEEF_RICE_BLOCK = registerWithoutItem("braised_beef_rice", () -> new BaseFoodBlock(18, 20.0f, Items.BOWL,
-            CDEffectData.of(MobEffects.REGENERATION, 600),
-            CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 600, 1),
-            CDEffectData.of(MobEffects.DAMAGE_BOOST, 600, 1)));
-    public static final DeferredBlock<BaseFoodBlock> BRAISED_BEEF_NOODLES_BLOCK = registerWithoutItem("braised_beef_noodles", () -> new BaseFoodBlock(18, 20.0f, Items.BOWL,
-            CDEffectData.of(MobEffects.REGENERATION, 600),
-            CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 600, 1),
-            CDEffectData.of(MobEffects.DAMAGE_RESISTANCE, 600)));
     public static final DeferredBlock<BaseFoodBlock> THE_MEAL_OF_LIFE_BLOCK = registerWithoutItem("the_meal_of_life", () -> new BaseFoodBlock(18, 36.0f, Items.BOWL,
             CDEffectData.of(MobEffects.REGENERATION, 600, 1),
             CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),

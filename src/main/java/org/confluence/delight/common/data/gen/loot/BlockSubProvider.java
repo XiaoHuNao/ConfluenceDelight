@@ -75,8 +75,6 @@ public final class BlockSubProvider extends BlockLootSubProvider {
         dropSelf(CDFoodBlocks.BLACK_CHOCOLATE_BLOCK.get());
         dropSelf(CDFoodBlocks.FLAVORED_WHITE_CHOCOLATE_BLOCK.get());
         dropSelf(CDFoodBlocks.CHICKEN_HOT_POT_BLOCK.get());
-        dropSelf(CDFoodBlocks.BRAISED_BEEF_RICE_BLOCK.get());
-        dropSelf(CDFoodBlocks.BRAISED_BEEF_NOODLES_BLOCK.get());
 
         add(CDNaturalBlocks.COCONUT_BLOCK.get(), loot -> {
             LootPool.Builder pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1));

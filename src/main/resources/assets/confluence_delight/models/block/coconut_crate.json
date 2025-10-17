@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:block/cube_bottom_top",
+    "textures": {
+        "bottom": "confluence_delight:block/crate/beach_crate_bottom",
+        "side": "confluence_delight:block/crate/coconut_crate_side",
+        "top": "confluence_delight:block/crate/coconut_crate_top"
+    }
+}

@@ -13,7 +13,7 @@ import java.util.List;
 public class HotStarChickenItem extends CDFoodItem {
     public HotStarChickenItem() {
         super(new Properties().food(
-                        DelightFoodProperties.hasEffectProperties(8, 12.0f,
+                        DelightFoodProperties.hasEffectProperties(4, 4,
                                 CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400)))
                 .jukeboxPlayable(CDJukeboxSongs.HOT_STAR_CHICKEN));
     }
