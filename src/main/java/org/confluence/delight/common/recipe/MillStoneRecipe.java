@@ -69,9 +69,9 @@ public class MillStoneRecipe extends AbstractAmountRecipe<MillStoneRecipe.Input>
 
     public static class Serializer implements RecipeSerializer<MillStoneRecipe> {
         public static final MapCodec<MillStoneRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
-                Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.workCircles)
+            ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
+            INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
+            Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.workCircles)
         ).apply(instance, MillStoneRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, MillStoneRecipe> STREAM_CODEC = StreamCodec.of(MillStoneRecipe.Serializer::toNetwork, MillStoneRecipe.Serializer::fromNetwork);
@@ -107,21 +107,16 @@ public class MillStoneRecipe extends AbstractAmountRecipe<MillStoneRecipe.Input>
         }
     }
 
-    public static class Input implements RecipeInput {
-        private final ItemStack[] items;
-
-        public Input(ItemStack[] items) {
-            this.items = items;
-        }
+    public record Input(ItemStack[] items) implements RecipeInput {
 
         @Override
-        public ItemStack getItem(int index) {
-            return items[index];
-        }
+            public ItemStack getItem(int index) {
+                return items[index];
+            }
 
-        @Override
-        public int size() {
-            return items.length;
+            @Override
+            public int size() {
+                return items.length;
+            }
         }
-    }
 }

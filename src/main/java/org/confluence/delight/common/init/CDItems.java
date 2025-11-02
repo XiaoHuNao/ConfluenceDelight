@@ -7,8 +7,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.item.knife.CrimsonKnife;
-import vectorwing.farmersdelight.common.item.KnifeItem;
 
 import java.util.function.Supplier;
 
@@ -17,8 +15,6 @@ import static org.confluence.delight.ConfluenceDelight.chineseProviders;
 public class CDItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
     public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
-
-    public static final DeferredItem<KnifeItem> CRIMSON_KNIFE = register("crimson_knife", "猩红刀", CrimsonKnife::new);
 
     public static final DeferredItem<Item> WINE_BUCKET = register("wine_bucket", "酒桶", () -> new BucketItem(CDFluids.WINE.fluid().get(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 

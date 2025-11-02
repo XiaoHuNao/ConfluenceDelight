@@ -73,10 +73,10 @@ public class EntitySubProvider extends EntityLootSubProvider {
                     Map<ResourceKey<LootTable>, LootTable.Builder> map1 = accessor.getMap().remove(entityType);
                     if (map1 != null) {
                         throw new IllegalStateException(String.format(
-                                Locale.ROOT,
-                                "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
-                                map1.keySet().stream().map(p_335190_ -> p_335190_.location().toString()).collect(Collectors.joining(",")),
-                                holder.key().location()
+                            Locale.ROOT,
+                            "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
+                            map1.keySet().stream().map(p_335190_ -> p_335190_.location().toString()).collect(Collectors.joining(",")),
+                            holder.key().location()
                         ));
                     }
                 }

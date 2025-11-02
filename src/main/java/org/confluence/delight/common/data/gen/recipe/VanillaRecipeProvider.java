@@ -44,136 +44,136 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput output, HolderLookup.Provider holderLookup) {
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'S', Ingredient.of(ModItems.MIXED_SALAD.get()),
-                'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE)
+            'S', Ingredient.of(ModItems.MIXED_SALAD.get()),
+            'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE)
         ), List.of(
-                "C  ",
-                "S  ",
-                "C  "
+            "C  ",
+            "S  ",
+            "C  "
         )), CDFoodItems.CLOUD_VEGETABLES_SANDWICH.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE),
-                'G', Ingredient.of(MaterialItems.GEL),
-                'L', Ingredient.of(MaterialItems.LIFE_MUSHROOM)
+            'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE),
+            'G', Ingredient.of(MaterialItems.GEL),
+            'L', Ingredient.of(MaterialItems.LIFE_MUSHROOM)
         ), List.of(
-                "CC ",
-                "GL ",
-                "CC "
+            "CC ",
+            "GL ",
+            "CC "
         )), CDFoodItems.CLOUD_GEL_SANDWICH.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE),
-                'G', Ingredient.of(MaterialItems.GEL),
-                'E', Ingredient.of(ModItems.FRIED_EGG.get())
+            'C', Ingredient.of(CDFoodItems.CLOUD_BREAD_SLICE),
+            'G', Ingredient.of(MaterialItems.GEL),
+            'E', Ingredient.of(ModItems.FRIED_EGG.get())
         ), List.of(
-                "CC ",
-                "GE ",
-                "CC "
+            "CC ",
+            "GE ",
+            "CC "
         )), CDFoodItems.CLOUD_FRIED_EGG_GEL_SANDWICH.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'C', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN),
-                'S', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
-                'G', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
-                'P', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN)
+            'C', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN),
+            'S', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
+            'G', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
+            'P', Ingredient.of(CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN)
         ), List.of(
-                "CSS",
-                "SGP",
-                "PPP"
+            "CSS",
+            "SGP",
+            "PPP"
         )), CDFoodItems.CHOCOLATE_LUCK_COIN_BOX.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'f', Ingredient.of(Items.FLOWER_POT),
-                'd', Ingredient.of(Items.DECORATED_POT)
+            'f', Ingredient.of(Items.FLOWER_POT),
+            'd', Ingredient.of(Items.DECORATED_POT)
         ), List.of(
-                "f  ",
-                "d  ",
-                "   "
+            "f  ",
+            "d  ",
+            "   "
         )), CDBlocks.PICKLE_JARS_BLOCK.toStack());
         shaped(output, "", "", ShapedRecipePattern.of(Map.of(
-                'F', Ingredient.of(ItemTags.FENCES),
-                'S', Ingredient.of(Items.SMOOTH_STONE),
-                'T', Ingredient.of(Items.STONE)
+            'F', Ingredient.of(ItemTags.FENCES),
+            'S', Ingredient.of(Items.SMOOTH_STONE),
+            'T', Ingredient.of(Items.STONE)
         ), List.of(
-                "  F",
-                "SSS",
-                "TTT"
+            "  F",
+            "SSS",
+            "TTT"
         )), CDBlocks.MILLSTONE_BLOCK.toStack());
 
         shapeless(output, "", "", CDFoodItems.CLOUD_BACON_SANDWICH.toStack(),
-                Ingredient.of(CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),
-                Ingredient.of(ModItems.COOKED_BACON.get()),
-                Ingredient.of(ModItems.TOMATO.get()),
-                Ingredient.of(Tags.Items.FOODS_FRUIT));
+            Ingredient.of(CDFoodItems.BUTTER_FRIED_CLOUD_BREAD_SLICES),
+            Ingredient.of(ModItems.COOKED_BACON.get()),
+            Ingredient.of(ModItems.TOMATO.get()),
+            Ingredient.of(Tags.Items.FOODS_FRUIT));
         shapeless(output, "", "", CDFoodItems.HONEY_GLAZED_HAM.toStack(),
-                Ingredient.of(Items.HONEY_BOTTLE),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(ModItems.HAM.get()));
+            Ingredient.of(Items.HONEY_BOTTLE),
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(MaterialItems.GEL),
+            Ingredient.of(ModItems.HAM.get()));
         shapeless(output, "", "", CDFoodItems.WHITE_CHOCOLATE.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS));
         shapeless(output, "", "", CDFoodItems.BLACK_CHOCOLATE.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.COCOA_BEANS));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.COCOA_BEANS));
         shapeless(output, "", "", CDFoodItems.FLAVORED_WHITE_CHOCOLATE.toStack(),
-                Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(CDFoodItems.WHITE_CHOCOLATE));
+            Ingredient.of(MaterialItems.GEL),
+            Ingredient.of(CDFoodItems.WHITE_CHOCOLATE));
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_DARK_CHOCOLATE_PIE.toStack(),
-                Ingredient.of(MaterialItems.GEL),
-                Ingredient.of(FoodItems.BLACKCURRANT),
-                Ingredient.of(CDFoodItems.BLACK_CHOCOLATE));
+            Ingredient.of(MaterialItems.GEL),
+            Ingredient.of(FoodItems.BLACKCURRANT),
+            Ingredient.of(CDFoodItems.BLACK_CHOCOLATE));
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_JAM_BREAD.toStack(),
-                Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
-                Ingredient.of(Items.BREAD));
+            Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
+            Ingredient.of(Items.BREAD));
         shapeless(output, "", "", CDFoodItems.BLACKCURRANT_JAM_MANGO_PUDDING.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(CDTags.Items.C_FRUIT_MANGO),
-                Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
-                Ingredient.of(MaterialItems.GEL));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(CDTags.Items.C_FRUIT_MANGO),
+            Ingredient.of(CDFoodItems.BLACKCURRANT_JAM),
+            Ingredient.of(MaterialItems.GEL));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.COPPER_COIN));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS),
+            Ingredient.of(org.confluence.mod.common.init.item.ModItems.COPPER_COIN));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.SILVER_COIN));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS),
+            Ingredient.of(org.confluence.mod.common.init.item.ModItems.SILVER_COIN));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.GOLD_COIN));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS),
+            Ingredient.of(org.confluence.mod.common.init.item.ModItems.GOLD_COIN));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.PLATINUM_COIN));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS),
+            Ingredient.of(org.confluence.mod.common.init.item.ModItems.PLATINUM_COIN));
         shapeless(output, "", "", CDFoodItems.LUCK_CHOCOLATE_EMERALD_COIN.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(Items.MILK_BUCKET),
-                Ingredient.of(Items.COCOA_BEANS),
-                Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(Items.MILK_BUCKET),
+            Ingredient.of(Items.COCOA_BEANS),
+            Ingredient.of(org.confluence.mod.common.init.item.ModItems.EMERALD_COIN));
         shapeless(output, "", "", CDNaturalItems.SPICY_PEPPER_SEEDS.toStack(2), Ingredient.of(FoodItems.SPICY_PEPPER));
         shapeless(output, "", "", CDNaturalItems.PINEAPPLE_SEEDS.toStack(2), Ingredient.of(CDTags.Items.C_FRUIT_PINEAPPLE));
         shapeless(output, "", "", CDNaturalItems.DRAGON_FRUIT_SEEDS.toStack(2), Ingredient.of(FoodItems.DRAGON_FRUIT));
         shapeless(output, "", "", CDFoodItems.BIG_CHICKEN_CUTLET.toStack(),
-                Ingredient.of(Items.CHICKEN),
-                Ingredient.of(FoodItems.SPICY_PEPPER),
-                Ingredient.of(Items.LAVA_BUCKET));
+            Ingredient.of(Items.CHICKEN),
+            Ingredient.of(FoodItems.SPICY_PEPPER),
+            Ingredient.of(Items.LAVA_BUCKET));
         shapeless(output, "", "", CDFoodItems.FLYING_FISH_SASHIMI.toStack(),
-                Ingredient.of(MaterialItems.FILAMENTOUS_FIN),
-                Ingredient.of(CDFoodItems.FLYING_FISH_CAVIAR),
-                Ingredient.of(ModItems.ONION.get()));
+            Ingredient.of(MaterialItems.FILAMENTOUS_FIN),
+            Ingredient.of(CDFoodItems.FLYING_FISH_CAVIAR),
+            Ingredient.of(ModItems.ONION.get()));
         shapeless(output, "", "", CDFoodItems.FLYING_FISH_CAVIAR.toStack(),
-                Ingredient.of(Items.GLASS_BOTTLE),
-                Ingredient.of(CDFoodItems.FLYING_FISH_ROE.toStack(64)));
+            Ingredient.of(Items.GLASS_BOTTLE),
+            Ingredient.of(CDFoodItems.FLYING_FISH_ROE.toStack(64)));
         shapeless(output, "", "", CDFoodItems.SPEEDY_COKE.toStack(),
-                Ingredient.of(Items.SUGAR),
-                Ingredient.of(ConsumableItems.VITAL_CRYSTAL),
-                Ingredient.of(Items.GLOWSTONE_DUST),
-                Ingredient.of(FoodItems.JOJA_COLA));
+            Ingredient.of(Items.SUGAR),
+            Ingredient.of(ConsumableItems.VITAL_CRYSTAL),
+            Ingredient.of(Items.GLOWSTONE_DUST),
+            Ingredient.of(FoodItems.JOJA_COLA));
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT.get()), CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), 0.35f, 200);
@@ -235,9 +235,9 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
         Set<Item> itemCounter = new HashSet<>();
         Set<TagKey<Item>> tagCounter = new HashSet<>();
         Advancement.Builder builder = recipeOutput.advancement()
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-                .rewards(AdvancementRewards.Builder.recipe(id))
-                .requirements(AdvancementRequirements.Strategy.OR);
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+            .rewards(AdvancementRewards.Builder.recipe(id))
+            .requirements(AdvancementRequirements.Strategy.OR);
         for (Ingredient ingredient : ingredients) {
             Ingredient.Value[] values;
             ICustomIngredient customIngredient = ingredient.getCustomIngredient();

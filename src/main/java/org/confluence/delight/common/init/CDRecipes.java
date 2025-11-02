@@ -7,10 +7,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.delight.ConfluenceDelight;
-import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
-import org.confluence.delight.common.recipe.JuicerRecipe;
-import org.confluence.delight.common.recipe.MillStoneRecipe;
-import org.confluence.delight.common.recipe.PickleJarsRecipe;
+import org.confluence.delight.common.recipe.*;
 
 import java.util.function.Supplier;
 
@@ -26,7 +23,10 @@ public class CDRecipes {
     public static final Supplier<RecipeType<JuicerRecipe>> JUICER_TYPE = registerRecipeType("juicer");
     public static final Supplier<RecipeSerializer<?>> BLOCK_AND_ITEM_INTERACTION_SERIALIZER = RECIPE_SERIALIZERS.register("block_and_item_interaction", BlockAndItemInteractionRecipe.Serializer::new);
     public static final Supplier<RecipeType<BlockAndItemInteractionRecipe>> BLOCK_AND_ITEM_INTERACTION_TYPE = registerRecipeType("block_and_item_interaction");
-
+    public static final Supplier<RecipeType<ShimmerTransmutationRecipe>>  SHIMMER_TRANSMUTATION_TYPE = registerRecipeType("shimmer_transmutation");
+    public static final Supplier<RecipeSerializer<?>> SIMMER_TRANSMUTATION_SERIALIZER = RECIPE_SERIALIZERS.register("shimmer_transmutation", ShimmerTransmutationRecipe.Serializer::new);
+    public static final Supplier<RecipeType<ShimmerTransmutationPotRecipe>> SHIMMER_TRANSMUTATION_POT_TYPE = registerRecipeType("shimmer_transmutation_pot");
+    public static final Supplier<RecipeSerializer<?>> SHIMMER_TRANSMUTATION_POT_SERIALIZER = RECIPE_SERIALIZERS.register("shimmer_transmutation_pot", ShimmerTransmutationPotRecipe.Serializer::new);
 
     public static <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(final String identifier) {
         return RECIPE_TYPES.register(identifier, () -> new RecipeType<T>() {

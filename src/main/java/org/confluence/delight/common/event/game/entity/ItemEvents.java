@@ -11,7 +11,7 @@ import org.confluence.delight.common.CDCommonConfigs;
 import org.confluence.delight.util.CDTextUtils;
 import org.confluence.mod.common.item.food.BaseFoodItem;
 
-@EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = ConfluenceDelight.MODID)
 public class ItemEvents {
 
     @SubscribeEvent

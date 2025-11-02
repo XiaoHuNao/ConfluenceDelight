@@ -23,10 +23,10 @@ import static org.confluence.mod.util.PlayerUtils.receiveMana;
 public class OverloadedBreadItem extends CDFoodItem {
     public OverloadedBreadItem() {
         super(new Properties().food(
-                DelightFoodProperties.hasEffectProperties(60, 100,
-                        CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 36000, 2),
-                        CDEffectData.of(MobEffects.ABSORPTION, 100, 127),
-                        CDEffectData.of(ModEffects.POTION_SICKNESS, 4000))));
+            DelightFoodProperties.hasEffectProperties(60, 100,
+                CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 36000, 2),
+                CDEffectData.of(MobEffects.ABSORPTION, 100, 127),
+                CDEffectData.of(ModEffects.POTION_SICKNESS, 4000))));
     }
 
     @Override

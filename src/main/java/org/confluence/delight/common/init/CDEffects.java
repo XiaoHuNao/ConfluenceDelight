@@ -35,7 +35,7 @@ public class CDEffects {
     public static final DeferredHolder<MobEffect, MobEffect> BLINDNESS_IMMUNE = register("blindness_immune", "失明免疫", () -> new ImmuneEffect(0x2196F3).setImmuneEffects(HolderSet.direct(MobEffects.BLINDNESS)));
     public static final DeferredHolder<MobEffect, MobEffect> BLEEDING_IMMUNE = register("bleeding_immune", "流血免疫", () -> new ImmuneEffect(0xE91E63).setImmuneEffects(HolderSet.direct(ModEffects.BLEEDING)));
     public static final DeferredHolder<MobEffect, MobEffect> SOUL_SAND_SLOWS_DOWN_IMMUNE = register("soul_sand_slows_down_immune", "灵魂沙减速免疫", () -> new ImmuneEffect(
-            0x9C27B0, m -> m.put(Attributes.MOVEMENT_EFFICIENCY, new MobEffect.AttributeTemplate(ConfluenceDelight.asResource("soul_sand_slows_down_immune"), 1.0, AttributeModifier.Operation.ADD_VALUE))));
+        0x9C27B0, m -> m.put(Attributes.MOVEMENT_EFFICIENCY, new MobEffect.AttributeTemplate(ConfluenceDelight.asResource("soul_sand_slows_down_immune"), 1.0, AttributeModifier.Operation.ADD_VALUE))));
 
     public static final DeferredHolder<MobEffect, MobEffect> PARASITIC = register("parasitic", "寄生", ParasiticEffect::new);
 

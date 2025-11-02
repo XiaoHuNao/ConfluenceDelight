@@ -57,8 +57,8 @@ public class DragonFruitCactusBlock extends CactusBlock {
             BlockPos neighborPos = pos.relative(selectedDirection);
             if (level.isEmptyBlock(neighborPos)) {
                 level.setBlockAndUpdate(neighborPos, CDNaturalBlocks.DRAGON_FRUIT_BLOCK.get().defaultBlockState()
-                        .setValue(DragonFruitBlock.FACING, selectedDirection.getOpposite())
-                        .setValue(DragonFruitBlock.AGE, 0));
+                    .setValue(DragonFruitBlock.FACING, selectedDirection.getOpposite())
+                    .setValue(DragonFruitBlock.AGE, 0));
             }
         }
     }

@@ -62,23 +62,23 @@ public class CDTextUtils {
                     double amount = attributeModifier.amount();
                     double formattedAmount;
                     if (attributeModifier.operation() != AttributeModifier.Operation.ADD_MULTIPLIED_BASE &&
-                            attributeModifier.operation() != AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
+                        attributeModifier.operation() != AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL) {
                         formattedAmount = amount;
                     } else {
                         formattedAmount = amount * 100.0;
                     }
                     if (amount > 0.0) {
                         tooltipAdder.accept(Component.translatable(
-                                "attribute.modifier.plus." + attributeModifier.operation().id(),
-                                ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(formattedAmount),
-                                Component.translatable(pair.getFirst().value().getDescriptionId())
+                            "attribute.modifier.plus." + attributeModifier.operation().id(),
+                            ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(formattedAmount),
+                            Component.translatable(pair.getFirst().value().getDescriptionId())
                         ).withStyle(ChatFormatting.BLUE));
                     } else if (amount < 0.0) {
                         formattedAmount *= -1.0;
                         tooltipAdder.accept(Component.translatable(
-                                "attribute.modifier.take." + attributeModifier.operation().id(),
-                                ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(formattedAmount),
-                                Component.translatable(pair.getFirst().value().getDescriptionId())
+                            "attribute.modifier.take." + attributeModifier.operation().id(),
+                            ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(formattedAmount),
+                            Component.translatable(pair.getFirst().value().getDescriptionId())
                         ).withStyle(ChatFormatting.RED));
                     }
                 }

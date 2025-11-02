@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 
-@EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ConfluenceDelight.MODID)
 public class ModDataGenerator {
 
     @SubscribeEvent
@@ -43,11 +43,11 @@ public class ModDataGenerator {
         generator.addProvider(server, fluidTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
         generator.addProvider(server, new CollectRecipeProvider(ConfluenceDelight.asPlainId("server"), output, lookup,
-                CDRecipeProvider::new,
-                ConfluenceRecipeProvider::new,
-                HeavyWorkBenchProvider::new,
-                FDRecipeProvider::new,
-                VanillaRecipeProvider::new));
+            CDRecipeProvider::new,
+            ConfluenceRecipeProvider::new,
+            HeavyWorkBenchProvider::new,
+            FDRecipeProvider::new,
+            VanillaRecipeProvider::new));
         generator.addProvider(server, new CDMusicProvider(output, lookup));
         generator.addProvider(server, new ModLootTableProvider(output, lookup));
     }

@@ -70,7 +70,7 @@ public class CDJeiPlugin implements IModPlugin {
         height = Math.min(height, maxHeight);
         int y = 69 - height + 4;
         builder.addSlot(RecipeIngredientRole.INPUT, 1, y)
-                .setFluidRenderer(amount, false, 16, height)
-                .addIngredient(NeoForgeTypes.FLUID_STACK, fluidStack);
+            .setFluidRenderer(amount, false, 16, height)
+            .addIngredient(NeoForgeTypes.FLUID_STACK, fluidStack);
     }
 }

@@ -31,9 +31,9 @@ public class BlackCurrantDarkChocolatePieBlock extends BaseFoodBlock {
 
     public BlackCurrantDarkChocolatePieBlock() {
         super(12, 0.5f,
-                CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600),
-                CDEffectData.of(MobEffects.LUCK, 600),
-                CDEffectData.of(ModEffects.MAGIC_POWER, 600));
+            CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 600),
+            CDEffectData.of(MobEffects.LUCK, 600),
+            CDEffectData.of(ModEffects.MAGIC_POWER, 600));
         this.registerDefaultState(this.stateDefinition.any().setValue(BLOCK, 0));
     }
 

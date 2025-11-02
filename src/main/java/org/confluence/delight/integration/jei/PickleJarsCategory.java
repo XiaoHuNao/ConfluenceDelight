@@ -80,14 +80,14 @@ public class PickleJarsCategory implements IRecipeCategory<RecipeHolder<PickleJa
         //FermentedItemInput
         if (recipe.value().isFermentation()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 17, 0)
-                    .addItemStack(recipe.value().getFermentedItems())
-                    .addRichTooltipCallback((recipeSlotView, tooltip) -> tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item")));
+                .addItemStack(recipe.value().getFermentedItems())
+                .addRichTooltipCallback((recipeSlotView, tooltip) -> tooltip.add(Component.translatable("jei.confluence_delight.info.pickle_jars.fermented_item")));
         }
         //FluidInput
         CDJeiPlugin.renderFluid(builder, fluidStack, CDStartupConfigs.FLUID_CAPACITY.get());
         //Output
         builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 34)
-                .addItemStack(recipe.value().getResultItem(null));
+            .addItemStack(recipe.value().getResultItem(null));
     }
 
     @Override

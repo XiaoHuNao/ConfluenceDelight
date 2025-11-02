@@ -21,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class CDMusicProvider extends DatapackBuiltinEntriesProvider {
     private static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.JUKEBOX_SONG, CDMusicProvider::bootstrap);
+        .add(Registries.JUKEBOX_SONG, CDMusicProvider::bootstrap);
 
     public CDMusicProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(ConfluenceDelight.MODID));

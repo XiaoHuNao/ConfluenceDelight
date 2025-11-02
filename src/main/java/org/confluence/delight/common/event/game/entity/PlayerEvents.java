@@ -23,7 +23,7 @@ import org.confluence.delight.common.init.CDRecipes;
 import org.confluence.delight.common.item.food.CDEverBeneficialItem;
 import org.confluence.delight.common.recipe.BlockAndItemInteractionRecipe;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = ConfluenceDelight.MODID)
+@EventBusSubscriber(modid = ConfluenceDelight.MODID)
 public class PlayerEvents {
 
     @SubscribeEvent

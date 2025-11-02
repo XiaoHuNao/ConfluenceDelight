@@ -129,14 +129,14 @@ public class PickleJarsRecipe extends AbstractAmountRecipe<PickleJarsRecipe.Inpu
 
     public static class Serializer implements RecipeSerializer<PickleJarsRecipe> {
         public static final MapCodec<PickleJarsRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
-                FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.requiredFluid),
-                Codec.INT.fieldOf("crafttime").forGetter(recipe -> recipe.craftTime),
-                Codec.BOOL.fieldOf("cover").forGetter(recipe -> recipe.cover),
-                Codec.BOOL.fieldOf("fermentation").forGetter(recipe -> recipe.fermentation)
+            ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
+            INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients),
+            FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.requiredFluid),
+            Codec.INT.fieldOf("crafttime").forGetter(recipe -> recipe.craftTime),
+            Codec.BOOL.fieldOf("cover").forGetter(recipe -> recipe.cover),
+            Codec.BOOL.fieldOf("fermentation").forGetter(recipe -> recipe.fermentation)
         ).apply(instance, (result, ingredients, fluid, craftTime, cover, fermentation)
-                -> new PickleJarsRecipe(fermentation, result, ingredients, fluid, craftTime, cover)));
+            -> new PickleJarsRecipe(fermentation, result, ingredients, fluid, craftTime, cover)));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, PickleJarsRecipe> STREAM_CODEC = StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
 

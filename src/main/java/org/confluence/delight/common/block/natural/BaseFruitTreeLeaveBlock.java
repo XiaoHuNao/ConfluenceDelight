@@ -37,11 +37,11 @@ public class BaseFruitTreeLeaveBlock extends LeavesBlock implements Bonemealable
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES));
         this.fruit = fruit;
         registerDefaultState(this.stateDefinition.any()
-                .setValue(AGE, 0)
-                .setValue(WATERLOGGED, false)
-                .setValue(PERSISTENT, false)
-                .setValue(CAN_GROW, false)
-                .setValue(DISTANCE, 7));
+            .setValue(AGE, 0)
+            .setValue(WATERLOGGED, false)
+            .setValue(PERSISTENT, false)
+            .setValue(CAN_GROW, false)
+            .setValue(DISTANCE, 7));
     }
 
     @Override
@@ -105,8 +105,8 @@ public class BaseFruitTreeLeaveBlock extends LeavesBlock implements Bonemealable
             }
         }
         return !flag && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
+            : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

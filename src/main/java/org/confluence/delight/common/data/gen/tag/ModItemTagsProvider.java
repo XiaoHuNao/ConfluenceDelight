@@ -16,8 +16,6 @@ import org.confluence.mod.common.init.item.FoodItems;
 import org.confluence.mod.common.init.item.PotionItems;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import vectorwing.farmersdelight.common.tag.CommonTags;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -54,100 +52,97 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         addFruitToTag(CDTags.Items.C_FRUIT_RAMBUTAN, FoodItems.RAMBUTAN.get());
         tag(CDTags.Items.C_VEGETABLES_SPICY_PEPPER).add(FoodItems.SPICY_PEPPER.get());
         tag(ItemTags.LOGS).add(
-                CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK.asItem(),
-                CDNaturalBlocks.BANANA_TRUNK_BLOCK.asItem()
+            CDNaturalBlocks.COCONUT_TREE_TOP_BLOCK.asItem(),
+            CDNaturalBlocks.BANANA_TRUNK_BLOCK.asItem()
         );
         tag(CDTags.Items.JUICER_CONTAINER).add(
-                Items.GLASS_BOTTLE,
-                PotionItems.BOTTLE.get(),
-                PotionItems.MUG.get()
+            Items.GLASS_BOTTLE,
+            PotionItems.BOTTLE.get(),
+            PotionItems.MUG.get()
         );
         tag(ItemTags.PARROT_FOOD).add(
-                CDNaturalItems.PINEAPPLE_SEEDS.get(),
-                CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
-                CDNaturalItems.SPICY_PEPPER_SEEDS.get()
+            CDNaturalItems.PINEAPPLE_SEEDS.get(),
+            CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
+            CDNaturalItems.SPICY_PEPPER_SEEDS.get()
         );
         tag(Tags.Items.SEEDS).add(
-                CDNaturalItems.PINEAPPLE_SEEDS.get(),
-                CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
-                CDNaturalItems.SPICY_PEPPER_SEEDS.get()
+            CDNaturalItems.PINEAPPLE_SEEDS.get(),
+            CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
+            CDNaturalItems.SPICY_PEPPER_SEEDS.get()
         );
         tag(ItemTags.CHICKEN_FOOD).add(
-                CDNaturalItems.PINEAPPLE_SEEDS.get(),
-                CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
-                CDNaturalItems.SPICY_PEPPER_SEEDS.get()
+            CDNaturalItems.PINEAPPLE_SEEDS.get(),
+            CDNaturalItems.DRAGON_FRUIT_SEEDS.get(),
+            CDNaturalItems.SPICY_PEPPER_SEEDS.get()
         );
         tag(ItemTags.SAPLINGS).add(
-                CDNaturalBlocks.APPLE_SAPLING.asItem(),
-                CDNaturalBlocks.APRICOT_SAPLING.asItem(),
-                CDNaturalBlocks.GRAPEFRUIT_SAPLING.asItem(),
-                CDNaturalBlocks.LEMON_SAPLING.asItem(),
-                CDNaturalBlocks.PEACH_SAPLING.asItem(),
-                CDNaturalBlocks.CHERRY_SAPLING.asItem(),
-                CDNaturalBlocks.PLUM_SAPLING.asItem(),
-                CDNaturalBlocks.BLOOD_ORANGE_SAPLING.asItem(),
-                CDNaturalBlocks.RAMBUTAN_SAPLING.asItem(),
-                CDNaturalBlocks.MANGO_SAPLING.asItem(),
-                CDNaturalBlocks.BANANA_SAPLING.asItem(),
-                CDNaturalBlocks.COCONUT_SAPLING.asItem(),
-                CDNaturalBlocks.STAR_FRUIT_SAPLING.asItem(),
-                CDNaturalBlocks.POMEGRANATE_SAPLING.asItem()
+            CDNaturalBlocks.APPLE_SAPLING.asItem(),
+            CDNaturalBlocks.APRICOT_SAPLING.asItem(),
+            CDNaturalBlocks.GRAPEFRUIT_SAPLING.asItem(),
+            CDNaturalBlocks.LEMON_SAPLING.asItem(),
+            CDNaturalBlocks.PEACH_SAPLING.asItem(),
+            CDNaturalBlocks.CHERRY_SAPLING.asItem(),
+            CDNaturalBlocks.PLUM_SAPLING.asItem(),
+            CDNaturalBlocks.BLOOD_ORANGE_SAPLING.asItem(),
+            CDNaturalBlocks.RAMBUTAN_SAPLING.asItem(),
+            CDNaturalBlocks.MANGO_SAPLING.asItem(),
+            CDNaturalBlocks.BANANA_SAPLING.asItem(),
+            CDNaturalBlocks.COCONUT_SAPLING.asItem(),
+            CDNaturalBlocks.STAR_FRUIT_SAPLING.asItem(),
+            CDNaturalBlocks.POMEGRANATE_SAPLING.asItem()
         );
         tag(ItemTags.LEAVES).add(
-                CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
+            CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
         );
         tag(ItemTags.COMPLETES_FIND_TREE_TUTORIAL).add(
-                CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
-                CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
+            CDNaturalBlocks.APPLE_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.APRICOT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.GRAPEFRUIT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.LEMON_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.PEACH_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.CHERRY_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.PLUM_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.BLOOD_ORANGE_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.RAMBUTAN_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.MANGO_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.BANANA_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.COCONUT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.STAR_FRUIT_TREE_LEAVES_BLOCK.asItem(),
+            CDNaturalBlocks.POMEGRANATE_TREE_LEAVES_BLOCK.asItem()
         );
         tag(Tags.Items.STORAGE_BLOCKS).add(
-                CDBlocks.BLACKCURRANT_CRATE.asItem(),
-                CDBlocks.BLOOD_ORANGE_CRATE.asItem(),
-                CDBlocks.ELDERBERRY_CRATE.asItem(),
-                CDBlocks.APRICOT_CRATE.asItem(),
-                CDBlocks.BANANA_CRATE.asItem(),
-                CDBlocks.CHERRY_CRATE.asItem(),
-                CDBlocks.COCONUT_CRATE.asItem(),
-                CDBlocks.DRAGON_FRUIT_CRATE.asItem(),
-                CDBlocks.GRAPE_FRUIT_CRATE.asItem(),
-                CDBlocks.LEMON_CRATE.asItem(),
-                CDBlocks.MANGO_CRATE.asItem(),
-                CDBlocks.PEACH_CRATE.asItem(),
-                CDBlocks.PINEAPPLE_CRATE.asItem(),
-                CDBlocks.PLUM_CRATE.asItem(),
-                CDBlocks.SPICY_PEPPER_CRATE.asItem(),
-                CDBlocks.STAR_FRUIT_CRATE.asItem(),
-                CDBlocks.POMEGRANATE_CRATE.asItem(),
-                CDBlocks.RAMBUTAN_CRATE.asItem()
+            CDBlocks.BLACKCURRANT_CRATE.asItem(),
+            CDBlocks.BLOOD_ORANGE_CRATE.asItem(),
+            CDBlocks.ELDERBERRY_CRATE.asItem(),
+            CDBlocks.APRICOT_CRATE.asItem(),
+            CDBlocks.BANANA_CRATE.asItem(),
+            CDBlocks.CHERRY_CRATE.asItem(),
+            CDBlocks.COCONUT_CRATE.asItem(),
+            CDBlocks.DRAGON_FRUIT_CRATE.asItem(),
+            CDBlocks.GRAPE_FRUIT_CRATE.asItem(),
+            CDBlocks.LEMON_CRATE.asItem(),
+            CDBlocks.MANGO_CRATE.asItem(),
+            CDBlocks.PEACH_CRATE.asItem(),
+            CDBlocks.PINEAPPLE_CRATE.asItem(),
+            CDBlocks.PLUM_CRATE.asItem(),
+            CDBlocks.SPICY_PEPPER_CRATE.asItem(),
+            CDBlocks.STAR_FRUIT_CRATE.asItem(),
+            CDBlocks.POMEGRANATE_CRATE.asItem(),
+            CDBlocks.RAMBUTAN_CRATE.asItem()
         );
-        tag(ModTags.KNIVES).add(knife);
-        tag(Tags.Items.TOOLS).add(knife);
-        tag(CommonTags.TOOLS_KNIFE).add(knife);
         tag(CDTags.Items.BLACKCURRANT_CRATE).add(CDBlocks.BLACKCURRANT_CRATE.asItem());
         tag(CDTags.Items.BLOOD_ORANGE_CRATE).add(CDBlocks.BLOOD_ORANGE_CRATE.asItem());
         tag(CDTags.Items.ELDERBERRY_CRATE).add(CDBlocks.ELDERBERRY_CRATE.asItem());
@@ -167,10 +162,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(CDTags.Items.POMEGRANATE_CRATE).add(CDBlocks.POMEGRANATE_CRATE.asItem());
         tag(CDTags.Items.RAMBUTAN_CRATE).add(CDBlocks.RAMBUTAN_CRATE.asItem());
     }
-
-    Item[] knife = new Item[]{
-            CDItems.CRIMSON_KNIFE.get()
-    };
 
     @Override
     public IntrinsicTagAppender<Item> tag(TagKey<Item> tag) {

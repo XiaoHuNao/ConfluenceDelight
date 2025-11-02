@@ -40,24 +40,24 @@ public class PickleJarsBlock extends BaseEntityBlock {
     private static final MapCodec<PickleJarsBlock> CODEC = simpleCodec(PickleJarsBlock::new);
     public static final BooleanProperty COVER = BooleanProperty.create("cover");
     private static final VoxelShape COVER_TRUE = Shapes.or(
-            box(3, 0, 3, 13, 12, 13),
-            box(2, 2, 2, 14, 11, 14),
-            box(2, 12, 2, 14, 13, 14),
-            box(2, 13, 3, 3, 15, 13),
-            box(13, 13, 3, 14, 15, 13),
-            box(2, 13, 2, 14, 15, 3),
-            box(2, 13, 13, 14, 15, 14),
-            box(4, 12, 4, 12, 17, 12)
+        box(3, 0, 3, 13, 12, 13),
+        box(2, 2, 2, 14, 11, 14),
+        box(2, 12, 2, 14, 13, 14),
+        box(2, 13, 3, 3, 15, 13),
+        box(13, 13, 3, 14, 15, 13),
+        box(2, 13, 2, 14, 15, 3),
+        box(2, 13, 13, 14, 15, 14),
+        box(4, 12, 4, 12, 17, 12)
     );
     private static final VoxelShape COVER_FALSE = Shapes.or(
-            box(3, 0, 3, 13, 12, 13),
-            box(2, 2, 2, 14, 11, 14),
-            box(2, 12, 2, 14, 13, 14),
-            box(2, 13, 3, 3, 15, 13),
-            box(13, 13, 3, 14, 15, 13),
-            box(2, 13, 2, 14, 15, 3),
-            box(2, 13, 13, 14, 15, 14),
-            box(5, 13, 5, 11, 15, 11)
+        box(3, 0, 3, 13, 12, 13),
+        box(2, 2, 2, 14, 11, 14),
+        box(2, 12, 2, 14, 13, 14),
+        box(2, 13, 3, 3, 15, 13),
+        box(13, 13, 3, 14, 15, 13),
+        box(2, 13, 2, 14, 15, 3),
+        box(2, 13, 13, 14, 15, 14),
+        box(5, 13, 5, 11, 15, 11)
     );
 
     public PickleJarsBlock(Properties properties) {

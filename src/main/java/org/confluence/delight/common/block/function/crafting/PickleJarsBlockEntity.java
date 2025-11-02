@@ -147,7 +147,7 @@ public class PickleJarsBlockEntity extends BaseContainerBlockEntity implements W
             } else {
                 int combinedCount = oldResult.getCount() + newResult.getCount();
                 return combinedCount <= maxStackSize
-                        && (combinedCount <= oldResult.getMaxStackSize() || combinedCount <= newResult.getMaxStackSize());
+                    && (combinedCount <= oldResult.getMaxStackSize() || combinedCount <= newResult.getMaxStackSize());
             }
         }
     }

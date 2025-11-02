@@ -39,7 +39,7 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
 
     @Override
     public boolean matches(Input input, Level level) {
-        if (input.getContainer().isEmpty() || input.getContainer().getItem() != container.asItem()) {
+        if (input.container().isEmpty() || input.container().getItem() != container.asItem()) {
             return false;
         }
         if (!matchesFluid(input.fluid)) {
@@ -122,11 +122,11 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
 
     public static class Serializer implements RecipeSerializer<JuicerRecipe> {
         public static final MapCodec<JuicerRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                BuiltInRegistries.ITEM.byNameCodec().fieldOf("container").forGetter(recipe -> recipe.container.asItem()),
-                Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.cycle),
-                FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.fluid),
-                INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients)
+            ItemStack.STRICT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
+            BuiltInRegistries.ITEM.byNameCodec().fieldOf("container").forGetter(recipe -> recipe.container.asItem()),
+            Codec.INT.fieldOf("work_circles").forGetter(recipe -> recipe.cycle),
+            FluidStack.CODEC.fieldOf("fluid").forGetter(recipe -> recipe.fluid),
+            INGREDIENTS_CODEC.forGetter(recipe -> recipe.ingredients)
         ).apply(instance, JuicerRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, JuicerRecipe> STREAM_CODEC = StreamCodec.of(JuicerRecipe.Serializer::toNetwork, JuicerRecipe.Serializer::fromNetwork);
@@ -166,29 +166,16 @@ public class JuicerRecipe extends AbstractAmountRecipe<JuicerRecipe.Input> {
         }
     }
 
-    public static class Input implements RecipeInput {
-        private final ItemStack[] items;
-        private final ItemStack container;
-        final FluidStack fluid;
-
-        public Input(ItemStack[] items, ItemStack container, FluidStack fluid) {
-            this.items = items;
-            this.container = container;
-            this.fluid = fluid;
-        }
-
-        public ItemStack getContainer() {
-            return container;
-        }
+    public record Input(ItemStack[] items, ItemStack container, FluidStack fluid) implements RecipeInput {
 
         @Override
-        public ItemStack getItem(int index) {
-            return items[index];
-        }
+            public ItemStack getItem(int index) {
+                return items[index];
+            }
 
-        @Override
-        public int size() {
-            return items.length;
+            @Override
+            public int size() {
+                return items.length;
+            }
         }
-    }
 }

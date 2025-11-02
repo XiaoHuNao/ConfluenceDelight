@@ -51,8 +51,8 @@ public class BananaSkewersBlock extends Block {
         int i = state.getValue(AGE);
         boolean flag = i == 2;
         return flag && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
+            : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

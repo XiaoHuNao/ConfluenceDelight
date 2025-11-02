@@ -26,8 +26,8 @@ import java.util.List;
 public class HarvestStewItem extends CDFoodItem {
     public static final MobEffectInstance EFFECT = new MobEffectInstance(CDEffects.HARVEST, 6000);
     private static final List<EntityType<?>> ALLOW_ENTITY = List.of(
-            EntityType.CHICKEN,
-            EntityType.SHEEP
+        EntityType.CHICKEN,
+        EntityType.SHEEP
     );
 
     public HarvestStewItem() {
@@ -44,9 +44,9 @@ public class HarvestStewItem extends CDFoodItem {
                     animal.addEffect(EFFECT);
                     if (level instanceof ServerLevel serverLevel) {
                         serverLevel.sendParticles(
-                                ParticleTypes.HAPPY_VILLAGER,
-                                animal.getX(), animal.getY() + 1, animal.getZ(),
-                                5, 0.2, 0.2, 0.2, 0.1
+                            ParticleTypes.HAPPY_VILLAGER,
+                            animal.getX(), animal.getY() + 1, animal.getZ(),
+                            5, 0.2, 0.2, 0.2, 0.1
                         );
                     }
                     stack.shrink(1);
@@ -66,12 +66,12 @@ public class HarvestStewItem extends CDFoodItem {
             effectDescription.append(Component.translatable(EFFECT.getDescriptionId()));
             if (EFFECT.getAmplifier() > 0) {
                 effectDescription.append(" ")
-                        .append(Component.translatable("potion.potency." + EFFECT.getAmplifier()));
+                    .append(Component.translatable("potion.potency." + EFFECT.getAmplifier()));
             }
             if (EFFECT.getDuration() > 20) {
                 effectDescription.append(" (")
-                        .append(MobEffectUtil.formatDuration(EFFECT, 1.0F, 20.0F))
-                        .append(")");
+                    .append(MobEffectUtil.formatDuration(EFFECT, 1.0F, 20.0F))
+                    .append(")");
             }
             tooltip.add(effectDescription.withStyle(effect.getCategory().getTooltipFormatting()));
         }

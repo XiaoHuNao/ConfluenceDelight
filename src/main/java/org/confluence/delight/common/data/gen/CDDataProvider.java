@@ -23,7 +23,7 @@ import static org.confluence.delight.common.init.CDNaturalBlocks.COCONUT_TREE_TO
 
 public class CDDataProvider {
     public static final RegistrySetBuilder DATA_BUILDER = new RegistrySetBuilder()
-            .add(Registries.CONFIGURED_FEATURE, ConfiguredFeatures::bootstrap);
+        .add(Registries.CONFIGURED_FEATURE, ConfiguredFeatures::bootstrap);
 
     private static class ConfiguredFeatures {
 
@@ -45,22 +45,22 @@ public class CDDataProvider {
 
         private static void fruitTree(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Block log, Block leaves, Block fruitLeaves, int trunkHeight, int trunkRandomHeight, float fruitedPercent) {
             context.register(key, new ConfiguredFeature<>(CDFeature.FRUIT_TREE.get(), new FruitTreeFeature.Config(
-                    BlockStateProvider.simple(log),
-                    BlockStateProvider.simple(leaves),
-                    BlockStateProvider.simple(fruitLeaves.defaultBlockState().setValue(CAN_GROW, true)),
-                    trunkHeight,
-                    trunkRandomHeight,
-                    fruitedPercent
+                BlockStateProvider.simple(log),
+                BlockStateProvider.simple(leaves),
+                BlockStateProvider.simple(fruitLeaves.defaultBlockState().setValue(CAN_GROW, true)),
+                trunkHeight,
+                trunkRandomHeight,
+                fruitedPercent
             )));
         }
 
         private static void coconutTree(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, Block log, BlockState leaves1, BlockState leaves2, BlockState leaves3, Block top) {
             context.register(key, new ConfiguredFeature<>(CDFeature.COCONUT_TREE.get(), new CoconutTreeFeature.Config(
-                    BlockStateProvider.simple(log),
-                    BlockStateProvider.simple(leaves1),
-                    BlockStateProvider.simple(leaves2),
-                    BlockStateProvider.simple(leaves3),
-                    BlockStateProvider.simple(top)
+                BlockStateProvider.simple(log),
+                BlockStateProvider.simple(leaves1),
+                BlockStateProvider.simple(leaves2),
+                BlockStateProvider.simple(leaves3),
+                BlockStateProvider.simple(top)
             )));
         }
 

@@ -23,14 +23,14 @@ import org.confluence.mod.common.init.item.FoodItems;
 
 public class SpicyPepperBlock extends CropBlock {
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 10.0, 16.0)};
+        Block.box(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 9.0, 16.0),
+        Block.box(0.0, 0.0, 0.0, 16.0, 10.0, 16.0)};
 
     public SpicyPepperBlock() {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT));
@@ -46,8 +46,8 @@ public class SpicyPepperBlock extends CropBlock {
         int i = state.getValue(AGE);
         boolean flag = i == getMaxAge();
         return !flag && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
+            : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

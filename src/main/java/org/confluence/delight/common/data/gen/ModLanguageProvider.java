@@ -33,8 +33,8 @@ public class ModLanguageProvider extends LanguageProvider {
     private static String toTitleCase(String raw) {
         String name = raw.substring(raw.lastIndexOf('.') + 1);
         return Arrays.stream(name.split("_"))
-                .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
-                .collect(Collectors.joining(" "));
+            .map(word -> Character.toUpperCase(word.charAt(0)) + word.substring(1).toLowerCase())
+            .collect(Collectors.joining(" "));
     }
 
     public ModLanguageProvider(PackOutput output, String locale) {
@@ -47,7 +47,7 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addCreativeTab(CDCreativeTabs.TAB_FARMERS_DELIGHT, "Terra Delight", "汇流乐事");
 
-        add("confluence_delight.permanent_attribute_bonus", "permanent_attribute_bonus", "永久属性加成");
+        add("container.shimmer_transmutation_pot","Shimmer Transmutation Pot","微光嬗变锅");
 
         //jei
         add("title.confluence_delight.pickle_jars", "PickleJars", "泡菜罐");
@@ -74,143 +74,143 @@ public class ModLanguageProvider extends LanguageProvider {
 
         //tooltip
         add("tooltip.item.confluence.atlantis_tsunami.0",
-                "It feels like drinking iced fresh lemonade while your heel is pinned to the back of your head.",
-                "据说喝它的感觉就像把脚后跟别在后脑勺上喝冰鲜柠檬水");
+            "It feels like drinking iced fresh lemonade while your heel is pinned to the back of your head.",
+            "据说喝它的感觉就像把脚后跟别在后脑勺上喝冰鲜柠檬水");
         add("tooltip.item.confluence.black_luck.0",
-                "Black cat shaped ice cream, Who says black cats are a symbol of bad luck?",
-                "黑色猫猫形状的冰淇淋，谁说黑猫是厄运象征的？");
+            "Black cat shaped ice cream, Who says black cats are a symbol of bad luck?",
+            "黑色猫猫形状的冰淇淋，谁说黑猫是厄运象征的？");
         add("tooltip.item.confluence.white_dawn.0",
-                "The white cat shaped ice cream will bring you the magic dawn.",
-                "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
+            "The white cat shaped ice cream will bring you the magic dawn.",
+            "白色猫猫形状的冰淇淋，她会给你来带魔力曙光。");
         add("tooltip.item.confluence.luck_chocolate_copper_coin.0",
-                "If I eat this, will it really drop the item I want?",
-                "吃了这个，真的能爆出我想要的东西吗？");
+            "If I eat this, will it really drop the item I want?",
+            "吃了这个，真的能爆出我想要的东西吗？");
         add("tooltip.item.confluence.luck_chocolate_silver_coin.0",
-                "It seems... to have some use.",
-                "似乎……有些用处。");
+            "It seems... to have some use.",
+            "似乎……有些用处。");
         add("tooltip.item.confluence.luck_chocolate_golden_coin.0",
-                "A noticeable increase in luck has brought many benefits.",
-                "明显提升的运气，带来了不少好处");
+            "A noticeable increase in luck has brought many benefits.",
+            "明显提升的运气，带来了不少好处");
         add("tooltip.item.confluence.luck_chocolate_platinum_coin.0",
-                "You feel the happiness that good luck brings!",
-                "你体验到好运带来的快乐！");
+            "You feel the happiness that good luck brings!",
+            "你体验到好运带来的快乐！");
         add("tooltip.item.confluence.luck_chocolate_emerald_coin.0",
-                "Huge profits!!! This is pure profit!!! I—I'm richer than a kingdom! Hahahahaha!",
-                "暴利！！！这简直是暴利！！！我——富可敌国！哈哈哈哈哈哈！");
+            "Huge profits!!! This is pure profit!!! I—I'm richer than a kingdom! Hahahahaha!",
+            "暴利！！！这简直是暴利！！！我——富可敌国！哈哈哈哈哈哈！");
         add("tooltip.item.confluence.chocolate_luck_coin_box.0",
-                "So this is the blessing of luck. Now I can get any drop I want. The goddess of luck is always on my side!",
-                "原来这就是幸运的加持，现在我可以爆出任何东西，幸运女神永远在我这边！");
+            "So this is the blessing of luck. Now I can get any drop I want. The goddess of luck is always on my side!",
+            "原来这就是幸运的加持，现在我可以爆出任何东西，幸运女神永远在我这边！");
         add("tooltip.item.confluence.gilded_luxury_chocolate_luck_coin_box.0",
-                "A luxurious piece of art—should I consume it or keep it as a collectible?",
-                "奢华的艺术品，是吃掉，亦或是收藏");
+            "A luxurious piece of art—should I consume it or keep it as a collectible?",
+            "奢华的艺术品，是吃掉，亦或是收藏");
         add("tooltip.item.confluence.braised_chicken.0",
-                "Chicken from the Orient, but it's a little overcooked and a bit mushy.",
-                "这德克萨斯州的鸡武德充沛吗？");
+            "Chicken from the Orient, but it's a little overcooked and a bit mushy.",
+            "这德克萨斯州的鸡武德充沛吗？");
         add("tooltip.item.confluence.big_chicken_cutlet.0",
-                "LLLLLava CCCChicken",
-                "特辣大鸡排");
+            "LLLLLava CCCChicken",
+            "特辣大鸡排");
         add("tooltip.item.confluence_delight.hot_star_chicken",
-                "Hot Star Chicken, Everyone loves it",
-                "豪大大鸡排，又香又嫩人人夸");
+            "Hot Star Chicken, Everyone loves it",
+            "豪大大鸡排，又香又嫩人人夸");
         add("jukebox_song.confluence_delight.hot_star_chicken",
-                "The circus on the top floor - Hot Star Chicken",
-                "顶楼的马戏团 - 豪大大鸡排");
+            "The circus on the top floor - Hot Star Chicken",
+            "顶楼的马戏团 - 豪大大鸡排");
         add("confluence_delight.harvest_stew.tooltip",
-                "When feed to chicken/sheep :",
-                "喂给鸡/羊时 ：");
+            "When feed to chicken/sheep :",
+            "喂给鸡/羊时 ：");
         add("tooltip.item.confluence.freshly_squeezed_vitality.0",
-                "Legendary explorers' special juice blend, designed to delight your taste buds and fill your belly.",
-                "传说中的探险家们为了能满足味蕾需求和食物需求研发出的果汁特调");
+            "Legendary explorers' special juice blend, designed to delight your taste buds and fill your belly.",
+            "传说中的探险家们为了能满足味蕾需求和食物需求研发出的果汁特调");
         add("tooltip.item.confluence_delight.the_meal_of_life",
-                "Products from the Goddess of Life are bound to be of high quality",
-                "生命女神出品，必属精品");
+            "Products from the Goddess of Life are bound to be of high quality",
+            "生命女神出品，必属精品");
         add("tooltip.item.confluence.grass_seed_soup.0",
-                "It's all oil and very bitter, but it's healthy",
-                "全是油，而且很苦涩，但是健康");
+            "It's all oil and very bitter, but it's healthy",
+            "全是油，而且很苦涩，但是健康");
         add("tooltip.item.confluence.mushroom_platter.0",
-                "A hodgepodge of mushrooms from another world",
-                "异世蘑菇大杂烩");
+            "A hodgepodge of mushrooms from another world",
+            "异世蘑菇大杂烩");
         add("tooltip.item.confluence.blood_red_pork_rib_soup.0",
-                "You are a monster.",
-                "你是怪物");
+            "You are a monster.",
+            "你是怪物");
         add("tooltip.item.confluence_delight.special_mushroom_soup",
-                "only the simplest processing is needed",
-                "只需要最简单的处理");
+            "only the simplest processing is needed",
+            "只需要最简单的处理");
         add("tooltip.item.confluence_delight.overloaded_bread",
-                "It feels like I won't have to eat for a month",
-                "感觉一个月不用吃饭了");
+            "It feels like I won't have to eat for a month",
+            "感觉一个月不用吃饭了");
         add("tooltip.item.confluence_delight.utility_apple.0",
-                "The first ingestion will permanently raise the mining efficiency by 5",
-                "首次食用永久增加5挖掘效率");
+            "The first ingestion will permanently raise the mining efficiency by 5",
+            "首次食用永久增加5挖掘效率");
         add("tooltip.item.confluence_delight.speedy_coke.0",
-                "The first ingestion will permanently raise the sneaking speed by 0.4 and the movement efficiency by 0.5",
-                "首次食用永久增加0.4潜行速度和0.5移动效率");
+            "The first ingestion will permanently raise the sneaking speed by 0.4 and the movement efficiency by 0.5",
+            "首次食用永久增加0.4潜行速度和0.5移动效率");
         add("tooltip.item.confluence_delight.speedy_coke.1",
-                "It feels like flying",
-                "飞一般的感觉");
+            "It feels like flying",
+            "飞一般的感觉");
         add("tooltip.item.confluence_delight.ez_constant.0",
-                "The first ingestion will permanently raise ranged damage by 50%",
-                "首次食用永久增加50%远程伤害");
+            "The first ingestion will permanently raise ranged damage by 50%",
+            "首次食用永久增加50%远程伤害");
         add("tooltip.item.confluence_delight.ez_constant.1",
-                "A string of mysterious numbers, seemingly with some special meaning",
-                "一串神秘数字，似乎有什么特殊含义");
+            "A string of mysterious numbers, seemingly with some special meaning",
+            "一串神秘数字，似乎有什么特殊含义");
 
         add("tooltip.item.confluence_delight.apple_sapling",
-                "It is obtained by right-clicking the oak sapling with an apple",
-                "使用苹果右键点击橡树树苗获得");
+            "It is obtained by right-clicking the oak sapling with an apple",
+            "使用苹果右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.apricot_sapling",
-                "It is obtained by right-clicking the birch sapling with an apricot",
-                "使用杏右键点击白桦树苗获得");
+            "It is obtained by right-clicking the birch sapling with an apricot",
+            "使用杏右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.grapefruit_sapling",
-                "It is obtained by right-clicking the jungle sapling with a grapefruit",
-                "使用葡萄柚右键点击丛林树苗获得");
+            "It is obtained by right-clicking the jungle sapling with a grapefruit",
+            "使用葡萄柚右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.lemon_sapling",
-                "It is obtained by right-clicking the spruce sapling with a lemon",
-                "使用柠檬右键点击云杉树苗获得");
+            "It is obtained by right-clicking the spruce sapling with a lemon",
+            "使用柠檬右键点击云杉树苗获得");
         add("tooltip.item.confluence_delight.peach_sapling",
-                "It is obtained by right-clicking the oak sapling with a peach",
-                "使用桃子右键点击橡树树苗获得");
+            "It is obtained by right-clicking the oak sapling with a peach",
+            "使用桃子右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.cherry_sapling",
-                "It is obtained by right-clicking the spruce sapling with a cherry",
-                "使用樱桃右键点击云杉树苗获得");
+            "It is obtained by right-clicking the spruce sapling with a cherry",
+            "使用樱桃右键点击云杉树苗获得");
         add("tooltip.item.confluence_delight.plum_sapling",
-                "It is obtained by right-clicking the birch sapling with a plum",
-                "使用李子右键点击白桦树苗获得");
+            "It is obtained by right-clicking the birch sapling with a plum",
+            "使用李子右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.blood_orange_sapling",
-                "It is obtained by right-clicking the jungle sapling with a blood orange",
-                "使用血橙右键点击丛林树苗获得");
+            "It is obtained by right-clicking the jungle sapling with a blood orange",
+            "使用血橙右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.rambutan_sapling",
-                "It is obtained by right-clicking the jungle sapling with a rambutan",
-                "使用红毛丹右键点击丛林树苗获得");
+            "It is obtained by right-clicking the jungle sapling with a rambutan",
+            "使用红毛丹右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.mango_sapling",
-                "It is obtained by right-clicking the jungle sapling with a mango",
-                "使用芒果右键点击丛林树苗获得");
+            "It is obtained by right-clicking the jungle sapling with a mango",
+            "使用芒果右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.banana_sapling",
-                "It is obtained by right-clicking the jungle sapling with a banana",
-                "使用香蕉右键点击丛林树苗获得");
+            "It is obtained by right-clicking the jungle sapling with a banana",
+            "使用香蕉右键点击丛林树苗获得");
         add("tooltip.item.confluence_delight.coconut_sapling",
-                "It is obtained by right-clicking the palm sapling with a coconut",
-                "使用椰子右键点击棕榈树苗获得");
+            "It is obtained by right-clicking the palm sapling with a coconut",
+            "使用椰子右键点击棕榈树苗获得");
         add("tooltip.item.confluence_delight.star_fruit_sapling",
-                "It is obtained by right-clicking the oak sapling with a star fruit",
-                "使用杨桃右键点击橡树树苗获得");
+            "It is obtained by right-clicking the oak sapling with a star fruit",
+            "使用杨桃右键点击橡树树苗获得");
         add("tooltip.item.confluence_delight.pomegranate_sapling",
-                "It is obtained by right-clicking the birch sapling with a pomegranate",
-                "使用石榴右键点击白桦树苗获得");
+            "It is obtained by right-clicking the birch sapling with a pomegranate",
+            "使用石榴右键点击白桦树苗获得");
         add("tooltip.item.confluence_delight.blackcurrant_shrub",
-                "It can be obtained by right-clicking blackcurrant on azalea or flowering azalea",
-                "使用黑醋栗右键点击杜鹃花丛或盛开的杜鹃花丛获得");
+            "It can be obtained by right-clicking blackcurrant on azalea or flowering azalea",
+            "使用黑醋栗右键点击杜鹃花丛或盛开的杜鹃花丛获得");
         add("tooltip.item.confluence_delight.elderberry_shrub",
-                "It can be obtained by right-clicking elderberry on azalea or flowering azalea",
-                "使用接骨木右键点击杜鹃花丛或盛开的杜鹃花丛获得");
+            "It can be obtained by right-clicking elderberry on azalea or flowering azalea",
+            "使用接骨木右键点击杜鹃花丛或盛开的杜鹃花丛获得");
         add("tooltip.item.confluence_delight.blood_meat_vine",
-                "It can be obtained by right-clicking blood tumor fruit on crimson drooping vine",
-                "使用血藤果右键点击猩红垂蔓获得");
+            "It can be obtained by right-clicking blood tumor fruit on crimson drooping vine",
+            "使用血藤果右键点击猩红垂蔓获得");
 
         //SoundsSubmit
         add("confluence_delight.subtitle.millstone_work",
-                "MillStone: is working",
-                "磨盘：工作");
+            "MillStone: is working",
+            "磨盘：工作");
 
         add("fluid_type.confluence_delight.wine", "Wine", "酒");
         add("fluid_type.confluence_delight.brine", "Brine", "卤水");
@@ -222,7 +222,7 @@ public class ModLanguageProvider extends LanguageProvider {
     public @NotNull CompletableFuture<?> run(CachedOutput cache) {
         this.addTranslations();
         Path path = this.output.getOutputFolder(PackOutput.Target.RESOURCE_PACK)
-                .resolve(ConfluenceDelight.MODID).resolve("lang");
+            .resolve(ConfluenceDelight.MODID).resolve("lang");
         if (this.locale.equals("en_us") && !this.enData.isEmpty()) {
             return this.save(this.enData, cache, path.resolve("en_us.json"));
         }

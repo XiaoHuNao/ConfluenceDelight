@@ -44,12 +44,12 @@ public class JuicerBlock extends BaseEntityBlock {
     public static final MapCodec<JuicerBlock> CODEC = simpleCodec(JuicerBlock::new);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     private static final VoxelShape SHAPE = Shapes.or(
-            box(3.5, 0, 3.5, 12.5, 3, 12.5),
-            box(3, 13, 3, 13, 16, 13),
-            box(6.5, 7, 12, 9.5, 13, 13),
-            box(7, 5, 14, 9, 13, 16),
-            box(7, 11, 13, 9, 13, 14),
-            box(3.984, 2.984, 4.016, 11.984, 12.984, 12.016)
+        box(3.5, 0, 3.5, 12.5, 3, 12.5),
+        box(3, 13, 3, 13, 16, 13),
+        box(6.5, 7, 12, 9.5, 13, 13),
+        box(7, 5, 14, 9, 13, 16),
+        box(7, 11, 13, 9, 13, 14),
+        box(3.984, 2.984, 4.016, 11.984, 12.984, 12.016)
     );
 
     public JuicerBlock(Properties properties) {

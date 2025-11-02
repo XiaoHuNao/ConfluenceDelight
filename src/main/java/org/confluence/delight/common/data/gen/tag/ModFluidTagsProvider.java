@@ -23,8 +23,8 @@ public class ModFluidTagsProvider extends FluidTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(CDTags.Fluids.WINE).add(
-                CDFluids.WINE.fluid().get(),
-                CDFluids.WINE.flowing().get()
+            CDFluids.WINE.fluid().get(),
+            CDFluids.WINE.flowing().get()
         );
     }
 

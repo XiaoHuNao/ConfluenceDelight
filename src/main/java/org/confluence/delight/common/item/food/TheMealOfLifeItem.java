@@ -22,12 +22,12 @@ import java.util.List;
 public class TheMealOfLifeItem extends CDFoodItem.BItem {
     public TheMealOfLifeItem() {
         super(CDFoodBlocks.THE_MEAL_OF_LIFE_BLOCK.get(), new Properties().food(
-                DelightFoodProperties.hasEffectProperties(18, 36.0f, Items.BOWL,
-                        CDEffectData.of(MobEffects.REGENERATION, 600, 1),
-                        CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),
-                        CDEffectData.of(MobEffects.ABSORPTION, 2400),
-                        CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 18000),
-                        CDEffectData.of(ModEffects.POTION_SICKNESS, 900))));
+            DelightFoodProperties.hasEffectProperties(18, 36.0f, Items.BOWL,
+                CDEffectData.of(MobEffects.REGENERATION, 600, 1),
+                CDEffectData.of(MobEffects.HEALTH_BOOST, 500, 4),
+                CDEffectData.of(MobEffects.ABSORPTION, 2400),
+                CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 18000),
+                CDEffectData.of(ModEffects.POTION_SICKNESS, 900))));
     }
 
     @Override

@@ -30,10 +30,10 @@ public class CoconutBlock extends Block {
     public static final IntegerProperty PIECE = IntegerProperty.create("piece", 0, 3);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private static final VoxelShape[] SHAPE_BY_PIECE = new VoxelShape[]{
-            box(3.0, 0.0, 3.0, 13.0, 3.0, 13.0),
-            box(3.0, 0.0, 3.0, 13.0, 4.0, 13.0),
-            box(3.0, 0.0, 3.0, 13.0, 5.0, 13.0),
-            box(3.0, 0.0, 3.0, 13.0, 9.0, 13.0)
+        box(3.0, 0.0, 3.0, 13.0, 3.0, 13.0),
+        box(3.0, 0.0, 3.0, 13.0, 4.0, 13.0),
+        box(3.0, 0.0, 3.0, 13.0, 5.0, 13.0),
+        box(3.0, 0.0, 3.0, 13.0, 9.0, 13.0)
     };
 
     public CoconutBlock() {
@@ -46,8 +46,8 @@ public class CoconutBlock extends Block {
         int i = state.getValue(PIECE);
         boolean flag = i == 3;
         return flag && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
+            : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

@@ -35,11 +35,11 @@ public class ImmuneEffect extends MobEffect {
             clearCaches();
             this.immuneEffects = HolderSet.direct(immuneEffects.stream().toList());
             this.immuneEffects.stream()
-                    .peek(effect -> Objects.requireNonNull(effect, "Effect holder cannot be null"))
-                    .forEach(effect -> IMMUNE_CACHE
-                            .computeIfAbsent(effect, k -> Collections.newSetFromMap(new ConcurrentHashMap<>()))
-                            .add(this)
-                    );
+                .peek(effect -> Objects.requireNonNull(effect, "Effect holder cannot be null"))
+                .forEach(effect -> IMMUNE_CACHE
+                    .computeIfAbsent(effect, k -> Collections.newSetFromMap(new ConcurrentHashMap<>()))
+                    .add(this)
+                );
         }
         return this;
     }
@@ -61,11 +61,11 @@ public class ImmuneEffect extends MobEffect {
         if (this.immuneEffects == null) return;
         synchronized (this) {
             this.immuneEffects.stream()
-                    .filter(Objects::nonNull)
-                    .forEach(effect -> IMMUNE_CACHE.computeIfPresent(effect, (k, set) -> {
-                        set.remove(this);
-                        return set.isEmpty() ? null : set;
-                    }));
+                .filter(Objects::nonNull)
+                .forEach(effect -> IMMUNE_CACHE.computeIfPresent(effect, (k, set) -> {
+                    set.remove(this);
+                    return set.isEmpty() ? null : set;
+                }));
         }
     }
 
@@ -82,10 +82,10 @@ public class ImmuneEffect extends MobEffect {
 
     public static boolean isEffectImmune(LivingEntity entity, Holder<MobEffect> effect) {
         return entity.getActiveEffects().stream()
-                .map(MobEffectInstance::getEffect)
-                .filter(holder -> holder.value() instanceof ImmuneEffect)
-                .map(holder -> (ImmuneEffect) holder.value())
-                .anyMatch(immune -> immune.isImmuneTo(effect));
+            .map(MobEffectInstance::getEffect)
+            .filter(holder -> holder.value() instanceof ImmuneEffect)
+            .map(holder -> (ImmuneEffect) holder.value())
+            .anyMatch(immune -> immune.isImmuneTo(effect));
     }
 
     public static Set<ImmuneEffect> getImmuneEffects(Holder<MobEffect> effect) {

@@ -39,9 +39,9 @@ public class BaseFruitShrubBlock extends BushBlock implements BonemealableBlock,
     private static final IntegerProperty AGE = BlockStateProperties.AGE_5;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final MapCodec<BaseFruitShrubBlock> CODEC = RecordCodecBuilder.mapCodec(
-            builder -> builder.group(
-                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("fruit").forGetter(b -> b.fruit.asItem()))
-                    .apply(builder, BaseFruitShrubBlock::new));
+        builder -> builder.group(
+                BuiltInRegistries.ITEM.byNameCodec().fieldOf("fruit").forGetter(b -> b.fruit.asItem()))
+            .apply(builder, BaseFruitShrubBlock::new));
 
     public BaseFruitShrubBlock(ItemLike fruit) {
         super(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING));
@@ -72,8 +72,8 @@ public class BaseFruitShrubBlock extends BushBlock implements BonemealableBlock,
         int i = state.getValue(AGE);
         boolean flag = i == 5;
         return !flag && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
+            : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
     @Override

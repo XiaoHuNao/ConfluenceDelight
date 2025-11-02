@@ -13,9 +13,9 @@ import java.util.List;
 public class HotStarChickenItem extends CDFoodItem {
     public HotStarChickenItem() {
         super(new Properties().food(
-                        DelightFoodProperties.hasEffectProperties(4, 4,
-                                CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400)))
-                .jukeboxPlayable(CDJukeboxSongs.HOT_STAR_CHICKEN));
+                DelightFoodProperties.hasEffectProperties(4, 4,
+                    CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400)))
+            .jukeboxPlayable(CDJukeboxSongs.HOT_STAR_CHICKEN));
     }
 
     public int getUseDuration(ItemStack stack, LivingEntity entity) {

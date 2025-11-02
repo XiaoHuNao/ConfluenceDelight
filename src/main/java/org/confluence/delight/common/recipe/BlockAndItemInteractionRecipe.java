@@ -76,10 +76,10 @@ public record BlockAndItemInteractionRecipe(Ingredient inputItem, Block[] source
 
     public static class Serializer implements RecipeSerializer<BlockAndItemInteractionRecipe> {
         public static final MapCodec<BlockAndItemInteractionRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                        Ingredient.CODEC.fieldOf("input").forGetter(BlockAndItemInteractionRecipe::inputItem),
-                        BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("source_blocks").forGetter(recipe -> List.of(recipe.sourceBlocks)),
-                        BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockAndItemInteractionRecipe::resultBlock)
-                ).apply(instance, (input, sourceBlocks, resultBlock) -> new BlockAndItemInteractionRecipe(input, sourceBlocks.toArray(new Block[0]), resultBlock))
+                Ingredient.CODEC.fieldOf("input").forGetter(BlockAndItemInteractionRecipe::inputItem),
+                BuiltInRegistries.BLOCK.byNameCodec().listOf().fieldOf("source_blocks").forGetter(recipe -> List.of(recipe.sourceBlocks)),
+                BuiltInRegistries.BLOCK.byNameCodec().fieldOf("result_block").forGetter(BlockAndItemInteractionRecipe::resultBlock)
+            ).apply(instance, (input, sourceBlocks, resultBlock) -> new BlockAndItemInteractionRecipe(input, sourceBlocks.toArray(new Block[0]), resultBlock))
         );
 
         public static final StreamCodec<RegistryFriendlyByteBuf, BlockAndItemInteractionRecipe> STREAM_CODEC = StreamCodec.of(BlockAndItemInteractionRecipe.Serializer::toNetwork, BlockAndItemInteractionRecipe.Serializer::fromNetwork);
@@ -115,25 +115,20 @@ public record BlockAndItemInteractionRecipe(Ingredient inputItem, Block[] source
         }
     }
 
-    public static class Inventory implements RecipeInput {
-        private final ItemStack[] items;
-
-        public Inventory(ItemStack[] items) {
-            this.items = items;
-        }
+    public record Inventory(ItemStack[] items) implements RecipeInput {
 
         @Override
-        public ItemStack getItem(int index) {
-            return items[index];
-        }
+            public ItemStack getItem(int index) {
+                return items[index];
+            }
 
-        @Override
-        public int size() {
-            return items.length;
-        }
+            @Override
+            public int size() {
+                return items.length;
+            }
 
-        public boolean isEmpty() {
-            return items.length == 0 || (items.length == 1 && items[0].isEmpty());
+            public boolean isEmpty() {
+                return items.length == 0 || (items.length == 1 && items[0].isEmpty());
+            }
         }
-    }
 }

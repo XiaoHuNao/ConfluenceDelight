@@ -108,11 +108,11 @@ public class CoconutTreeFeature extends Feature<CoconutTreeFeature.Config> {
                          BlockStateProvider leavesBlockTop, BlockStateProvider leaveBlockDouble,
                          BlockStateProvider topBlock) implements FeatureConfiguration {
         public static final Codec<Config> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                BlockStateProvider.CODEC.fieldOf("trunk_block").forGetter(Config::trunk),
-                BlockStateProvider.CODEC.fieldOf("leaves_block_bottom").forGetter(Config::leavesBlockBottom),
-                BlockStateProvider.CODEC.fieldOf("leaves_block_top").forGetter(Config::leavesBlockTop),
-                BlockStateProvider.CODEC.fieldOf("leaves_block_double").forGetter(Config::leaveBlockDouble),
-                BlockStateProvider.CODEC.fieldOf("top_block").forGetter(Config::topBlock)
+            BlockStateProvider.CODEC.fieldOf("trunk_block").forGetter(Config::trunk),
+            BlockStateProvider.CODEC.fieldOf("leaves_block_bottom").forGetter(Config::leavesBlockBottom),
+            BlockStateProvider.CODEC.fieldOf("leaves_block_top").forGetter(Config::leavesBlockTop),
+            BlockStateProvider.CODEC.fieldOf("leaves_block_double").forGetter(Config::leaveBlockDouble),
+            BlockStateProvider.CODEC.fieldOf("top_block").forGetter(Config::topBlock)
         ).apply(instance, Config::new));
     }
 }

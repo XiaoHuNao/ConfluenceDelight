@@ -76,21 +76,21 @@ public class ConfluenceRecipeProvider extends AbstractRecipeProvider {
 
         //固化机
         solidifier(recipeOutput, CDFoodItems.BUBBLE_GUM.toStack(),
-                ShapedRecipePattern.of(Map.of(
-                                '#', Ingredient.of(MaterialItems.GEL)
-                        ),
-                        List.of(
-                                "# ",
-                                "  "
-                        )));
+            ShapedRecipePattern.of(Map.of(
+                    '#', Ingredient.of(MaterialItems.GEL)
+                ),
+                List.of(
+                    "# ",
+                    "  "
+                )));
         solidifier(recipeOutput, CDFoodItems.SUPER_BUBBLE_GUM.toStack(),
-                ShapedRecipePattern.of(Map.of(
-                                '#', Ingredient.of(DecorativeBlocks.BLUE_GEL_BLOCK)
-                        ),
-                        List.of(
-                                "# ",
-                                "  "
-                        )));
+            ShapedRecipePattern.of(Map.of(
+                    '#', Ingredient.of(DecorativeBlocks.BLUE_GEL_BLOCK)
+                ),
+                List.of(
+                    "# ",
+                    "  "
+                )));
     }
 
     protected void cookingPot(RecipeOutput recipeOutput, ItemStack result, Ingredient container, CookingPotRecipe.HeatSourcePredicate heatSource, int cookingTime, Ingredient... ingredients) {

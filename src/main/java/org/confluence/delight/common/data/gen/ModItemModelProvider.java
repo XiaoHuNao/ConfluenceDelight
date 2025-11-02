@@ -40,8 +40,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // 方块物品
         List<DeferredRegister.Items> blocks = List.of(
-                CDItems.BLOCK_ITEMS,
-                CDNaturalBlocks.BLOCK_ITEMS
+            CDItems.BLOCK_ITEMS,
+            CDNaturalBlocks.BLOCK_ITEMS
         );
         blocks.forEach(reg -> reg.getEntries().forEach(item -> {
             Item item1 = item.get();

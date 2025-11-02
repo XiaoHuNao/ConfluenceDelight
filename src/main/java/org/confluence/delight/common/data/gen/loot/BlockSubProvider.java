@@ -80,26 +80,26 @@ public final class BlockSubProvider extends BlockLootSubProvider {
             LootPool.Builder pool = LootPool.lootPool().setRolls(ConstantValue.exactly(1));
             for (int piece = 1; piece <= 3; piece++) {
                 pool.add(LootItem.lootTableItem(FoodItems.COCONUT)
-                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(CDNaturalBlocks.COCONUT_BLOCK.get())
-                                .setProperties(StatePropertiesPredicate.Builder.properties()
-                                        .hasProperty(CoconutBlock.PIECE, piece)))
-                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(piece))));
+                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(CDNaturalBlocks.COCONUT_BLOCK.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                            .hasProperty(CoconutBlock.PIECE, piece)))
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(piece))));
             }
             return LootTable.lootTable().withPool(pool);
         });
 
         add(CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get(), loot -> {
             LootPool.Builder pool = LootPool.lootPool()
-                    .setRolls(ConstantValue.exactly(1))
-                    .add(LootItem.lootTableItem(CDFoodItems.BLOOD_TUMOR_FRUIT)
-                            .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(
-                                            CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get())
-                                    .setProperties(StatePropertiesPredicate.Builder.properties()
-                                            .hasProperty(CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get().AGE, 5)
-                                    )
-                            )
-                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                    );
+                .setRolls(ConstantValue.exactly(1))
+                .add(LootItem.lootTableItem(CDFoodItems.BLOOD_TUMOR_FRUIT)
+                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(
+                            CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                            .hasProperty(CDNaturalBlocks.BLOOD_MEAT_VINE_BLOCK.get().AGE, 5)
+                        )
+                    )
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                );
 
             return LootTable.lootTable().withPool(pool);
         });
@@ -108,9 +108,9 @@ public final class BlockSubProvider extends BlockLootSubProvider {
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return Iterables.concat(
-                getIterableFromRegister(CDBlocks.BLOCKS),
-                getIterableFromRegister(CDFoodBlocks.BLOCKS),
-                getIterableFromRegister(CDNaturalBlocks.BLOCKS)
+            getIterableFromRegister(CDBlocks.BLOCKS),
+            getIterableFromRegister(CDFoodBlocks.BLOCKS),
+            getIterableFromRegister(CDNaturalBlocks.BLOCKS)
         );
     }
 

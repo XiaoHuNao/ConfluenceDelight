@@ -31,39 +31,39 @@ public class HeavyWorkBenchProvider extends AbstractRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput, HolderLookup.Provider holderLookup) {
         shaped(recipeOutput, "", ShapedRecipePattern.of(Map.of(
-                'C', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN),
-                'S', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
-                'G', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
-                'P', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN),
-                'K', AmountIngredient.of(64, Items.GOLD_BLOCK)
+            'C', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN),
+            'S', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
+            'G', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
+            'P', AmountIngredient.of(99, CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN),
+            'K', AmountIngredient.of(64, Items.GOLD_BLOCK)
         ), List.of(
-                "CCCK",
-                "SSSK",
-                "GGGK",
-                "PPPK"
+            "CCCK",
+            "SSSK",
+            "GGGK",
+            "PPPK"
         )), CDFoodItems.GILDED_LUXURY_CHOCOLATE_LUCK_COIN_BOX.toStack());
         shaped(recipeOutput, "", ShapedRecipePattern.of(Map.of(
-                'H', Ingredient.of(Items.HOPPER),
-                'C', Ingredient.of(Items.COPPER_INGOT),
-                'G', Ingredient.of(Tags.Items.GLASS_BLOCKS_CHEAP),
-                'F', Ingredient.of(ItemTags.FENCES),
-                'S', Ingredient.of(ConsumableItems.SHURIKEN)
+            'H', Ingredient.of(Items.HOPPER),
+            'C', Ingredient.of(Items.COPPER_INGOT),
+            'G', Ingredient.of(Tags.Items.GLASS_BLOCKS_CHEAP),
+            'F', Ingredient.of(ItemTags.FENCES),
+            'S', Ingredient.of(ConsumableItems.SHURIKEN)
         ), List.of(
-                " H  ",
-                "CGC ",
-                "FSCG",
-                "CGC "
+            " H  ",
+            "CGC ",
+            "FSCG",
+            "CGC "
         )), CDBlocks.JUICER_BLOCK.toStack());
         shaped(recipeOutput, "", ShapedRecipePattern.of(Map.of(
-                'P', AmountIngredient.of(591, CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN),
-                'S', AmountIngredient.of(60, CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
-                'G', AmountIngredient.of(15, CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
-                'C', AmountIngredient.of(3, CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN)
+            'P', AmountIngredient.of(591, CDFoodItems.LUCK_CHOCOLATE_PLATINUM_COIN),
+            'S', AmountIngredient.of(60, CDFoodItems.LUCK_CHOCOLATE_SILVER_COIN),
+            'G', AmountIngredient.of(15, CDFoodItems.LUCK_CHOCOLATE_GOLDEN_COIN),
+            'C', AmountIngredient.of(3, CDFoodItems.LUCK_CHOCOLATE_COPPER_COIN)
         ), List.of(
-                "PSGC",
-                "    ",
-                "    ",
-                "    "
+            "PSGC",
+            "    ",
+            "    ",
+            "    "
         )), CDFoodItems.EZConstant.toStack());
     }
 

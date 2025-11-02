@@ -90,20 +90,20 @@ public class FruitTreeFeature extends Feature<FruitTreeFeature.Config> {
     }
 
     public record Config(
-            BlockStateProvider trunk,
-            BlockStateProvider leaves,
-            BlockStateProvider fruited_leaves,
-            int height,
-            int height_more,
-            float fruited_percent
+        BlockStateProvider trunk,
+        BlockStateProvider leaves,
+        BlockStateProvider fruited_leaves,
+        int height,
+        int height_more,
+        float fruited_percent
     ) implements FeatureConfiguration {
         public static final Codec<Config> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                BlockStateProvider.CODEC.fieldOf("trunk_block").forGetter(Config::trunk),
-                BlockStateProvider.CODEC.fieldOf("leaves_block").forGetter(Config::leaves),
-                BlockStateProvider.CODEC.fieldOf("fruited_leaves_block").forGetter(Config::fruited_leaves),
-                Codec.INT.fieldOf("height").forGetter(FruitTreeFeature.Config::height),
-                Codec.INT.fieldOf("height_more").forGetter(FruitTreeFeature.Config::height_more),
-                Codec.FLOAT.fieldOf("fruited_percent").forGetter(FruitTreeFeature.Config::fruited_percent)
+            BlockStateProvider.CODEC.fieldOf("trunk_block").forGetter(Config::trunk),
+            BlockStateProvider.CODEC.fieldOf("leaves_block").forGetter(Config::leaves),
+            BlockStateProvider.CODEC.fieldOf("fruited_leaves_block").forGetter(Config::fruited_leaves),
+            Codec.INT.fieldOf("height").forGetter(FruitTreeFeature.Config::height),
+            Codec.INT.fieldOf("height_more").forGetter(FruitTreeFeature.Config::height_more),
+            Codec.FLOAT.fieldOf("fruited_percent").forGetter(FruitTreeFeature.Config::fruited_percent)
         ).apply(instance, Config::new));
     }
 }

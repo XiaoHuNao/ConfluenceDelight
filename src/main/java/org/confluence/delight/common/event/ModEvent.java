@@ -21,7 +21,7 @@ import org.confluence.delight.common.init.CDItems;
 
 import java.util.Map;
 
-@EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ConfluenceDelight.MODID)
 public class ModEvent {
     @SubscribeEvent
     public static void commonSetup(FMLCommonSetupEvent event) {

@@ -9,7 +9,7 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDFluids;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT, modid = ConfluenceDelight.MODID)
+@EventBusSubscriber(value = Dist.CLIENT, modid = ConfluenceDelight.MODID)
 public class ModClientEvents {
 
     @SubscribeEvent

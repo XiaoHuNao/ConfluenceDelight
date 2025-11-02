@@ -18,14 +18,13 @@ import org.confluence.delight.common.effect.beneficial.LuckCoinEffect;
 import org.confluence.delight.common.init.CDEffects;
 import org.confluence.delight.common.init.CDFoodItems;
 
-@EventBusSubscriber(modid = ConfluenceDelight.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = ConfluenceDelight.MODID)
 public final class LivingEntityEvents {
 
     @SubscribeEvent
     public static void mobEffect$Added(MobEffectEvent.Added event) {
         LivingEntity entity = event.getEntity();
         MobEffectInstance mobEffectInstance = event.getEffectInstance();
-        if (mobEffectInstance == null) return;
         if (mobEffectInstance.getEffect().value() instanceof ImmuneEffect) {
             ImmuneEffect.removeImmuneEffects(entity);
             return;

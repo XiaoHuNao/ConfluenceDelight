@@ -22,7 +22,7 @@ import static org.confluence.mod.util.PlayerUtils.receiveMana;
 public class SpecialMushroomSoup extends CDFoodItem {
     public SpecialMushroomSoup() {
         super(new Properties().food(DelightFoodProperties.hasEffectProperties(6, 6, Items.BOWL,
-                CDEffectData.of(ModEffects.POTION_SICKNESS, 160))));
+            CDEffectData.of(ModEffects.POTION_SICKNESS, 160))));
     }
 
     @Override

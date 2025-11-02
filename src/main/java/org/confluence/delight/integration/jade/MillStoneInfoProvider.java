@@ -8,7 +8,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.block.function.crafting.MillStoneBlockEntity;
-import org.confluence.mod.Confluence;
 import org.jetbrains.annotations.Nullable;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
@@ -38,13 +37,15 @@ public class MillStoneInfoProvider implements IBlockComponentProvider, StreamSer
 
     @Override
     public @Nullable MillStoneInfoProvider.Data streamData(BlockAccessor blockAccessor) {
-        if (!(blockAccessor.getBlockEntity() instanceof MillStoneBlockEntity millStoneBlockEntity)) {return null;}
+        if (!(blockAccessor.getBlockEntity() instanceof MillStoneBlockEntity millStoneBlockEntity)) {
+            return null;
+        }
         float progress = Math.max(0, millStoneBlockEntity.craftProgress);
         int total = Math.max(1, millStoneBlockEntity.craftTotalTime);
         return new Data(progress, total, List.of(
-                        millStoneBlockEntity.getItem(0),
-                        millStoneBlockEntity.getItem(1),
-                        millStoneBlockEntity.getItem(2)));
+            millStoneBlockEntity.getItem(0),
+            millStoneBlockEntity.getItem(1),
+            millStoneBlockEntity.getItem(2)));
     }
 
     @Override
@@ -59,11 +60,11 @@ public class MillStoneInfoProvider implements IBlockComponentProvider, StreamSer
 
     public record Data(float progress, int total, List<ItemStack> inventory) {
         public static final StreamCodec<RegistryFriendlyByteBuf, MillStoneInfoProvider.Data> STREAM_CODEC = StreamCodec.composite(
-                ByteBufCodecs.FLOAT, MillStoneInfoProvider.Data::progress,
-                ByteBufCodecs.VAR_INT, MillStoneInfoProvider.Data::total,
-                ItemStack.OPTIONAL_LIST_STREAM_CODEC,
-                MillStoneInfoProvider.Data::inventory,
-                MillStoneInfoProvider.Data::new);
+            ByteBufCodecs.FLOAT, MillStoneInfoProvider.Data::progress,
+            ByteBufCodecs.VAR_INT, MillStoneInfoProvider.Data::total,
+            ItemStack.OPTIONAL_LIST_STREAM_CODEC,
+            MillStoneInfoProvider.Data::inventory,
+            MillStoneInfoProvider.Data::new);
 
         public float progress() {
             return this.progress;
