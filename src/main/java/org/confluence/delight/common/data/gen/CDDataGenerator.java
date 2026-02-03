@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 
 @EventBusSubscriber(modid = ConfluenceDelight.MODID)
-public class ModDataGenerator {
+public class CDDataGenerator {
 
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
@@ -33,7 +33,6 @@ public class ModDataGenerator {
 
         boolean client = event.includeClient();
         generator.addProvider(client, new ModItemModelProvider(output, helper));
-//        generator.addProvider(event.includeClient(), new ModBlockStateProvider(output, existingFileHelper));
         generator.addProvider(client, new ModLanguageProvider(output, "en_us"));
         generator.addProvider(client, new ModLanguageProvider(output, "zh_cn"));
 
@@ -50,5 +49,6 @@ public class ModDataGenerator {
             VanillaRecipeProvider::new));
         generator.addProvider(server, new CDMusicProvider(output, lookup));
         generator.addProvider(server, new ModLootTableProvider(output, lookup));
+        generator.addProvider(server, new CDLootModifiersProvider(output, lookup));
     }
 }

@@ -8,14 +8,18 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.storage.loot.IntRange;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
+import net.minecraft.world.level.storage.loot.functions.LimitCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.confluence.delight.common.block.food.BlackCurrantDarkChocolatePieBlock;
 import org.confluence.delight.common.block.natural.CoconutBlock;
 import org.confluence.delight.common.init.*;
 import org.confluence.mod.common.init.item.FoodItems;
@@ -103,6 +107,34 @@ public final class BlockSubProvider extends BlockLootSubProvider {
 
             return LootTable.lootTable().withPool(pool);
         });
+
+        add(CDFoodBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE_BLOCK.get(), pie -> {
+            LootTable.Builder builder = LootTable.lootTable();
+            for (int i = 0; i <= 4; i++) {
+                builder.withPool(LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(CDFoodItems.BLACKCURRANT_DARK_CHOCOLATE_PIE.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(i + 1))))
+                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(CDFoodBlocks.BLACKCURRANT_DARK_CHOCOLATE_PIE_BLOCK.get())
+                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                            .hasProperty(BlackCurrantDarkChocolatePieBlock.BLOCK, i)))
+                );
+            }
+            return builder;
+        });
+
+        add(CDNaturalBlocks.DRAGON_FRUIT_BLOCK.get(), block ->
+            LootTable.lootTable().withPool(
+                LootPool.lootPool()
+                    .setRolls(ConstantValue.exactly(1.0F))
+                    .add(LootItem.lootTableItem(FoodItems.DRAGON_FRUIT.get())
+                        .when(this.hasSilkTouch())
+                        .otherwise(LootItem.lootTableItem(FoodItems.DRAGON_FRUIT)
+                            .apply(SetItemCountFunction.setCount(UniformGenerator.between(-6.0F, 2.0F)))
+                            .apply(LimitCount.limitCount(IntRange.lowerBound(0)))
+                            .apply(ApplyExplosionDecay.explosionDecay())
+                        )
+                    )));
     }
 
     @Override

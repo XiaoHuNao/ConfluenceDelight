@@ -12,7 +12,6 @@ import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.confluence.delight.ConfluenceDelight;
 import org.confluence.delight.common.init.CDCreativeTabs;
-import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -219,7 +218,7 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    public @NotNull CompletableFuture<?> run(CachedOutput cache) {
+    public CompletableFuture<?> run(CachedOutput cache) {
         this.addTranslations();
         Path path = this.output.getOutputFolder(PackOutput.Target.RESOURCE_PACK)
             .resolve(ConfluenceDelight.MODID).resolve("lang");

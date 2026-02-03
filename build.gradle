@@ -104,6 +104,10 @@ repositories {
         }
     }
     maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {
         // location of the maven that hosts JEI files since January 2023
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
@@ -114,49 +118,23 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven {
-        name = 'GeckoLib'
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-        content {
-            includeGroup("software.bernie.geckolib")
-        }
-    }
-    maven {
-        // Shedaniel's maven (Architectury API)
-        url = "https://maven.architectury.dev"
-        content {
-            includeGroup "dev.architectury"
-        }
-    }
-    maven {
-        // saps.dev Maven (KubeJS and Rhino)
-        url = "https://maven.saps.dev/minecraft"
-        content {
-            includeGroup "dev.latvian.mods"
-        }
-    }
-    maven {
-        // For Terra Blender
-        name = 'Forge'
-        url = "https://maven.minecraftforge.net"
-    }
-    maven {
-        // saps.dev Maven (KubeJS and Rhino)
-        url = "https://maven.saps.dev/releases"
-        content {
-            includeGroup "dev.latvian.mods"
-            includeGroup "dev.latvian.apps"
-        }
-    }
-    maven {
         url = 'https://jitpack.io'
         content {
             includeGroup "com.github.rtyley"
         }
     }
     maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
+        name = "Illusive Soulworks maven"
+        url = "https://maven.theillusivec4.top/"
     }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroup("software.bernie.geckolib")
+        }
+    }
+    maven { url = "https://maven.createmod.net" } // Create
     maven {
         name "magicTeam MavenReleases"
         url "https://maven.confluence.ink/releases"
@@ -170,15 +148,16 @@ repositories {
 dependencies {
     implementation "net.neoforged:DevLaunch:1.0.1"
 
-    implementation ("org.confluence.lib:Confluence-Magic-Lib:${confluence_lib_version}")
-    implementation ("org.confluence.mod:ConfluenceOtherworld:${confluence_version}"){transitive = false}
-    implementation "curse.maven:farmers-delight-398521:6597295"
+    implementation "org.confluence.lib:Confluence-Magic-Lib:${confluence_lib_version}"
     implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    implementation ("org.confluence.mod:ConfluenceOtherworld:${confluence_version}"){transitive = false}
+    implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+    implementation "curse.maven:farmers-delight-398521:6597295"
 
-    compileOnly ("org.confluence:TerraCurio:${terra_curio_version}")
-    compileOnly "curse.maven:terra-entity-1173196:6878178"
-    compileOnly "curse.maven:create-328085:6323264"
-    runtimeOnly "curse.maven:create-328085:6323264"
+    compileOnly "org.confluence:TerraCurio:${terra_curio_version}"
+    compileOnly "org.confluence:TerraEntity:${terra_entity_version}"
+    compileOnly ("com.simibubi.create:create-${minecraft_version}:${create_version}") { transitive = false }
+    runtimeOnly ("com.simibubi.create:create-${minecraft_version}:${create_version}") {transitive = false }
     compileOnly "curse.maven:fruits-delight-943774:6500952"
     runtimeOnly "curse.maven:fruits-delight-943774:6500952"
     compileOnly "curse.maven:cuisine-delight-893541:6292237"

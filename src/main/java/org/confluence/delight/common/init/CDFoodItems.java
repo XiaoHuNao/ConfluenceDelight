@@ -30,45 +30,51 @@ public class CDFoodItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ConfluenceDelight.MODID);
 
     //泡菜
-    public static final DeferredItem<BaseFoodItem> JAR_CHILI_PEPPERS = registerNormalFood("jar_chili_peppers", "泡椒", () -> DelightFoodProperties.noEffectProperties(1, 1));
-    public static final DeferredItem<BaseFoodItem> CHOP_BELL_PEPPER = registerNormalFood("chop_bell_pepper", "剁椒", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
-    public static final DeferredItem<BaseFoodItem> SPICY_PICKLED_FISH = registerNormalFood("spicy_pickled_fish", "泡鱼辣子", () -> DelightFoodProperties.noEffectProperties(4, 4.8f));
+    public static final DeferredItem<BaseFoodItem> JAR_CHILI_PEPPERS = registerNormalFood("jar_chili_peppers", "泡椒", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(1, 1));
+    public static final DeferredItem<BaseFoodItem> CHOP_BELL_PEPPER = registerNormalFood("chop_bell_pepper", "剁椒", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
+    public static final DeferredItem<Item> SPICY_PICKLED_FISH = normalItemRegister("spicy_pickled_fish", "泡鱼辣子", SpicyPickledFishItem::new);
 
     //食材
-    public static final DeferredItem<BaseFoodItem> POTATO_PIECE = registerNormalFood("potato_piece", "马铃薯块", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
-    public static final DeferredItem<BaseFoodItem> CRUSHED_CHILLI = registerNormalFood("crushed_chilli", "辣椒碎", () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_ROE = registerNormalFood("flying_fish_roe", "飞鱼籽", () -> DelightFoodProperties.noEffectProperties(1, 0.1f));
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_CAVIAR = registerNormalFood("flying_fish_caviar", "飞鱼鱼子酱", () -> DelightFoodProperties.noEffectProperties(4, 2, Items.GLASS_BOTTLE));
-    public static final DeferredItem<BaseFoodItem> RAW_FLYING_FISH_MEAT = registerNormalFood("raw_flying_fish_meat", "生飞鱼肉",
+    public static final DeferredItem<BaseFoodItem> POTATO_PIECE = registerNormalFood("potato_piece", "马铃薯块", ModRarity.COMMON,
+        () -> DelightFoodProperties.noEffectProperties(1, 0.5f));
+    public static final DeferredItem<Item> CRUSHED_CHILLI = normalItemRegister("crushed_chilli", "辣椒碎", CrushedChilliItem::new);
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_ROE = registerNormalFood("flying_fish_roe", "飞鱼籽", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(1, 0.1f));
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_CAVIAR = registerNormalFood("flying_fish_caviar", "飞鱼鱼子酱", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(4, 2, Items.GLASS_BOTTLE));
+    public static final DeferredItem<BaseFoodItem> RAW_FLYING_FISH_MEAT = registerNormalFood("raw_flying_fish_meat", "生飞鱼肉", ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(2, 2,
             CDEffectData.of(MobEffects.JUMP, 200)));
-    public static final DeferredItem<BaseFoodItem> RAW_FLYING_FISH_SLICES = registerNormalFood("raw_flying_fish_slices", "生飞鱼片",
+    public static final DeferredItem<BaseFoodItem> RAW_FLYING_FISH_SLICES = registerNormalFood("raw_flying_fish_slices", "生飞鱼片", ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(1, 1,
             CDEffectData.of(MobEffects.JUMP, 100)));
-    public static final DeferredItem<BaseFoodItem> RAW_ROSEWOOD_MEAT = registerNormalFood("raw_rosewood_meat", "生紫檀肉",
+    public static final DeferredItem<BaseFoodItem> RAW_ROSEWOOD_MEAT = registerNormalFood("raw_rosewood_meat", "生紫檀肉", ModRarity.GREEN,
         () -> DelightFoodProperties.hasEffectProperties(5, 2,
             CDEffectData.of(MobEffects.HUNGER, 600),
             CDEffectData.of(MobEffects.POISON, 100)));
-    public static final DeferredItem<BaseFoodItem> COOKED_ROSEWOOD_MEAT = registerNormalFood("cooked_rosewood_meat", "熟紫檀肉",
+    public static final DeferredItem<BaseFoodItem> COOKED_ROSEWOOD_MEAT = registerNormalFood("cooked_rosewood_meat", "熟紫檀肉", ModRarity.GREEN,
         () -> DelightFoodProperties.hasEffectProperties(8, 4,
             CDEffectData.of(ModEffects.CURSED_INFERNO, 40),
             CDEffectData.of(ModEffects.WRATH, 2400)));
-    public static final DeferredItem<BaseFoodItem> RAW_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("raw_proliferating_flesh_and_blood", "生增生血肉",
+    public static final DeferredItem<BaseFoodItem> RAW_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("raw_proliferating_flesh_and_blood", "生增生血肉", ModRarity.GREEN,
         () -> DelightFoodProperties.hasEffectProperties(3, 4,
             CDEffectData.of(MobEffects.HUNGER, 600),
             CDEffectData.of(MobEffects.POISON, 100)));
-    public static final DeferredItem<BaseFoodItem> COOKED_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("cooked_proliferating_flesh_and_blood", "熟增生血肉",
+    public static final DeferredItem<BaseFoodItem> COOKED_PROLIFERATING_FLESH_AND_BLOOD = registerNormalFood("cooked_proliferating_flesh_and_blood", "熟增生血肉", ModRarity.GREEN,
         () -> DelightFoodProperties.hasEffectProperties(5, 7,
             CDEffectData.of(MobEffects.POISON, 40, 1),
             CDEffectData.of(ModEffects.RAGE, 2400)));
-    public static final DeferredItem<BaseFoodItem> BLOOD_TUMOR_FRUIT = registerNormalFood("blood_tumor_fruit", "血瘤果",
+    public static final DeferredItem<BaseFoodItem> BLOOD_TUMOR_FRUIT = registerNormalFood("blood_tumor_fruit", "血瘤果",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(1, 1,
             CDEffectData.of(CDEffects.PARASITIC, Integer.MAX_VALUE)));
-    public static final DeferredItem<BaseFoodItem> BUTTER = registerNormalFood("butter", "黄油",
+    public static final DeferredItem<BaseFoodItem> BUTTER = registerNormalFood("butter", "黄油",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(3, 4.5f,
             CDEffectData.of(MobEffects.CONFUSION, 400)));
-    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM = registerNormalFood("blackcurrant_jam", "黑醋栗果酱", () -> DelightFoodProperties.noEffectProperties(1, 1f, Items.GLASS_BOTTLE));
-    public static final DeferredItem<BaseFoodItem> CLOUD_BREAD_SLICE = registerNormalFood("cloud_bread_slice", "云朵面包片",
+    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM = registerNormalFood("blackcurrant_jam", "黑醋栗果酱",  ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(1, 1f, Items.GLASS_BOTTLE));
+    public static final DeferredItem<BaseFoodItem> CLOUD_BREAD_SLICE = registerNormalFood("cloud_bread_slice", "云朵面包片",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(2, 6,
             CDEffectData.of(MobEffects.LEVITATION, 140),
             CDEffectData.of(MobEffects.SLOW_FALLING, 300),
@@ -84,17 +90,18 @@ public class CDFoodItems {
         () -> DelightFoodProperties.hasEffectProperties(4, 6,
             CDEffectData.of(MobEffects.LUCK, 200),
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 200)));
-    public static final DeferredItem<BaseFoodItem> VANILLA_POD = registerNormalFood("vanilla_pod", "香草荚", () -> DelightFoodProperties.noEffectProperties(1, 1));
+    public static final DeferredItem<BaseFoodItem> VANILLA_POD = registerNormalFood("vanilla_pod", "香草荚", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(1, 1));
 
     //糖果
-    public static final DeferredItem<BaseFoodItem> BUBBLE_GUM = registerNormalFood("bubble_gum", "泡泡糖",
+    public static final DeferredItem<BaseFoodItem> BUBBLE_GUM = registerNormalFood("bubble_gum", "泡泡糖",  ModRarity.WHITE,
         () -> DelightFoodProperties.hasEffectProperties(1, 1,
             CDEffectData.of(MobEffects.JUMP, 200),
             CDEffectData.of(MobEffects.SLOW_FALLING, 200)));
-    public static final DeferredItem<BaseFoodItem> SUPER_BUBBLE_GUM = registerNormalFood("super_bubble_gum", "超级泡泡糖",
+    public static final DeferredItem<BaseFoodItem> SUPER_BUBBLE_GUM = registerNormalFood("super_bubble_gum", "超级泡泡糖", ModRarity.WHITE,
         () -> DelightFoodProperties.hasEffectProperties(4, 4,
             CDEffectData.of(MobEffects.LEVITATION, 600)));
-    public static final DeferredItem<BaseFoodItem> ROYAL_GUMMY = registerNormalFood("royal_gummy", "皇家软糖",
+    public static final DeferredItem<BaseFoodItem> ROYAL_GUMMY = registerNormalFood("royal_gummy", "皇家软糖", ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(1, 4,
             CDEffectData.of(MobEffects.HEALTH_BOOST, 1200),
             CDEffectData.of(MobEffects.REGENERATION, 5400)));
@@ -106,28 +113,35 @@ public class CDFoodItems {
     public static final DeferredItem<BaseFoodItem> WHITE_DAWN = registerToolTipFood("white_dawn", "白色曙光", builder -> builder.food(
         DelightFoodProperties.hasEffectProperties(4, 4f, CDEffectData.of(ModEffects.MANA_REGENERATION, 1800))
     ).duration(d -> 15).useAnim(u -> UseAnim.DRINK).eatingSound(s -> SoundEvents.GENERIC_DRINK), 1, ChatFormatting.GRAY);
-    public static final DeferredItem<BaseFoodItem> GEMINI_LANDING_STAR = registerNormalFood("gemini_landing_star", "双子落星",
+    public static final DeferredItem<BaseFoodItem> GEMINI_LANDING_STAR = registerNormalFood("gemini_landing_star", "双子落星",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(7, 6,
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 900)));
 
     //布丁
-    public static final DeferredItem<BaseFoodItem> MANGO_PUDDING = registerNormalFood("mango_pudding", "芒果布丁",
+    public static final DeferredItem<BaseFoodItem> MANGO_PUDDING = registerNormalFood("mango_pudding", "芒果布丁",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(6, 8,
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 300)));
-    public static final DeferredItem<BaseFoodItem> BANANA_PUDDING = registerNormalFood("banana_pudding", "香蕉布丁",
+    public static final DeferredItem<BaseFoodItem> BANANA_PUDDING = registerNormalFood("banana_pudding", "香蕉布丁",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(6, 8,
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 300)));
-    public static final DeferredItem<BaseFoodItem> SLIME_DRAGON_PUDDING = registerNormalFood("slime_dragon_pudding", "小史龙布丁",
+    public static final DeferredItem<BaseFoodItem> SLIME_DRAGON_PUDDING = registerNormalFood("slime_dragon_pudding", "小史龙布丁",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(7, 7,
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1020)));
-    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM_MANGO_PUDDING = registerNormalFood("blackcurrant_jam_mango_pudding", "黑醋栗果酱芒果布丁",
+    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM_MANGO_PUDDING = registerNormalFood("blackcurrant_jam_mango_pudding", "黑醋栗果酱芒果布丁",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(16, 20,
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 800),
             CDEffectData.of(ModEffects.DANGER_SENSE, 800),
             CDEffectData.of(ModEffects.SPELUNKER, 800)));
 
+    //寿司
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SUSHI = registerNormalFood("flying_fish_sushi", "飞鱼寿司", ModRarity.BLUE,
+        () -> DelightFoodProperties.hasEffectProperties(4,3,
+            CDEffectData.of(MobEffects.JUMP, 200)));
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_ROE_SUSHI = registerNormalFood("flying_fish_roe_sushi", "飞鱼籽寿司", ModRarity.BLUE,
+        () -> DelightFoodProperties.noEffectProperties(5,4));
+
     //肉
-    public static final DeferredItem<BaseFoodItem> HONEY_GLAZED_HAM = registerNormalFood("honey_glazed_ham", "蜜汁火腿",
+    public static final DeferredItem<BaseFoodItem> HONEY_GLAZED_HAM = registerNormalFood("honey_glazed_ham", "蜜汁火腿", ModRarity.GREEN,
         () -> DelightFoodProperties.hasEffectProperties(16, 12.6f,
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 600),
             CDEffectData.of(MobEffects.REGENERATION, 600),
@@ -152,11 +166,10 @@ public class CDFoodItems {
         .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
 
     //鱼
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SASHIMI = registerNormalFood("flying_fish_sashimi", "飞鱼生鱼片",
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SASHIMI = registerNormalFood("flying_fish_sashimi", "飞鱼生鱼片",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(5, 4,
             CDEffectData.of(MobEffects.JUMP, 600, 1)));
-    public static final DeferredItem<BaseFoodItem> SPICY_BOMB_FISH = registerNormalFood("spicy_bomb_fish", "香辣炸弹鱼", () -> DelightFoodProperties.noEffectProperties(10, 12));
-
+    public static final DeferredItem<Item> SPICY_BOMB_FISH = normalItemRegister("spicy_bomb_fish", "香辣炸弹鱼", SpicyBombFish::new);
 
     //烘焙与面包类
     public static final DeferredItem<Item> OVERLOADED_BREAD = normalItemRegister("overloaded_bread", "过载面包", OverloadedBreadItem::new);
@@ -168,26 +181,26 @@ public class CDFoodItems {
     public static final DeferredItem<BaseFoodItem> BUTTER_FRIED_CLOUD_BREAD_SLICES = registerFood("butter_fried_cloud_bread_slices", "黄油煎云朵面包片", builder -> builder.food(
         DelightFoodProperties.hasEffectProperties(5, 10f, CDEffectData.of(MobEffects.SLOW_FALLING, 300))
     ).duration(d -> 25).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT));
-    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM_BREAD = registerNormalFood("blackcurrant_jam_bread", "黑醋栗果酱面包",
+    public static final DeferredItem<BaseFoodItem> BLACKCURRANT_JAM_BREAD = registerNormalFood("blackcurrant_jam_bread", "黑醋栗果酱面包",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(5, 8,
             CDEffectData.of(MobEffects.LUCK, 300),
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.COMFORT, 300)));
 
     //三明治
-    public static final DeferredItem<BaseFoodItem> CLOUD_BACON_SANDWICH = registerNormalFood("cloud_bacon_sandwich", "云朵培根三明治",
+    public static final DeferredItem<BaseFoodItem> CLOUD_BACON_SANDWICH = registerNormalFood("cloud_bacon_sandwich", "云朵培根三明治",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(10, 12.5f,
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 2400),
             CDEffectData.of(MobEffects.SLOW_FALLING, 600)));
-    public static final DeferredItem<BaseFoodItem> CLOUD_VEGETABLES_SANDWICH = registerNormalFood("cloud_vegetables_sandwich", "云朵蔬菜三明治",
+    public static final DeferredItem<BaseFoodItem> CLOUD_VEGETABLES_SANDWICH = registerNormalFood("cloud_vegetables_sandwich", "云朵蔬菜三明治",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(8, 9.2f,
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200, 1),
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 1200, 1)));
-    public static final DeferredItem<BaseFoodItem> CLOUD_GEL_SANDWICH = registerNormalFood("cloud_gel_sandwich", "云朵凝胶三明治",
+    public static final DeferredItem<BaseFoodItem> CLOUD_GEL_SANDWICH = registerNormalFood("cloud_gel_sandwich", "云朵凝胶三明治",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(6, 8.2f,
             CDEffectData.of(MobEffects.REGENERATION, 600),
             CDEffectData.of(MobEffects.LEVITATION, 600),
             CDEffectData.of(vectorwing.farmersdelight.common.registry.ModEffects.NOURISHMENT, 600)));
-    public static final DeferredItem<BaseFoodItem> CLOUD_FRIED_EGG_GEL_SANDWICH = registerNormalFood("cloud_fried_egg_gel_sandwich", "云朵煎蛋凝胶三明治",
+    public static final DeferredItem<BaseFoodItem> CLOUD_FRIED_EGG_GEL_SANDWICH = registerNormalFood("cloud_fried_egg_gel_sandwich", "云朵煎蛋凝胶三明治",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(8, 10.5f,
             CDEffectData.of(MobEffects.REGENERATION, 600),
             CDEffectData.of(MobEffects.LEVITATION, 600),
@@ -199,11 +212,11 @@ public class CDFoodItems {
             DelightFoodProperties.hasEffectProperties(6, 6, Items.BOWL,
                 CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 900)))
         .duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT), 1, ChatFormatting.GRAY);
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SOUP = registerNormalFood("flying_fish_soup", "飞鱼汤",
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SOUP = registerNormalFood("flying_fish_soup", "飞鱼汤",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(12, 8, Items.BOWL,
             CDEffectData.of(MobEffects.JUMP, 1200, 1),
             CDEffectData.of(ModEffects.EXQUISITELY_STUFFED, 1200)));
-    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SHARK_FIN_SOUP = registerNormalFood("flying_fish_shark_fin_soup", "飞鱼鱼翅汤",
+    public static final DeferredItem<BaseFoodItem> FLYING_FISH_SHARK_FIN_SOUP = registerNormalFood("flying_fish_shark_fin_soup", "飞鱼鱼翅汤",  ModRarity.BLUE,
         () -> DelightFoodProperties.hasEffectProperties(3, 1, Items.BOWL,
             CDEffectData.of(MobEffects.SLOW_FALLING, 1800)));
     public static final DeferredItem<BaseFoodItem> BLOOD_RED_PORK_RIB_SOUP = registerToolTipFood("blood_red_pork_rib_soup", "血红排骨汤", builder -> builder.food(
@@ -383,9 +396,9 @@ public class CDFoodItems {
         return item;
     }
 
-    public static DeferredItem<BaseFoodItem> registerNormalFood(String en, String zh, Supplier<FoodProperties> foodProperties) {
+    public static DeferredItem<BaseFoodItem> registerNormalFood(String en, String zh, ModRarity rarity, Supplier<FoodProperties> foodProperties) {
         DeferredItem<BaseFoodItem> item = ITEMS.register(en, () -> {
-            BaseFoodItem.Builder builder = BaseFoodItem.builder().stackTo(64).food(foodProperties.get()).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT);
+            BaseFoodItem.Builder builder = BaseFoodItem.builder().stackTo(64).rarity(rarity).food(foodProperties.get()).duration(d -> 15).useAnim(u -> UseAnim.EAT).eatingSound(s -> SoundEvents.GENERIC_EAT);
             return new BaseFoodItem(builder);
         });
         chineseProviders.add(l -> l.addItem(item, zh));

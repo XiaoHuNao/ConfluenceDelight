@@ -174,6 +174,13 @@ public class VanillaRecipeProvider extends AbstractRecipeProvider {
             Ingredient.of(ConsumableItems.VITAL_CRYSTAL),
             Ingredient.of(Items.GLOWSTONE_DUST),
             Ingredient.of(FoodItems.JOJA_COLA));
+        shapeless(output, "", "", CDFoodItems.FLYING_FISH_SUSHI.toStack(),
+            Ingredient.of(CDFoodItems.RAW_FLYING_FISH_SLICES),
+            Ingredient.of(ModItems.RICE.get()));
+        shapeless(output, "", "", CDFoodItems.FLYING_FISH_ROE_SUSHI.toStack(),
+            Ingredient.of(CDFoodItems.FLYING_FISH_ROE),
+            Ingredient.of(ModItems.RICE.get()));
+
         //熔炉
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(ModItems.MILK_BOTTLE.get()), CDFoodItems.BUTTER.toStack(), 0.2f, 50);
         cooking(output, SmeltingRecipe::new, "smelting/", "", Ingredient.of(CDFoodItems.RAW_ROSEWOOD_MEAT.get()), CDFoodItems.COOKED_ROSEWOOD_MEAT.toStack(), 0.35f, 200);

@@ -1,13 +1,10 @@
 package org.confluence.delight.common.event.game.entity;
 
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
@@ -48,7 +45,6 @@ public final class LivingEntityEvents {
     @SubscribeEvent
     public static void mobEffect$Applicable(MobEffectEvent.Applicable event) {
         MobEffectInstance mobEffectInstance = event.getEffectInstance();
-        if (mobEffectInstance == null) return;
         if (ImmuneEffect.isEffectImmune(event.getEntity(), mobEffectInstance.getEffect())) {
             event.setResult(MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
         }
@@ -65,16 +61,8 @@ public final class LivingEntityEvents {
     @SubscribeEvent
     public static void livingEntityUseItemFinish(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        if (!(player.level() instanceof ServerLevel serverLevel)) return;
         ItemStack itemStack = event.getItem();
-        RandomSource random = player.getRandom();
-        if (itemStack.is(CDFoodItems.CRUSHED_CHILLI.get()) && random.nextInt(2) == 0) {
-            player.igniteForTicks(40);
-        } else if (itemStack.is(CDFoodItems.SPICY_PICKLED_FISH.get())) {
-            player.igniteForSeconds(60.0f);
-        } else if (itemStack.is(CDFoodItems.SPICY_BOMB_FISH.get())) {
-            serverLevel.explode(null, player.getX(), player.getY(), player.getZ(), 2.5F, false, Level.ExplosionInteraction.MOB);
-        } else if (itemStack.is(CDFoodItems.BIG_CHICKEN_CUTLET.get())) {
+        if (itemStack.is(CDFoodItems.BIG_CHICKEN_CUTLET.get())) {
             player.teleportTo(player.getX(), player.getY() + 100, player.getZ());
         }
     }
